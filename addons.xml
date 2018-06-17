@@ -75,15 +75,15 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="3.7" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="4.0" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
         <extension point="xbmc.addon.repository" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Repo">
             <dir>
-			<info compressed="false">http://cellardoortv.com/repo2/master/addons.xml</info>
-            <checksum>http://cellardoortv.com/repo2/master/addons.xml.md5</checksum>
-            <datadir zip="true">http://cellardoortv.com/repo2/master/zips/</datadir>
+				<info compressed="false">https://raw.githubusercontent.com/MrKoyu/repo/master/addons.xml</info>
+				<checksum>https://raw.githubusercontent.com/MrKoyu/repo/master/addons.xml.md5</checksum>
+				<datadir zip="true">https://raw.githubusercontent.com/MrKoyu/repo/master/</datadir>
             <hashes>false</hashes>
 			</dir>
             <dir>
@@ -117,7 +117,7 @@
     </assets>
 	</extension>
 </addon>
-
+	
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.program.advancedsettings"
        name="[COLOR yellowgreen]E.A.S 4Krypton[/COLOR]"
