@@ -1,0 +1,1420 @@
+<addons>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.CellarDoorTVwizard" name="[COLOR lightskyblue]CellarDoorTV Wizard[/COLOR]" version="0.2.6" provider-name="CDTV Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="startup.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">[COLOR lightskyblue]CellarDoorTV Wizard[/COLOR]</summary>
+    <description lang="en">CellarDoorTV Wizard allows you to get access to the latest CDTV Custom Builds and more.[CR]Credits - A huge thanks goes out to [COLOR deepskyblue]Surfacingx[/COLOR] the creator of the Aftermath Wizard for bringing this outstanding Wizard to this community.[CR]Contact - For help and support go to CellarDoorTV Facebook group.[CR]Follow me on Twitter or visit our website at https://cellardoortv.wordpress.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.super.favourites" name="Super Favourites" version="1.0.59" provider-name="spoyser">
+  <requires>
+    <import addon="xbmc.python" version="2.14.0"/>
+    <import addon="script.module.metahandler" optional="true" />
+  </requires>
+
+
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video audio image executable</provides>
+  </extension>
+
+  
+  <extension point="xbmc.service" library="service.py" start="startup" />
+
+  
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Put all your favourites bits of all your favourites addons into one easy to use addon.</summary>
+    <description lang="en">Super Favourites is a better way of managing your Kodi Favourites.[CR][CR]Virtually any menu item within Kodi can be added to Super Favourites, even from addons that don't normally provide this feature.[CR][CR]Super Favourites allows you to better manage your Kodi favourites, including the creation of sub-folders, into which your Kodi favourites can then be copied or moved into.[CR][CR]This allows you to create you own custom addon with just the best bits of your favourite addons. Search your favourite addons, play your favourite music, read your favourite comic strips, select your favourite playlists, browse your favourite movies, listen to your favourite radio stations, watch your favourite cartoons, the possibilities are endless, all from within one easy to use addon.</description>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=192662</forum>
+    <website></website>
+    <source>https://github.com/spoyser/spoyser-repo/tree/master/plugin.program.super.favourites</source>
+    <email>seanpoyser at gmail.com</email>
+
+    <news>
+1.0.59: 29th May 2017
+    - 'Now playing' text now defined by SF due to skin variations
+    </news>
+
+  </extension>
+
+
+  <extension point="kodi.context.item">
+    <menu id="kodi.core.main">
+
+      <item library="capture.py">
+        <label>$ADDON[plugin.program.super.favourites 30002]</label>
+        <visible>!IsEmpty(Window(Home).Property(SF_STD_CONTEXTMENU_ENABLED)) + !StringCompare(Container.PluginName,plugin.program.super.favourites)</visible>
+      </item>
+
+      <item library="menu_addtofaves.py">
+        <label>$ADDON[plugin.program.super.favourites 30047]</label>
+        <visible>!IsEmpty(Window(Home).Property(SF_STD_ADDTOFAVES_ENABLED)) + !StringCompare(Container.PluginName,plugin.program.super.favourites)</visible>
+      </item>
+
+      <item library="menu_download.py">
+        <label>$ADDON[plugin.program.super.favourites 30259]</label>
+        <visible>!IsEmpty(Window(Home).Property(SF_STD_DOWNLOAD_ENABLED)) + Player.IsInternetStream</visible>
+      </item>
+
+    </menu>
+  </extension>
+
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="3.7" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+        <requires>
+            <import addon="xbmc.addon" version="12.0.0"/>
+        </requires>
+        <extension point="xbmc.addon.repository" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Repo">
+            <dir>
+			<info compressed="false">http://cellardoortv.com/repo2/master/addons.xml</info>
+            <checksum>http://cellardoortv.com/repo2/master/addons.xml.md5</checksum>
+            <datadir zip="true">http://cellardoortv.com/repo2/master/zips/</datadir>
+            <hashes>false</hashes>
+			</dir>
+            <dir>
+                <info compressed="false">http://raw.github.com/frenchdj/frenchdj.repository/master/addons.xml</info>
+                <checksum>http://raw.github.com/frenchdj/frenchdj.repository/master/addons.xml.md5</checksum>
+                <datadir zip="true">http://raw.github.com/frenchdj/frenchdj.repository/master/repo/</datadir>
+            </dir>
+            <dir>
+                <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
+            </dir>
+            <dir>
+                <info compressed="false">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/</datadir>
+            </dir>
+			<dir>
+                <info compressed="false">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/</datadir>
+            </dir>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+		<summary lang="en">CellarDoorTV Repository</summary>
+		<description lang="en">[COLOR gold]The Future Of Home Entertainment[/COLOR][CR]Kodi Repository for [COLOR steelblue]CellarDoorTV[/COLOR][CR][COLOR steelblue]CellarDoorTV[/COLOR] [COLOR white]Repo[/COLOR] allows you to install our CDTV Wizard and get access to the latest CDTV Custom Builds and more.</description>
+		<platform>all</platform>
+    <assets>
+        <icon>icon.gif</icon>
+        <fanart>fanart.jpg</fanart>      
+    </assets>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.advancedsettings"
+       name="[COLOR yellowgreen]E.A.S 4Krypton[/COLOR]"
+       version="0.8.9"
+       provider-name="kinkin">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               	library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Create, view, edit and delete your advancedsettings.xml file in a user-friendly gui</summary>
+        <description>All settings follow the xbmc.org wiki[CR][CR]With this tool you can create your advanced settings directly from XBMC[CR][CR]If you don't know what a setting does, don't enable it!</description>
+        <platform>all</platform>
+        <language>en</language>
+        <license>GNU GENERAL PUBLIC LICENSE</license>
+        <forum></forum>
+        <website></website>
+        <source></source>
+        <email></email>
+    </extension>
+	
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.aptoide" version="2018.01.08" name="[COLOR darkorange]Aptoide[/COLOR] for Kodi" provider-name="aenemapy">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="script.module.requests" />		
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="main.py">
+		<provides>video executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+        <description>Install/Download Apk from Aptoide APK Store</description>
+	
+		<summary lang="en">Aptoide APK Store</summary>
+		<platform>all</platform>
+		<forum>-</forum>
+		<website>-</website>
+		<source>-</source>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+		<news>-</news>
+	</extension>
+</addon>
+
+<?xml version="1.1" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.hypersonicIPTV2"
+       name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
+       version="3.8"
+       provider-name="GhostBuilder">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.requests" />
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]</summary>
+    <language>en</language>
+    <description lang="en">[COLOR steelblue]Hypersonic[/COLOR] [COLOR white]IPTV[/COLOR] Official Addon - The Future of Great Quality and Stable Streams - for more info go to [COLOR yellowgreen]http://getnow.hypersonic-tv.com[/COLOR] or email [COLOR yellowgreen]subscription@hypersonic-tv.com[/COLOR] to request your username and password. Regards, Hypersonic Team.</description>
+     <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.metalliq" name="[COLOR gold]M[/COLOR]etalli[COLOR gold]Q[/COLOR] [COLOR gold]GOLDEN[/COLOR]" version="5.0.17krypton" provider-name="[COLOR gold][B]Last Version[/B][/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="repository.cdrepo"/>
+		<import addon="script.module.requests" version="2.9.1"/>
+		<import addon="script.module.futures" version="2.2.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video audio</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="[login|startup]">
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<menu>
+				<label>MetalliQ</label>
+				<item library="context_toggle.py">
+					<label>Preferred toggle</label>
+					<visible>!System.HasAddon(context.metalliq) + !Skin.HasSetting(Toggling)</visible>
+				</item>
+				<item library="context_movie.py">
+					<label>$ADDON[plugin.video.metalliq 30602]</label>
+					<visible>StringCompare(ListItem.dbtype,movie) + SubString(ListItem.Path, plugin.video.metalliq)</visible>
+				</item>
+				<item library="context_tvshow.py">
+					<label>$ADDON[plugin.video.metalliq 30602]</label>
+					<visible>StringCompare(ListItem.dbtype,tvshow) + SubString(ListItem.Path, plugin.video.metalliq)</visible>
+				</item>
+				<item library="context_live.py">
+					<label>$ADDON[plugin.video.metalliq 30602]</label>
+					<visible>[SubString(ListItem.FileNameAndPath, plugin.video.metalliq\\Live) | SubString(ListItem.FileNameAndPath, plugin.video.metalliq\\Live)]</visible>
+				</item>
+				<item library="context_playable.py">
+					<label>$ADDON[plugin.video.metalliq 30622]</label>
+					<visible>!System.HasAddon(context.metalliq) + !Skin.HasSetting(Contexting)</visible>
+				</item>
+			</menu>
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">TMDb, TVDb, Trakt, AudioDb, LastFM Browser</summary>
+		<description lang="en">Browse The MovieDb, The TVDb, Trakt, The AudioDb and LastFM and pass info along to library or an addon to try and play it. Needs player-files and the appropriate addon to actually play.</description>
+		<summary lang="nl">Blader door TMDb, TVDb, Trakt, AudioDb en LastFM</summary>
+		<description lang="nl">Blader door The MovieDb, The TVDb, Trakt, The AudioDb en LastFM en geef info door aan de bibliotheek of een addon om te proberen het af te spelen. Vereist player-bestanden en de bijbehorende addon om daadwerkelijk af te kunnen spelen.</description>
+		<supportedcontent>
+			<content>movies</content>
+			<content>tvshows</content>
+			<content>episodes</content>
+			<content>musicvideos</content>
+			<content>music</content>
+			<content>livetv</content>
+		</supportedcontent>
+		<genre>movies,tv,music,livetv</genre>
+		<!--<video_guide>yt-id</video_guide>
+		<video_preview>yt-id</video_preview>-->
+		<forum></forum>
+		<source></source>
+		<email></email>
+		<news>Fixed duration error on non-default version of kodi</news>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.metalliq-forqed" name="[COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed" version="6.0.17krypton" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="repository.cdrepo" version="1.2"/>
+		<import addon="script.module.requests" version="2.9.1"/>
+		<import addon="script.module.futures" version="2.2.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video audio</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="[login|startup]">
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<menu>
+				<label>[COLOR lime]M[/COLOR]etalli[COLOR lime]Q[/COLOR] For[COLOR lime]Q[/COLOR]ed</label>
+				<item library="context_toggle.py">
+					<label>Preferred toggle</label>
+					<visible>!System.HasAddon(context.metalliq-forqed) + !Skin.HasSetting(Toggling)</visible>
+				</item>
+				<item library="context_movie.py">
+					<label>$ADDON[plugin.video.metalliq-forqed 30602]</label>
+					<visible>StringCompare(ListItem.dbtype,movie) + SubString(ListItem.Path, plugin.video.metalliq-forqed)</visible>
+				</item>
+				<item library="context_tvshow.py">
+					<label>$ADDON[plugin.video.metalliq-forqed 30602]</label>
+					<visible>StringCompare(ListItem.dbtype,tvshow) + SubString(ListItem.Path, plugin.video.metalliq-forqed)</visible>
+				</item>
+				<item library="context_live.py">
+					<label>$ADDON[plugin.video.metalliq-forqed 30602]</label>
+					<visible>[SubString(ListItem.FileNameAndPath, plugin.video.metalliq-forqed\\Live) | SubString(ListItem.FileNameAndPath, plugin.video.metalliq-forqed\\Live)]</visible>
+				</item>
+				<item library="context_playable.py">
+					<label>$ADDON[plugin.video.metalliq-forqed 30622]</label>
+					<visible>!System.HasAddon(context.metalliq-forqed) + !Skin.HasSetting(Contexting)</visible>
+				</item>
+			</menu>
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">TMDb, TVDb, Trakt, AudioDb, LastFM Browser</summary>
+		<description lang="en">[COLOR lime]I don’t take any credits for this add-on. Without the original developers this add-on would never exist. Thanks for all they have brought to the community.[/COLOR][CR]Browse The MovieDb, The TVDb, Trakt, The AudioDb and LastFM and pass info along to library or an addon to try and play it. Needs player-files and the appropriate addon to actually play.</description>
+		<summary lang="nl">Blader door TMDb, TVDb, Trakt, AudioDb en LastFM</summary>
+		<description lang="nl">Blader door The MovieDb, The TVDb, Trakt, The AudioDb en LastFM en geef info door aan de bibliotheek of een addon om te proberen het af te spelen. Vereist player-bestanden en de bijbehorende addon om daadwerkelijk af te kunnen spelen.</description>
+		<supportedcontent>
+			<content>movies</content>
+			<content>tvshows</content>
+			<content>episodes</content>
+			<content>musicvideos</content>
+			<content>music</content>
+			<content>livetv</content>
+		</supportedcontent>
+		<genre>movies,tv,music,livetv</genre>
+		<!--<video_guide>yt-id</video_guide>
+		<video_preview>yt-id</video_preview>-->
+		<forum></forum>
+		<source></source>
+		<email></email>
+		<news>Fixed duration error on non-default version of kodi</news>
+                <website></website>
+
+		<source></source>
+
+		<assets>
+
+			<icon>icon.gif</icon>
+
+			<fanart>fanart.jpg</fanart>
+
+		</assets>
+
+		<news></news>
+
+	</extension>
+
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.numbersbynumbers" version="2.0.0.3" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="script.module.numbersbynumbers" />
+		<import addon="script.numbersbynumbers.artwork" />
+		<import addon="script.numbersbynumbers.metadata" />
+		<import addon="script.module.urlresolver" version="5.0.20"/>
+		<import addon="script.module.requests" />
+		<import addon="script.module.metahandler" />
+                <import addon="plugin.video.youtube"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Movies and TV Shows on [COLOR gold]NuMbErS[/COLOR]</summary>
+		<description lang="en">Please remember that NuMbErS is not an official part of the Kodi media player you are running, and therefore is not to be mentioned within official support channels of Kodi, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</description>
+		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
+		<platform>all</platform>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<assets>
+			<icon>icon.gif</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+		<news>
+V2.0.0.3
+- The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.
+        </news>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.bkr" version="3.0.0.1" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0"/>
+        <import addon="script.bkr.artwork" version="2018.04.02"/>
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.metahandler" version="2.9.0"/>
+        <import addon="script.module.requests" version="2.12.4"/>
+        <import addon="script.module.beautifulsoup" version="3.2.1"/>
+        <import addon="script.module.schism.common" version="2017.06.08"/>
+        <import addon="script.module.futures" version="2.2.0"/>
+        <import addon="script.module.universalscrapers" version="1.0.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="bkr.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">All your boxsets in one addon</summary>
+        <description lang="en">None of the Original Devs wanted their names metioned in this addon. Without the original developers this add-on would never exist. Thanks for all they have brought to the community.[CR][COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings is reborn for anyone to enjoy.</description>
+        <disclaimer lang="en">The author does not host any content, nor is he affiliated with any of the content providers.</disclaimer>
+        <platform>all</platform>
+        <news>
+V3.0.0.1
+-New Official Repo
+-Intial Release
+-Fork of Boxset Kings
+-Added Artwork Script
+		</news>
+        <assets>
+            <icon>icon.gif</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.video.IVUEcreator"
+version="0.3.6"
+name="IVUEcreator"
+provider-name="Team IVUE">
+<requires>
+  <import addon="xbmc.python" version="2.20.0"/>
+  <import addon="script.module.xbmcswift2" version="2.4.0"/>
+  <import addon="script.module.requests" version="2.9.1" />
+</requires>
+<extension point="xbmc.python.pluginsource" library="main.py">
+  <provides>video</provides>
+</extension>
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">IVUECreator</summary>
+  <description lang="en">Integrate any plugin installed to IVUE guide easily and quickly</description>
+  <description lang="en">Now includes a fully functioning back up and restore feature</description>
+  <disclaimer lang="en">Modified by TeamJDM from the original code from "Primeaval" </disclaimer>
+</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.duckshit" name="[COLORgold]Duck [COLORred]Shit[/COLOR]" version="3.1" provider-name="56426">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0" />
+        <import addon="script.module.universalscrapers" version="1.0.0" />
+        <import addon="script.module.python.koding.aio" version="0.9.6.6" />
+        <import addon="script.module.beautifulsoup" version="3.2.1" />
+        <import addon="script.module.requests" version="2.9.1" />
+        <import addon="script.module.addon.common" version="2.0.0" />
+        <import addon="script.module.xmltodict" version="0.9.0" />
+        <!--<import addon="script.module.web-pdb" version="1.0"/>-->
+        <import addon="script.module.resolveurl" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="[login|startup]" />
+    <extension point="xbmc.addon.metadata">
+<platform>all</platform>
+<summary lang="en">
+</summary>
+<description lang="en">
+[COLORgold]Never Forget Who Taught You And Showed You The Way
+[COLORwhite]====[COLORred]Respect Where Its Due[COLORwhite]====[/COLOR]
+</description>
+<disclaimer lang="en">
+The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. 
+The author does not host or own any content found within this addon.
+The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.
+The Search process is the same as a search engine with no data actual hosted by the developer.
+This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.
+</disclaimer>
+<news>
+The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. 
+The author does not host or own any content found within this addon.
+The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.
+The Search process is the same as a search engine with no data actual hosted by the developer.
+This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.
+</news>
+</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.flixsport"
+       name="[COLOR white]FlixSport[/COLOR]" 
+       version="1.0.5"
+       provider-name="FlixSport">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.t0mm0.common" version="2.0.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.beautifulsoup4" />
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" version="3.0.0"/>
+    <import addon="script.module.urlresolver" optional="true"/>
+    <import addon="script.module.simplejson" /> 
+    <import addon="script.common.plugin.cache" version="2.5.2"/>
+    <import addon="script.module.metahandler" version="2.5.1"/>
+    <import addon="script.module.python.koding.aio" version="0.0.1"/>
+    <import addon="script.module.bybmodules"  version="0.0.1.8"/>
+    <import addon="script.module.resolveurl" version="5.0.07"/>
+    <import addon="script.module.dateutil" version="2.5.3"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Live Sports And Live TV Addon</summary>
+    <description lang="en">All Streams Are Obtained From Live Sports Bins - If There Is A Issue Please Contact Me And I Shall Remove Some Streams
+Still Very Much Beta Stage</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.Redemption"
+       name="[COLOR deepskyblue]Redemption[/COLOR]"
+       version="1.3"
+       provider-name="Redemption">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.t0mm0.common" version="2.0.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.beautifulsoup4" />
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" version="3.0.0"/>
+    <import addon="script.module.urlresolver" optional="true"/>
+    <import addon="script.module.simplejson" /> 
+    <import addon="script.common.plugin.cache" version="2.5.2"/>
+    <import addon="script.module.metahandler" version="2.5.1"/>
+
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Redemption</summary>
+    <description lang="en">AllinOne</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.kiddo" name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B]" version="4.0.0.4" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="script.module.universalscrapers" version="1.0.0" />
+		<import addon="script.module.python.koding.aio" version="0.9.6.6" />
+		<import addon="script.module.beautifulsoup" version="3.2.1" />
+		<import addon="script.kiddo.easytopair" version="1.0" />
+		<import addon="script.speedtestnet" version="1.0.0" />
+                <import addon="script.module.requests" version="2.9.1" />
+                <import addon="script.module.addon.common" version="2.0.0" />
+                <import addon="script.module.xmltodict" version="0.9.0" />
+                <!--<import addon="script.module.web-pdb" version="1.0"/>-->
+                <import addon="script.module.resolveurl" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="[login|startup]" />
+        <extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">Special thanks to [COLORgold]NuMbErS[/COLOR] who wrote all the xmls in this Addon</summary>
+		<description lang="en">[COLORgold]PG - Parental Guidance Suggested - Some Mild Rude Humor. Some Material may not Be Suitable for Children.[/COLOR][CR]The author is not responsible for the use of this addon and does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]The Search process is the same as a search engine with no data actual hosted by the developer.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</description>
+		<supportedcontent>
+			<content>Kids movies</content>
+			<content>Kids tvshows</content>
+			<content>anime</content>
+			<content>animation shows</content>
+		</supportedcontent>
+		<genre>Kids Stuff</genre>
+		<video_preview>yt-id</video_preview>-->
+		<news>[COLORcrimson]=======[/COLOR]Never Forget Who Showed You The Way[COLORcrimson]=======[/COLOR]</news>
+                <website></website>
+
+		<source></source>
+
+		<assets>
+
+			<icon>icon.png</icon>
+
+    <icon>search.gif</icon>
+
+			<fanart>fanart.gif</fanart>
+
+		</assets>
+
+		<news></news>
+
+	</extension>
+
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<addon
+  id="plugin.video.SportsDevil"
+  version="2018.04.29"
+  name="SportsDevil"
+  provider-name="SportsDevil">
+  <requires>
+   <import addon="xbmc.python" version="2.14.0"/>
+   <import addon="script.module.dateutil" />
+   <import addon="script.module.simplejson" />
+   <import addon="script.module.six" />
+   <import addon="script.module.requests" />
+   <import addon="script.module.streamlink.base" />
+   <import addon="plugin.video.f4mTester" />
+  </requires>
+  <extension 
+    point="xbmc.python.pluginsource"
+    library="default.py">
+   <provides>video</provides>
+  </extension>
+  <extension point="xbmc.service" library="service/streamlink_proxy.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">SportsDevil addon</summary>
+    <description lang="en">Play videos of different ad-financed sports streaming sites.</description>
+	<disclaimer lang="en">SportsDevil does not provide any streams of its own; stream quality, content and copyright are responsibility of the ad-financed source web site. For updates - check the readme.</disclaimer>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<addon id="plugin.video.spotitube" name="Youtube Music" version="2.0.9" provider-name="realvito (inspired by L0RE)">
+	<requires>
+		<import addon="xbmc.python" version="2.20.0"/>
+		<import addon="plugin.video.youtube" version="5.3.7"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video audio</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="de">Musik über Youtube abspielen</summary>
+		<summary lang="en">Play Music via Youtube</summary>
+		<description lang="de">@realvito[CR]Musik aus verschiedenen Quellen z.B. Billboard, iTunes, Spotify etc. auswählen und über Youtube abspielen.[CR][CR]Für mehr Informationen zu allen Neuerungen siehe - CHANGELOG.[CR]     TEST IT AND LIKE IT</description>
+		<description lang="en">@realvito[CR]Choose Music from different sources e.g. Billboard, iTunes, Spotify etc. and play it via Youtube.[CR][CR]For more information about all new features see - CHANGELOG.[CR]     TEST IT AND LIKE IT</description>
+		<disclaimer lang="de">Die von diesem Addon dargestellten Inhalte werden von den Erstellern des Addons weder gehostet oder verbreitet, noch stehen die Ersteller in irgendeiner Beziehung zu den Anbietern des Inhalts.</disclaimer>
+		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content providers.</disclaimer>
+		<language></language>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+		<forum>http://www.kodinerds.net/index.php/Thread/47087-Release-YoutubeMusic-patched/</forum>
+		<website></website>
+		<email></email>
+		<source>https://github.com/kodinerds/repo/tree/master/plugin.video.spotitube</source>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+		<news>[B][COLOR orangered]Version 2.0.9  (25.02.2018)[/COLOR][/B] by realvito[CR]
+- fixed: Beatport - text errors in genres and Video-Images are not displayed
+- removed: Beatport - subgenres, since no more available
+- fixed: Billboard-Archive because of webpage changes
+- added: German-DJ-Playlist (on special request !)
+- fixed: Hypem - "Popular: Last Week" and "Time-Machine" listing (html > json)
+- added: "https://spotifycharts.com" under the rubric "SPOTIFY - International" with *VIRAL top 50* and *TOP Streams* of many countries
+- changed: new Addon-fanart.jpg
+		</news>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.youtube" name="YouTube" version="6.0.0beta1" provider-name="bromix">
+    <requires>
+        <import addon="xbmc.python" version="2.20.0"/>
+        <import addon="script.module.six"/>
+        <import addon="script.module.requests" version="2.12.4"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="resources/lib/default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="resources/lib/startup.py" start="startup"/>
+    <extension point="xbmc.python.module" library="resources/lib/"/>
+    <extension point="xbmc.addon.metadata">
+        <news>
+[add] Python 3 compat.
+[add] Settings -> Maintenance -> Delete temporary files
+[add] Settings -> General -> Rate video after watching
+[add] Settings -> API -> Enable API configuration page
+        - when enabled, visit http://ipaddress:port/api to configure API keys from a web browser
+        - port is configured in Settings - HTTP Server - Port
+[add] Storing personal api keys in api_keys.json, restore keys from json on settings loss
+[add] Storing login tokens in access_manager.json, restore tokens from json on settings loss
+[add] youtube_registration module, register developer keys and use them by appending an addon_id=:addon_id parameter to youtube add-on plugin urls
+[add] screensaver=true parameter to /play route - no suggested videos, no post play events, don't ask for quality
+[add] play route for channel live streams
+        - plugin://plugin.video.youtube/play/?channel_id=UCLA_DiR1FfKNvjuUpBHmylQ&amp;live=1
+[fix] Signature deciphering
+[fix] context menu after playback
+[fix] alternative player, do not append headers
+[fix/upd] post play events happen post play
+[fix/upd] set title from metadata on play
+[upd] Use monitor to track api key changes
+[upd] Dutch strings [MB1968]
+[upd] French strings [bubuleur]
+[upd] Greek strings [twilight0]
+[upd] Spanish strings [roliverosc]
+        </news>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+        <summary lang="en_gb">Plugin for YouTube</summary>
+        <description lang="en_gb">YouTube is one of the biggest video-sharing websites of the world.</description>
+        <disclaimer lang="en_gb">This plugin is not endorsed by Google</disclaimer>
+        <summary lang="he_il">תוסף עבור YouTube</summary>
+        <description lang="he_il">YouTube הוא אחד מאתרי שיתוף הווידאו הגדולים בעולם.</description>
+        <summary lang="de_de">Plugin für YouTube</summary>
+        <description lang="de_de">YouTube ist eines der größten Video-Sharing-Websites der Welt.</description>
+        <summary lang="pl_pl">Wtyczka YouTube</summary>
+        <description lang="pl_pl">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description>
+        <summary lang="hu_hu">YouTube kiegészítő</summary>
+        <description lang="hu_hu">A YouTube világ egyik legnagyobb videómegosztó weboldala.</description>
+        <summary lang="es_es">Plugin para YouTube</summary>
+        <description lang="es_es">YouTube es uno de los mayores sitios web de intercambio de vídeos del mundo.</description>
+        <disclaimer lang="es_es">Este add-on no esta respaldado por Google</disclaimer>
+        <summary lang="ru_ru">Видеодополнение YouTube</summary>
+        <description lang="ru_ru">Данное дополнение позволяет находить и смотреть видео на всеми любимом сайте.</description>
+        <summary lang="fr_fr">Plugin pour YouTube</summary>
+        <description lang="fr_fr">YouTube est l'un des plus grands sites de partage vidéos du monde.</description>
+        <summary lang="zh_cn">YouTube附加元件</summary>
+        <description lang="zh_cn">「Youtube」是全世界最大的影片分享網站</description>
+        <summary lang="bg_bg">Добавка за YouTube</summary>
+        <description lang="bg_bg">YouTube е един от най-големите уеб сайтове за споделяне на видео в целия свят.</description>
+        <summary lang="el_gr">Πρόσθετο YouTube</summary>
+        <description lang="el_gr">Το YouTube είναι μία από τις μεγαλύτερες ιστοσελίδες διαμοιρασμού βίντεο στον κόσμο.</description>
+        <disclaimer lang="el_gr">Η παρούσα μικροεφαρμογή δεν έχει υϊοθετηθεί από την Google</disclaimer>
+        <summary lang="nb_no">Tillegg for YouTube</summary>
+        <description lang="nb_no">YouTube er en av verdens største nettsider for videodeling.</description>
+        <language></language>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <forum>https://forum.kodi.tv/showthread.php?tid=325740</forum>
+        <website>https://www.youtube.com</website>
+        <email>ytplugin at datanet dot ws</email>
+        <source>https://github.com/jdf76/plugin.video.youtube</source>
+        <size>1776578</size>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.audio.mp3streams" name="MP3 Streams" version="2017.09.09" provider-name="qahanik, kinkin, art by Marquerite">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.t0mm0.common" version="1.1.0"/>
+        <import addon="script.module.mutagen"/>
+        <import addon="script.module.requests" version="1.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>audio</provides>
+    </extension>
+    <extension point="xbmc.service" library="playerMP3.py" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>A music streaming collection</summary>
+        <description>Browse, stream or download your favourite songs and albums</description>
+        <news>fixed by qahanik (thank you very much!) / changed versioning to date-format / fixed album downloading / minor cosmetic cleanups</news>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.audio.soundcloud" name="SoundCloud" version="2.0.6" provider-name="bromix">
+	<requires>
+		<import addon="xbmc.python" version="2.14.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>audio</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="bg">SoundCloud е платформа за разпространяване на аудио.</summary>
+		<summary lang="en">SoundCloud is an online audio distribution platform.</summary>
+		<summary lang="de">Soundcloud ist ein Online-Audio-Vertriebsplattform.</summary>
+		<summary lang="fr">SoundCloud est une plateforme de streaming audio en ligne.</summary>
+		<summary lang="he">סאונדקלאוד הוא פלטפורמת הפצת אודיו באינטרנט.</summary>
+		<summary lang="nl">SoundCloud is een online audio distributie platform.</summary>
+		<description lang="bg">SoundCloud е платформа за разпространение на аудио, която позволява на потребителите да качват, записват, представят и споделят звуците създадени от тях.</description>
+		<description lang="en">SoundCloud is an online audio distribution platform that enables its users to upload, record, promote and share their originally-created sounds.</description>
+		<description lang="de">Soundcloud ist ein Online-Audio-Vertriebsplattform. Benutzer können ihre ursprünglich erstelle Music hochladen, aufnehmen und unter weiteren Benutzern teilen.</description>
+		<description lang="fr">SoundCloud est une plateforme de streaming audio en ligne qui permet aux utilisateurs d'envoyer, d'enregistrer, de promouvoir et partager leurs créations audio originales.</description>
+		<description lang="he">סאונדקלאוד הוא פלטפורמה הפצת אודיו מקוונת המאפשרת למשתמשים שלה להעלות, להקליט, לקדם ולשתף את היצירות שלהם.</description>
+		<description lang="nl">SoundCloud is een online audio distributie platform dat gebruikers in staat stelt om hun eigen muziekcreaties te uploaden, opnemen, promoten en te delen.</description>
+		<disclaimer lang="en"></disclaimer>
+		<language></language>
+		<platform>all</platform>
+		<license>GNU General Public License v2.0</license>
+		<forum>http://forum.kodi.tv/showthread.php?tid=206635</forum>
+		<website>www.soundcloud.com</website>
+		<email>kodi at bromix dot org</email>
+		<source>https://github.com/bromix/plugin.audio.soundcloud</source>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="resource.uisounds.cdtv" version="2.0.0" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite] UI Sounds v1[/COLOR]" provider-name="CDTV Builds">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0"/>
+  </requires>
+  <extension point="kodi.resource.uisounds"/>
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">CDTV UI Sounds</summary>
+    <description lang="en">CDTV UI Sounds - Intro - Sound design multimedia start up: swirling deep chord with tinkling accents.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="resource.uisounds.cdtv2" version="2.0.0" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite] UI Sounds v2[/COLOR]" provider-name="CDTV Builds">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0"/>
+  </requires>
+  <extension point="kodi.resource.uisounds"/>
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">CDTV UI Sounds</summary>
+    <description lang="en">CDTV UI Sounds v2 - Intro - I AM ON AND READY TO GO</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="resource.uisounds.cdtv3" version="2.0.0" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite] UI Sounds v3[/COLOR]" provider-name="CDTV Builds">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0"/>
+  </requires>
+  <extension point="kodi.resource.uisounds"/>
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">CDTV UI Sounds</summary>
+    <description lang="en">CDTV UI Sounds v3 Is the fusion of v1 and v2 - Intro - I AM ON AND READY TO GO followed by the sound design multimedia start up: swirling deep chord with tinkling accents</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="resource.uisounds.cdtv4" version="1.0.0" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite] UI Sounds v4[/COLOR]" provider-name="CellarDoorTV Builds">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0"/>
+  </requires>
+  <extension point="kodi.resource.uisounds"/>
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">CDTV UI Sounds</summary>
+    <description lang="en">CDTV UI Sounds - I AM ACTIVATED READY FOR ACTION followed by the sound design multimedia start up: swirling deep chord with tinkling accents</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.cdtv.easytopair"
+  name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]EASY TO PAIR[/COLOR]"
+  version="1.0" 
+  provider-name="CDTV Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="addon.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">CDTV Easy to Pair Menu System</summary>
+    <description lang="en">Small Simple Script for CDTV Menu System</description>
+	<disclaimer>.</disclaimer>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.extendedinfo" name="[COLOR limegreen]EIM[/COLOR]4[COLOR limegreen]Q[/COLOR]ed" version="100.0.3" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR], original by phil65">
+  <requires>
+    <import addon="xbmc.python"                     version="2.19.0"/>
+    <import addon="plugin.program.super.favourites"/>
+    <import addon="plugin.video.metalliq-forqed"/>
+    <import addon="plugin.video.youtube"            version="5.3.10"/>
+    <import addon="repository.cdrepo"/>
+    <import addon="script.module.pil"               version="1.1.7"/>
+    <import addon="script.module.requests"          version="1.1.0"/>
+    <import addon="script.module.simplejson"        version="2.0.10"/>
+    <import addon="script.module.urlresolver"/>
+    <import addon="script.module.youtube.dl"        version="14.519.1"/>
+  </requires>
+  <extension point="xbmc.python.script"             library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.python.library"            library="default.py" />
+  <extension point="xbmc.python.pluginsource"       library="plugin.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <language/>
+    <summary lang="en">Modded for [COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed</summary>
+    <description lang="en">This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Used services are themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com and a lot more. Needs skin implementation for lot of functions. Uses [COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed for playback and library functions.</description>
+    <summary lang="nl">[COLOR ff0084ff]E[/COLOR]xtended [COLOR ff0084ff]I[/COLOR]nfo [COLOR ff0084ff]M[/COLOR]od</summary>
+    <description lang="nl">Dit script biedt meerdere mogelijkheden om online content weer te geven in skins en bevat ook een complete MovieDB browser inclusief info dialogen voor verscheidene media types. Gebruikte diensten zijn themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com en nog veel meer. Vereist skin implementatie voor de meeste functies. Gebruikt [COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed voor afspeel en bibliotheek functies.</description>
+    <platform>all</platform>
+    <genre>movies,tv,trailers</genre>
+    <video_guide>3nlzITuJizg</video_guide>
+    <video_preview>OIp3Ry7qml8</video_preview>
+    <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+    <forum></forum>
+    <source></source>
+    <email></email>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.ivueguide" name="Ivue TV Guide" version="4.1.4" provider-name="iVue Tv Guide">
+    <requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.simplejson" version="2.0.10"/>
+        <import addon="script.module.requests" version="2.9.1" />
+        <import addon="script.module.dateutil" version="2.4.2" />
+        <import addon="script.module.beautifulsoup4" />
+    </requires>
+	<extension point="xbmc.python.script" library="addon.py"/>
+    <extension point="xbmc.service" library="service.py" start="login"/>
+	<extension point="xbmc.addon.metadata">
+	<provides>video</provides>
+		<description lang="en">Final Release of Ivue Guide, simple free and effective, We hope you like it now with category intergration #teamiVue, Huge thanks to all coders out there for getting involved.</description>
+		<disclaimer lang="en">Final Release of Ivue Guide and is forked and based on FTV Guide, Dixie , Ivue ,Primeval, tommy winthers original code, </disclaimer>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.switchskins" 
+	     name="[COLOR yellowgreen]CDTV[/COLOR] Skin Swap" 
+	     version="2.0.0" 
+	     provider-name="CDTV Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">-</summary>
+    <description lang="en">Small Simple Script for Switching Between 39 Skins</description>
+    <disclaimer lang="en">.</disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.speedtestnet"
+       name="ARNU Box Speed Tester"
+       version="1.0.0"
+       provider-name="ARNU Box / Josh.5">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script"
+             library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">ARNU Box Speed Tester</summary>
+    <description lang="en">ARNU Box Speed Tester powered by speedtest.net will give you accurate Internet speed/ping test results. \n Brought to you by http://www.arnubox.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.hypersonic.easytopair"
+  name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR] [COLOR gold]FREE WEEKDAY TRIAL[/COLOR]"
+  version="1.0" 
+  provider-name="CDTV Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="addon.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Hypersonic Easy to Pair Menu System</summary>
+    <description lang="en">Access to exclusive HD content for your favorite TV Channels and more. Hypersonic IPTV is The Future of Home Entertainment.</description>
+	<disclaimer>Small Simple Script for CDTV Menu System</disclaimer>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.kiddo.easytopair"
+  name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B] [COLOR ghostwhite]EASY TO PAIR[/COLOR]"
+  version="1.0" 
+  provider-name="CDTV Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="addon.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Kiddo Easy to Pair Menu System</summary>
+    <description lang="en">Small Simple Script for Kiddo Menu System</description>
+	<disclaimer>.</disclaimer>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.image.resource.select" name="Image Resource Select Addon" version="2.0.2" provider-name="ronie">
+	<requires>
+		<import addon="xbmc.python" version="2.25.0"/>
+	</requires>
+	<extension point="xbmc.python.library" library="default.py"/>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Image resource selection addon</summary>
+		<description lang="en">Script for skinners to let users select an image resource addon.</description>
+		<language></language>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2</license>
+		<forum>http://forum.kodi.tv/showthread.php?tid=239558</forum>
+		<website></website>
+		<email></email>
+		<source>https://github.com/ronie/script.image.resource.select</source>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.bybmodules"
+   name="BYB Modules"
+   version="0.0.1.8"
+   provider-name="BYB">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.python.koding.aio" version="0.0.1"/>
+    <import addon="script.module.resolveurl" version="5.0.07"/>
+    <import addon="script.module.dateutil" version="2.5.3"/>
+    <import addon="script.module.feedparser"/>
+    <import addon="script.module.beautifulsoup4" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Kodi python modules</summary>
+    <description lang="en"></description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <license>Creative Commons 4.0-NC-ND</license>
+    <forum></forum>
+    <website></website>
+    <news></news>
+    <source></source>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.python.koding.aio"
+   name="Python Koding AIO"
+   version="0.9.9.4.3"
+   provider-name="Total Revolution">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.urlresolver" version="1.2.0"/>
+    <import addon="script.module.requests" version="2.3.0"/>
+    <import addon="script.module.beautifulsoup" version="2.1.31"/>
+    <import addon="script.module.unidecode" version="0.4.16"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Python Koding All In One</summary>
+    <description lang="en">Python Koding AIO contains a bunch of time saving modules that allows for quick and simple development.</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <license>Creative Commons 4.0-NC-ND</license>
+    <forum>http://totalrevolution.tv/forum</forum>
+    <website>http://totalrevolution.tv</website>
+    <news>Added extra art options to Custom_Dialog and new Merge_Dict function</news>
+    <source>https://github.com/totalrevolution/python-koding/tree/master/script.module.python.koding.aio</source>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.requests"
+       name="requests"
+       version="2.18.4.1"
+       provider-name="kennethreitz">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0"/>
+    <import addon="script.module.urllib3" version="1.22"/>
+    <import addon="script.module.chardet" version="3.0.4"/>
+    <import addon="script.module.idna" version="2.6"/>
+    <import addon="script.module.certifi" version="2017.07.27.1"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Python HTTP for Humans</summary>
+    <description lang="en_GB">Packed for KODI from https://github.com/requests/requests</description>
+    <platform>all</platform>
+    <language></language>
+    <license>Apache2</license>
+    <forum></forum>
+    <website>http://python-requests.org</website>
+    <source>https://github.com/beenje/script.module.requests</source>
+    <email>beenje AT gmail.com</email>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.xmltodict" name="xmltodict" version="0.9.0" provider-name="martinblech">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.module" library="lib"/>
+    <extension point="xbmc.addon.metadata">
+        <language></language>
+        <summary lang="en">Python helper module</summary>
+        <description lang="en">xmltodict is a Python module that makes working with XML feel like you are working with JSON, as in this "spec".[CR]</description>
+        <license>MIT</license>
+        <platform>all</platform>
+        <website>https://github.com/martinblech/xmltodict</website>
+        <source>https://github.com/martinblech/xmltodict</source>
+        <forum></forum>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.035" provider-name="Brackets">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">NuMbErS</summary>
+        <assets>
+	      <icon>icon.png</icon>
+		</assets>		
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.numbersbynumbers.artwork" version="1.0.1" name="Numbers By Numbers Artwork" provider-name="Brackets">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the Numbers By Numbers Addon</summary>
+		<description>Themes for Numbers are maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<platform>all</platform>
+        <assets>
+	      <icon>icon.png</icon>
+		</assets>		
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.numbersbynumbers.metadata" version="1.0.4" name="Numbers By Numbers Metadata" provider-name="Brackets">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Metadata for NuMbErS Addon</summary>
+		<description>Metadata for NuMbErS are maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<platform>all</platform>
+        <assets>
+	      <icon>icon.png</icon>
+		</assets>		
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.bkr.artwork" version="2018.04.02" name="BoxsetKings Artwork" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for BoxsetKings Reborn</summary>
+		<platform>all</platform>
+        <assets>
+	      <icon>icon.png</icon>
+		</assets>		
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.addon.common" 
+	     name="Common addon methods" 
+	     version="2.0.0" 
+	     provider-name="Eldorado (original: t0mm0)">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Collection of commonly used addon routines</summary>
+    <description lang="en">Collection of commonly used addon routines to simplify addon development.</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>  
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.futures"
+       name="futures"
+       version="2.2.0"
+       provider-name="Brian Quinlan">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>A futures implementation for Python</summary>
+    <description>Backport of the concurrent.futures package from Python 3.2</description>
+    <platform>all</platform>
+    <license>BSD</license>
+    <source>https://code.google.com/p/pythonfutures/source/browse</source>
+    <website>https://code.google.com/p/pythonfutures</website>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.simplejson" name="simplejson" version="3.4.1" provider-name="Bob Ippolito">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+		<import addon="script.module.python.requests" version="2.16.0" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">Simple, fast, extensible JSON encoder/decoder for Python</summary>
+		<description lang="en">Simple, fast, extensible JSON encoder/decoder for Python</description>
+		<disclaimer lang="en">Code taken from https://pypi.python.org/pypi/simplejson/</disclaimer>
+		<license>MIT License, Academic Free License v. 2.1</license>
+		<website>https://pypi.python.org/pypi/simplejson/</website>
+		<source>https://pypi.python.org/pypi/simplejson/</source>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.python.requests" name="Python Requests" version="2.16.3" provider-name="Miovi Team">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.service" library="lib/__init__.py" start="startup" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Python HTTP for Humans</summary>
+		<description>Python HTTP for Humans in Kodi</description>
+		<platform>all</platform>
+		<language></language>
+		<license>Apache2</license>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.six"
+       name="six"
+       version="1.11.0"
+       provider-name="gutworth">
+  <requires>
+    <import addon="xbmc.python" 
+    		version="2.14.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Python 2 and 3 compatibility utilities.</summary>
+    <description>Six is a Python 2 and 3 compatibility library. It provides utility functions for smoothing over the differences between the Python versions with the goal of writing Python code that is compatible on both Python versions. See the documentation for more information on what is provided.</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://pypi.python.org/pypi/six</source>
+    <website>https://pypi.python.org/pypi/six</website>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.streamlink.base" name="Streamlink Library" version="2018.06.12" provider-name="Streamlink Devs, Twilight0">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+    <import addon="script.module.requests" version="2.12.4"/>
+    <import addon="script.module.futures" version="2.2.0"/>
+    <import addon="script.module.streamlink.crypto" version="1.4.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="resources/lib/"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>Streamlink Library</summary>
+    <description>Streamlink Library for Kodi</description>
+    <platform>all</platform>
+    <license>Simplified BSD</license>
+    <source>https://github.com/Twilight0/script.module.streamlink.base/</source>
+    <language>en</language>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+    <news>+ 2018.06.12
+- Plugins clean up and updates
+- Added issue template
+- Improved README</news>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.streamlink.crypto" name="streamlink.crypto" version="1.4.0" provider-name="Streamlink.crypto">
+  <requires>
+    <import addon="xbmc.python" version="2.14.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Pure Python implementation of the cryptographic libraries required by Streamlink</summary>
+    <source>https://github.com/Twilight0/script.module.streamlink.crypto</source>
+    <platform>all</platform>
+    <license>MIT</license>
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.schism.common" name="Elysium Common Libraries" version="2017.06.08" provider-name="Elysium">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.six" />
+		<import addon="script.module.metahandler" />
+		<import addon="script.module.beautifulsoup" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Collection of modules used by Elysium</summary>
+		<description lang="en">Collection of modules used by Elysium</description>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.universalscrapers" name="Universal Scrapers" version="1.0.9.2" provider-name="Team Universal">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.beautifulsoup" version="3.2.1"/>
+        <import addon="script.module.futures" version="2.2.0"/>
+        <import addon="script.module.requests"/>
+        <import addon="script.module.six"/>
+        <import addon="repository.universalscrapers"/>
+	<import addon="script.module.resolveurl" version="5.0.00" optional="true"/>
+
+                <!--<import addon="script.mrknow.urlresolver" version="2016.10.30.2" optional="true"/>-->
+    </requires>
+    <extension point="xbmc.python.module" library="lib"/>
+    <extension point="xbmc.python.pluginsource" library="lib/default.py">
+        <provides>executable</provides>
+    </extension>
+        <extension point="xbmc.addon.metadata">
+            <platform>all</platform>
+            <summary lang="en">Scrape common video host for URL's to be playable in XBMC/Kodi.</summary>
+            <description lang="en">Scrape common video host for URL's to be playable in XBMC/Kodi, simplifying addon development of video plugins requiring multi video hosts.
+            </description>
+            <license>GPL v3</license>
+            <source>https://</source>
+        </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.urlresolver" name="URLResolver" version="5.0.20" provider-name="tvaddons">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="plugin.video.youtube" optional="true" />
+		<import addon="script.module.python.twitch" optional="true" />
+		<import addon="script.module.cryptopy" version="1.2.6" optional="true" />
+		<import addon="plugin.video.gdrive" optional="true" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.python.pluginsource" library="lib/default.py" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Resolve common video host URL's to be playable in XBMC/Kodi.</summary>
+		<summary lang="es">Resolver enlaces a videos de sitios populares para poder reproducirlos en XBMC/Kodi.</summary>
+		<summary lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju.</summary>
+		<description lang="en">Resolve common video host URL's to be playable in XBMC/Kodi, simplify addon development of video plugins requiring multi video hosts.</description>
+		<description lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju, pojednostavnjuje razvoj priključaka za video dodatke koji zahtjevaju višestruke video izvore.</description>
+		<forum>https://www.tvaddons.co/forums</forum>
+        <website>https://www.tvaddons.co</website>
+	</extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.mutagen"
+       name="mutagen"
+       version="1.22.0"
+       provider-name="Joe Wreschnig">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <language></language>
+    <summary lang="en">Mutagen is a Python module to handle audio metadata.</summary>
+    <description lang="en">Mutagen is a Python module to handle audio metadata. It supports ASF, FLAC, 
+M4A, Monkey's Audio, MP3, Musepack, Ogg Opus, Ogg FLAC, Ogg Speex, Ogg 
+Theora, Ogg Vorbis, True Audio, WavPack and OptimFROG audio files. All 
+versions of ID3v2 are supported, and all standard ID3v2.4 frames are 
+parsed. It can read Xing headers to accurately calculate the bitrate and 
+length of MP3s. ID3 and APEv2 tags can be edited regardless of audio 
+format. It can also manipulate Ogg streams on an individual packet/page 
+level.</description>
+    <disclaimer lang="en">Code taken from http://code.google.com/p/mutagen/</disclaimer>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <website>http://code.google.com/p/mutagen/</website>
+    <source>https://bitbucket.org/lazka/mutagen/overview</source>
+  </extension>
+</addon>
+
+</addons>
