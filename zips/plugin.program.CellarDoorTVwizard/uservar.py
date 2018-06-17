@@ -4,7 +4,7 @@ import os, xbmc, xbmcaddon
 ### User Edit Variables #################################
 #########################################################
 ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
-ADDONTITLE     = '[COLOR lightskyblue]CellarDoorTV Wizard[/COLOR]'
+ADDONTITLE     = '[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite] WIZARD[/COLOR]'
 EXCLUDES       = [ADDON_ID]
 # Text File with build info in it.
 BUILDFILE      = 'http://cellardoortv.com/cdtvtxt/newwiztxt/autobuilds.txt'
@@ -34,17 +34,17 @@ ART            = os.path.join(PATH, 'resources', 'art')
 # Example:  ICONMAINT     = os.path.join(ART, 'mainticon.png')
 #           ICONSETTINGS  = 'http://aftermathwizard.net/repo/wizard/settings.png'
 # Leave as http:// for default icon
-ICONBUILDS     = 'http://cellardoortv.com/icons/thumbWIZARD/buildsicon.png'
-ICONMAINT      = 'http://cellardoortv.com/icons/thumbWIZARD/toolsicon.png'
-ICONAPK        = 'http://cellardoortv.com/icons/thumbWIZARD/APKicon.png'
-ICONADDONS     = 'http://cellardoortv.com/icons/thumbWIZARD/freshstarticon.png'
-ICONYOUTUBE    = 'http://cellardoortv.com/icons/thumbWIZARD/Youtubeicon.png'
-ICONSAVE       = 'http://cellardoortv.com/icons/thumbWIZARD/backupicon.png'
-ICONTRAKT      = 'http://cellardoortv.com/icons/thumbWIZARD/trakticon.png'
-ICONREAL       = 'http://'
-ICONLOGIN      = 'http://cellardoortv.com/icons/thumbWIZARD/forcecloseicon.png'
-ICONCONTACT    = 'http://cellardoortv.com/icons/thumbWIZARD/Contact.png'
-ICONSETTINGS   = 'http://cellardoortv.com/icons/thumbWIZARD/settingsicon.png'
+ICONBUILDS     = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/buildsicon.png'
+ICONMAINT      = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/toolsicon.png'
+ICONAPK        = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/APKicon.png'
+ICONADDONS     = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/freshstarticon.png'
+ICONYOUTUBE    = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/Youtubeicon.png'
+ICONSAVE       = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/backupicon.png'
+ICONTRAKT      = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/trakticon.png'
+ICONREAL       = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/CDTVrd.png'
+ICONLOGIN      = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/forcecloseicon.png'
+ICONCONTACT    = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/Contact.png'
+ICONSETTINGS   = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/settingsicon.png'
 # Hide the ====== seperators 'Yes' or 'No'
 HIDESPACERS    = 'No'
 # Character used in seperator
@@ -69,10 +69,10 @@ THEME5         = '[COLOR '+COLOR1+']Current Theme:[/COLOR] [COLOR '+COLOR2+']%s[
 # Enable 'Contact' menu item 'Yes' hide or 'No' dont hide
 HIDECONTACT    = 'No'
 # You can add \n to do line breaks
-CONTACT        = 'Thank you for choosing CDTV Wizard.\r\n\r\nContact us on Facebook - follow me on Twitter or visit our website at http://cellardoortv.wordpress.com'
+CONTACT        = 'Thank you for choosing CDTV Wizard.\r\n\r\nContact us on Facebook for help and support or follow me on Twitter @CellarDoorTV1 for the latest updates.'
 #Images used for the contact window.  http:// for default icon and fanart
-CONTACTICON    = 'http://cellardoortv.com/icons/thumbWIZARD/W.png'
-CONTACTFANART  = 'http://cellardoortv.com/icons/iconsWIZARD/iconWIZARD.png'
+CONTACTICON    = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/donation.png'
+CONTACTFANART  = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/CDTVwiz_contact.png'
 #########################################################
 
 #########################################################
@@ -106,9 +106,9 @@ ENABLE         = 'Yes'
 NOTIFICATION   = 'http://cellardoortv.com/cdtvtxt/notify.txt'
 # Use either 'Text' or 'Image'
 HEADERTYPE     = 'Text'
-HEADERMESSAGE  = 'CDTV WIZARD'
+HEADERMESSAGE  = '[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite] WIZARD[/COLOR]'
 # url to image if using Image 424x180
 HEADERIMAGE    = ''
 # Background for Notification Window
-BACKGROUND     = 'http://cellardoortv.com/icons/backgrounds/fanart.jpg'
+BACKGROUND     = 'https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz/notification_fanart.jpg'
 #########################################################

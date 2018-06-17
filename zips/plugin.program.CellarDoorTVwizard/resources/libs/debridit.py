@@ -39,7 +39,7 @@ PLUGIN         = os.path.join(ADDONS,    ADDON_ID)
 PACKAGES       = os.path.join(ADDONS,    'packages')
 ADDONDATA      = os.path.join(USERDATA,  'addon_data', ADDON_ID)
 ADDOND         = os.path.join(USERDATA,  'addon_data')
-REALFOLD       = os.path.join(ADDONDATA, 'debrid')
+REALFOLD       = os.path.join(ADDONDATA, 'Debrid')
 ICON           = os.path.join(PLUGIN,    'icon.png')
 TODAY          = date.today()
 TOMORROW       = TODAY + timedelta(days=1)
@@ -48,33 +48,21 @@ KEEPTRAKT      = wiz.getS('keepdebrid')
 REALSAVE       = wiz.getS('debridlastsave')
 COLOR1         = uservar.COLOR1
 COLOR2         = uservar.COLOR2
-ORDER          = ['exodus', 'specto', 'url']
+ORDER          = ['mrknow', 'url', 'resolveurl',]
 
-DEBRIDID = { 
-	'exodus': {
-		'name'     : 'Exodus',
-		'plugin'   : 'plugin.video.exodus',
-		'saved'    : 'realexodus',
-		'path'     : os.path.join(ADDONS, 'plugin.video.exodus'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.exodus', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.exodus', 'fanart.jpg'),
-		'file'     : os.path.join(REALFOLD, 'exodus_debrid'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.exodus', 'settings.xml'),
-		'default'  : 'realdebrid.id',
-		'data'     : ['realdebrid.auth', 'realdebrid.id', 'realdebrid.secret', 'realdebrid.token', 'realdebrid.refresh'],
-		'activate' : 'RunPlugin(plugin://plugin.video.exodus/?action=rdAuthorize)'},
-	'specto': {
-		'name'     : 'Specto',
-		'plugin'   : 'plugin.video.specto',
-		'saved'    : 'realspecto',
-		'path'     : os.path.join(ADDONS, 'plugin.video.specto'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.specto', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.specto', 'fanart.jpg'),
-		'file'     : os.path.join(REALFOLD, 'specto_debrid'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.specto', 'settings.xml'),
-		'default'  : 'realdebrid_client_id',
-		'data'     : ['realdebrid_auth', 'realdebrid_token', 'realdebrid_refresh', 'realdebrid_client_id', 'realdebrid_client_secret'],
-		'activate' : 'RunPlugin(plugin://plugin.video.specto/?action=realdebridauth)'},
+DEBRIDID = {
+	'mrknow': {
+		'name'     : 'Mr Know URL Resolver',
+		'plugin'   : 'script.mrknow.urlresolver',
+		'saved'    : 'mrknowresolver',
+		'path'     : os.path.join(ADDONS, 'script.mrknow.urlresolver'),
+		'icon'     : os.path.join(ADDONS, 'script.mrknow.urlresolver', 'icon.png'),
+		'fanart'   : os.path.join(ADDONS, 'script.mrknow.urlresolver', 'fanart.jpg'),
+		'file'     : os.path.join(REALFOLD, 'mrknow_debrid'),
+		'settings' : os.path.join(ADDOND, 'script.mrknow.urlresolver', 'settings.xml'),
+		'default'  : 'RealDebridResolver_client_id',
+		'data'     : ['RealDebridResolver_enabled', 'RealDebridResolver_priority', 'RealDebridResolver_autopick', 'RealDebridResolver_token', 'RealDebridResolver_refresh', 'RealDebridResolver_client_id', 'RealDebridResolver_client_secret'],
+		'activate' : 'RunPlugin(plugin://script.module.urlresolver/?mode=auth_rd)'},
 	'url': {
 		'name'     : 'URL Resolver',
 		'plugin'   : 'script.module.urlresolver',
@@ -86,7 +74,19 @@ DEBRIDID = {
 		'settings' : os.path.join(ADDOND, 'script.module.urlresolver', 'settings.xml'),
 		'default'  : 'RealDebridResolver_client_id',
 		'data'     : ['RealDebridResolver_enabled', 'RealDebridResolver_priority', 'RealDebridResolver_autopick', 'RealDebridResolver_token', 'RealDebridResolver_refresh', 'RealDebridResolver_client_id', 'RealDebridResolver_client_secret'],
-		'activate' : 'RunPlugin(plugin://script.module.urlresolver/?mode=auth_rd)'}
+		'activate' : 'RunPlugin(plugin://script.module.urlresolver/?mode=auth_rd)'},
+	'resolveurl': {
+		'name'     : 'Resolve URL',
+		'plugin'   : 'script.module.resolveurl',
+		'saved'    : 'resolveurl',
+		'path'     : os.path.join(ADDONS, 'script.module.resolveurl'),
+		'icon'     : os.path.join(ADDONS, 'script.module.resolveurl', 'icon.png'),
+		'fanart'   : os.path.join(ADDONS, 'script.module.resolveurl', 'fanart.jpg'),
+		'file'     : os.path.join(REALFOLD, 'resolveurl_debrid'),
+		'settings' : os.path.join(ADDOND, 'script.module.resolveurl', 'settings.xml'),
+		'default'  : 'RealDebridResolver_client_id',
+		'data'     : ['RealDebridResolver_enabled', 'RealDebridResolver_priority', 'RealDebridResolver_autopick', 'RealDebridResolver_token', 'RealDebridResolver_refresh', 'RealDebridResolver_client_id', 'RealDebridResolver_client_secret'],
+		'activate' : 'RunPlugin(plugin://script.module.resolveurl/?mode=auth_rd)'}
 }
 
 def debridUser(who):

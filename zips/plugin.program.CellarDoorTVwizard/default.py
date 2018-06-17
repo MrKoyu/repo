@@ -417,13 +417,13 @@ def apkScraper(name=""):
 		spmcurl1 = 'https://github.com/koying/SPMC/releases'
 		url1 = wiz.openURL(spmcurl1).replace('\n', '').replace('\r', '').replace('\t', '')
 		x = 0
-		match1 = re.compile('<div.+?lass="release-body.+?div class="release-header".+?a href=.+?>(.+?)</a>.+?ul class="release-downloads">(.+?)</ul>.+?/div>').findall(url1)
+		match1 = re.compile('class="release-header".+?a href=.+?>(.+?)</a>.+?ul class="mt-2">(.+?)</ul>.+?/div>').findall(url1)
 		
 		addFile("Official SPMC Apk\'s", themeit=THEME1)
 
 		for name, urls in match1:
 			tempurl = ''
-			match2 = re.compile('<li>.+?<a href="(.+?)" rel="nofollow">.+?<small class="text-gray float-right">(.+?)</small>.+?strong>(.+?)</strong>.+?</a>.+?</li>').findall(urls)
+			match2 = re.compile('class="d-block.+?href="(.+?)".+?small class=".+?float-right">(.+?)</small>.+?class="pl.+?>(.+?)</strong>.+?</a>.+?</li>').findall(urls)
 			for apkurl, apksize, apkname in match2:
 				if apkname.find('armeabi') == -1: continue
 				if apkname.find('launcher') > -1: continue
