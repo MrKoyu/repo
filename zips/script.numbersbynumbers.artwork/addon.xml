@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.numbersbynumbers.artwork" version="1.0.1" name="Numbers By Numbers Artwork" provider-name="Brackets">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the Numbers By Numbers Addon</summary>
+		<description>Themes for Numbers are maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<platform>all</platform>
+        <assets>
+	      <icon>icon.png</icon>
+		</assets>		
+	</extension>
+</addon>

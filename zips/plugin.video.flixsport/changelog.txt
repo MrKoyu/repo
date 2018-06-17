@@ -1,0 +1,24 @@
+2018-04-17
+Added function to pull full podcast and details from RSS feed also added settings to allow both enduser in settings and playlist/Dev to hard code in options in _Edit.py to restrict the amount of Podcast episodes returned
+Added function to allow a backup server for txt files and a option to carry on running the addon with txt not read
+2018-04-11
+Added using metadata from TMDB to use in txt files by using id number a api key is required 
+Added icon for DailyMotion search
+2018-04-05
+Added encoding of extrenallinks 
+2018-04-02
+Youtube search can now be called from text file to call a keyboard input search use <externallink>#YTsearch</externallink> to use a prefixed youtube search <externallink>#YTsearch=insert search term here</externallink>
+YouTube search function does not return any fanart in _Edit.py there is "YT_SearchFanart = ''" change this to url of fanart if you do not want to use addon fanart
+YouTube search function via text files has a default icon if you wish to change icon edit "YouTubeIcon = ''" in _Edit.py
+2018-04-01
+Fixed YouTube search function search function can be set in settings
+2018-03-31
+Added Function to pull full YouTube channel by putting youtube channel url in extrenal link
+2018-03-29
+Fixes to DailyMotion search and settings required added to settings 
+2018-03-28
+Changes to Default.py so that if a url is Resovlable with a resovler it will check via the resolver as well as from the list of resolvers
+2018-03-27
+Added option to use ResolveURL or URLResolver, Have set in a way with ResolveURL default and URLResolver is optional in addon xml, if URLresolver is set in settings it will check on start up if URLResolve is installed if not it will reset the setting to default of ResolveURL
+Fixed loggin in Kodi log, setting for debug added this will be required to be enabled in settings to be shown in kodi log it will also give you the py and the line of where the log entry was called from  
+Initial Release

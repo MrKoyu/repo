@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="General">
+		<setting label="Full Addon Search" type="lsep"/>
+		<setting id="searchALL" label="Enable" default="true"/>
+		<setting type="sep"/>
+		<setting label="DeBug Mode" type="lsep"/>
+		<setting id="debug" type="bool" label="Enable" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="Resolver  of urls" type="lsep"/>
+		<setting id="resolverURL" type="select" label="Select which Resolver to use" values="resolveurl|urlresolver" default="resolveurl" />
+		<setting type="sep"/>
+		<setting label="Use Icon as Fanart" type="lsep"/>
+		<setting id="use_thumb" type="bool" label="Enable" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="Browse XML DataBase" type="lsep"/>
+		<setting id="browse_xml_database" type="bool" label="Enable" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="Browse Community" type="lsep"/>
+		<setting id="browse_community" type="bool" label="Enable" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="Pulsar" type="lsep"/>
+		<setting id="PulsarM" type="bool" label="Enable" default="false" visible="true"/>
+	</category>
+	<category label="MetaData API Keys and settings">
+		<setting label="TMDB API Key" type="lsep"/>
+		<setting id="tmdb_key" type="text" label="API Key" default="" option="hidden"/>
+		<setting type="sep"/>
+		<setting label="Use my TMDB Data" type="lsep"/>
+		<setting id="tmdb_use_own_data" type="bool" default="false"/>
+		<setting type="sep"/>
+		<setting label="Use Season and Episode number in tv show title" type="lsep"/>
+		<setting id="season_episode_number" label="Enable" type="bool" default="true"/>
+		<setting type="sep"/>
+		<setting label="The TV DB API Key" type="lsep"/>
+		<setting id="tvdb_key" type="text" label="API Key" default="" option="hidden"/>
+	</category>
+	<category label="YouTube">
+		<setting label = "Search YouTube" type="lsep"/>
+		<setting id="searchyt" type="bool" label="Enable" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="Long video's in YouTube Search" type="lsep"/>
+		<setting id="searchlongvideos" type="bool" label="Enable" default="false" visible="true"/>
+	</category>
+	<category label="History">
+		<setting label="Show search history in menu" type="lsep"/>
+		<setting id="searchhistorymenu" type="bool" label="Enable" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="Clear Search History" type="lsep"/>
+		<setting id="clearseachhistory" type="bool" label="Enable" default="false" visible="true"/>
+	</category>
+	<category label="DailyMotion">
+		<setting label="Search DailyMotion" type="lsep"/>
+		<setting id="searchDM" type="bool" label="Enable" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="DailyMotion time not really sure yet" type="lsep"/>
+		<setting id="dmotion" type="slider" label="Days" default="10" range="0,1,30" option="int"/>
+		<setting type="sep"/>
+		<setting label="Family Filter" type="lsep"/>
+		<setting id="familyFilter" type="bool" label="Enable" default="false" visible="true"/>
+	</category>
+	<category label="Podcast">
+		<setting label="Limit how many podcasts returned" type="lsep"/>
+		<setting id="podcastreturnlimit" type="bool" label="Enable" default="false"/>
+		<setting type="sep"/>
+		<setting label="Max Length of Podcast List" type="lsep"/>
+		<setting id="podcastlistlenght" type="slider" label="List Length" default="0" range="0,1,100" option="int" enable="eq(-3,true)"/>
+	</category>
+	<category label="Developer mode">
+		<setting label="Developer Mode" type="lsep"/>
+		<setting id="devmode" type="bool" label="Enable" default="false"/>
+	</category>
+</settings>
+ 

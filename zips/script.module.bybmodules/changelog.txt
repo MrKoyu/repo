@@ -1,0 +1,20 @@
+[I]0.0.1.8[/I]
+Color string adding function added
+[I]0.0.1.7[/I]
+More functions added to TMDB api metadata puller
+[I]0.0.1.6[/I]
+byb_scrapers added
+A Podcast RSS feed scraper 
+[I]0.0.1.5[/I]
+byb_api added 
+TMDB api metadata puller added 
+[I]0.0.1.4[/I]
+Youtube search function added to YouTube Scraper class
+[I]0.0.1.3[/I]
+YouTube scraper class added to scraper classes to be called using byb_scrapers
+[I]0.0.1.2[/I]
+Player mode added 
+[I]0.0.1.1[/I]
+More modules added 
+[I]0.0.0.1[/I]
+Initial Release

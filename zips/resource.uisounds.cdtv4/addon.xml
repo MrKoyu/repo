@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="resource.uisounds.cdtv4" version="1.0.0" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite] UI Sounds v4[/COLOR]" provider-name="CellarDoorTV Builds">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0"/>
+  </requires>
+  <extension point="kodi.resource.uisounds"/>
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">CDTV UI Sounds</summary>
+    <description lang="en">CDTV UI Sounds - I AM ACTIVATED READY FOR ACTION followed by the sound design multimedia start up: swirling deep chord with tinkling accents</description>
+    <platform>all</platform>
+  </extension>
+</addon>

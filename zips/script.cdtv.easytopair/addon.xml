@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.cdtv.easytopair"
+  name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]EASY TO PAIR[/COLOR]"
+  version="1.0" 
+  provider-name="CDTV Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script" library="addon.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">CDTV Easy to Pair Menu System</summary>
+    <description lang="en">Small Simple Script for CDTV Menu System</description>
+	<disclaimer>.</disclaimer>
+  </extension>
+</addon>

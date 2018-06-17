@@ -1,0 +1,23 @@
+[B]Version 3.7[/B]
+- Website info change
+
+[B]Version 3.6[/B]
+- Fixed empty categories
+- Added new categories
+
+[B]Version 3.2[/B]
+- Added new provider
+_ Added Adult lock option
+
+[B]Version 3.1[/B]
+- Added new icons
+- Organized categories
+- IVUE TV Guide fixed
+- Account information fixed  
+- Thanks to Durex
+
+[B]Version 2.9.2[/B]
+- Added new provider 
+
+[B]Version 1.0[/B]
+- Initial version

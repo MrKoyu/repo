@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.CellarDoorTVwizard" name="[COLOR lightskyblue]CellarDoorTV Wizard[/COLOR]" version="0.2.6" provider-name="CDTV Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="startup.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">[COLOR lightskyblue]CellarDoorTV Wizard[/COLOR]</summary>
+    <description lang="en">CellarDoorTV Wizard allows you to get access to the latest CDTV Custom Builds and more.[CR]Credits - A huge thanks goes out to [COLOR deepskyblue]Surfacingx[/COLOR] the creator of the Aftermath Wizard for bringing this outstanding Wizard to this community.[CR]Contact - For help and support go to CellarDoorTV Facebook group.[CR]Follow me on Twitter or visit our website at https://cellardoortv.wordpress.com</description>
+    <platform>all</platform>
+  </extension>
+</addon>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.kiddo" name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B]" version="4.0.0.4" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="script.module.universalscrapers" version="1.0.0" />
+		<import addon="script.module.python.koding.aio" version="0.9.6.6" />
+		<import addon="script.module.beautifulsoup" version="3.2.1" />
+		<import addon="script.kiddo.easytopair" version="1.0" />
+		<import addon="script.speedtestnet" version="1.0.0" />
+                <import addon="script.module.requests" version="2.9.1" />
+                <import addon="script.module.addon.common" version="2.0.0" />
+                <import addon="script.module.xmltodict" version="0.9.0" />
+                <!--<import addon="script.module.web-pdb" version="1.0"/>-->
+                <import addon="script.module.resolveurl" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="[login|startup]" />
+        <extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">Special thanks to [COLORgold]NuMbErS[/COLOR] who wrote all the xmls in this Addon</summary>
+		<description lang="en">[COLORgold]PG - Parental Guidance Suggested - Some Mild Rude Humor. Some Material may not Be Suitable for Children.[/COLOR][CR]The author is not responsible for the use of this addon and does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]The Search process is the same as a search engine with no data actual hosted by the developer.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</description>
+		<supportedcontent>
+			<content>Kids movies</content>
+			<content>Kids tvshows</content>
+			<content>anime</content>
+			<content>animation shows</content>
+		</supportedcontent>
+		<genre>Kids Stuff</genre>
+		<video_preview>yt-id</video_preview>-->
+		<news>[COLORcrimson]=======[/COLOR]Never Forget Who Showed You The Way[COLORcrimson]=======[/COLOR]</news>
+                <website></website>
+
+		<source></source>
+
+		<assets>
+
+			<icon>icon.png</icon>
+
+    <icon>search.gif</icon>
+
+			<fanart>fanart.gif</fanart>
+
+		</assets>
+
+		<news></news>
+
+	</extension>
+
+</addon>

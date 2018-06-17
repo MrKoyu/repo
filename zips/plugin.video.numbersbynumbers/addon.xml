@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.numbersbynumbers" version="2.0.0.3" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="script.module.numbersbynumbers" />
+		<import addon="script.numbersbynumbers.artwork" />
+		<import addon="script.numbersbynumbers.metadata" />
+		<import addon="script.module.urlresolver" version="5.0.20"/>
+		<import addon="script.module.requests" />
+		<import addon="script.module.metahandler" />
+                <import addon="plugin.video.youtube"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Movies and TV Shows on [COLOR gold]NuMbErS[/COLOR]</summary>
+		<description lang="en">Please remember that NuMbErS is not an official part of the Kodi media player you are running, and therefore is not to be mentioned within official support channels of Kodi, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</description>
+		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
+		<platform>all</platform>
+		<forum></forum>
+		<website></website>
+		<source></source>
+		<assets>
+			<icon>icon.gif</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+		<news>
+V2.0.0.3
+- The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.
+        </news>
+	</extension>
+</addon>

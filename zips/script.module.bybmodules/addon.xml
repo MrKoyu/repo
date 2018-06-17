@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.bybmodules"
+   name="BYB Modules"
+   version="0.0.1.8"
+   provider-name="BYB">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.python.koding.aio" version="0.0.1"/>
+    <import addon="script.module.resolveurl" version="5.0.07"/>
+    <import addon="script.module.dateutil" version="2.5.3"/>
+    <import addon="script.module.feedparser"/>
+    <import addon="script.module.beautifulsoup4" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Kodi python modules</summary>
+    <description lang="en"></description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <license>Creative Commons 4.0-NC-ND</license>
+    <forum></forum>
+    <website></website>
+    <news></news>
+    <source></source>
+  </extension>
+</addon>
