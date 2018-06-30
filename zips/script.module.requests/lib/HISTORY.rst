@@ -3,22 +3,6 @@
 Release History
 ---------------
 
-dev
-+++
-
-**Improvements**
-
-- Warn user about possible slowdown when using cryptography version < 1.3.4
-- Check for invalid host in proxy URL, before forwarding request to adapter.
-
-**Bugfixes**
-
-- Parsing empty ``Link`` headers with ``parse_header_links()`` no longer return one bogus entry
-- Fixed issue where loading the default certificate bundle from a zip archive
-  would raise an ``IOError``
-- Fixed issue with unexpected ``ImportError`` on windows system which do not support ``winreg`` module
-
-
 2.18.4 (2017-08-15)
 +++++++++++++++++++
 
@@ -59,8 +43,8 @@ dev
 
 **Bugfixes**
 
-- Fix an error in the packaging whereby the ``*.whl`` contained incorrect data
-  that regressed the fix in v2.17.3.
+- Fix an error in the packaging whereby the *.whl contained incorrect data that
+  regressed the fix in v2.17.3.
 
 2.18.0 (2017-06-14)
 +++++++++++++++++++

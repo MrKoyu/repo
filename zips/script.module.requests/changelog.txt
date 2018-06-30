@@ -1,7 +1,3 @@
-[B]Version 2.18.4.[/B]
-
-- Temporary synchronize with requests master 24092b1 to include UWP fixes
-
 [B]Version 2.18.4[/B]
 
 - Synchronize with requests 2.18.4

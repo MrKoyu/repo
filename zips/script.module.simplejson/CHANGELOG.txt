@@ -1,7 +1,3 @@
-Version 3.4.1 released 2014-04-13
-
-* Native setuptools fixed
-
 Version 3.4.0 released 2014-04-02
 
 * Native setuptools support re-introduced

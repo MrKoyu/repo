@@ -427,83 +427,6 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.duckshit" name="[COLORgold]Duck [COLORred]Shit[/COLOR]" version="3.1" provider-name="56426">
-    <requires>
-        <import addon="xbmc.python" version="2.19.0" />
-        <import addon="script.module.universalscrapers" version="1.0.0" />
-        <import addon="script.module.python.koding.aio" version="0.9.6.6" />
-        <import addon="script.module.beautifulsoup" version="3.2.1" />
-        <import addon="script.module.requests" version="2.9.1" />
-        <import addon="script.module.addon.common" version="2.0.0" />
-        <import addon="script.module.xmltodict" version="0.9.0" />
-        <!--<import addon="script.module.web-pdb" version="1.0"/>-->
-        <import addon="script.module.resolveurl" />
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.service" library="service.py" start="[login|startup]" />
-    <extension point="xbmc.addon.metadata">
-<platform>all</platform>
-<summary lang="en">
-</summary>
-<description lang="en">
-[COLORgold]Never Forget Who Taught You And Showed You The Way
-[COLORwhite]====[COLORred]Respect Where Its Due[COLORwhite]====[/COLOR]
-</description>
-<disclaimer lang="en">
-The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. 
-The author does not host or own any content found within this addon.
-The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.
-The Search process is the same as a search engine with no data actual hosted by the developer.
-This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.
-</disclaimer>
-<news>
-The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. 
-The author does not host or own any content found within this addon.
-The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.
-The Search process is the same as a search engine with no data actual hosted by the developer.
-This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.
-</news>
-</extension>
-</addon>
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.flixsport"
-       name="[COLOR white]FlixSport[/COLOR]" 
-       version="1.0.5"
-       provider-name="FlixSport">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.t0mm0.common" version="2.0.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" version="3.0.0"/>
-    <import addon="script.module.urlresolver" optional="true"/>
-    <import addon="script.module.simplejson" /> 
-    <import addon="script.common.plugin.cache" version="2.5.2"/>
-    <import addon="script.module.metahandler" version="2.5.1"/>
-    <import addon="script.module.python.koding.aio" version="0.0.1"/>
-    <import addon="script.module.bybmodules"  version="0.0.1.8"/>
-    <import addon="script.module.resolveurl" version="5.0.07"/>
-    <import addon="script.module.dateutil" version="2.5.3"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Live Sports And Live TV Addon</summary>
-    <description lang="en">All Streams Are Obtained From Live Sports Bins - If There Is A Issue Please Contact Me And I Shall Remove Some Streams
-Still Very Much Beta Stage</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.Redemption"
        name="[COLOR deepskyblue]Redemption[/COLOR]"
        version="1.3"
@@ -1075,7 +998,7 @@ Still Very Much Beta Stage</description>
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.module.requests"
        name="requests"
-       version="2.18.4.1"
+       version="2.18.4"
        provider-name="kennethreitz">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
@@ -1226,22 +1149,25 @@ Still Very Much Beta Stage</description>
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.simplejson" name="simplejson" version="3.4.1" provider-name="Bob Ippolito">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.python.requests" version="2.16.0" />
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<language></language>
-		<summary lang="en">Simple, fast, extensible JSON encoder/decoder for Python</summary>
-		<description lang="en">Simple, fast, extensible JSON encoder/decoder for Python</description>
-		<disclaimer lang="en">Code taken from https://pypi.python.org/pypi/simplejson/</disclaimer>
-		<license>MIT License, Academic Free License v. 2.1</license>
-		<website>https://pypi.python.org/pypi/simplejson/</website>
-		<source>https://pypi.python.org/pypi/simplejson/</source>
-	</extension>
+<addon id="script.module.simplejson"
+       name="simplejson"
+       version="3.4.0" 
+       provider-name="Bob Ippolito">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <language></language>
+    <summary lang="en">Simple, fast, extensible JSON encoder/decoder for Python</summary>
+    <description lang="en">Simple, fast, extensible JSON encoder/decoder for Python</description>
+    <disclaimer lang="en">Code taken from https://pypi.python.org/pypi/simplejson/</disclaimer>
+    <license>MIT License, Academic Free License v. 2.1</license>
+    <website>https://pypi.python.org/pypi/simplejson/</website>
+    <source>https://pypi.python.org/pypi/simplejson/</source>
+  </extension>
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
