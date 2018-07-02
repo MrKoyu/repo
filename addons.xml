@@ -75,7 +75,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="4.1" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="4.2" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -1151,8 +1151,8 @@ provider-name="Team IVUE">
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.module.simplejson"
        name="simplejson"
-       version="3.4.0" 
-       provider-name="Bob Ippolito">
+       version="3.3.0" 
+       provider-name="Martijn">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>

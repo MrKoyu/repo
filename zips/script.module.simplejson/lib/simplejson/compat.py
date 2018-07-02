@@ -20,10 +20,7 @@ if sys.version_info[0] < 3:
 
 else:
     PY3 = True
-    if sys.version_info[:2] >= (3, 4):
-        from importlib import reload as reload_module
-    else:
-        from imp import reload as reload_module
+    from imp import reload as reload_module
     import codecs
     def b(s):
         return codecs.latin_1_encode(s)[0]
