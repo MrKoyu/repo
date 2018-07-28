@@ -1,5 +1,7 @@
-[B]Version 3.7[/B]
-- Website info change
+[B]Version 3.9[/B]
+- Fixed empty categories
+- Added new canadian category
+- reorganised international by alphabetical order
 
 [B]Version 3.6[/B]
 - Fixed empty categories
