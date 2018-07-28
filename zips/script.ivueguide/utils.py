@@ -29,6 +29,31 @@ CatFile = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'sc
 demand = xbmcvfs.File('special://profile/addon_data/script.ivueguide/resources/catchup.xml','rb').read()
 dialog = xbmcgui.Dialog() 
 
+TOP_SPORTS     =  ['Football', 'Boxing/Fighting', 'Motorsport', 'Basketball', 'Rugby']
+
+Football =  ['England', 'Scotland', 'Spain', 'Germany', 'France', 'Italy', 'Netherlands', 'Champions League', 'Europa League', 'MLS', 'International', 'Club Friendlies']
+Basketball =  ['NBA Basketball', 'Other Basketball']
+Rugby  =  ['Rugby League', 'Rugby Union']
+
+England =  base64.b64decode('L2xvc19mb290X2JyX2VuZ19BTEwucGhw')
+Scotland =  base64.b64decode('L2xvc19mb290X2JyX3Njb3R0aXNoX0FMTC5waHA=')
+Germany = base64.b64decode('L2xvc19mb290X2VfZ2VybWFueV9BTEwucGhw')
+Italy = base64.b64decode('L2xvc19mb290X2VfaXRhbHlfQUxMLnBocA==')
+Spain = base64.b64decode('L2xvc19mb290X2Vfc3BhaW5fQUxMLnBocA==')
+France = base64.b64decode('L2xvc19mb290X2VfZnJhbmNlX0FMTC5waHA=')
+Netherlands = base64.b64decode('L2xvc19mb290X2VfbmV0aGVybGFuZHNfQUxMLnBocA==')
+Champions_League = base64.b64decode('L2xvc19mb290X2ludF9VRUZBX0NMLnBocA==')
+Europa_League = base64.b64decode('L2xvc19mb290X2ludF9VRUZBX2V1cm9wYS5waHA=')
+MLS = base64.b64decode('L2xvc19mb290X2FtZXJpY2FzX01MUy5waHA=')
+International = base64.b64decode('L2xvc19mb290X2ludF9NX0FMTC5waHA=')
+Club_Friendlies = base64.b64decode('L2xvc19mb290X2ZyaWVuZF9jbHViX0FMTC5waHA=')
+Boxing_Fighting = base64.b64decode('L2xvc19hbHRfYm94aW5nLnBocA==')
+Motorsport = base64.b64decode('L2xvc19hbHRfbW90b3IucGhw')
+NBA_Basketball = base64.b64decode('L2xvc19VU19iYXNrZXRiYWxsLnBocA==')
+Other_Basketball = base64.b64decode('L2xvc19hbHRfYmFza2V0YmFsbC5waHA=')
+Rugby_League = base64.b64decode('L2xvc19hbHRfcnVnYnlfTC5waHA=')
+Rugby_Union = base64.b64decode('L2xvc19hbHRfcnVnYnlfVS5waHA=')
+
 	#Plays a video
 def playMedia(name, image, link, mediaType='Video') :
     li = xbmcgui.ListItem(label=name, iconImage=image, thumbnailImage=image, path=link)

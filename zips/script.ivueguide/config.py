@@ -1,4 +1,4 @@
-import xbmc, xbmcgui, shutil, urllib2, urllib, os, xbmcaddon, zipfile, time, re
+import xbmc, xbmcgui, shutil, urllib2, urllib, os, xbmcaddon, zipfile, time, re, base64
 import shutil
 import utils
 import xbmcvfs
@@ -16,12 +16,14 @@ USER_AGENT     = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Ge
 ivue = utils.folder()
 d = xbmcgui.Dialog()
 dp = xbmcgui.DialogProgress()
+skin = addon_name.getSetting('skin')
 path = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'skins'))
+Skinxml = xbmc.translatePath(os.path.join(path, skin, '720p', 'script-tvguide-main.xml'))
 xmlData = xbmc.translatePath('special://profile/addon_data/script.ivueguide/resources/config/Data.txt')
 logoData = xbmc.translatePath('special://profile/addon_data/script.ivueguide/resources/config/Logo.txt')
 catData = xbmc.translatePath('special://profile/addon_data/script.ivueguide/resources/categories/')	
 ivue = utils.folder()
-players = ivue+'/playable/unplayable.txt'
+players = base64.b64decode('aHR0cDovL,2l2dWV0dmd1aWRlLmNv,bS9pdnVlZ3VpZGV4bWwvc.=mFkaW8vdGltZXMudHh0')
 FOAlist = ''
 proglist = []
 try:
@@ -82,33 +84,7 @@ def extract(_in, _out):
 		zin.extract(item, _out)
 
 
-def Custom():
-	  folder = xbmc.translatePath(os.path.join('special://home', 'addons', 'packages', 'customskin'))
-	  if not os.path.exists(folder):
-	      os.makedirs(folder)
-	  choice = xbmc.Keyboard('','[COLOR fffea800][B]ENTER ZIP URL[/B][/COLOR]')
-	  choice.setDefault(addon_name.getSetting('customSkin.url'))
-	  choice.setHiddenInput(False)
-	  choice .doModal()
-	  input= choice.getText()
-	  zipSkin = os.path.join(PACKAGES,'Custom.zip') 
-	  dp.create("iVue","downloading skin from %s" % input,'')
-	  urllib.urlretrieve(input,zipSkin,lambda nb, bs, fs, url=input: _pbhook(nb,bs,fs,input,dp))
-	  extract(zipSkin, folder) 
-	  time.sleep(1)
-	  skinName = os.walk(folder).next()[1]
-	  join = os.path.join(folder, *(skinName))
-	  set = '%s' % join
-	  addon_name.setSetting('customSkin.url', input)
-	  splitName = os.path.basename(join)
-	  SkinFolder = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'skins', '%s' % splitName))
-	  if os.path.exists(SkinFolder):
-	      shutil.rmtree(SkinFolder)
-	  shutil.move(join, SkinFolder)
-	  addon_name.setSetting('skin', splitName)
-	  addon_name.setSetting('customSkin.enabled', 'false') 
-	  shutil.rmtree(folder)
-	  d.ok('Ivue', 'Download complete', '',"%s is now set as current skin" % splitName) 
+
 
 def listskins():
     files = [] 
@@ -121,6 +97,8 @@ def listskins():
         else:
             selected = files[skin]
             addon_name.setSetting('skin', selected)
+            addon_name.setSetting('scroll.chan', 'Enabled')
+            addon_name.setSetting('font', 'Disabled')
             if selected == 'Transparent Vue':
                 addon_name.setSetting('transparent.enabled', 'true')
             else:
@@ -135,7 +113,7 @@ def getskins():
     notneeded = ['/ivueguide/', 'index.htmlofflineforabit', '/ivueguide//','/ivueguidexml//', 'skins.zip']
     files = [] 
     for name in match:
-        if not name in notneeded:
+        if not name.startswith('?') and name not in notneeded:
             name = re.sub(r'%20', ' ', name)
             name = re.sub(r'.zip', '', name)
             if not name in os.listdir(path):
@@ -155,6 +133,8 @@ def getskins():
         if os.path.exists(path + "/%s" % selected): 
             addon_name.setSetting('skin', '%s' % selected)
             addon_name.setSetting('download.skin', '')
+            addon_name.setSetting('scroll.chan', 'Enabled')
+            addon_name.setSetting('font', 'Disabled')
             if selected == 'Transparent Vue':
                 addon_name.setSetting('transparent.enabled', 'true')
             else:
@@ -336,6 +316,61 @@ def setcat():
         else:
             sub_name = names[selection]
             addon_name.setSetting('categories.path', sub_name)
+
+
+def scrollText():
+    scrolling = d.select("ivue", ['Disable scrolling', 'Enable scrolling'])
+    if scrolling == 0:
+        if os.path.exists(Skinxml):
+            f1=open(Skinxml,'r').read()
+            if '<scroll' in f1:
+                f2=open(Skinxml,'w') 
+                m=f1.replace('scroll','nonscroll')
+                f2.write(m)       
+                f2.close()
+            addon_name.setSetting('scroll.chan', 'Disabled')
+
+    if scrolling == 1:
+
+        if os.path.exists(Skinxml):
+            f1=open(Skinxml,'r').read()
+            if '<nonscroll' in f1:
+                f2=open(Skinxml,'w') 
+                m=f1.replace('nonscroll','scroll')
+                f2.write(m)       
+                f2.close()
+            addon_name.setSetting('scroll.chan', 'Enabled')
+    else:
+        return
+
+def fontSize():
+    font = d.select("ivue", ['Enable large font', 'Disable large font'])
+    if font == 0:
+        if os.path.exists(Skinxml):
+            f1=open(Skinxml,'r').read()
+            if 'font' in f1:
+                f2=open(Skinxml,'w') 
+                m=f1.replace('font13','font30')
+                f2.write(m)       
+                f2.close()
+            addon_name.setSetting('font', 'Enabled')
+
+    if font == 1:
+
+        if os.path.exists(Skinxml):
+            f1=open(Skinxml,'r').read()
+            if '<nonscroll' in f1:
+                f2=open(Skinxml,'w') 
+                m=f1.replace('font30','font13')
+                f2.write(m)       
+                f2.close()
+            addon_name.setSetting('font', 'Disabled')
+    else:
+        return
+
+
+
+
  
 
 
@@ -364,6 +399,12 @@ elif prnum == 'logo':
 
 elif prnum == 'setcat':
     setcat()
+
+elif prnum == 'scroll':
+    scrollText()
+
+elif prnum == 'font':
+    fontSize()
 
 elif prnum == 'customiseSkin':
     customiseSkin()

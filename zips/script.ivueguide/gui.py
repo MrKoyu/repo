@@ -37,11 +37,11 @@ import colors
 import streaming
 import utils
 import json
-import requests
+import urllib
 import reset
-from bs4 import BeautifulSoup
 import urllib2
 import config
+import base64
 from xml.etree import ElementTree
 
 
@@ -119,49 +119,19 @@ ICON = xbmc.translatePath(ICON)
 PROFILE = xbmc.translatePath(ADDON.getAddonInfo('profile'))
 RESOURCES = os.path.join(HOME, 'resources')
 SKIN = ADDON.getSetting('skin')
-SCROLL = os.path.join(PROFILE, 'resources', 'skins', SKIN, '720p', 'script-tvguide-main.xml')
-EXITMENU = os.path.join(PROFILE, 'resources', 'skins', SKIN, '720p', 'script-tvguide-exitmenu.xml')
+S_ADDON = os.path.join(PROFILE, 'resources', 'skins', SKIN, '720p', 'script-tvguide-streamcustom.xml')
 SKINCOLOURS = xbmc.translatePath(os.path.join(PROFILE, 'resources', 'skins', SKIN, '720p', 'default_colours.txt'))
 SKINFOLDER = os.path.join(PROFILE)
 #Karls changes
 
-if os.path.exists(SCROLL):
-    for dirnames in os.listdir(utils.SkinDir):
-        if ADDON.getSetting('scroll.channel') == 'false':
-           f1=open(SCROLL,'r').read()
-           if '<scroll' in f1:
-               f1=open(SCROLL,'r').read() 
-               f2=open(SCROLL,'w') 
-               m=f1.replace('scroll','nonscroll')
-               f2.write(m)       
-               f2.close()
+baseUrl = base64.b64decode('aHR0cDovL2xpdmVvbnNhdC5jb20=')
 
-        if ADDON.getSetting('scroll.channel') == 'true':
-           f1=open(SCROLL,'r').read()
-           if '<nonscroll' in f1:
-               f1=open(SCROLL,'r').read() 
-               f2=open(SCROLL,'w') 
-               m=f1.replace('nonscroll','scroll')
-               f2.write(m)       
-               f2.close()
 
-        if ADDON.getSetting('font.size') == 'false':
-           f1=open(SCROLL,'r').read()
-           if 'font' in f1:
-               f1=open(SCROLL,'r').read() 
-               f2=open(SCROLL,'w')
-               m=f1.replace('font30', 'font13')
-               f2.write(m)
-               f2.close()
+streams = streaming.StreamsService(ADDON)
+shift = ADDON.getSetting('los.shift.time')
+timeDiff = time.strptime(shift[1:],'%H:%M')
 
-        if ADDON.getSetting('font.size') == 'true':
-           f1=open(SCROLL,'r').read()
-           if 'font' in f1:
-               f1=open(SCROLL,'r').read() 
-               f2=open(SCROLL,'w')
-               m=f1.replace('font13', 'font30').replace('font12', 'font30')
-               f2.write(m)
-               f2.close()
+
 
 if ADDON.getSetting('categories.launch') == 'true' and os.path.exists(utils.CatFile):
     filter = []
@@ -224,7 +194,6 @@ C_MAIN_OSD_PLUGIN_NAME = 6018
 
 class TVGuide(xbmcgui.WindowXML):
     C_MAIN_PROGRESS = 3996
-    C_MAIN_QUALITY = 3997
     C_MAIN_DURATION = 3998
     C_MAIN_DATE_LONG = 3999
     C_MAIN_DATE = 4000
@@ -233,6 +202,7 @@ class TVGuide(xbmcgui.WindowXML):
     C_MAIN_DESCRIPTION = 4022
     C_MAIN_IMAGE = 4023
     C_MAIN_LOGO = 4024
+    C_MAIN_CHANTITLE = 4025
     C_MAIN_TIMEBAR = 4100
     C_MAIN_LOADING = 4200
     C_MAIN_LOADING_PROGRESS = 4201
@@ -260,8 +230,12 @@ class TVGuide(xbmcgui.WindowXML):
     C_PREV_OSD_TIME = 6011
     C_NEXT_OSD_TIME = 6012
     C_MAIN_OSD_PROGRESS = 6013
-    C_MAIN_OSD_QUALITY = 6014
     C_MAIN_OSD_DURATION = 6015
+    C_MAIN_OSD_PROGIMAGE = 6016
+    C_MAIN_OSD_NEXTIMAGE = 6019
+    C_MAIN_OSD_NOW = 6020
+    C_MAIN_OSD_NEXT = 6021
+    C_MAIN_OSD_NEXTDESC = 6022
     C_MAIN_CAT_LABEL = 6006
 
     def __new__(cls):
@@ -328,8 +302,8 @@ class TVGuide(xbmcgui.WindowXML):
         except:
             if controlId in self.ignoreMissingControlIds:
                 return None
-            if not self.isClosing:
-                self.close()
+            #if not self.isClosing:
+                #self.close()
             return None
 
     def close(self):
@@ -521,11 +495,7 @@ class TVGuide(xbmcgui.WindowXML):
             programInfo = program
 
         if action.getId() in [ACTION_PARENT_DIR, KEY_NAV_BACK]:
-            if ADDON.getSetting('skin.exit.menu')=='true' and os.path.exists(EXITMENU):
-                self._skinexitMenu(programInfo)
-            else:
-                self._showExitMenu(programInfo)
-                return
+            self._skinexitMenu(programInfo)
 
         # catch the ESC key
         elif action.getId() == ACTION_PREVIOUS_MENU and action.getButtonCode() == KEY_ESC:
@@ -536,7 +506,7 @@ class TVGuide(xbmcgui.WindowXML):
             self._showControl(self.C_MAIN_MOUSE_CONTROLS)
             return
         elif action.getId() in [ACTION_SHOW_INFO, ACTION_MOUSE_MIDDLE_CLICK, ACTION_MOUSE_DOUBLE_CLICK, ACTION_MOUSE_LONG_CLICK]:
-            self._infoMenu(programInfo)
+            self._infoMenu()
 
         elif action.getId() == KEY_CONTEXT_MENU:
 
@@ -798,19 +768,29 @@ class TVGuide(xbmcgui.WindowXML):
             programItv = ''
             programItvName = ''
             if addon_name == '.ITV Hub':
-                response = requests.get('https://www.google.co.uk/search?q='+ivueProgram+' itvhub')
-                gResult = BeautifulSoup(response.content,'html.parser')
-                for site in gResult.findAll('cite'):
-                    if 'itv.com/hub/' in site.text:
-                        programItv = site.text.split('hub/')[1].split('/')[0]
+                searchITV = '%s itvhub' % ivueProgram
+                quoteurl = urllib.quote(searchITV)
+                itvurl = 'https://www.google.co.uk/search?q=%s' % quoteurl
+                req = urllib2.Request(itvurl)
+                req.add_header('User-Agent', ' Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+                response = urllib2.urlopen(req)
+                link=response.read()
+                response.close()
+                foundProg = False
+                gResult = re.compile('href="(.*?)"',re.DOTALL).findall(link)
+                for site in gResult:
+                    if 'itv.com/hub/' in site:
+                        programItv = site.split('hub/')[1].split('/')[0]
                         programItvName = programItv
+                        foundProg = True
                         break
-                    else:
-                        utils.dialog.ok('[COLOR fffea800]ITV Hub[/COLOR]', program.title, 'Is not available for on demand right now', '')
-                        return
+                if foundProg == False:
+                    utils.dialog.ok('[COLOR fffea800]ITV Hub[/COLOR]', program.title, 'Is not available for on demand right now', '')
+                    return
 
-            link = addons[addon_name].replace('ivueProgram',programTitle).replace('ivueAdd+', programAdd).replace('ivueAdd-', programDash).replace('ivueEncode', programEncode).replace('ivueItv', programItv).replace('ivueItvName', programItvName).replace('ivueflashshow', str(program.title.replace("'","!quote!"))).replace('ivueflashchan', str(program.channel.title))
+            link = addons[addon_name].replace('ivueProgram',programTitle).replace('ivueAdd+', programAdd).replace('ivueAdd-', programDash).replace('ivueEncode', programEncode).replace('ivueItvName', programItvName).replace('ivueItv', programItv).replace('ivueflashshow', str(program.title.replace("'","!quote!"))).replace('ivueflashchan', str(program.channel.title))
             xbmc.executebuiltin(''+ link +'')
+
 
     def _showosdContextMenu(self, program):
         self.set_playing()
@@ -942,30 +922,6 @@ class TVGuide(xbmcgui.WindowXML):
             return program
 
 
-    def _showExitMenu(self, program):
-        if xbmc.Player().isPlaying():
-            menu = [ 'Exit Guide', 'Program Info', 'Categories', 'Search', 'My Planner', 'Schedule', 'Tools', 'Stop Stream']
-        else:
-            menu = [ 'Exit Guide', 'Program Info', 'Categories', 'Search', 'My Planner', 'Schedule', 'Tools']
-
-        resp = utils.dialog.select('[COLOR fffea800]iVue Menu[/COLOR]', menu)
-        if resp == 0:
-            self.close()
-        if resp == 1:
-            self._infoMenu(program)
-        if resp == 2:
-            self._showCatMenu()
-        if resp == 3:
-            self.Searchfor()
-        if resp == 4:
-            self.getReminders()
-        if resp == 5:
-            self._showSchMenu(program)
-        if resp == 6:
-            self._showToolsMenu(program)   
-        if resp == 7:
-            self.player.stop()
-
     def _skinexitMenu(self, program):
         d = ExitDialog()
         d.doModal()
@@ -976,35 +932,25 @@ class TVGuide(xbmcgui.WindowXML):
         elif buttonClicked == 2001:
             self._showCatMenu()
         elif buttonClicked == 2002:
-            self.Searchfor()
+            self.programSearch()
         elif buttonClicked == 2003:
             self.getReminders()
         elif buttonClicked == 2004:
             self._showSchMenu(program)
         elif buttonClicked == 2005:
-            self._infoMenu(program)
+            self._infoMenu()
         elif buttonClicked == 2006:
             self._showToolsMenu(program)
         elif buttonClicked == 2007:
             self.player.stop()
 
-    def _infoMenu(self, program):
-        self.set_playing()
-        self._hideControl(self.C_MAIN_MOUSE_CONTROLS)
-        d = infoMenu(self.database, program,
-                      not program.notificationScheduled)
+    def _infoMenu(self):
+        d = startUp()
         d.doModal()
         buttonClicked = d.buttonClicked
         action = d.action
         del d
 
-    def Searchfor(self):
-
-        resp = utils.dialog.select('[COLOR fffea800]iVue Search[/COLOR]', [ 'Program Search', 'Sports search'])
-        if resp == 0:
-            self.programSearch()
-        if resp == 1:
-            self.sportSearch()
 
     def _showSchMenu(self, program):
         today = datetime.datetime.today()
@@ -1020,10 +966,8 @@ class TVGuide(xbmcgui.WindowXML):
 
         resp = utils.dialog.select('[COLOR fffea800]iVue Schedule[/COLOR]', ['Today (%s)' % (now), '%s' % (one), '%s' % (two)])
         if resp <0:
-            if ADDON.getSetting('skin.exit.menu')=='true' and os.path.exists(EXITMENU):
-                self._skinexitMenu(program)            
-            else:
-                self._showExitMenu(program)
+            self._skinexitMenu(program)            
+
         if resp == 0:
             ADDON.setSetting('day','0')
             self._showHourMenu('Today %s' % (now), program) 
@@ -1075,10 +1019,7 @@ class TVGuide(xbmcgui.WindowXML):
             resp = utils.dialog.select('[COLOR fffea800]iVue Tools[/COLOR]', ['iVue Creator', 'View Kodi Log', 'Purge Database', 'Soft Reset', 'Hard Reset'])
 
         if resp <0:
-            if ADDON.getSetting('skin.exit.menu')=='true' and os.path.exists(EXITMENU):
-                self._skinexitMenu(program)            
-            else:
-                self._showExitMenu(program)
+            self._skinexitMenu(program)            
         if resp == 0:
 			    xbmc.executebuiltin('RunAddon(plugin.video.IVUEcreator)')        
         if resp == 1:
@@ -1133,7 +1074,17 @@ class TVGuide(xbmcgui.WindowXML):
                 self.focusPoint.y = 0
             self.onRedrawEPG(0, self.viewStartDate)
 
-    def programSearch(self, search=None):
+    def programSearch(self):
+        action = utils.dialog.select("iVue Search", ['Search by program', 'Search by channel'])
+        if action == -1:
+            return
+        if action == 0:
+            self.searchProg()
+        if action == 1:
+            self.searchChan()
+
+
+    def searchProg(self, search=None):
 
         title = '?'
         try:
@@ -1185,7 +1136,43 @@ class TVGuide(xbmcgui.WindowXML):
         elif buttonClicked == 1004:
             self.close()
         elif buttonClicked == 1005:
-            self.sportSearch()
+            self._infoMenu()
+        elif buttonClicked == 1006:
+            self.getReminders()
+        elif action == KEY_CONTEXT_MENU:
+            if index > -1:
+                self.set_removeReminders(programList[index])
+                self.programSearch()
+        else:
+            if index > -1:
+                self.play(programList[index])
+
+
+    def searchChan(self, search=None):
+        channel = ''
+        chanList = self.database.getChannelList()
+        actions = []
+        for chan in chanList:
+            actions.append(chan.title)
+        action = utils.dialog.select("Channel Search", actions)
+        if action == -1:
+            return
+        else:
+            channel = actions[action]
+
+        programList = self.database.searchChannel(channel)
+        title = "Search"
+        d = ProgramListDialog(title, programList, True)
+        d.doModal()
+        index = d.index
+        action = d.action
+        buttonClicked = d.buttonClicked
+        if buttonClicked == 1003:
+            self.programSearch()
+        elif buttonClicked == 1004:
+            self.close()
+        elif buttonClicked == 1005:
+            self._infoMenu()
         elif buttonClicked == 1006:
             self.getReminders()
         elif action == KEY_CONTEXT_MENU:
@@ -1209,7 +1196,7 @@ class TVGuide(xbmcgui.WindowXML):
         elif buttonClicked == 1004:
             self.close()
         elif buttonClicked == 1005:
-            self.sportSearch()
+            self._infoMenu()
         elif buttonClicked == 1006:
             yes=utils.dialog.yesno("iVue Planner", 'You are about to delete all saved programs', 'Are you sure?', nolabel='No', yeslabel='Yes');
             if yes:	
@@ -1226,40 +1213,6 @@ class TVGuide(xbmcgui.WindowXML):
             if index > -1:
                 self.play(programList[index])
 
-
-    def sportSearch(self):
-        f = utils.xbmcvfs.File('special://profile/addon_data/script.ivueguide/program_category.ini',"rb")
-        category_found = [x.split("=",1) for x in f.read().splitlines()]
-        f.close()
-        categories = []
-        for (category,found) in category_found:
-            categories.append(str(category))
-        which = utils.dialog.select("iVue Sports Categories",categories)
-        if which == -1:
-            return
-        category = category_found[which][0]
-        programList = self.database.showLive(str(category))
-        title = "Sports"
-        d = ProgramListDialog(title, programList, True)
-        d.doModal()
-        index = d.index
-        action = d.action
-        buttonClicked = d.buttonClicked
-        if buttonClicked == 1003:
-            self.programSearch()
-        elif buttonClicked == 1004:
-            self.close()
-        elif buttonClicked == 1005:
-            self.sportSearch()
-        elif buttonClicked == 1006:
-            self.getReminders()
-        elif action == KEY_CONTEXT_MENU:
-            if index > -1:
-                self.set_removeReminders(programList[index])
-                self.sportSearch()
-        else:
-            if index > -1:
-                self.play(programList[index])
 
     def osdEpg(self, category):
         if category == '':
@@ -1297,27 +1250,12 @@ class TVGuide(xbmcgui.WindowXML):
 
         super(TVGuide, self).setFocus(control)
 
-    def videoTags(self, program):
-        HD = re.search('HD', str(program.channel.title))
-        hd = re.search('hd', str(program.channel.title))
-        Hd = re.search('Hd', str(program.channel.title))
-        SD = re.search('SD', str(program.channel.title))
-        sd = re.search('sd', str(program.channel.title))
-        Sd = re.search('Sd', str(program.channel.title))
-        if HD or hd or Hd:
-            image= 'HD.png'
-        elif  SD or sd or Sd:
-            image= 'SD.png'
-        else:
-            image=  'SDHD.png'
-        return image
-
     def streamAddon(self, program):
         thumb = ICON
         title = 'No add-on\nLinked to %s' % program.channel.title
         if program.channel.streamUrl is not None:
             if str(program.channel.streamUrl).startswith('plugin://'):
-                linked= str(program.channel.streamUrl).split('://')[-1].split('/?')[0]
+                linked= str(program.channel.streamUrl).split('://')[1].split('/')[0]
                 thumb = xbmcaddon.Addon(linked).getAddonInfo('icon')
                 title = xbmcaddon.Addon(linked).getAddonInfo('name') + '\nLinked to %s' % program.channel.title
             elif str(program.channel.streamUrl).startswith('pvr://'):
@@ -1325,6 +1263,7 @@ class TVGuide(xbmcgui.WindowXML):
                 title = 'PVR Playlist\nLinked to %s' % program.channel.title
         addonInfo = [thumb, title]
         return addonInfo
+
 
     def onFocus(self, controlId):
         try:
@@ -1347,9 +1286,9 @@ class TVGuide(xbmcgui.WindowXML):
 
                 remaining = int(timedelta_total_seconds(program.endDate - datetime.datetime.now()) / 60 + 1)
                 self.setControlLabel(self.C_MAIN_DURATION,  '%s mins left' % remaining)
-                if progresspercent:
-                    progress = utils.percent(program.startDate,program.endDate)
-                    progresspercent.setPercent(progress)
+                #if progresspercent:
+                progress = utils.percent(program.startDate,program.endDate)
+                progresspercent.setPercent(progress)
 
             else:
                 progresspercent.setPercent(0)
@@ -1357,15 +1296,11 @@ class TVGuide(xbmcgui.WindowXML):
         else:
             self.setControlLabel(self.C_MAIN_TIME, '')
 
-        try:
-            self.setControlImage(self.C_MAIN_QUALITY, self.videoTags(program))
-        except:
-            pass
 
         if program.description:
             description = program.description.replace('&amp;','&')
         else:
-            description = strings(NO_DESCRIPTION)
+            description = 'Sorry there is no program information available at the moment'
         if ADDON.getSetting('skin.colours')=='true' and os.path.exists(SKINCOLOURS):
 
             with open(SKINCOLOURS ,'rb') as file:
@@ -1384,13 +1319,15 @@ class TVGuide(xbmcgui.WindowXML):
         else:
             self.setControlImage(self.C_MAIN_LOGO, '')
 
-        if program.imageSmall is not None:
+        try:
+            self.setControlLabel(self.C_MAIN_CHANTITLE, '[B]%s[/B]' %program.channel.title)
+        except:
+            pass
+
+        if not program.imageSmall == '':
             self.setControlImage(self.C_MAIN_IMAGE, program.imageSmall)
         else:
             self.setControlImage(self.C_MAIN_IMAGE, 'tvguide-logo-epg.png')
-
-        if ADDON.getSetting('program.background.enabled') == 'true' and program.imageLarge is not None:
-            self.setControlImage(self.C_MAIN_BACKGROUND, program.imageLarge)
 
         if ADDON.getSetting('linked.addon') == 'true' and ADDON.getSetting('ignore.stream') == 'false':
             checkStream = self.streamAddon(program)
@@ -1484,7 +1421,7 @@ class TVGuide(xbmcgui.WindowXML):
         self.currentChannel = channel
         url = self.database.getStreamUrl(channel)
         if url:
-            stream = str(url).split('plugin://')[1].split('/?')[0]
+            stream = str(url).split('plugin://')[1].split('/')[0]
             self.set_playing()
            # pvr
 
@@ -1543,12 +1480,17 @@ class TVGuide(xbmcgui.WindowXML):
             self.osdChannel = self.currentChannel
         progresspercent = self.getControl(self.C_MAIN_OSD_PROGRESS)
         if self.osdProgram is not None:
-            self.setControlLabel(self.C_MAIN_OSD_TITLE, '[B]%s[/B]' % self.osdProgram.title.replace(' (?)', '').replace('&amp;','&'))
+
             if self.osdProgram.startDate or self.osdProgram.endDate:
-                self.setControlLabel(self.C_MAIN_OSD_TIME, '[B]%s - %s[/B]' % (
-                    self.formatTime(self.osdProgram.startDate), self.formatTime(self.osdProgram.endDate)))
+                self.setControlLabel(self.C_MAIN_OSD_TIME, '[B]%s[/B]' % (
+                    self.formatTime(self.osdProgram.startDate)))
 
                 if self.osdProgram.endDate - (datetime.datetime.now() - self.osdProgram.startDate) > self.osdProgram.startDate and self.osdProgram.startDate < datetime.datetime.now() :
+                    try:
+                        self.setControlImage(self.C_MAIN_OSD_NOW, 'now.png')
+                        self.setControlImage(self.C_MAIN_OSD_NEXT, 'next.png')
+                    except:
+                        pass
 
                     remaining = int(timedelta_total_seconds(self.osdProgram.endDate - datetime.datetime.now()) / 60 + 1)
                     self.setControlLabel(self.C_MAIN_OSD_DURATION,  '%s mins left' % remaining)
@@ -1557,23 +1499,23 @@ class TVGuide(xbmcgui.WindowXML):
                         progresspercent.setPercent(progress)
 
                 else:
+                    try:
+                        self.setControlImage(self.C_MAIN_OSD_NOW, ' ')
+                        self.setControlImage(self.C_MAIN_OSD_NEXT, ' ')
+                    except:
+                        pass
                     progresspercent.setPercent(0)
                     self.setControlLabel(self.C_MAIN_OSD_DURATION, '  ')
 
             else:
                 self.setControlLabel(self.C_MAIN_OSD_TIME, '')
-
+            self.setControlLabel(self.C_MAIN_OSD_TITLE, '[B]%s[/B]' % self.osdProgram.title.replace(' (?)', '').replace('&amp;','&'))
             self.setControlText(self.C_MAIN_OSD_DESCRIPTION, self.osdProgram.description.replace('&amp;','&'))
-            self.setControlLabel(self.C_MAIN_OSD_CHANNEL_TITLE, self.osdChannel.title)
+            self.setControlLabel(self.C_MAIN_OSD_CHANNEL_TITLE, '[B]%s[/B]' %self.osdChannel.title)
             if self.osdProgram.channel.logo is not None:
                 self.setControlImage(self.C_MAIN_OSD_CHANNEL_LOGO, self.osdProgram.channel.logo)
             else:
                 self.setControlImage(self.C_MAIN_OSD_CHANNEL_LOGO, '')
-
-            try:
-                self.setControlImage(self.C_MAIN_OSD_QUALITY, self.videoTags(self.osdProgram))
-            except:
-                pass
 
             if ADDON.getSetting('linked.addon') == 'true' and ADDON.getSetting('ignore.stream') == 'false':
                 checkStream = self.streamAddon(self.osdProgram)
@@ -1583,23 +1525,50 @@ class TVGuide(xbmcgui.WindowXML):
                 self._showControl(C_MAIN_OSD_PLUGIN_NAME)
                 self._showControl(C_MAIN_OSD_PLUGIN_ICON)
 
+            try:
+                control = self.getControl(self.C_MAIN_OSD_PROGIMAGE)
+                if control:
+                    if not self.osdProgram.imageSmall =='':
+                        self.setControlImage(self.C_MAIN_OSD_PROGIMAGE, self.osdProgram.imageSmall)
+                    else:
+                        self.setControlImage(self.C_MAIN_OSD_PROGIMAGE, 'tvguide-logo-epg.png')
+            except:
+                pass
+
         prevOsdProgram = self.database.getPreviousProgram(self.osdProgram)
         if prevOsdProgram:
-            self.setControlLabel(self.C_PREV_OSD_TITLE, prevOsdProgram.title.replace(' (?)', '').replace('&amp;','&'))
+            self.setControlLabel(self.C_PREV_OSD_TITLE, '[B]%s[/B]' % prevOsdProgram.title.replace(' (?)', '').replace('&amp;','&'))
             if prevOsdProgram.startDate or prevOsdProgram.endDate:
-                self.setControlLabel(self.C_PREV_OSD_TIME, '%s - %s' % (
-                    self.formatTime(prevOsdProgram.startDate), self.formatTime(prevOsdProgram.endDate)))
+                self.setControlLabel(self.C_PREV_OSD_TIME, '[B]%s[/B]' % (
+                    self.formatTime(prevOsdProgram.startDate)))
             else:
                 self.setControlLabel(self.C_PREV_OSD_TIME, '')
 
         nextOsdProgram = self.database.getNextProgram(self.osdProgram)
         if nextOsdProgram:
-            self.setControlLabel(self.C_NEXT_OSD_TITLE, nextOsdProgram.title.replace(' (?)', '').replace('&amp;','&'))
+            self.setControlLabel(self.C_NEXT_OSD_TITLE, '[B]%s[/B]' % nextOsdProgram.title.replace(' (?)', '').replace('&amp;','&'))
             if nextOsdProgram.startDate or nextOsdProgram.endDate:
-                self.setControlLabel(self.C_NEXT_OSD_TIME, '%s - %s' % (
-                    self.formatTime(nextOsdProgram.startDate), self.formatTime(nextOsdProgram.endDate)))
+                self.setControlLabel(self.C_NEXT_OSD_TIME, '[B]%s[/B]' % (
+                    self.formatTime(nextOsdProgram.startDate)))
             else:
                 self.setControlLabel(self.C_NEXT_OSD_TIME, '')
+
+            try:
+                control = self.getControl(self.C_MAIN_OSD_NEXTIMAGE)
+                if control:
+                    if not nextOsdProgram.imageSmall == '':
+                        self.setControlImage(self.C_MAIN_OSD_NEXTIMAGE, nextOsdProgram.imageSmall)
+                    else:
+                        self.setControlImage(self.C_MAIN_OSD_NEXTIMAGE, 'tvguide-logo-epg.png')
+            except:
+                pass
+
+            try:
+                control = self.getControl(self.C_MAIN_OSD_NEXTDESC)
+                if control:
+                    self.setControlText(self.C_MAIN_OSD_NEXTDESC, nextOsdProgram.description.replace('&amp;','&'))
+            except:
+                pass
 
         self.mode = MODE_OSD
         self._showControl(self.C_MAIN_OSD)
@@ -1648,6 +1617,22 @@ class TVGuide(xbmcgui.WindowXML):
         self.setControlLabel(self.C_MAIN_DATE_LONG, utils.formatDate(self.viewStartDate, True, False))
         for col in range(1, 5):
             self.setControlLabel(4000 + col, self.formatTime(startTime))
+            try:
+                timeFormat = self.formatTime(startTime).replace(':','')
+                try:
+                    timesplit = timeFormat.split(' ')[1]
+                except:
+                    timesplit = timeFormat
+                if 'PM' in timesplit:
+                    timeOld = timeFormat.replace(' PM','').replace('1200','0000').replace('1230','0030')
+                    timeFormat = int(timeOld)
+                    timeFormat += 1200
+                else:
+                    if 'AM' in timesplit:
+                        timeFormat = timeFormat.replace(' AM','').replace('1200','0000').replace('1230','0030')
+                self.setControlImage(40000 + col, xbmc.translatePath(os.path.join(PROFILE, 'resources', 'skins', SKIN, 'media', 'times', str(timeFormat)+'.png')))
+            except:
+                pass
             startTime += HALF_HOUR
 
         if programs is None:
@@ -1682,7 +1667,16 @@ class TVGuide(xbmcgui.WindowXML):
                     color = utils.remove_formatting(ADDON.getSetting('channel.color'))
 
                 if ADDON.getSetting('channel.num')=='true' and chanidx !='':
-                    self.setControlLabel(4010 + idx, '[COLOR %s]%s. %s[/COLOR]' % (color, chanidx,channel.title))
+                    self.setControlLabel(4010 + idx, '[COLOR %s]%s[/COLOR]' % (color, channel.title))
+                    try:
+                        chanNum = self.getControl(40100 + idx)
+                        if chanNum:
+                            self.setControlLabel(40100 + idx, '[COLOR %s]%s[/COLOR]' % (color, chanidx))
+                            self.setControlLabel(4010 + idx, '[COLOR %s]%s[/COLOR]' % (color, channel.title))
+                        else:
+                            self.setControlLabel(4010 + idx, '[COLOR %s]%s. %s[/COLOR]' % (color, chanidx,channel.title))
+                    except:
+                        self.setControlLabel(4010 + idx, '[COLOR %s]%s. %s[/COLOR]' % (color, chanidx,channel.title))
                 else:
                     self.setControlLabel(4010 + idx, '[COLOR %s]%s[/COLOR]' % (color, channel.title))
 
@@ -1712,10 +1706,10 @@ class TVGuide(xbmcgui.WindowXML):
             name = utils.remove_formatting(ADDON.getSetting('nofocus.color'))
             noFocusColor = colors.color_name[name]
 
-        if ADDON.getSetting('font.size') == 'false': 		
-            fontSize = 'font13'
-        else: 		
+        if ADDON.getSetting('font') == 'Enabled': 		
             fontSize = 'font30'
+        else: 		
+            fontSize = 'font13'
         for program in programs:
             idx = channels.index(program.channel)
             if program.channel in channelsWithoutPrograms:
@@ -1775,7 +1769,7 @@ class TVGuide(xbmcgui.WindowXML):
                 self.epgView.top + self.epgView.cellHeight * idx,
                 (self.epgView.right - self.epgView.left) - 2,
                 self.epgView.cellHeight - 2,
-                strings(NO_PROGRAM_AVAILABLE),
+                'Sorry there is no information available',
                 font='%s'%fontSize,
                 focusedColor=focusColor,
                 textColor=noFocusColor,				
@@ -1784,7 +1778,7 @@ class TVGuide(xbmcgui.WindowXML):
             )
 
             program = src.Program(channel,
-                                  strings(NO_PROGRAM_AVAILABLE), None,
+                                  'Sorry there is no information available', None,
                                   None, None, None)
             self.controlAndProgramList.append(ControlAndProgram(control,
                     program))
@@ -2017,7 +2011,7 @@ class TVGuide(xbmcgui.WindowXML):
             if control:
                 control.setVisible(False)
 
-    def formatTime(self, timestamp):
+    def formatTime(self, timestamp, converthour=None):
         if timestamp:
             format = xbmc.getRegion('time').replace(':%S', ''
                     ).replace('%H%H', '%H')
@@ -2081,6 +2075,8 @@ class PopupMenu(xbmcgui.WindowXMLDialog):
     C_POPUP_CHANNEL_LOGO = 4100
     C_POPUP_CHANNEL_TITLE = 4101
     C_POPUP_PROGRAM_TITLE = 4102
+    C_POPUP_PROGRAM_DESC = 4103
+    C_POPUP_PROGRAM_IMAGE = 4104
     C_POPUP_ADDON_SELECT = 30009
     C_POPUP_ADDON_IMAGE_iVue = 'special://home/addons/script.ivueguide/resources/png/shortcut.png'
 
@@ -2148,8 +2144,26 @@ class PopupMenu(xbmcgui.WindowXMLDialog):
         else:
             channelTitleControl.setLabel(self.program.channel.title)
             channelLogoControl.setVisible(False)
+        try:
+            decControl = self.getControl(self.C_POPUP_PROGRAM_DESC)
+            if self.program.description:
+                decControl.setText(self.program.description)
+            else:
+                decControl.setText('Sorry no program information available at the moment')
+        except:
+            pass
 
-        programTitleControl.setLabel(self.program.title)
+        try:
+
+            picControl = self.getControl(self.C_POPUP_PROGRAM_IMAGE)
+            if not self.program.imageSmall == '':
+                picControl.setImage(self.program.imageSmall)
+            else:
+                picControl.setImage('tvguide-logo-epg.png')
+        except:
+            pass
+
+        programTitleControl.setLabel('[B]%s[/B]' %self.program.title)
 
         if self.program.startDate:
             remindControl.setEnabled(True)
@@ -2843,17 +2857,20 @@ class ChooseStreamAddonDialog(xbmcgui.WindowXMLDialog):
 
     C_SELECTION_LIST = 1000
 
-    def __new__(cls, addons):
+    def __new__(cls, addons, custom=None):
 
         # Skin in resources
         # return super(ChooseStreamAddonDialog, cls).__new__(cls, 'script-tvguide-streamaddon.xml', ADDON.getAddonInfo('path'), SKIN)
         # Skin in user settings
-
+        if custom:
+            xml = 'script-tvguide-streamcustom.xml'
+        else:
+            xml = 'script-tvguide-streamaddon.xml'
         return super(ChooseStreamAddonDialog, cls).__new__(cls,
-                'script-tvguide-streamaddon.xml',
+                xml,
                 SKINFOLDER, SKIN)
 
-    def __init__(self, addons):
+    def __init__(self, addons, custom=None):
         super(ChooseStreamAddonDialog, self).__init__()
         self.addons = addons
         self.stream = None
@@ -2938,7 +2955,6 @@ class ProgramListDialog(xbmcgui.WindowXMLDialog):
     C_PROGRAM_LIST_SHORTCUTS = 1006
     C_PROGRAM_LIST_LISTINGS = 1005
     C_PROGRAM_LIST = 1002
-    C_PROGRAM_LIST_TITLE = 1001
 
     def __new__(
         cls,
@@ -2976,15 +2992,11 @@ class ProgramListDialog(xbmcgui.WindowXMLDialog):
     def onInit(self):
         imageControl = self.getControl(ProgramListDialog.C_PROGRAM_LIST_IMAGE)
         plannerControl = self.getControl(ProgramListDialog.C_PROGRAM_LIST_SHORTCUTS)
-        control = self.getControl(ProgramListDialog.C_PROGRAM_LIST_TITLE)
-        control.setLabel(self.title)
 
         if self.title == 'Search':
             plannerControl.setLabel('My Planner')
             imageControl.setImage('search.png')
-        elif self.title == 'Sports':
-            plannerControl.setLabel('My Planner')
-            imageControl.setImage('sports.png')
+
         elif self.title == 'Planner':
             plannerControl.setLabel('Clear All')
             imageControl.setImage('planner.png')
@@ -3035,16 +3047,16 @@ class ProgramListDialog(xbmcgui.WindowXMLDialog):
             hours, remainder = divmod(when.seconds, 3600)
             minutes, seconds = divmod(remainder, 60)
             if days > 1:
-                when_str = "in %d days and %d hours" % (days, hours)
+                when_str = "On in %d days %d hrs" % (days, hours)
                 item.setProperty('When', when_str)
             elif days > 0:
-                when_str = "in %d day and %d hours" % (days, hours)
+                when_str = "On in %d day %d hrs" % (days, hours)
                 item.setProperty('When', when_str)
             elif hours > 1:
-                when_str = "in %d hours and %d mins" % (hours, minutes)
+                when_str = "On in %d hrs %d mins" % (hours, minutes)
                 item.setProperty('When', when_str)
             elif seconds > 0:
-                when_str = "in %d mins" % (when.seconds / 60)
+                when_str = "On in %d mins" % (when.seconds / 60)
                 item.setProperty('When', when_str)
             elif end < now:
                 item.setProperty('When', 'Finished')
@@ -3067,8 +3079,10 @@ class ProgramListDialog(xbmcgui.WindowXMLDialog):
                 item.setProperty('Remind', 'search_planner.png')
 
                 #
-
-            program_image = program.imageSmall if program.imageSmall else program.imageLarge
+            if not program.imageSmall == '':
+                program_image = program.imageSmall
+            else:
+                program_image = 'tvguide-logo-epg.png'
             item.setProperty('ProgramImage', program_image)
             items.append(item)
 
@@ -3253,7 +3267,7 @@ class osdOnNowDialog(xbmcgui.WindowXMLDialog):
             if action.getId() in [KEY_CONTEXT_MENU]:
                 self.close()
                 self.action = KEY_CONTEXT_MENU
-        if action.getId() in [ACTION_RIGHT]:
+        if action.getId() in [ACTION_RIGHT, ACTION_GESTURE_SWIPE_RIGHT]:
             nextItem = filter.index(self.osdCategory)
             nextCat = nextItem + 1
             #if int(nextItem) == filter[-1]:
@@ -3265,7 +3279,7 @@ class osdOnNowDialog(xbmcgui.WindowXMLDialog):
             except:
                 self.onInit(cat='All Channels')
 
-        if action.getId() in [ACTION_LEFT]:
+        if action.getId() in [ACTION_LEFT, ACTION_GESTURE_SWIPE_LEFT]:
             prevItem = filter.index(self.osdCategory)
             prevCat = prevItem - 1
             if prevItem == filter[0]:
@@ -3332,7 +3346,7 @@ class ExitDialog(xbmcgui.WindowXMLDialog):
         self.buttonClicked = None
         exitControl = self.getControl(self.C_EXIT_CLOSE)
 
-        self.setFocus(exitControl)
+        #self.setFocus(exitControl)
 
     def onAction(self, action):
         if action.getId() in [ACTION_PARENT_DIR, ACTION_PREVIOUS_MENU, KEY_NAV_BACK]:
@@ -3345,327 +3359,292 @@ class ExitDialog(xbmcgui.WindowXMLDialog):
     def onFocus(self, controlId):
         pass
 
-class infoMenu(xbmcgui.WindowXMLDialog):
-    C_INFO_PROGRAM_DESCRIPTION_TEXTBOX = 77000
-    C_INFO_PROGRAM_SERIESPLOT_TEXTBOX = 77001
-    C_INFO_PROGRAM_DATE_AND_ENDTIME = 77003
-    C_INFO_PROGRAM_LABEL = 7001
-    C_INFO_PROGRAM_IMAGE = 7002
-    C_INFO_PLOT_LABEL = 7003
-    C_INFO_SEASONPLOT_LABEL = 7004
-
-    C_INFO_DIRECTOR = 4106
-    C_INFO_ACTOR = 4107
-    C_INFO_GENRE = 4108
-    C_INFO_CERTIFICATE = 4109
-    C_INFO_RATING = 4110
-    C_INFO_PROGRAM_POSTER = 7005
-    C_INFO_PLAY = 4000
-    C_INFO_REMIND = 4002
-    C_INFO_SEARCH = 4006
-    C_INFO_FAVOURITES = 4012
-    C_INFO_CHANNEL_LOGO = 4100
-    C_INFO_CHANNEL_TITLE = 4101
-    C_INFO_PROGRAM_TITLE = 4102
-    C_INFO_DURATION = 4103
-    C_INFO_PROGRESS_INFO = 4104
-    C_INFO_PROGRESS_BAR = 4105
-    C_INFO_VIDEOADDONS = 80002
 
 
-    def __new__(cls, database, program, showRemind):
-        return super(infoMenu, cls).__new__(cls,
-                'script-tvguide-info.xml', SKINFOLDER, SKIN)
+class startUp(xbmcgui.WindowXMLDialog):
+    C_PROGRAM_LIST = 1002
 
-    def __init__(self, database, program, showRemind):
-        """
+    def __new__(
+        cls
+        ):
 
-        @type database: source.Database
-        @param program:
-        @type program: source.Program
-        @param showRemind:
-        """
-        super(infoMenu, self).__init__()
-        self.database = database
-        self.program = program
-        self.currentChannel = program.channel
-        self.showRemind = showRemind
+        return super(startUp, cls).__new__(cls,
+                'script-tvguide-los.xml',
+                SKINFOLDER, SKIN)
+
+    def __init__(
+        self
+        ):
+
+        super(startUp, self).__init__()
+        self.index = -1
         self.action = None
         self.buttonClicked = None
-        self.actors = 'N/A'
-        self.certificate = 'N/A'
-        self.description = program.description
-        self.director = 'N/A'
-        self.genres = program.categories
-        self.rating = 'N/A'
-        self.releaseDate = program.date
-        self.seasonDate =''
-        self.seriesPlot = ''
-        self.poster =''
-        self.programtag = ''
 
     def onInit(self):
-        directorControl = self.getControl(self.C_INFO_DIRECTOR)
-        certificateControl = self.getControl(self.C_INFO_CERTIFICATE)
-        ratingControl = self.getControl(self.C_INFO_RATING)
-        genreControl = self.getControl(self.C_INFO_GENRE)
-        actorControl = self.getControl(self.C_INFO_ACTOR)
-        plotControl = self.getControl(self.C_INFO_PLOT_LABEL)
-        seriesPlotControl = self.getControl(self.C_INFO_SEASONPLOT_LABEL)
-        programdescriptionControl = self.getControl(self.C_INFO_PROGRAM_DESCRIPTION_TEXTBOX)
-        programseriesplotControl = self.getControl(self.C_INFO_PROGRAM_SERIESPLOT_TEXTBOX)
-        programPosterControl = self.getControl(self.C_INFO_PROGRAM_POSTER)
-        programtagControl = self.getControl(self.C_INFO_PROGRAM_LABEL)
 
-        programDateandEndTimeControl = self.getControl(self.C_INFO_PROGRAM_DATE_AND_ENDTIME)
-        programImageControl = self.getControl(self.C_INFO_PROGRAM_IMAGE)
-        playControl = self.getControl(self.C_INFO_PLAY)
+        items = list()
+        index = 0
+        item = xbmcgui.ListItem()
+        for sport in utils.TOP_SPORTS:
 
-        remindControl = self.getControl(self.C_INFO_REMIND)
-        channelLogoControl = self.getControl(self.C_INFO_CHANNEL_LOGO)
-        channelTitleControl = self.getControl(self.C_INFO_CHANNEL_TITLE)
-        programTitleControl = self.getControl(self.C_INFO_PROGRAM_TITLE)
+            label = '[B]'+sport+'[/B]'
+            name = ""
+            icon = sport.replace('/','_')+'.png'
+            item = xbmcgui.ListItem(label, name, icon)
+            item.setProperty('index', str(index))
+            item.setProperty('date', '')
+            index = index + 1
 
-        programDurationControl = self.getControl(self.C_INFO_DURATION)
-        programProgressInfoControl = self.getControl(self.C_INFO_PROGRESS_INFO)
-        programProgressBarControl = self.getControl(self.C_INFO_PROGRESS_BAR)
+            items.append(item)
 
-        if self.program.channel:
-            channelTitleControl.setLabel(self.program.channel.title)
+        listControl = self.getControl(startUp.C_PROGRAM_LIST)
+        listControl.addItems(items)
 
-        if self.program.channel and self.program.channel.logo is not None:
-            channelLogoControl.setImage(self.program.channel.logo)
+        self.setFocusId(self.C_PROGRAM_LIST)
 
-        if self.program.title:
-            programTitleControl.setLabel('[B]%s[/B]' % self.program.title)
-            label = ""
-            if self.program.season and self.program.episode:
-                self.programtag = "[B]Season %s Episode %s[/B]" % (self.program.season,self.program.episode)
-                show = "%s %s %s (TV Series" % (self.program.title, self.program.season, self.program.episode)
-                episode = '%s %s (TV Series' % (self.program.title, self.programtag)
-                try:
-                    seriesSearch = '%s (TV Series' %(self.program.title)
-                    self.getUrl(seriesSearch)
-                except:
-                    pass
-                try:
-                    self.getUrl(episode, 'episode')
-                except:
-                    pass
-
-            elif self.program.is_movie:
-                try:
-                    self.getUrl(self.program.title)
-                except:
-                    pass
-
-            else:
-                try:
-                    seriesSearch = '%s (TV Series' %(self.program.title)
-                    self.getUrl(seriesSearch)
-                except:
-                    pass
-
-            if self.director =='':
-                self.director = 'N/A'
-            programdescriptionControl.setText(self.description)
-            programseriesplotControl.setText(self.seriesPlot)
-            programPosterControl.setImage(self.poster)
-            directorControl.setLabel(str(self.director))
-            actorControl.setLabel(str(self.actors))
-            genreControl.setLabel(str(self.genres))
-            certificateControl.setLabel(self.certificate)
-            ratingControl.setLabel(self.rating)
-
-            if self.program.is_movie:
-                programtagControl.setLabel("[B]Release Date - %s[/B]" % self.releaseDate)
-                plotControl.setLabel('[B]Movie Summary[/B]')
-
-            elif self.program.season or not self.seriesPlot == '':
-                programtagControl.setLabel(self.programtag)
-                programdescriptionControl.setHeight(113)
-                plotControl.setLabel('[B]Episode Summary[/B]')
-                seriesPlotControl.setLabel('[B]Series Summary[/B]')      
-          
-            else:
-                plotControl.setLabel('[B]Program Info[/B]')
-                programtagControl.setLabel(' ')
-            
-        if self.program.imageSmall:
-            programImageControl.setImage(self.program.imageSmall)
-        if self.program.imageLarge:
-            programImageControl.setImage(self.program.imageLarge)
-
-        start = self.program.startDate
-        end = self.program.endDate
-
-        if start:
-            day = utils.formatDate(start, False, True)
-            starttime = start.strftime("%H:%M")
-            endtime = end.strftime("%H:%M")
-            programdate = "%s %s" % (day,starttime)
-            programdateandendtime = "%s %s - %s" % (day,starttime,endtime)
-            programDateandEndTimeControl.setLabel('[B]%s[/B]' % programdateandendtime)
-
-            duration = end - start
-            duration_str = "%s Minutes" % (duration.seconds / 60)
-            programDurationControl.setLabel(duration_str)
-
-            now = datetime.datetime.now()
-            if now > start:
-                when = datetime.timedelta(-1)
-                elapsed = now - start
-            else:
-                when = start - now
-                elapsed = datetime.timedelta(0)
-            days = when.days
-            hours, remainder = divmod(when.seconds, 3600)
-            minutes, seconds = divmod(remainder, 60)
-            if days >= 1:
-                when_str = "In %d days %s hours %s mins" % (days,hours,minutes + 1)
-                programProgressInfoControl.setLabel(when_str)
-            elif days > 0:
-                when_str = "In %d day %s hours %s mins" % (days,hours,minutes + 1)
-                programProgressInfoControl.setLabel(when_str)
-            elif hours >= 1:
-                when_str = "In %d hours %d minutes" % (hours,minutes + 1)
-                programProgressInfoControl.setLabel(when_str)
-            elif seconds > 0:
-                when_str = "In %d minutes" % (when.seconds / 60 + 1)
-                programProgressInfoControl.setLabel(when_str)
-            elif end - elapsed > start:
-                remaining = end - now
-                remaining_str =  "%s minutes left" % (remaining.seconds / 60 + 1)
-                programProgressInfoControl.setLabel(remaining_str)
-            else:
-                programProgressInfoControl.setLabel("Ended")
-
-            progress = (100.0 * float(elapsed.seconds)) / float(duration.seconds+0.001)
-            progress = int(round(progress))
-            programProgressBarControl.setPercent(progress)
-
-        if self.program.startDate:
-            remindControl.setEnabled(True)
-
-            if self.showRemind:
-                remindControl.setLabel("Remind")
-            else:
-                remindControl.setLabel("Don't Remind")
-
-
-    def getEpisode(self, html):
-        description = html.find("div", {"class":"inline canwrap", "itemprop":"description"}).text.strip().split(' Written by\n')[0]
-        rating = html.find(itemprop='ratingValue').text
-
-        #releasedate = self.getunicode(infolist[-1])
-
-        try:
-            certificate = html.find(itemprop='contentRating')['content']
-        except:
-            certificate = 'N/A'
-
-        directortags = html.findAll(itemprop="director")
-        directors = []
-        for direct in directortags:
-            directors.append(direct.text.strip().replace(',',''))
-        director = ' '.join(directors)
-
-        actortags = html.findAll(itemprop="actors")
-        actors = []
-        for actor in actortags:
-            actors.append(actor.text.strip())	
-        actors = ' '.join(actors)
-
-        genretags = html.findAll("span",{"itemprop":"genre"})
-        genres = []
-        for genre in genretags:
-            genres.append(genre.text.strip())
-        genres = ' '.join(genres)	
-
-        self.director = director
-        self.actors = actors
-        self.genres = genres
-        self.certificate = certificate
-        self.rating = rating
-        self.description = description
-        return
-
-    def getMainplot(self, html):
-
-        description = html.find("div", {"class": "inline canwrap", "itemprop": "description"}).text.strip().split(' Written by\n')[0]
-        poster = html.find(attrs={'class':'poster'}).find('img')['src']
-        rating = html.find(itemprop='ratingValue').text
-
-        #releasedate = self.getunicode(infolist[-1])
-
-        try:
-            certificate = html.find(itemprop='contentRating')['content']
-        except:
-            certificate = 'N/A'
-
-        directortags = html.findAll(itemprop="director")
-        directors = []
-        for direct in directortags:
-            directors.append(direct.text.strip().replace(',',''))
-        director = ' '.join(directors)
-
-        actortags = html.findAll(itemprop="actors")
-        actors = []
-        for actor in actortags:
-            actors.append(actor.text.strip())	
-        actors = ' '.join(actors)
-
-        genretags = html.findAll("span",{"itemprop":"genre"})
-        genres = []
-        for genre in genretags:
-            genres.append(genre.text.strip())
-        genres = ' '.join(genres)	
-
-        if self.program.is_movie: 
-            self.description = description
-            self.poster = poster
-            self.director = director
-            self.actors = actors
-            self.genres = genres
-            self.certificate = certificate
-            self.rating = rating
-            #self.seasonDate = releasedate
-        else:
-            self.seriesPlot = description
-            self.poster = poster
-            self.director = director
-            self.actors = actors
-            self.genres = genres
-            self.certificate = certificate
-            self.rating = rating
-            #self.releaseDate = releasedate
-	
-    def getHTML(self, url):
-        response = requests.get(url)
-        return BeautifulSoup(response.content,'html.parser')
-	
-    def getUrl(self, input, episode=None):
-        html = self.getHTML('https://www.google.co.uk/search?q='+input)
-        for site in html.findAll('cite'):
-            if 'imdb.com/title/tt' in site.text:
-                html = self.getHTML('http://'+site.text)
-                break
-        if episode is not None:
-            return self.getEpisode(html)
-        return self.getMainplot(html)
-
-    def onAction(self, action):
-        if action.getId() in [ACTION_PARENT_DIR, ACTION_PREVIOUS_MENU,
-                              KEY_NAV_BACK, KEY_CONTEXT_MENU]:
-            self.close()
-            return
 
     def onClick(self, controlId):
+        if controlId == self.C_PROGRAM_LIST:
+            listControl = self.getControl(self.C_PROGRAM_LIST)
+            item = listControl.getSelectedItem()
+            if item:
+                if isinstance(eval('utils.'+item.getLabel().replace('[/B]','').replace('[B]','').replace('/','_').replace(' ','_')), str):
+                    w = los_List(eval('utils.'+item.getLabel().replace('[/B]','').replace('[B]','').replace('/','_').replace(' ','_')))
+                    w.doModal()
+                    del w
+                else:
+                    w = selectionList(item.getLabel().replace('[/B]','').replace('[B]','').replace('/','_').replace(' ','_'))
+                    w.doModal()
+                    del w
+
+
+    def onFocus(self, controlId):
+
         pass
+
+
+    def close(self):
+        super(startUp, self).close()
+
+class selectionList(xbmcgui.WindowXMLDialog):
+    C_PROGRAM_LIST = 1002
+
+    def __new__(
+        cls,
+        sport
+        ):
+
+        return super(selectionList, cls).__new__(cls,
+                'script-tvguide-los_selection.xml',
+                SKINFOLDER, SKIN)
+
+    def __init__(
+        self,
+        sport
+        ):
+
+        super(selectionList, self).__init__()
+        self.index = -1
+        self.action = None
+        self.buttonClicked = None
+        self.sport = sport
+
+    def onInit(self):
+
+        items = list()
+        index = 0
+        item = xbmcgui.ListItem()
+        for type in eval('utils.'+self.sport):
+
+            label = type
+            name = ""
+            icon = ""
+            item = xbmcgui.ListItem(label, name, icon)
+            item.setProperty('index', str(index))
+            index = index + 1
+
+            items.append(item)
+
+        listControl = self.getControl(selectionList.C_PROGRAM_LIST)
+        listControl.addItems(items)
+
+        self.setFocusId(self.C_PROGRAM_LIST)
+
+
+    def onClick(self, controlId):
+        if controlId == self.C_PROGRAM_LIST:
+            listControl = self.getControl(self.C_PROGRAM_LIST)
+            item = listControl.getSelectedItem()
+            if item:
+                w = los_List(eval('utils.'+item.getLabel().replace('/','_').replace(' ','_')))
+                w.doModal()
+                del w
+
+
+    def onFocus(self, controlId):
+
+        pass
+
+
+    def close(self):
+        super(selectionList, self).close()
+
+
+class los_List(xbmcgui.WindowXMLDialog):
+    C_PROGRAM_LIST = 1002
+
+    def __new__(
+        cls,
+        label
+        ):
+
+        return super(los_List, cls).__new__(cls,
+                'script-tvguide-los_list.xml',
+                SKINFOLDER, SKIN)
+
+    def __init__(
+        self,
+
+       label
+        ):
+
+        super(los_List, self).__init__()
+        self.index = -1
+        self.action = None
+        self.buttonClicked = None
+        self.label = label
+
+    def onInit(self):
+        xbmc.executebuiltin("ActivateWindow(busydialog)")
+        found = 0
+        items = list()
+        index = 0
+        item = xbmcgui.ListItem()
+        sportUrl = '%s' % (self.label)
+        sportUrl = urllib.quote(sportUrl)
+        content = self.getContent(baseUrl+sportUrl)
+        foundgames = content.split('<div class=floatAndClearL_list>')
+
+
+        for section in foundgames:
+            foundcomp = section.split('<div><span class')
+            fixtureDate = re.findall('time_head>(.*?)<',section)
+            for comp in foundcomp:
+                competition = re.compile('comp_head>(.*?)</span>',re.DOTALL).findall(comp)
+                ko = re.compile('ST: (.*?)\n', re.DOTALL).findall(comp)
+                games = re.compile('"250"><img src="(.*?)">', re.MULTILINE | re.DOTALL).findall(comp)
+                channels = re.findall('onmouseout=".*?">(.*?)</a>', comp)
+                for game in games:
+                    found += 1
+                    label = game
+                    name = ""
+                    icon = ""
+                    item = xbmcgui.ListItem(label, name, icon)
+
+                    item.setProperty('index', str(index))
+                    index = index + 1
+                    homebadge = baseUrl+game
+
+
+                    kotime = ko[0].replace(' ','').replace('\r','')
+                    try:
+                        ko = datetime.datetime.strptime(kotime, '%H:%M')
+                    except:
+                        ko = datetime.datetime.fromtimestamp(time.mktime(time.strptime(kotime, "%H:%M")))
+
+                    if '+' in shift:
+                        ko = ko + datetime.timedelta(minutes=timeDiff.tm_min, hours=timeDiff.tm_hour)
+                    elif '-' in shift:
+                        ko = ko - datetime.timedelta(minutes=timeDiff.tm_min, hours=timeDiff.tm_hour)
+                    ko = ko.time().strftime('%H:%M')
+                    #except:
+                        #ko = ko[0]
+
+
+                    item.setProperty('HomeImage', homebadge)
+                    item.setProperty('Day', '%s' % fixtureDate[0]+' - '+ko)
+                    item.setProperty('Links', str(channels).decode('utf-8'))
+                    item.setProperty('Comp', competition[0])
+                    item.setProperty('When', ko)
+                    items.append(item)
+
+        listControl = self.getControl(los_List.C_PROGRAM_LIST)
+        listControl.addItems(items)
+
+        self.setFocusId(self.C_PROGRAM_LIST)
+        xbmc.executebuiltin("Dialog.Close(busydialog)")
+        if found == 0:
+            utils.dialog.ok('[COLOR fffea800]iVue[/COLOR]', 'No fixtures found','') 
+            self.close()
+
+    def getContent(self, url):
+        try:
+            req = urllib2.Request(url)
+            req.add_header('User-Agent', ' Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+            response = urllib2.urlopen(req)
+            link=response.read()
+            response.close()
+            return link
+        except:
+            xbmc.executebuiltin("Dialog.Close(busydialog)")
+            utils.dialog.ok('[COLOR fffea800]iVue[/COLOR]', 'Problem finding fixtures','Please try again soon')
+            self.close() 
+            
+    def onAction(self, action):
+        if action.getId() in [ACTION_PARENT_DIR, ACTION_PREVIOUS_MENU, KEY_NAV_BACK]:
+            if xbmc.Player().isPlaying():
+                xbmc.Player().stop()
+            else:
+                self.index = -1
+                self.close()         
+
+
+
+    def onClick(self, controlId):
+        if controlId == self.C_PROGRAM_LIST:
+            listControl = self.getControl(self.C_PROGRAM_LIST)
+            item = listControl.getSelectedItem()
+            if item:
+                mychannels= []
+                Links = item.getProperty('Links')
+                sepChan = Links.split(', ')
+                for chan in sepChan:
+                    mychannels.append(self.unicodetoascii(chan.replace('[','').replace(']','').replace("'","").replace('/','').replace('$','').replace('| ','').replace('  ','').replace('HD','').replace(' MENA ','').replace('ITVITV  ', 'ITV1 ')))
+                    
+                channels = utils.dialog.select('[COLOR fffea800]Channels[/COLOR]', mychannels) 
+                if channels >=0:
+                    xbmc.executebuiltin("ActivateWindow(busydialog)")
+                    result = streams.detectStreams(mychannels[channels])
+
+                    
+                    if result:
+                        xbmc.executebuiltin("Dialog.Close(busydialog)")
+                        if os.path.exists(S_ADDON):
+                            d = ChooseStreamAddonDialog(result, custom=True)
+                        else:
+                            d = ChooseStreamAddonDialog(result)
+                        d.doModal()
+                        if d.stream is not None:
+                            xbmc.Player().play(item=d.stream, windowed=True)
+                    else:
+                        xbmc.executebuiltin("Dialog.Close(busydialog)")
+                        utils.dialog.ok('[COLOR fffea800]iVue[/COLOR]', 'No streams found please try another channel '+ mychannels[channels],'') 
+
+    def unicodetoascii(self, text): 
+        TEXT = text.replace("\\xe2\\x80\\x99", "'")
+        return TEXT
 
 
     def onFocus(self, controlId):
         pass
+
+    def close(self):
+        super(los_List, self).close()
+
+
+
+
 
 class osdPopupMenu(xbmcgui.WindowXMLDialog):
 

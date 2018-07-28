@@ -15,8 +15,6 @@
         <setting id="categories.ini.type" label="categories.ini Source" type="enum" visible="eq(-2,true)" default="0" values="File|Url"/>
         <setting id="categories.ini.file" label="categories.ini File" type="file" visible="eq(-3,true) + eq(-1,0)" mask="categories.ini" default=''/>
         <setting id="categories.ini.url" label="categories.ini Url" type="text" visible="eq(-4,true) + eq(-2,1)" default=''/>
-		<setting type="lsep" label="iVue's Latest Categories File:"/>
-        <setting id="ivue-categories.ini.enabled" label="Download iVue categories.ini" type="bool" visible="true" default="true" />
 		
 	    <setting type="lsep" label="Category Selection On Launch:"/>
 		<setting id="categories.launch" label="Select categories on launch" type="bool" default="false" />
@@ -40,9 +38,7 @@
 		<setting id="sub.xmltv.url" label="url" type="text" visible="false" default=""/>
 		<setting type="lsep" label="Download Settings:"/>
         <setting id="xmltv.interval" label="30128" type="enum" default="2" lvalues="30129|31004|31005|31006|31007|31008|31009" />
-        <setting id="ivue.addons.ini" label="Use latest iVue addons.ini" type="bool" visible="true" default="true" />
-        <setting id="ivue.catchup" label="Use latest iVue catch-up.xml" type="bool" visible="true" default="true" />
-        <setting id="ivue.sports.ini" label="Use latest iVue sports.ini" type="bool" visible="true" default="true" />
+        <setting id="ivue.addons.ini" label="Download latest ivue files" type="bool" visible="true" default="true" />
         <setting id="creator.interval" label="Update addons2.ini interval" type="enum" default="7" lvalues="30129|31004|31005|31006|31007|31008|31009|31010" />
 	</category>
 
@@ -52,15 +48,9 @@
 		<setting type="lsep" label="Download / Remove Skins:"/>
       <setting id="download.skin" label="Download iVue Skins" type="action"  action="RunScript($CWD/config.py,Get)" />
       <setting label="Delete Installed Skins" type="action"  action="RunScript($CWD/config.py,Delete)" />
-		<setting type="lsep" label="Custom Skins:"/>
-		<setting id="customSkin.enabled" label="Import Own Skins" type="bool" default="false" />
-		<setting id="customSkin.type" label="Custom Skin Type" type="enum" visible="eq(-1,true)" default="0" values="Folder|Url"/>
-		<setting id="customSkin.file" label="Local skin folder" type="folder" visible="eq(-2,true) + eq(-1,0)"/>
-		<setting label="Enter URL for skin zip" type="action" action="RunScript($CWD/config.py,Custom)" visible="eq(-3,true) + eq(-2,1)" default=''/>
 		<setting type="lsep" label="Customise Guide:"/>
-		<setting id="skin.exit.menu" label="Use skin style exit menu if available" type="bool" default="true" />
-     <setting id="scroll.channel" label="Have text scroll on channel labels" type="bool" visible="true" default="true" />
-     <setting id="font.size" label="Visually impaired      ***Large fonts***" type="bool" default="false" />
+      <setting id="scroll.chan" label="Channel Label scrolling" type="action"  action="RunScript($CWD/config.py,scroll)" default="Enabled"/>
+      <setting id="font" label="Visually impaired   (Only works on some Kodi skins)" type="action"  action="RunScript($CWD/config.py,font)" default="Disabled"/>
 		<setting type="lsep" label="Logos:"/>
 		<setting id="channel.num" label="Show Channel Numbers" type="bool" default="true" />
 		<setting id="logos.enabled" label="30117" type="bool" default="true" />
@@ -88,10 +78,14 @@
 	</category>
 	
 	<category label="Time Zone">
-		  <setting id="shift.time" label="Offset Time" type="labelenum" default="+01:00" values="-12:00|-11:00|-10:00|-09:30|-09:00|-08:00|-07:00|-06:00|-05:00|-04:30|-04:00|-03:30|-03:00|-02:00|-01:00|00:00|+01:00|+02:00|+03:00|+03:30|+04:00|+04:30|+05:00|+05:30|+05:45|+06:00|+06:30|+07:00|+08:00|+09:00|+09:30|+10:00|+10:30|+11:00|+11:30|+12:00|+12:45|+13:00|+14:00|"/>
-		  <setting type="lsep" label="Update Channel Offsets:"/>
+		 <setting label="Sports Fixtures Offset" type="lsep" />
+		  <setting id="los.shift.time" label="fixtures Offset Time" type="labelenum" default="00:00" values="-12:00|-11:00|-10:00|-09:30|-09:00|-08:00|-07:00|-06:00|-05:00|-04:30|-04:00|-03:30|-03:00|-02:00|-01:00|00:00|+01:00|+02:00|+03:00|+03:30|+04:00|+04:30|+05:00|+05:30|+05:45|+06:00|+06:30|+07:00|+08:00|+09:00|+09:30|+10:00|+10:30|+11:00|+11:30|+12:00|+12:45|+13:00|+14:00|"/>
+		 <setting label="Guide Channel Offsets" type="lsep" />
+
+		  <setting id="shift.time" label="Guide Offset Time" type="labelenum" default="+01:00" values="-12:00|-11:00|-10:00|-09:30|-09:00|-08:00|-07:00|-06:00|-05:00|-04:30|-04:00|-03:30|-03:00|-02:00|-01:00|00:00|+01:00|+02:00|+03:00|+03:30|+04:00|+04:30|+05:00|+05:30|+05:45|+06:00|+06:30|+07:00|+08:00|+09:00|+09:30|+10:00|+10:30|+11:00|+11:30|+12:00|+12:45|+13:00|+14:00|"/>
+		  <setting type="lsep" label="Update Guide Channel Offsets:"/>
 		  <setting label="Select Channels to Adjust above time offset" type="action" option="close" action="RunScript($CWD/offset.py,update)"/>
-		  <setting type="lsep" label="Reset Channel Offsets:"/>
+		  <setting type="lsep" label="Reset Guide Channel Offsets:"/>
 		  <setting label="Select Channels to reset back to default" type="action" option="close" action="RunScript($CWD/offset.py,reset)"/>
 	</category>
 
@@ -161,7 +155,6 @@
 		<setting label="Delete addons2.ini (clear iVue creator links)" visible="true" type="action" action="RunScript($CWD/reset.py,addons2)" />
 		<setting label="Clear Guide Setups (clear setups for xmls)" visible="true" type="action" action="RunScript($CWD/reset.py,setups)" />
 		<setting label="Purge database (clear streams and reminders)" visible="true" type="action" action="RunScript($CWD/reset.py,purge)" />
-		<setting label="Clear Subscriptions (clear linked subs)" visible="true" type="action" action="RunScript($CWD/reset.py,subs)" />
 		<setting label="Do a Soft Reset (clear xmls and ivue addons ini)" visible="true" type="action" action="RunScript($CWD/reset.py,soft)" />
 		<setting label="Do a Hard Reset (clear everything)" visible="true" type="action" action="RunScript($CWD/reset.py,hard)" />
 		<setting type="lsep" label="--------------------------------------------------------------------------------------------------------"/>

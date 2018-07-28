@@ -8,14 +8,22 @@ databasePath = xbmc.translatePath('special://profile/addon_data/script.ivueguide
 subPath = xbmc.translatePath('special://profile/addon_data/script.ivueguide/resources/ini')
 pyPath = xbmc.translatePath('special://profile/addon_data/script.ivueguide/resources/subs')
 setupPath = xbmc.translatePath('special://profile/addon_data/script.ivueguide/resources/guide_setups')
+fullPath = xbmc.translatePath('special://profile/addon_data/script.ivueguide')
 dialog = xbmcgui.Dialog()
 
 def SoftReset():	
-    clearFiles = ["guides.ini", "addons.ini", "guide.xml", "amylist.xml", "teamexpat.xml", "otttv.xml", "guide2.xml", "uk3.xml", "guide3.xmltv", "master.xml"]
+    clearFiles = ["guides.ini", "addons.ini", "program.db","program_category.ini", "iVue.ini", "categories.ini"]
+    keepFiles = ["settings.xml"]
     for root, dirs, files in os.walk(databasePath,topdown=True):
-	    dirs[:] = [d for d in dirs]
+	    dirs[:] = [d for d in dirs if d not in ['skins']]
 	    for name in files:
-		    if name in clearFiles:
+		    if name.endswith(".xml") and name not in keepFiles:
+			    try:
+				    os.remove(os.path.join(root,name))
+			    except:
+				    dialog.ok('Soft Reset', 'Error Removing ' + str(name),'','[COLOR yellow]Thank you for using Soft Reset[/COLOR]')
+				    pass
+		    elif name in clearFiles:
 			    try:
 				    os.remove(os.path.join(root,name))
 			    except:
@@ -27,23 +35,16 @@ def SoftReset():
 
 
 def HardReset():
-    for root, dirs, files in os.walk(databasePath,topdown=True):
-        dirs[:] = [d for d in dirs if d not in ['skins']]
-        for name in files:
-            os.remove(os.path.join(root,name))
+    try:
+	    shutil.rmtree(fullPath,ignore_errors=True, onerror=None)
+	    if not os.path.exists(fullPath):
+		    dialog.ok('Ivue guide Hard reset', 'Please restart for ','the changes to take effect','[COLOR yellow]Thank you for using Hard Reset[/COLOR]')
+	    else:
+		    dialog.ok('Ivue guide Hard reset', 'Failed to remove some files','[COLOR yellow]Please try again[/COLOR]')
+    except:				   
+	    dialog.ok('Ivue guide Hard reset', 'Failed to remove some files','[COLOR yellow]Please try again[/COLOR]')
 
-        for root, dirs, files in os.walk(databasePath,topdown=True):
-            dirs[:] = [d for d in dirs if d not in ['skins']]							
-            for name in dirs:
-                if name not in ["resources"]:
-                    shutil.rmtree(os.path.join(root,name),ignore_errors=True, onerror=None)
 
-    for root, dirs, files in os.walk(databasePath,topdown=True):
-        dirs[:] = [d for d in dirs if d not in ['skins', 'resources']]
-        if not files:
-            dialog.ok('Ivue guide Hard reset', 'Please restart for ','the changes to take effect','[COLOR yellow]Thank you for using Hard Reset[/COLOR]')
-        else:
-            dialog.ok('Ivue guide Hard reset', 'Failed to remove some files','[COLOR yellow]Please try again[/COLOR]')
 
 def addons2():			
     for root, dirs, files in os.walk(databasePath,topdown=True):
@@ -79,14 +80,6 @@ def WipeSetups():
     except:				   
 	    dialog.ok('iVue Guide Reset', 'Error Removing XML Setups','','[COLOR yellow]Thank you for using iVue Reset[/COLOR]')
 
-def WipeSubs():
-    try:
-	    shutil.rmtree(subPath,ignore_errors=True, onerror=None)
-	    shutil.rmtree(pyPath,ignore_errors=True, onerror=None)
-	    if not os.path.exists(subPath) and not os.path.exists(pyPath):
-		    dialog.ok('iVue Subs Reset', 'Please restart for ','the changes to take effect','[COLOR yellow]Thank you for using iVue Reset[/COLOR]')     
-    except:				   
-	    dialog.ok('iVue Subs Reset', 'Error Removing Intergrated Subs','','[COLOR yellow]Thank you for using iVue Reset[/COLOR]')
 
 prnum=""
 try:
@@ -109,5 +102,3 @@ elif prnum == 'purge':
 elif prnum == 'setups':
     WipeSetups()
 
-elif prnum == 'subs':
-    WipeSubs()

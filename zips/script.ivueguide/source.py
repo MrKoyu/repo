@@ -539,34 +539,6 @@ class Database(object):
 
         return [channelStart, channelsOnPage, programs]
 
-    def showLive(self, category):
-        return self._invokeAndBlockForResult(self._showLive, category)
-
-    def _showLive(self, category):
-        if category == 'Other':
-            search = 'Sports'
-        else:
-            search = '%s**' % category
-        searchagain = 'Sports,%s**' % category
-        subsearch= '%%%s:%%' % category
-        programList = []
-        now = datetime.datetime.now()
-        startTime = now - datetime.timedelta(days=7)
-        endTime = now + datetime.timedelta(days=7)
-        c = self.conn.cursor()
-        channelList = self._getChannelList(True, all=True)
-        for channel in channelList:
-            try: c.execute('SELECT p.*, (SELECT 1 FROM notifications n WHERE n.channel=p.channel AND n.program_title=p.title AND n.source=p.source AND n.start_date=p.start_date) AS notification_scheduled FROM programs p WHERE p.channel=? AND p.source=? AND p.start_date>=? AND p.end_date<=? AND (p.title LIKE ? OR p.title LIKE ? OR p.description LIKE ? OR p.description LIKE ?) AND (p.categories GLOB ? OR p.categories GLOB ? OR p.title LIKE ? OR p.title LIKE ?)',
-                      [channel.id, self.source.KEY, startTime, endTime,"%Live %","%Live:%", "% Live Coverage %", "% Live Action %", search, searchagain, search, subsearch])
-            except: return
-            for row in c:
-                program = Program(channel, title=row['title'], startDate=row['start_date'], endDate=row['end_date'],
-                              description=row['description'], categories=row['categories'], 
-                              imageLarge=row['image_large'], imageSmall=row['image_small'], notificationScheduled=row['notification_scheduled'])
-                programList.append(program)
-        c.close()
-        return programList
-
 
     def programSearch(self, search):
         return self._invokeAndBlockForResult(self._programSearch, search)
@@ -590,6 +562,31 @@ class Database(object):
                               imageLarge=row['image_large'], imageSmall=row['image_small'], notificationScheduled=row['notification_scheduled'])
                 programList.append(program)
         c.close()
+        return programList
+
+
+    def searchChannel(self, chan):
+        return self._invokeAndBlockForResult(self._searchChannel, chan)
+
+    def _searchChannel(self, chan):
+        now = datetime.datetime.now()
+        endTime = now + datetime.timedelta(days=7)
+        channelList = self._getChannelList(True)
+        for channel in channelList:
+            if channel.title == chan:
+                programList = []
+                c = self.conn.cursor()
+
+                c.execute('SELECT p.*, (SELECT 1 FROM notifications n WHERE n.channel=p.channel AND n.program_title=p.title AND n.source=p.source AND n.start_date=p.start_date) AS notification_scheduled FROM programs p WHERE p.channel=? AND p.source=? AND  p.end_date>=?',
+                     [channel.id, self.source.KEY, now])
+
+                for row in c:
+                    program = Program(channel, title=row['title'], startDate=row['start_date'], endDate=row['end_date'],
+                                  description=row['description'], categories=row['categories'],
+                                  imageLarge=row['image_large'], imageSmall=row['image_small'], notificationScheduled=row['notification_scheduled'])
+                    programList.append(program)
+                c.close()
+
         return programList
 
     def onNowEpg(self, category):
@@ -695,7 +692,7 @@ class Database(object):
             setCat = self.osdcategory
         else:
             setCat = self.category
-        if all == False and self.category and setCat != "All Channels":
+        if all == False and setCat != "All Channels":
             f = xbmcvfs.File(utils.CatFile,'rb')
             lines = f.read().splitlines()
             f.close()
@@ -774,6 +771,7 @@ class Database(object):
         program = None
         now = datetime.datetime.now()
         c = self.conn.cursor()
+
         c.execute('SELECT * FROM programs WHERE channel=? AND source=? AND start_date <= ? AND end_date >= ?',
                   [channel.id, self.source.KEY, now, now])
         row = c.fetchone()
@@ -784,6 +782,7 @@ class Database(object):
         c.close()
 
         return program
+
 
     def getNextProgram(self, channel):
         return self._invokeAndBlockForResult(self._getNextProgram, channel)
@@ -797,7 +796,7 @@ class Database(object):
                 [program.channel.id, self.source.KEY, program.endDate])
             row = c.fetchone()
             if row:
-                nextProgram = Program(program.channel, row['title'], row['start_date'], row['end_date'], row['description'],
+                nextProgram = Program(program.channel, row['title'], row['start_date'], row['end_date'], row['description'], row['categories'],
                                       row['image_large'], row['image_small'], None, row['season'], row['episode'],
                                       row['is_movie'], row['date'], row['language'])
             c.close()
@@ -819,9 +818,9 @@ class Database(object):
                 [program.channel.id, self.source.KEY, program.startDate])
             row = c.fetchone()
             if row:
-                previousProgram = Program(program.channel, row['title'], row['start_date'], row['end_date'],
-                                              row['description'], row['image_large'], row['image_small'], None, row['season'],
-                                              row['episode'], row['is_movie'], row['date'], row['language'])
+                previousProgram = Program(program.channel, row['title'], row['start_date'], row['end_date'], row['description'], row['categories'],
+                                      row['image_large'], row['image_small'], None, row['season'], row['episode'],
+                                      row['is_movie'], row['date'], row['language'])
             c.close()
 
             return previousProgram
@@ -1065,9 +1064,11 @@ class Database(object):
         end = start + datetime.timedelta(days=daysLimit)
         programList = list()
         c = self.conn.cursor()
-        c.execute("SELECT DISTINCT c.id, c.title as channel_title,c.logo,c.stream_url,c.visible,c.weight, p.* FROM programs p, channels c, notifications a WHERE c.id = a.channel AND channel_title = a.channel_title AND p.title = a.program_title AND a.start_date = p.start_date AND c.visible = ?", [True])
+        c.execute(
+            "SELECT DISTINCT c.id, c.title as channeltitle,c.logo,c.stream_url,c.visible,c.weight, p.* FROM notifications n, channels c, programs p WHERE n.channel = c.id AND p.channel = c.id AND n.program_title = p.title AND n.source=? AND n.start_date = p.start_date",
+            [self.source.KEY])
         for row in c:
-            channel = Channel(row["id"], row["channel_title"], row["logo"], row["stream_url"], row["visible"], row["weight"])
+            channel = Channel(row["id"], row["channeltitle"], row["logo"], row["stream_url"], row["visible"], row["weight"])
             program = Program(channel, title=row['title'], startDate=row['start_date'], endDate=row['end_date'],
                             description=row['description'],categories=row['categories'],imageLarge=row["image_large"],
                             imageSmall=row["image_small"],language=row["language"],
@@ -1075,6 +1076,7 @@ class Database(object):
             programList.append(program)
         c.close()
         return programList
+
 
     def isNotificationRequiredForProgram(self, program):
         return self._invokeAndBlockForResult(self._isNotificationRequiredForProgram, program)
@@ -1160,6 +1162,10 @@ class XMLTVSource(Source):
 
         if self.xmltvType == gType.CUSTOM_FILE_ID:
             if addon.getSetting('custom.xmltv.type') == "0":
+            	try:
+                    os.remove(current_db)
+                except:
+                    pass
                 xmltvTemp = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'custom.xml'))
                 customXmltv = str(addon.getSetting('xmltv.file'))
                 shutil.copy(customXmltv, xmltvTemp)

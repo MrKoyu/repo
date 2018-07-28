@@ -41,11 +41,10 @@ ivue = utils.folder()
 skin = ADDON.getSetting('skin')
 default = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'skins', 'Default'))
 setSkin = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'skins', skin))
+
 SkinFolder = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'skins'))
 iniPath = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'addons2.ini')) 
-skinType = int(ADDON.getSetting('customSkin.type'))
 iniFile = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'addons.ini'))
-sportsFile = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'program_category.ini'))
 catchupFile = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'catchup.xml'))
 catPath = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'categories'))
 ivuecatsFile = xbmc.translatePath(os.path.join(catPath,'iVue.ini'))
@@ -53,7 +52,6 @@ customcatsFile = xbmc.translatePath(os.path.join(catPath,'custom.ini'))
 addons_index_path = xbmc.translatePath('special://profile/addon_data/plugin.video.IVUEcreator/addons_index.ini')
 ivueFile = ivue+'/categories.ini'
 ivueINI = ivue+'/addons.ini'
-ivueSports = ivue+'/program_category.ini'
 ivueCatchup = ivue+'/catchup.xml'
 skinsurl = ivue+'/skins/'
 skinfiles = [] 
@@ -61,11 +59,6 @@ d = xbmcgui.Dialog()
 dp = xbmcgui.DialogProgress()
 interval = int(ADDON.getSetting('creator.interval'))
 
-Folders = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources'))
-if os.path.exists(Folders):
-    for name in os.listdir(Folders):
-        if name in ["subs", "m3u", "ini"]:
-            shutil.rmtree(os.path.join(Folders,name),ignore_errors=True, onerror=None)
 
 
 INTERVAL_ALWAYS = 0
@@ -105,24 +98,14 @@ def creator():
         w.doModal()
         del w
 
-try:
-    SKIN_FOLDER = 0
-    if ADDON.getSetting('customSkin.enabled') == 'true':
-        if skinType == SKIN_FOLDER:
-            if not ADDON.getSetting('customSkin.file') == '':
-                customFile = str(ADDON.getSetting('customSkin.file'))
-                skinName = os.path.split(os.path.dirname(customFile))[1]
-                SkinFolder = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'script.ivueguide', 'resources', 'skins', '%s' % skinName))
-                copytree(customFile, SkinFolder)
-                ADDON.setSetting('customSkin.enabled', 'false')
-                ADDON.setSetting('skin', skinName)
-except:
-    d.ok('iVue Notice', 'Looks like we Couldnt retrieve your custom skin', 'Please check your file paths are correct', 'If iVue doesnt work for you please select default skin')
+
+#End of Karls changes
+
 
 try:
-    viewskins = config.openURL(skinsurl)
-    matchskin =re.compile('<a href="(.*?)">').findall(viewskins)
     if os.path.exists(FORCE) and os.path.exists(SkinFolder):
+        viewskins = config.openURL(skinsurl)
+        matchskin =re.compile('<a href="(.*?)">').findall(viewskins)
         for name in matchskin:
             name = re.sub(r'%20', ' ', name)
             name = re.sub(r'.zip', '', name)
@@ -135,6 +118,8 @@ try:
         config.extract(zipfile, SkinFolder)
         time.sleep(1)
         os.remove(FORCE)
+        ADDON.setSetting('scroll.chan', 'Enabled')
+        ADDON.setSetting('font', 'Disabled')
         import reset
         reset.SoftReset()
         dp.close() 
@@ -147,6 +132,8 @@ try:
         dp.create("iVue","Downloading Default Skin",'')
         urllib.urlretrieve(url,zipfile,lambda nb, bs, fs, url=url: config._pbhook(nb,bs,fs,url,dp))
         config.extract(zipfile, SkinFolder)
+        ADDON.setSetting('scroll.chan', 'Enabled')
+        ADDON.setSetting('font', 'Disabled')
         time.sleep(1)
         dp.close() 
  
@@ -158,53 +145,46 @@ try:
             dp.create("iVue","Downloading %s" % skin,'')
             urllib.urlretrieve(url,zipfile,lambda nb, bs, fs, url=url: config._pbhook(nb,bs,fs,url,dp))
             config.extract(zipfile, SkinFolder)
+            ADDON.setSetting('scroll.chan', 'Enabled')
+            ADDON.setSetting('font', 'Disabled')
             time.sleep(1)
             dp.close() 
         except urllib2.HTTPError, e:
             ADDON.setSetting('skin', 'Default')
+            ADDON.setSetting('font', 'Disabled')
+            ADDON.setSetting('scroll.chan', 'Enabled')
             pass
 
     if ADDON.getSetting('ivue.addons.ini') == 'true':
-        dp.create("iVue","Downloading addons.ini",'')
-        urllib.urlretrieve(ivueINI,iniFile,lambda nb, bs, fs, url=ivueINI: config._pbhook(nb,bs,fs,url,dp))
+        dp.create("iVue","Downloading files",'')
+        try:
+            urllib.urlretrieve(ivueINI,iniFile,lambda nb, bs, fs, url=ivueINI: config._pbhook(nb,bs,fs,url,dp))
+        except:
+            pass
+        try:
+            urllib.urlretrieve(ivueCatchup,catchupFile,lambda nb, bs, fs, url=ivueCatchup: config._pbhook(nb,bs,fs,url,dp))
+        except:
+            pass
+        try:
+            urllib.urlretrieve(ivueFile,ivuecatsFile,lambda nb, bs, fs, url=ivueFile: config._pbhook(nb,bs,fs,url,dp))
+        except:
+            pass
         dp.close()
         ADDON.setSetting('ivue.addons.ini', 'false')
 
-    elif ADDON.getSetting('ivue.addons.ini') == 'false' and not os.path.exists(iniFile):
+    if not os.path.exists(iniFile):
         dp.create("iVue","Downloading addons.ini",'')
         urllib.urlretrieve(ivueINI,iniFile,lambda nb, bs, fs, url=ivueINI: config._pbhook(nb,bs,fs,url,dp))
         dp.close()
 
-    if ADDON.getSetting('ivue.sports.ini') == 'true':
-        dp.create("iVue","Downloading sports.ini",'')
-        urllib.urlretrieve(ivueSports,sportsFile,lambda nb, bs, fs, url=ivueSports: config._pbhook(nb,bs,fs,url,dp))
-        dp.close()
-        ADDON.setSetting('ivue.sports.ini', 'false')
 
-    elif ADDON.getSetting('ivue.sports.ini') == 'false' and not os.path.exists(sportsFile):
-        dp.create("iVue","Downloading sports.ini",'')
-        urllib.urlretrieve(ivueSports,sportsFile,lambda nb, bs, fs, url=ivueSports: config._pbhook(nb,bs,fs,url,dp))
-        dp.close()
-
-    if ADDON.getSetting('ivue.catchup') == 'true':
-        dp.create("iVue","Downloading catchup.xml",'')
-        urllib.urlretrieve(ivueCatchup,catchupFile,lambda nb, bs, fs, url=ivueCatchup: config._pbhook(nb,bs,fs,url,dp))
-        dp.close()
-        ADDON.setSetting('ivue.catchup', 'false')
-
-    elif ADDON.getSetting('ivue.catchup') == 'false' and not os.path.exists(catchupFile):
+    if not os.path.exists(catchupFile):
         dp.create("iVue","Downloading catchup.xml",'')
         urllib.urlretrieve(ivueCatchup,catchupFile,lambda nb, bs, fs, url=ivueCatchup: config._pbhook(nb,bs,fs,url,dp))
         dp.close()
 
 
-    if ADDON.getSetting('ivue-categories.ini.enabled') == 'true':
-        dp.create("iVue","Downloading categories file",'')
-        urllib.urlretrieve(ivueFile,ivuecatsFile,lambda nb, bs, fs, url=ivueFile: config._pbhook(nb,bs,fs,url,dp))
-        ADDON.setSetting('ivue-categories.ini.enabled', 'false')
-        dp.close()
-
-    elif ADDON.getSetting('ivue-categories.ini.enabled') == 'false' and ADDON.getSetting('categories.ini.enabled') == 'false' and not os.path.exists(ivuecatsFile):
+    if not os.path.exists(ivuecatsFile):
         dp.create("iVue","Downloading categories file",'')
         urllib.urlretrieve(ivueFile,ivuecatsFile,lambda nb, bs, fs, url=ivueFile: config._pbhook(nb,bs,fs,url,dp))
         dp.close()
@@ -231,8 +211,6 @@ except:
 
 
 
-#End of Karls changes
-
 #addons ini fix start
 
 # set filepath
@@ -258,7 +236,4 @@ try:
 
 
 except urllib2.HTTPError, e:
-		if e.code == 401:
-			utils.notify(addon_id, ae)
-		else:
-		    utils.notify(addon_id, e)
+		utils.notify(addon_id, e)

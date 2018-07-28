@@ -139,6 +139,10 @@ class StreamsService(object):
 
 
     def loadSuperFavs(self):
+        try:
+            xbmcaddon.Addon('plugin.program.super.favourites')
+        except Exception:
+            return # ignore addons that are not installed
         entries = list()
         path = xbmc.translatePath(os.path.join('special://profile', 'addon_data', 'plugin.program.super.favourites'))
         if os.path.exists(path):
@@ -317,6 +321,60 @@ class StreamsService(object):
 
         else:
             return matches
+
+
+    def detectStreams(self, channel):
+        matches = []
+        exact_matches = []
+        sub_matches = []
+        numword_matches = []
+        for id in self.getAddons():
+            try:
+                xbmcaddon.Addon(id)
+            except Exception:
+                continue # ignore addons that are not installed
+
+            for (label, stream) in self.getAddonStreams(id):
+                if type(stream) is list:
+                    stream = stream[0]
+                if id == "plugin.video.meta":
+                    label = channel
+                    stream = str(stream.replace("<channel>", channel.replace(" ","%20")))
+
+
+                if label.lower() == channel.lower():
+                    exact_matches.append((id, label, stream))
+                labelx = re.sub(r' ','',label.lower())
+                title = re.sub(r' ','',channel.lower())
+                labelRe = r".*%s.*" % re.escape(labelx)
+                titleRe = r".*%s.*" % re.escape(title)
+                if re.match(titleRe,labelx):
+                    sub_matches.append((id, label, stream))
+                elif re.match(labelRe,title) and label != 'e':
+                    sub_matches.append((id, label, stream))
+
+        exact_matches = set(exact_matches)
+        sorted_exact_matches = sorted(exact_matches, key=lambda match: match[1])
+        sub_matches = set(sub_matches) - set(exact_matches)
+        sorted_sub_matches = sorted(sub_matches, key=lambda match: match[1])
+        matches = sorted_exact_matches
+        matches = matches + sorted_sub_matches
+        kodiFaves = self.loadFavourites()
+        superFavs = self.loadSuperFavs()
+        if kodiFaves:
+            id = 'kodi-favourite'           
+            for (label, stream) in kodiFaves:
+                label = label.upper()
+                if label == str(channel.title).upper():
+                    matches.append((id, label, stream))
+        if superFavs:
+            id = 'super-favourite'           
+            for (label, stream) in superFavs:
+                label = label.upper()
+                if label == str(channel.title).upper():
+                    matches.append((id, label, stream))
+
+        return matches
 
 class OrderedDict(dict):
     # From: http://code.activestate.com/recipes/576693/
