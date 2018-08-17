@@ -14,18 +14,41 @@ item_info_build=%s
 item_info_name=file.tmp
 item_info_from=pageUrl
 #item_info_convert=getInfo('%s','.*\b(?:url|trap|torque|tambor)\s*=\s*["']([^"']+).*','@REFERER@')
-item_info_convert=getInfo('%s','.*\w+\s*=\s*"(http[^"]+m3u8[^"]+)";.*?\w+\s*=\s*"(.*?php)"','@REFERER@','file_|turl_')
+#item_info_convert=getInfo('%s','.*\w+\s*=\s*"(http[^"]+m3u8[^"]+)";.*?\w+\s*=\s*"(.*?php)"','@REFERER@','file_|turl_')
+item_info_convert=getInfo('%s','.*(\w+)="([^"]+)";.*?(\w+)\s*=\s*atob\(\1\).*?Clappr\.Player\(\{source:\3','@REFERER@','j1|f1|j2')
+#item_info_convert=decodeBase64
+item_info_build=%s
+
+item_info_name=turl.tmp
+item_info_from=pageUrl
+item_info_convert=getInfo('%s','.*;(\w+)="([^"]+).*?getJSON\(atob\(\1','@REFERER@','j1|t1')
+item_info_build=%s
+
+item_info_name=turl_
+item_info_from=t1
 item_info_convert=decodeBase64
 item_info_build=%s
+
+item_info_name=file_
+item_info_from=f1
+item_info_convert=decodeBase64
+#item_info_convert=debug
+item_info_build=%s
+
+# item_info_name=host
+# item_info_from=pageUrl
+# item_info_convert=parseText('%s','(https://.*?)/')
+# item_info_convert=debug
+# item_info_build=%s
 
 item_info_name=tokUrl
 item_info_from=turl_
 #item_info_convert=debug
-item_info_build=http://bro.adca.st%s
+item_info_build=https:%s
 
 item_info_name=tok
 item_info_from=tokUrl
-item_info_convert=getXML('%s','.*\w+["']\s*:\s*["']([^"']+).*','@pageUrl@')
+item_info_convert=getXML('%s','.*"(&token=[^"]+)','@pageUrl@')
 #item_info_convert=debug
 item_info_build=%s
 
@@ -36,17 +59,10 @@ item_info_convert=quote(%s)
 item_info_build=%s
 
 item_info_name=file
-item_info_from=file_+tok
-item_info_build=%s
-
-item_info_name=url2
-item_info_from=hls://'+file+'|User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F60.0.3112.90%20Safari%2F537.36&Referer='+ref2
-item_info_convert=debug
-item_info_convert=encodeBase64
-item_info_build=%s
+item_info_from=file_+tok+'
+item_info_build=https:%s
 
 item_info_name=url
 item_info_from=file+'|User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F60.0.3112.90%20Safari%2F537.36&Referer='+ref2
-#item_info_from=http://127.1.2.3:45678/streamlink/?url='+url2+'
 item_info_build=%s
 

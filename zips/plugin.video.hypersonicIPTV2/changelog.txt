@@ -1,3 +1,7 @@
+[B]Version 4.0[/B]
+- Added new categories and icons
+- Fixed small bugs
+
 [B]Version 3.9[/B]
 - Fixed empty categories
 - Added new canadian category

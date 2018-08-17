@@ -40,7 +40,5 @@ item_info_from=u||u2
 item_info_build=%s
 
 item_info_name=url
-item_info_from=http://'+host+uri
+item_info_from=http://'+host+uri+'|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36
 item_info_build=%s
-
-item_url_build=%s|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36

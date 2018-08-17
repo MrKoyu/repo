@@ -128,7 +128,7 @@ class BaseRequest(object):
         if 'streamlive.to' in urlparse.urlsplit(url).netloc:
             self.s.verify = False
 
-        if 'vipleague' in url or 'strikeout' in url or 'homerun' or 'nbastreams' in url:
+        if 'vipleague' in url or 'strikeout' in url or 'homerun' or 'nbastream' in url:
             self.s.verify = False
         
         if 'bypassed' in url or 'livecamtv' in url:
@@ -138,6 +138,9 @@ class BaseRequest(object):
             self.s.verify = False
 
         if 'vaughnlive.tv' in url:
+            self.s.verify = False
+        
+        if 'ustreamix' in url:
             self.s.verify = False
 
         

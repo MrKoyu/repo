@@ -8,7 +8,7 @@ item_info_build=%s
 
 item_info_name=url
 item_info_from=@PARAM1@
-item_info_build=https://mp4.vaughnsoft.net/live?app=live&stream=live_%s|Referer=https://vaughnlive.tv/
+item_info_build=https://mp4.vaughnsoft.net/live?app=live&port=2935&stream=live_%s|Referer=https://vaughnlive.tv/
 
 #item_info_name=pageurl
 #item_info_from=@PARAM1@

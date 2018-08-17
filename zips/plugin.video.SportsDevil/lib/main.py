@@ -35,6 +35,7 @@ from addonInstaller import install
 
 from utils.beta.t0mm0.common.addon import Addon
 
+
 #from cacheManager import CacheManager
 
 
@@ -51,6 +52,7 @@ class Mode:
     INSTALLADDON = 12
     CHROME = 13
     WEBDRIVER = 14
+    SLPROXY = 15
 
 
 class Main:
@@ -76,6 +78,14 @@ class Main:
         if not videoItem:
             return
 
+        if ('offline' in videoItem['url']):
+            common.showInfo('Stream is offline - please try again later.')
+            return
+
+        if any(x in videoItem['url'] for x in ['hls://', 'hlsvariant://', 'httpstream://', 'hds://', 'akamaihd://']):
+            self.playSLProxy(videoItem)
+            return
+        
         listitem = self.createXBMCListItem(videoItem)
 
         title = videoItem['videoTitle']
@@ -87,6 +97,23 @@ class Main:
         else:
             url = urllib.unquote_plus(videoItem['url'])
             xbmc.Player().play(url, listitem)
+    
+    def playSLProxy(self, videoItem):
+        if not videoItem:
+            return
+
+        from dsp import streamlink_proxy
+        slProxy = streamlink_proxy.SLProxy_Helper()
+        
+        listitem = self.createXBMCListItem(videoItem)
+        title = videoItem['videoTitle']
+        url = videoItem['url']
+
+        if title:
+            listitem.setInfo('video', {'title': title})
+        
+        slProxy.playSLink(url, listitem)
+        pass
 
     def launchChrome(self, url, title):
         action = 'RunPlugin(%s)' % ('plugin://plugin.program.chrome.launcher/?kiosk=yes&mode=showSite&stopPlayback=yes&url=' + url)
@@ -364,6 +391,10 @@ class Main:
                         if float(common.xbmcVersion) >= 17.5:
                             liz.setMimeType('application/vnd.apple.mpegurl')
                             liz.setProperty('inputstream.adaptive.manifest_type', 'hls')
+                            if '|' in url:
+                                url,strhdr = url.split('|')
+                                liz.setProperty('inputstream.adaptive.stream_headers', strhdr)
+                                liz.setPath(url)
                         else:
                             liz.setProperty('inputstreamaddon', None)
                             liz.setContentLookup(True)
@@ -372,8 +403,9 @@ class Main:
                         liz.setMimeType('application/dash+xml')
                         liz.setProperty('inputstream.adaptive.manifest_type', 'mpd')                                        
                         
-                    elif v_type == 'adaptive_drm':
-                        pass
+                    elif v_type == 'adaptive_ism':
+                        liz.setProperty('inputstream.adaptive.manifest_type', 'ism')
+                        liz.setMimeType('application/vnd.ms-sstr+xml')
                     
                 else:
                     pass
@@ -446,10 +478,17 @@ class Main:
             m_type = 'rss'
         
         if m_type == 'video':
-            u = self.base + '?mode=' + str(Mode.PLAY) + '&item=' + codedItem
-            if lItem['IsDownloadable']:
-                contextMenuItem = createContextMenuItem('Download', Mode.DOWNLOAD, codedItem)
-                contextMenuItems.append(contextMenuItem)
+            if any(x in lItem['url'] for x in ['hls://', 'hlsvariant://', 'httpstream://', 'hds://', 'akamaihd://']):
+                u = self.base + '?mode=' + str(Mode.SLPROXY) + '&item=' + codedItem
+                m_type = 'slproxy'
+            else:
+                u = self.base + '?mode=' + str(Mode.PLAY) + '&item=' + codedItem
+                if lItem['IsDownloadable']:
+                    contextMenuItem = createContextMenuItem('Download', Mode.DOWNLOAD, codedItem)
+                    contextMenuItems.append(contextMenuItem)
+            isFolder = False
+        elif m_type == 'slproxy':
+            u = self.base + '?mode=' + str(Mode.SLPROXY) + '&item=' + codedItem
             isFolder = False
         elif m_type.find('command') > -1:
             u = self.base + '?mode=' + str(Mode.EXECUTE) + '&item=' + codedItem
@@ -604,6 +643,9 @@ class Main:
 
                 elif mode == Mode.PLAY:
                     self.playVideo(item)
+                
+                elif mode == Mode.SLPROXY:
+                    self.playSLProxy(item)
                 
                 elif mode == Mode.WEBDRIVER:
                     url = urllib.quote(item['url'])

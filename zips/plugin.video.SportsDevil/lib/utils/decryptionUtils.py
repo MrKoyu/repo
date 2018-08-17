@@ -10,6 +10,7 @@ except ImportError: import simplejson as json
 try: from Crypto.Cipher import AES
 except ImportError: import pyaes as AES
 import lib.common
+from pyaes_new import openssl_aes
 
 def encryptDES_ECB(data, key):
     data = data.encode()
@@ -32,6 +33,14 @@ def cjsAesDec(data, key):
     enc_data = json.loads(data.decode('base-64'))
     ciphertext = 'Salted__' + enc_data['s'].decode('hex') + enc_data['ct'].decode('base-64')
     return json.loads(decrypt(key,ciphertext.encode('base-64')))
+
+def jsCryptoAESDec(data, key):
+    #lib.common.log("JairoX_Decrypt:" + key)
+    from jscrypto import decode
+    var = json.loads(data.decode('base-64'))
+    ct = var['ct']
+    salt = var['s'].decode('hex')    
+    return json.loads(decode(ct, key, salt))
 
 def m3u8AesDec(data, key):
     try:
@@ -189,7 +198,7 @@ def onetv(playpath):
     out_hash = b64encode(md5.new(to_hash).digest()).replace("+", "-").replace("/", "_").replace("=", "")
     server = random.choice(servers)
     
-    url = "hls://http://{0}/p2p/{1}?st={2}&e={3}".format(server,playpath,out_hash,time_stamp)
+    url = "http://{0}/p2p/{1}?st={2}&e={3}".format(server,playpath,out_hash,time_stamp)
     return '{url}|User-Agent={user_agent}&referer={referer}'.format(url=url,user_agent=user_agent,referer='6d6f6264726f2e6d65'.decode('hex'))
     
 
@@ -276,6 +285,17 @@ def unFuckFirst(data):
         return data
     except:
         return data
+
+def decryptMarioCS(strurl, key):
+    #lib.common.log("JairoDemyst: " + strurl)
+    #if re.search(r".*clappr\(MarioCSdecrypt.dec\(.*", data):        
+    #strurl = re.findall(r'clappr\((?:MarioCSdecrypt.dec\()*"([^"]+)',data)[0]
+    if 'http' not in strurl:
+        OpenSSL_AES = openssl_aes.AESCipher()
+        strurl = OpenSSL_AES.decrypt(strurl, str(key))
+        #data = re.sub(r'(?:MarioCSdecrypt.dec\()[^\)]+', strurl, data)
+    #return data
+    return strurl
 
 def doDemystify(data):
     from base64 import b64decode
@@ -475,6 +495,10 @@ def doDemystify(data):
     
     if re.search(r'hiro":".*?[\(\)\[\]\!\+]+', data) != None:
         data = unFuckFirst(data)
+        #lib.common.log("JairoDemyst: " + data)
+
+    #if re.search(r".*clappr\(MarioCSdecrypt.dec\(.*", data) != None:
+        #data = decryptMarioCS(data)
         #lib.common.log("JairoDemyst: " + data)
     
     if re.search(r"zoomtv|seelive|realtimetv", data, re.IGNORECASE) != None:

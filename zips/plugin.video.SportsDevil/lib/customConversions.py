@@ -325,6 +325,16 @@ def replaceRegex(item, params, src):
         return paramStr
     return src
 
+def subRegex(item, params, src):
+    paramArr = __parseParams(params)
+    paramStr = paramArr[0].replace('%s', src)
+    paramSrch = paramArr[1]
+    paramRepl = paramArr[2]
+    if paramRepl.startswith('@') and paramRepl.endswith('@'):
+        paramRepl = item.getInfo(paramRepl.strip('@'))
+    
+    return re.sub(paramSrch, paramRepl, paramStr, count=1)
+
 
 def resolveVariable(item, param):
     if param.startswith('@') and param.endswith('@'):

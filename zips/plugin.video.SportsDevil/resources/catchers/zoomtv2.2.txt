@@ -48,6 +48,7 @@ item_info_build=%s
 item_info_name=data0
 item_info_from=postUrl
 item_info_convert=getInfo('%s','.*var\s+(player\s*=.*?<\/script>)','@REFERER@')
+#item_info_convert=debug
 item_info_build=%s
 
 item_info_name=hls_
@@ -68,9 +69,9 @@ item_info_convert=decodeBase64
 item_info_build=%s
 
 item_info_name=hls
-item_info_from=hls_+'|Cookie='+cookies+'&Referer='+zmhost+'&User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+item_info_from=hls_+'|Referer='+zmhost+'&User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F58.0.3029.110%20Safari%2F537.36
 item_info_convert=ifEmpty('@hls_@','','%s')
-item_info_convert=replaceRegex('%s','/(\w+)/\d+','@ts@')
+item_info_convert=replaceRegex('%s','/((?!zmelive)\w+)/\d+','@ts@')
 #item_info_convert=debug
 item_info_build=%s
 
@@ -83,15 +84,6 @@ item_info_build=%s
 #item_info_name=ref
 #item_info_from=zmhost
 #item_info_convert=quote(%s)
-#item_info_build=%s
-
-#item_info_name=hls2
-#item_info_from=httpstream://'+hls2_+'|Referer='+ref+'&User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F61.0.3163.100%20Safari%2F537.36&Cookie='+cookies
-#item_info_from=hls2_+'|Referer='+ref+'&User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F61.0.3163.100%20Safari%2F537.36&Cookie='+cookies
-#item_info_convert=encodeBase64
-#item_info_convert=ifEmpty('@hls2_@','','http://127.1.2.3:45678/streamlink/?url=%s')
-#item_info_convert=ifEmpty('@hls2_@','','%s')
-#item_info_convert=debug
 #item_info_build=%s
 
 item_info_name=file1
@@ -173,16 +165,21 @@ item_info_name=pageUrl
 item_info_from=@REFERER@
 item_info_build=%s
 
+item_info_name=offline
+item_info_from=postUrl
+item_info_convert=getInfo('%s','.*(offline|Offline)','@REFERER@')
+item_info_build=%s
+
 #flash player params
 # this._application = this._application.replace(config.hle7iAp,config.Zo7frlA);
 #this._connection.connect(this._application,config.qoeFrl2,config.TRiexl4,config.hlUDia0,config.g2ajieQ);
 
 item_info_name=rtmp
 item_info_from=rtmp_ + ' playpath=' + file + ' swfVfy=1 swfUrl=http://sts.seelive.me/player/7.12/jwplayer.flash.swf flashVer=WIN\2028,0,0,126 conn=S:' + file + ' conn=S:'+num+' conn=S:'+tok+' conn=S:V&gt;JWhui^@2ESdu0?}&gt;AN live=1 token=Q!lrB@G1)ww(-dQ4J4 pageUrl=' + zmhost
+item_info_convert=ifEmpty('@rtmp_@','','%s')
 #item_info_convert=debug
 item_info_build=%s
 
-
 item_info_name=url
-item_info_from=hls||rtmp
+item_info_from=hls||rtmp||offline
 item_info_build=%s

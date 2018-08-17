@@ -75,7 +75,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="4.3" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="4.4" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -173,7 +173,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.hypersonicIPTV2"
        name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
-       version="3.9"
+       version="4.0"
        provider-name="GhostBuilder">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -429,7 +429,7 @@ provider-name="Team IVUE">
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.Redemption"
        name="[COLOR deepskyblue]Redemption[/COLOR]"
-       version="1.3"
+       version="1.4"
        provider-name="Redemption">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -514,7 +514,7 @@ provider-name="Team IVUE">
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="plugin.video.SportsDevil"
-  version="2018.04.29"
+  version="20180623"
   name="SportsDevil"
   provider-name="SportsDevil">
   <requires>
@@ -522,20 +522,20 @@ provider-name="Team IVUE">
    <import addon="script.module.dateutil" />
    <import addon="script.module.simplejson" />
    <import addon="script.module.six" />
-   <import addon="script.module.requests" />
-   <import addon="script.module.streamlink.base" />
+   <import addon="script.module.requests" />   
    <import addon="plugin.video.f4mTester" />
+   <import addon="script.module.slproxy" />
   </requires>
   <extension 
     point="xbmc.python.pluginsource"
     library="default.py">
    <provides>video</provides>
   </extension>
-  <extension point="xbmc.service" library="service/streamlink_proxy.py" start="startup" />
+  <!-- <extension point="xbmc.service" library="service/streamlink_proxy.py" /> -->
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">SportsDevil addon</summary>
-    <description lang="en">Play videos of different ad-financed sports streaming sites.</description>
-	<disclaimer lang="en">SportsDevil does not provide any streams of its own; stream quality, content and copyright are responsibility of the ad-financed source web site. For updates - check the readme.</disclaimer>
+    <summary lang="en">SportsDevil</summary>
+    <description lang="en">[I]There can only be one.[/I][CR][CR]Unofficial Kodi Addon.</description>
+    <disclaimer lang="en">There can only be one.</disclaimer>
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
     <platform>all</platform>
   </extension>
