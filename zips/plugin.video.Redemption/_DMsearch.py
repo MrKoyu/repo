@@ -4,7 +4,8 @@ import xbmcvfs
 import os,xbmc,xbmcaddon,xbmcgui,re,xbmcplugin,sys
 import json
 import datetime
-addon = xbmcaddon.Addon('plugin.video.Redemption')
+from _Edit import addon
+
 profile = xbmc.translatePath(addon.getAddonInfo('profile').decode('utf-8'))
 cacheDir = os.path.join(profile, 'cachedir')
 headers=dict({'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; rv:32.0) Gecko/20100101 Firefox/32.0'})

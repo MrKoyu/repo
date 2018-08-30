@@ -1,0 +1,365 @@
+# Addon Name: OKA
+# Addon id: plugin.video.oka
+# Addon Provider: OKA BYB 
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.oka\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+
+
+msgctxt "#30001"
+msgid "Full Addon Search"
+msgstr "Full Addon Search"
+
+msgctxt "#30002"
+msgid "UserName"
+msgstr "UserName"
+
+msgctxt "#30003"
+msgid "Password"
+msgstr "Password"
+
+msgctxt "#30004"
+msgid "Enable"
+msgstr "Enable"
+
+msgctxt "#30006"
+msgid "Username and Passwords"
+msgstr ""
+
+msgctxt "#30005"
+msgid "General"
+msgstr "General"
+
+msgctxt "#30007"
+msgid ""DeBug Mode""
+msgstr ""
+
+msgctxt "#30008"
+msgid "Resolver  of urls"
+msgstr ""
+
+msgctxt "#30009"
+msgid "Select which Resolver to use"
+msgstr ""
+
+msgctxt "#30010"
+msgid "Use Icon as Fanart"
+msgstr ""
+
+msgctxt "#30011"
+msgid "Browse XML DataBase"
+msgstr ""
+
+msgctxt "#30012"
+msgid "Browse Community"
+msgstr ""
+
+msgctxt "#30013"
+msgid "Pulsar"
+msgstr ""
+
+msgctxt "#30014"
+msgid "MetaData API Keys and settings"
+msgstr ""
+
+msgctxt "#30015"
+msgid "TMDB API Key"
+msgstr ""
+
+msgctxt "#30016"
+msgid "Use my TMDB Data"
+msgstr ""
+
+msgctxt "#30017"
+msgid "Use Season and Episode number in tv show title"
+msgstr ""
+
+msgctxt "#30018"
+msgid "API Key"
+msgstr ""
+
+msgctxt "#30019"
+msgid "The TV DB API Key"
+msgstr ""
+
+msgctxt "#30020"
+msgid "YouTube"
+msgstr ""
+
+msgctxt "#30021"
+msgid "Search YouTube"
+msgstr ""
+
+msgctxt "#30022"
+msgid "Long video's in YouTube Search"
+msgstr ""
+
+msgctxt "#30023"
+msgid "History"
+msgstr ""
+
+msgctxt "#30024"
+msgid "Show search history in menu"
+msgstr ""
+
+msgctxt "#30025"
+msgid "Clear Search History"
+msgstr ""
+
+msgctxt "#30026"
+msgid "DailyMotion"
+msgstr ""
+
+msgctxt "#30027"
+msgid "Search DailyMotion"
+msgstr ""
+
+msgctxt "#30028"
+msgid "Family Filter"
+msgstr ""
+
+msgctxt "#30029"
+msgid "Podcast"
+msgstr ""
+
+msgctxt "#30030"
+msgid "Limit how many podcasts returned"
+msgstr ""
+
+msgctxt "#30031"
+msgid "Max Length of Podcast List"
+msgstr ""
+
+msgctxt "#30032"
+msgid "UniScraper"
+msgstr ""
+
+msgctxt "#30033"
+msgid "Output list as a Dialog Select GUI"
+msgstr ""
+
+msgctxt "#30034"
+msgid "Developer mode"
+msgstr ""
+
+msgctxt "#30035"
+msgid "Premiumize"
+msgstr ""
+
+msgctxt "#30036"
+msgid "API key is missing do you wish to enter in settings?"
+msgstr ""
+
+msgctxt "#30037"
+msgid "We failed to reach a server. -  Trying BackUp Server"
+msgstr ""
+
+msgctxt "#30038"
+msgid "Do You wish to continue in base mode?"
+msgstr ""
+
+msgctxt "#30039"
+msgid "Failed to reach server"
+msgstr ""
+
+msgctxt "#30040"
+msgid "Search"
+msgstr ""
+
+msgctxt "#30041"
+msgid "Tools and Settings"
+msgstr ""
+
+
+msgctxt "#30042"
+msgid "Favorites"
+msgstr ""
+
+msgctxt "#30043"
+msgid "XML Database"
+msgstr ""
+
+msgctxt "#30044"
+msgid "Community Files"
+msgstr ""
+
+msgctxt "#30045"
+msgid "Search History"
+msgstr ""
+
+msgctxt "#30046"
+msgid "Search: Youtube"
+msgstr ""
+
+msgctxt "#30047"
+msgid "Search: dailymotion"
+msgstr ""
+
+msgctxt "#30048"
+msgid "Pulsar:IMDB"
+msgstr ""
+
+msgctxt "#30049"
+msgid "My TMDB Data"
+msgstr ""
+
+msgctxt "#30050"
+msgid "Videos"
+msgstr ""
+
+msgctxt "#30051"
+msgid "PlayLists"
+msgstr ""
+
+msgctxt "#30052"
+msgid "Search this Channel"
+msgstr ""
+
+msgctxt "#30053"
+msgid "What would you like to search for?"
+msgstr ""
+
+msgctxt "#30054"
+msgid "Search TV Shows"
+msgstr ""
+
+msgctxt "#30055"
+msgid "Search Movies"
+msgstr ""
+
+msgctxt "#30056"
+msgid "Search Addon"
+msgstr ""
+
+msgctxt "#30057"
+msgid "Enter Name of TV show"
+msgstr ""
+
+msgctxt "#30058"
+msgid "Enter Name of Movie"
+msgstr ""
+
+msgctxt "#30059"
+msgid "Open settings"
+msgstr ""
+
+msgctxt "#30060"
+msgid "Delete Cookies"
+msgstr ""
+
+msgctxt "#30061"
+msgid "OpenSettings of Dependencies"
+msgstr ""
+
+msgctxt "#30062"
+msgid "Deleting Cookies"
+msgstr ""
+
+msgctxt "#30063"
+msgid "Searching Cookies in "
+msgstr ""
+
+msgctxt "#30064"
+msgid "Process Complete"
+msgstr ""
+
+msgctxt "#30065"
+msgid "Files deleted"
+msgstr ""
+
+msgctxt "#30066"
+msgid "Removing"
+msgstr ""
+
+msgctxt "#30067"
+msgid "Cookie file"
+msgstr ""
+
+msgctxt "#30068"
+msgid "Open settings for addon"
+msgstr ""
+
+msgctxt "#30069"
+msgid "Clear all Cookies from Cookie cache"
+msgstr ""
+
+msgctxt "#30070"
+msgid "Open settings of all dependencies required by this addon"
+msgstr ""
+
+msgctxt "#30071"
+msgid "No Files to delete"
+msgstr ""
+
+msgctxt "#30072"
+msgid "The Cookie Jar is empty"
+msgstr ""
+
+msgctxt "#30073"
+msgid "Open settings for"
+msgstr ""
+
+msgctxt "#30074"
+msgid "Searching Please wait"
+msgstr ""
+
+msgctxt "#30075"
+msgid "Search Addon for TV Shows"
+msgstr ""
+
+msgctxt "#30076"
+msgid "Search Addon for Movies"
+msgstr ""
+
+msgctxt "#30077"
+msgid "Search Addon for cotent"
+msgstr ""
+
+msgctxt "#30078"
+msgid "Test Mode"
+msgstr ""
+
+msgctxt "#30079"
+msgid "Kodi Log File"
+msgstr ""
+
+msgctxt "#30080"
+msgid "Clear Cache"
+msgstr ""
+
+msgctxt "#30081"
+msgid "Pairing Tool"
+msgstr ""
+
+msgctxt "#30082"
+msgid "Download Currently Playing"
+msgstr ""
+
+msgctxt "#30083"
+msgid "Passcode"
+msgstr ""
+
+msgctxt "#30084"
+msgid "PassCode for Restricted area"
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""

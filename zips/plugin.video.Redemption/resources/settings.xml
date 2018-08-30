@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="30005">
+		<setting label="30001" type="lsep"/>
+		<setting id="searchALL" type="bool" label="30004" default="true" visible="true"/>
+		<setting type="sep"/>
+		<setting label="30007" type="lsep"/>
+		<setting id="debug" type="bool" label="30004" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="30008" type="lsep"/>
+		<setting id="resolverURL" type="select" label="30009" values="resolveurl|urlresolver" default="resolveurl" />
+		<setting type="sep"/>
+		<setting label="30010" type="lsep"/>
+		<setting id="use_thumb" type="bool" label="30004" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="30011" type="lsep"/>
+		<setting id="browse_xml_database" type="bool" label="30004" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="30012" type="lsep"/>
+		<setting id="browse_community" type="bool" label="30004" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="30013" type="lsep"/>
+		<setting id="PulsarM" type="bool" label="30004" default="false" visible="true"/>
+	</category>
+	<category label="30014">
+		<setting label="30015" type="lsep"/>
+		<setting id="tmdb_key" type="text" label="30018" default="" option="hidden"/>
+		<setting type="sep"/>
+		<setting label="30016" type="lsep"/>
+		<setting id="tmdb_use_own_data" type="bool" default="false"/>
+		<setting type="sep"/>
+		<setting label="30017" type="lsep"/>
+		<setting id="season_episode_number" label="30004" type="bool" default="true"/>
+		<setting type="sep"/>
+		<setting label="30019" type="lsep"/>
+		<setting id="tvdb_key" type="text" label="30018" default="" option="hidden"/>
+	</category>
+	<category label="30020">
+		<setting label = "30021" type="lsep"/>
+		<setting id="searchyt" type="bool" label="30004" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="30022" type="lsep"/>
+		<setting id="searchlongvideos" type="bool" label="30004" default="false" visible="true"/>
+	</category>
+	<category label="30023">
+		<setting label="30024" type="lsep"/>
+		<setting id="searchhistorymenu" type="bool" label="30004" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="30025" type="lsep"/>
+		<setting id="clearseachhistory" type="bool" label="30004" default="false" visible="true"/>
+	</category>
+	<category label="30026">
+		<setting label="30027" type="lsep"/>
+		<setting id="searchDM" type="bool" label="30004" default="false" visible="true"/>
+		<setting type="sep"/>
+		<setting label="DailyMotion time not really sure yet" type="lsep"/>
+		<setting id="dmotion" type="slider" label="Days" default="10" range="0,1,30" option="int"/>
+		<setting type="sep"/>
+		<setting label="30028" type="lsep"/>
+		<setting id="familyFilter" type="bool" label="30004" default="false" visible="true"/>
+	</category>
+	<category label="30029">
+		<setting label="30030" type="lsep"/>
+		<setting id="podcastreturnlimit" type="bool" label="30004" default="false"/>
+		<setting type="sep"/>
+		<setting label="30031" type="lsep"/>
+		<setting id="podcastlistlenght" type="slider" label="List Length" default="0" range="0,1,100" option="int" enable="eq(-3,true)"/>
+	</category>
+	<category label="30032">
+		<setting label="30033" type="lsep"/>
+		<setting id="uniscrapedialog" type="bool" label="30004" default="false"/>
+	</category>
+	<category label="30006">
+		<setting label="30035" type="lsep"/>
+		<setting id="premiumize_user" type="text" label="30002" default=""/>
+		<setting id="premiumize_password" type="text" label="30003" default="" option="hidden"/>
+		<setting type="sep"/>
+		<setting label="30084" type="lsep"/>
+		<setting id="passcodetoenter" type='number' label="30083" default="0000" option="hidden"/>
+		<setting type="sep"/>
+	</category>
+	<category label="30034">
+		<setting label="30034" type="lsep"/>
+		<setting id="devmode" type="bool" label="30004" default="false"/>
+	</category>
+</settings>
+ 
