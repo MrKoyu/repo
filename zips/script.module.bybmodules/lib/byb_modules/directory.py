@@ -2,9 +2,12 @@ import koding
 import os
 import sys
 import urllib
+import xbmc
+import xbmcaddon
 import xbmcgui
 import xbmcplugin
 import xbmc_common
+
 
 def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False):
 	#use this method for folder
@@ -35,13 +38,18 @@ def addDir(name,url,mode,iconimage,fanart,description,genre,date,credits,showcon
             liz.addContextMenuItems(contextMenu)
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
         
-def addDir_file(name,url,mode,iconimage,fanart,description,genre,date,credits):
+def addDir_file(name,url,mode,iconimage,fanart,description,genre,date,credits,showcontext=False,contextmode=0):
 	#use this method for file
     u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&fanart="+urllib.quote_plus(fanart)+"&description="+urllib.quote_plus(description)
     ok=True
     liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
     liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description, "Genre": genre, "dateadded": date, "credits": credits })
     liz.setProperty("Fanart_Image", fanart)
+    if showcontext:
+        contextMenu = []
+        if showcontext == 'pair':
+            contextMenu.append(('Pairing Tool','XBMC.RunPlugin({}?mode={}&name={})'.format(sys.argv[0],contextmode,urllib.quote_plus(name))))
+        liz.addContextMenuItems(contextMenu)
     ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
     return ok
 

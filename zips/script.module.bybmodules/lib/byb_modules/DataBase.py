@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 '''
     Copyright (C) 2018 BYB
 
@@ -59,7 +60,7 @@ def count_item_DB(file,table,row,match,operator=None):
 	count = count_item_DB(file=filename,table='sixteen_seventeen',row=['Comp','awayteam'],match=("premier league","tottenham"),operator='AND')
 
 	              ######single row match example##### 
-	count = count_item_DB(file=filename,table='sixteen_seventeen',row=['Comp','awayteam'],match=("premier league","tottenham"),operator='AND')''' 
+	count = count_item_DB(file=filename,table='sixteen_seventeen',row='Comp',match=("premier league")''' 
 
 	conn = sqlite3.connect(file)
 	cursor = conn.cursor()
@@ -67,17 +68,17 @@ def count_item_DB(file,table,row,match,operator=None):
 		match = (match,)
 		cursor.execute("SELECT count(*) FROM %s WHERE %s LIKE ?"%(table,row),match)
 	else:
-		sql = "SELECT count(*) FROM %s WHERE"%table
+		sql = "SELECT count(*) FROM {} WHERE".format(table)
 		for Row in row:
 			if not row.index(Row) == len(row)-1:
-				sql += " lower(%s) LIKE ? %s" %(Row,operator)
+				sql += " lower({}) LIKE '%{}%'{}".format(Row,match[row.index(Row)],operator)
 			if row.index(Row) == len(row)-1:
-				sql +=" lower(%s) LIKE ?" %Row
-		cursor.execute(sql,match)
-		koding.dolog(sql,line_info=True)
+				sql +=" lower({}) LIKE '%{}%' ".format(Row,match[row.index(Row)])
+		cursor.execute(sql)
 	count = cursor.fetchone()
 	count = count[0]
 	koding.dolog(count,line_info=True)
+	sql = ''
 	return count
 
 def del_all_data_DB(filename):
@@ -144,13 +145,14 @@ def update_item_DB(file,table,row_to_update,coloum_to_update,coloum_check,update
 	conn.commit() 
 
 def write_to_DB(file,table,headers,items):
+	'''Header is passed as a string 'header1,header2,header3' items is passed as a tuple (item1,item2,item3)''' 
 	if not '?' in headers:
 		a = headers.split(',')
 		for x in a:
 			headers = headers.replace((x),'?')
 	conn = sqlite3.connect(file)
 	cursor = conn.cursor()    
-	cursor.execute("INSERT INTO "+table+" VALUES ("+headers+")",items)
+	cursor.execute("INSERT INTO {} VALUES ({})".format(table,headers),items)
 	conn.commit()
 
 

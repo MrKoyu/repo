@@ -71,6 +71,18 @@ def tmdb_tv_show_get_details(ID,tmdb_apikey):
         genre_list.append(Genre)
     Details_list.append({'ID':ID,'title':title,'overview':overview,'poster_path':poster_path,'backdrop_path':backdrop_path,'Genres':genre_list})
 
+def tmdb_tv_show_title(ID,tmdb_apikey):
+    name = ''
+    url = 'https://api.themoviedb.org/3/tv/{}?api_key={}'.format(ID,tmdb_apikey)
+    r = Get(url)
+    data = r.json()
+    name = data.get('name','')
+    if name == '':
+        name = data.get('original_name','')
+    return name
+
+
+
 def tmdb_tv_show_get_episode_details(ID,tmdb_apikey,season,episode):
     url = 'https://api.themoviedb.org/3/tv/'+str(ID)+'/season/'+str(season)+'/episode/'+str(episode)+'?api_key='+str(tmdb_apikey)
     artwork_url = 'https://image.tmdb.org/t/p/original'
@@ -113,19 +125,22 @@ def tmdb_tv_show_get_seasons(ID,tmdb_apikey):
         poster_path = season.get('poster_path',default)
         poster_path = artwork_url %(poster_path)
         season_id = season.get('id',default)
+        episode_count = season.get('episode_count','')
+        name = season.get('name','')
+        overview = season.get('overview','')
         if season_number >= 1:
-            Details_list.append({'ID':ID,'season_number':season_number,'poster_path':poster_path})
+            Details_list.append({'ID':ID,'season_number':season_number,'poster_path':poster_path,'episode_count':episode_count,'overview':overview,'name':name})
 
 def tmdb_tv_show_get_season_episodes(ID,season_number,tmdb_apikey):
     url = 'https://api.themoviedb.org/3/tv/%s/season/%s?api_key=%s' %(ID,season_number,tmdb_apikey)
-    artwork_url = 'https://image.tmdb.org/t/p/original%s'
+    artwork_url = 'https://image.tmdb.org/t/p/original{}'
     default = ''
     r = requests.get(url)
     config = r.json()
     #print config
     episodes = config.get('episodes',default)
     for episode in episodes:
-        still_path = episode.get('still_path',default)
+        still_path = artwork_url.format(episode.get('still_path',default)) 
         name = episode.get('name',default)
         air_date = episode.get('air_date',default)
         overview = episode.get('overview',default)
@@ -286,12 +301,87 @@ def tmdb_search(tmdb_apikey,search_type,search_term,total_pages='all'):
             Details_list.append({'title':title ,'ID':str(ID),'overview':overview,'poster_path':poster_path,'backdrop_path':backdrop_path,'imdb_id':imdb_id,'release_date':release_date,'Genres':genre_list})
 
 
+def tmdb_list_get_items(tmdb_apikey,listid):
+    url = 'https://api.themoviedb.org/3/list/{}?api_key={}'.format(listid,tmdb_apikey)
+    imgurl = 'https://image.tmdb.org/t/p/original'
+    r = Get(url)
+    list_data = r.json()
+    items = list_data.get('items','')
+    for item in items:
+        title = item.get('name','') if len(item.get('name','')) > 1 else item.get('title','')
+        Details_list.append({'title':title ,'ID':item.get('id',''),'overview':item.get('overview',''),'poster_path':'{}{}'.format(imgurl,item.get('poster_path','')),'backdrop_path':'{}{}'.format(imgurl,item.get('backdrop_path','')),'release_date':item.get('release_date',''),'Genres':item.get('genres',''),'mediatype':item.get('media_type','')})
 
+def tmdb_company_get_results(tmdb_apikey,company_id,detail_type,pageno=1):
+    if detail_type.endswith('s'):
+        detail_type = detail_type.rstrip('s')
+    base_url = 'https://api.themoviedb.org/3/discover/'
+    if detail_type == 'movie':
+        url = '{}{}?api_key={}&page={}&with_companies={}'.format(base_url,detail_type,tmdb_apikey,pageno,company_id)
+    elif detail_type == 'tv':
+        url = '{}{}?api_key={}&page={}&with_companies={}'.format(base_url,detail_type,tmdb_apikey,pageno,company_id)
+    imgurl = 'https://image.tmdb.org/t/p/original'
+    koding.dolog(url,line_info=True)
+    r = Get(url)
+    list_data = r.json()
+    items = list_data.get('results','')
+    for item in items:
+        title = item.get('name','') if len(item.get('name','')) > 1 else item.get('title','')
+        Details_list.append({'title':title ,'ID':item.get('id',''),'overview':item.get('overview',''),'poster_path':'{}{}'.format(imgurl,item.get('poster_path','')),'backdrop_path':'{}{}'.format(imgurl,item.get('backdrop_path','')),'release_date':item.get('release_date',''),'Genres':item.get('genres',''),'mediatype':item.get('media_type','')}) 
 
+def tmdb_networks_get_results(tmdb_apikey,network_id,pageno=1):
+    url = 'https://api.themoviedb.org/3/discover/tv/?api_key={}&page={}&with_networks={}'.format(tmdb_apikey,pageno,network_id)
+    r = Get(url)
+    list_data = r.json()
+    items = list_data.get('results','')
+    for item in items:
+        title = item.get('name','') if len(item.get('name','')) > 1 else item.get('title','')
+        Details_list.append({'title':title ,'ID':item.get('id',''),'overview':item.get('overview',''),'poster_path':'{}{}'.format(artwork_url,item.get('poster_path','')),'backdrop_path':'{}{}'.format(artwork_url,item.get('backdrop_path','')),'release_date':item.get('release_date',''),'Genres':item.get('genres',''),'mediatype':item.get('media_type','')})
 
+def tmdb_movietv_get_lists(tmdb_apikey,_type,list_type,pageno=1):
+    url = 'https://api.themoviedb.org/3/{}/{}?api_key={}&page={}'.format(_type.lower(),list_type.lower(),tmdb_apikey,pageno)
+    imgurl = 'https://image.tmdb.org/t/p/original'
+    r = Get(url)
+    list_data = r.json()
+    items = list_data.get('results','')
+    for item in items:
+        title = item.get('name','') if len(item.get('name','')) > 1 else item.get('title','')
+        Details_list.append({'title':title ,'ID':item.get('id',''),'overview':item.get('overview',''),'poster_path':'{}{}'.format(imgurl,item.get('poster_path','')),'backdrop_path':'{}{}'.format(imgurl,item.get('backdrop_path','')),'release_date':item.get('release_date',''),'Genres':item.get('genres',''),'mediatype':item.get('media_type','')}) 
 
+def tmdb_movietv_get_lists_page_counter(tmdb_apikey,_type,list_type,pageno=1):
+    url = 'https://api.themoviedb.org/3/{}/{}?api_key={}&page={}'.format(_type.lower(),list_type.lower(),tmdb_apikey,pageno)
+    r = Get(url)
+    list_data = r.json()
+    page = list_data.get('page','')
+    page_total = list_data.get('total_pages','')
+    return page,page_total 
 
+def tmdb_company_get_results_page_counter(tmdb_apikey,company_id,detail_type,pageno=1):
+    if detail_type.endswith('s'):
+        detail_type = detail_type.rstrip('s')
+    base_url = 'https://api.themoviedb.org/3/discover/'
+    if detail_type == 'movie':
+        url = '{}{}?api_key={}&page={}&with_companies={}'.format(base_url,detail_type,tmdb_apikey,pageno,company_id)
+    elif detail_type == 'tv':
+        url = '{}{}?api_key={}&page={}&with_companies={}'.format(base_url,detail_type,tmdb_apikey,pageno,company_id)
+    imgurl = 'https://image.tmdb.org/t/p/original'
+    r = Get(url)
+    list_data = r.json()
+    page = list_data.get('page','')
+    page_total = list_data.get('total_pages','')
+    return page,page_total
 
-
+def tmdb_networks_get_results_page_counter(tmdb_apikey,network_id,pageno=1):
+    url = 'https://api.themoviedb.org/3/discover/tv/?api_key={}&page={}&with_networks={}'.format(tmdb_apikey,pageno,network_id)
+    r = Get(url)
+    list_data = r.json()
+    page = list_data.get('page','')
+    page_total = list_data.get('total_pages','')
+    return page,page_total
 
     
+def tmdb_tv_total_seasons(tmdb_apikey,ID):
+    url='https://api.themoviedb.org/3/tv/{}?api_key={}'.format(ID,tmdb_apikey)
+    r = Get(url)
+    list_data = r.json()
+    seasons = list_data.get('number_of_seasons')
+    return seasons 

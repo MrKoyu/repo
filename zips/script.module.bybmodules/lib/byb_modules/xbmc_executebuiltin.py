@@ -14,14 +14,15 @@ def Notify(title='',message='',times='',icon=''):
 		times = '10000'
 	if icon == '':
 		icon = Addon_Icon
-	Notification = 'XBMC.Notification(%s,%s,%s,%s)'%(title,message,times,icon)
+	Notification = 'XBMC.Notification({},{},{},{})'.format(title,message,times,icon)
 	xbmc.executebuiltin(str(Notification))
 
+def set_sort_method(sortid=0):
+	xbmc.executebuiltin('Container.SetSortMethod({})'.format(sortid))
 
-
-def SetView(view_name):
-	#not finished yet 
-	skin_used = xbmc.getSkinDir()
+def set_sort_method_rev(sortid=0):
+	xbmc.executebuiltin('Container.SetSortMethod({})'.format(sortid))
+	xbmc.executebuiltin('Container.SetSortDirection(Descending)')
 
 def sort_date_reverse():
 	xbmc.executebuiltin('Container.SetSortMethod(2)')
