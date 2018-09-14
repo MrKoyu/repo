@@ -1,3 +1,8 @@
+[B]Version 4.1[/B]
+- Added Nascar and Formula 1 categories and icons
+- Fixed 24/7 Shows 
+- Added Latin channels and Parental Control PG Shows to 24/7 category
+
 [B]Version 4.0[/B]
 - Added new categories and icons
 - Fixed small bugs
