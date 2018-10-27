@@ -337,13 +337,13 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.0.3" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.0.4" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="script.module.numbersbynumbers" />
 		<import addon="script.numbersbynumbers.artwork" />
 		<import addon="script.numbersbynumbers.metadata" />
-		<import addon="script.module.urlresolver" version="5.0.20"/>
+		<import addon="script.module.urlresolver" version="5.0.24"/>
 		<import addon="script.module.requests" />
 		<import addon="script.module.metahandler" />
                 <import addon="plugin.video.youtube"/>
@@ -364,7 +364,7 @@
 			<fanart>fanart.jpg</fanart>
 		</assets>
 		<news>
-V2.0.0.3
+V2.0.0.4
 - The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.
         </news>
 	</extension>
@@ -1072,7 +1072,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.035" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.037" provider-name="Brackets">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 	</requires>
