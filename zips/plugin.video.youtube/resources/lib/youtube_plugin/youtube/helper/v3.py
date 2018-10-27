@@ -15,6 +15,8 @@ def _process_list_response(provider, context, json_data):
 
     result = []
 
+    is_upcoming = False
+
     thumb_size = context.get_settings().use_thumbnail_size()
     yt_items = json_data.get('items', [])
     if len(yt_items) == 0:
@@ -29,7 +31,7 @@ def _process_list_response(provider, context, json_data):
         if yt_kind == u'youtube#video':
             video_id = yt_item['id']
             snippet = yt_item['snippet']
-            title = snippet['title']
+            title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
             image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
             item_params = {'video_id': video_id}
             if incognito:
@@ -38,6 +40,7 @@ def _process_list_response(provider, context, json_data):
                 item_params.update({'addon_id': addon_id})
             item_uri = context.create_uri(['play'], item_params)
             video_item = items.VideoItem(title, item_uri, image=image)
+            video_item.video_id = video_id
             if incognito:
                 video_item.set_play_count(0)
             video_item.set_fanart(provider.get_fanart(context))
@@ -46,7 +49,7 @@ def _process_list_response(provider, context, json_data):
         elif yt_kind == u'youtube#channel':
             channel_id = yt_item['id']
             snippet = yt_item['snippet']
-            title = snippet['title']
+            title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
             image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
             item_params = {}
             if incognito:
@@ -67,7 +70,7 @@ def _process_list_response(provider, context, json_data):
         elif yt_kind == u'youtube#guideCategory':
             guide_id = yt_item['id']
             snippet = yt_item['snippet']
-            title = snippet['title']
+            title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
             item_params = {'guide_id': guide_id}
             if incognito:
                 item_params.update({'incognito': incognito})
@@ -79,6 +82,7 @@ def _process_list_response(provider, context, json_data):
             result.append(guide_item)
         elif yt_kind == u'youtube#subscription':
             snippet = yt_item['snippet']
+            title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
             image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
             channel_id = snippet['resourceId']['channelId']
             item_params = {}
@@ -87,7 +91,7 @@ def _process_list_response(provider, context, json_data):
             if addon_id:
                 item_params.update({'addon_id': addon_id})
             item_uri = context.create_uri(['channel', channel_id], item_params)
-            channel_item = items.DirectoryItem(snippet['title'], item_uri, image=image)
+            channel_item = items.DirectoryItem(title, item_uri, image=image)
             channel_item.set_fanart(provider.get_fanart(context))
 
             # map channel id with subscription id - we need it for the unsubscription
@@ -98,7 +102,7 @@ def _process_list_response(provider, context, json_data):
         elif yt_kind == u'youtube#playlist':
             playlist_id = yt_item['id']
             snippet = yt_item['snippet']
-            title = snippet['title']
+            title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
             image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
 
             channel_id = snippet['channelId']
@@ -123,7 +127,7 @@ def _process_list_response(provider, context, json_data):
             # store the id of the playlistItem - for deleting this item we need this item
             playlist_item_id_dict[video_id] = yt_item['id']
 
-            title = snippet['title']
+            title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
             image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
             item_params = {'video_id': video_id}
             if incognito:
@@ -132,6 +136,7 @@ def _process_list_response(provider, context, json_data):
                 item_params.update({'addon_id': addon_id})
             item_uri = context.create_uri(['play'], item_params)
             video_item = items.VideoItem(title, item_uri, image=image)
+            video_item.video_id = video_id
             if incognito:
                 video_item.set_play_count(0)
             video_item.set_fanart(provider.get_fanart(context))
@@ -152,7 +157,7 @@ def _process_list_response(provider, context, json_data):
             else:
                 continue
 
-            title = snippet['title']
+            title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
             image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
             item_params = {'video_id': video_id}
             if incognito:
@@ -161,6 +166,7 @@ def _process_list_response(provider, context, json_data):
                 item_params.update({'addon_id': addon_id})
             item_uri = context.create_uri(['play'], item_params)
             video_item = items.VideoItem(title, item_uri, image=image)
+            video_item.video_id = video_id
             if incognito:
                 video_item.set_play_count(0)
             video_item.set_fanart(provider.get_fanart(context))
@@ -173,7 +179,8 @@ def _process_list_response(provider, context, json_data):
             if yt_kind == 'youtube#video':
                 video_id = yt_item['id']['videoId']
                 snippet = yt_item['snippet']
-                title = snippet['title']
+                is_upcoming = snippet.get('liveBroadcastContent', '').lower() == 'upcoming'
+                title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
                 image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
                 item_params = {'video_id': video_id}
                 if incognito:
@@ -182,6 +189,7 @@ def _process_list_response(provider, context, json_data):
                     item_params.update({'addon_id': addon_id})
                 item_uri = context.create_uri(['play'], item_params)
                 video_item = items.VideoItem(title, item_uri, image=image)
+                video_item.video_id = video_id
                 if incognito:
                     video_item.set_play_count(0)
                 video_item.set_fanart(provider.get_fanart(context))
@@ -191,7 +199,7 @@ def _process_list_response(provider, context, json_data):
             elif yt_kind == 'youtube#playlist':
                 playlist_id = yt_item['id']['playlistId']
                 snippet = yt_item['snippet']
-                title = snippet['title']
+                title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
                 image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
 
                 channel_id = snippet['channelId']
@@ -212,7 +220,7 @@ def _process_list_response(provider, context, json_data):
             elif yt_kind == 'youtube#channel':
                 channel_id = yt_item['id']['channelId']
                 snippet = yt_item['snippet']
-                title = snippet['title']
+                title = snippet.get('title', context.localize(provider.LOCAL_MAP['youtube.untitled']))
                 image = utils.get_thumbnail(thumb_size, snippet.get('thumbnails', {}))
                 item_params = {}
                 if incognito:
@@ -229,12 +237,16 @@ def _process_list_response(provider, context, json_data):
         else:
             raise kodion.KodionException("Unknown kind '%s'" % yt_kind)
 
+    use_play_data = not incognito and context.get_settings().use_playback_history()
+
     # this will also update the channel_id_dict with the correct channel id for each video.
     channel_items_dict = {}
-    utils.update_video_infos(provider, context, video_id_dict, playlist_item_id_dict, channel_items_dict)
+    utils.update_video_infos(provider, context, video_id_dict, playlist_item_id_dict, channel_items_dict,
+                             live_details=is_upcoming, use_play_data=use_play_data)
     utils.update_playlist_infos(provider, context, playlist_id_dict, channel_items_dict)
     utils.update_channel_infos(provider, context, channel_id_dict, subscription_id_dict, channel_items_dict)
-    utils.update_fanarts(provider, context, channel_items_dict)
+    if video_id_dict or playlist_id_dict:
+        utils.update_fanarts(provider, context, channel_items_dict)
     return result
 
 
@@ -287,14 +299,22 @@ def response_to_items(provider, context, json_data, sort=None, reverse_sort=Fals
 
 def handle_error(provider, context, json_data):
     if json_data and 'error' in json_data:
-        message = json_data['error'].get('message', '')
-        reason = json_data['error']['errors'][0].get('reason', '')
-        title = '%s: %s' % (context.get_name(), reason)
+        open_settings = False
         message_timeout = 5000
+        message = kodion.utils.strip_html_from_text(json_data['error'].get('message', ''))
+        log_message = kodion.utils.strip_html_from_text(json_data['error'].get('message', ''))
+        reason = json_data['error']['errors'][0].get('reason', '')
+        if reason == 'keyInvalid' and message == 'Bad Request':
+            message = context.localize(provider.LOCAL_MAP['youtube.api.key.incorrect'])
+            message_timeout = 7000
+            open_settings = True
+        title = '%s: %s' % (context.get_name(), reason)
         if reason == 'quotaExceeded' or reason == 'dailyLimitExceeded':
             message_timeout = 7000
         context.get_ui().show_notification(message, title, time_milliseconds=message_timeout)
-        context.log_error('Error reason: |%s| with message: |%s|' % (reason, message))
+        context.log_error('Error reason: |%s| with message: |%s|' % (reason, log_message))
+        if open_settings:
+            context.get_ui().open_settings()
         return False
 
     return True

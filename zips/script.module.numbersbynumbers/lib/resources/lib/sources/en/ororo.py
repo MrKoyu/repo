@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ class source:
         self.password = control.setting('ororo.pass')
         self.headers = {
         'Authorization': 'Basic %s' % base64.b64encode('%s:%s' % (self.user, self.password)),
-        'User-Agent': 'Numbers for Kodi'
+        'User-Agent': 'Placenta for Kodi'
         }
 
 

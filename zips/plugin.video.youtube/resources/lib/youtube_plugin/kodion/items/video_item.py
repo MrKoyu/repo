@@ -11,6 +11,8 @@ class VideoItem(BaseItem):
         BaseItem.__init__(self, name, uri, image, fanart)
         self._genre = None
         self._aired = None
+        self._aired_utc = None
+        self._scheduled_start_utc = None
         self._duration = None
         self._director = None
         self._premiered = None
@@ -28,8 +30,14 @@ class VideoItem(BaseItem):
         self._play_count = None
         self._uses_dash = None
         self._mediatype = None
+        self._last_played = None
+        self._start_percent = None
+        self._start_time = None
+        self._live = False
         self.subtitles = None
         self._headers = None
+        self.license_key = None
+        self._video_id = None
 
     def set_play_count(self, play_count):
         self._play_count = int(play_count)
@@ -150,8 +158,28 @@ class VideoItem(BaseItem):
         date = datetime.date(year, month, day)
         self._aired = date.isoformat()
 
+    def set_aired_utc(self, dt):
+        self._aired_utc = dt
+
+    def get_aired_utc(self):
+        return self._aired_utc
+
     def set_aired_from_datetime(self, date_time):
         self.set_aired(year=date_time.year, month=date_time.month, day=date_time.day)
+
+    def set_scheduled_start_utc(self, dt):
+        self._scheduled_start_utc = dt
+
+    def get_scheduled_start_utc(self):
+        return self._scheduled_start_utc
+
+    @property
+    def live(self):
+        return self._live
+
+    @live.setter
+    def live(self, value):
+        self._live = value
 
     def get_aired(self):
         return self._aired
@@ -195,3 +223,35 @@ class VideoItem(BaseItem):
 
     def get_headers(self):
         return self._headers
+
+    def set_license_key(self, url):
+        self.license_key = url
+
+    def get_license_key(self):
+        return self.license_key
+
+    def set_last_played(self, last_played):
+        self._last_played = last_played
+
+    def get_last_played(self):
+        return self._last_played
+
+    def set_start_percent(self, start_percent):
+        self._start_percent = start_percent
+
+    def get_start_percent(self):
+        return self._start_percent
+
+    def set_start_time(self, start_time):
+        self._start_time = start_time
+
+    def get_start_time(self):
+        return self._start_time
+
+    @property
+    def video_id(self):
+        return self._video_id
+
+    @video_id.setter
+    def video_id(self, value):
+        self._video_id = value

@@ -1,3 +1,88 @@
+[B]Version 5.0.24 (October 22, 2018)[/B]
+- Code Base Changes:
+    - jsunpack
+- Resolvers Added:
+    - vkprime
+    - myupload
+    - streamcloud
+    - flix555
+    - xclip
+- Resolvers Fixed/Updated:
+    - rapidvideo.com
+    - tunepk
+    - cda
+    - videozoo
+    - gounlimited
+    - tvlogy
+- Resolvers Removed
+    - None
+- Languages Added/Updated
+    - None
+
+[B]Version 5.0.23 (September 20, 2018)[/B]
+- Code Base Changes:
+    - None
+- Resolvers Added:
+    - None
+- Resolvers Fixed/Updated:
+    - rapidvideo.com
+    - vidzi
+    - powvideo
+    - nxload
+    - googlevideo
+    - estream
+- Resolvers Removed
+    - None
+- Languages Added/Updated
+    - None
+
+[B]Version 5.0.22 (August 21, 2018)[/B]
+- Code Base Changes:
+    - jsunpack
+    - common
+- Resolvers Added:
+    - unitplay
+    - tocloud
+    - videozupload
+- Resolvers Fixed/Updated:
+	- anyfiles
+	- daclips
+	- ecostream
+	- fileweed
+	- hugefiles
+	- movpod
+	- mp4stream
+	- openload
+    - powvideo
+    - putvid
+    - rapidvideocom
+    - teramixer
+    - uptobox
+    - vk
+- Resolvers Removed
+    - rapidvideo
+- Languages Added/Updated
+    - None
+
+[B]Version 5.0.21 (August 08, 2018)[/B]
+- Code Base Changes:
+    - None
+- Resolvers Added:
+    - vidorg
+    - gofile
+- Resolvers Fixed/Updated:
+    - vidup.me
+    - waaw
+    - estream
+    - streamango
+    - flashx
+    - thevideo
+	- youtube
+- Resolvers Removed
+    - None
+- Languages Added/Updated
+    - None
+
 [B]Version 5.0.20 (June 09, 2018)[/B]
 - Code Base Changes:
     - None

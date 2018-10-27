@@ -25,8 +25,8 @@ import __builtin__
 root_xml_url = "http://cellardoortv.com/kiddo/master/main.xml"  # url of the root xml file
 __builtin__.tvdb_api_key = "7E38CC315C6DBF04"  # tvdb api key
 __builtin__.tmdb_api_key = "0afc169ab40ca614af43a7b9c0a61e9b"  # tmdb api key
-__builtin__.trakt_client_id = "8c33c74e275303cad5369eb1db4bc6335dde696b80c377d31a4f6ba73c424651"  # trakt client id
-__builtin__.trakt_client_secret = "b6b18a7ed364a136ea7308032b965d4137104bd9f0a6f4fe3786b3bb7029508b"  # trakt client secret
+__builtin__.trakt_client_id = "988f3835e5410b3f5e5e90b922a8a0016ef21ec65a2fc63f68e44a6b03041fe7"  # trakt client id
+__builtin__.trakt_client_secret = "556510aeb941dbf23a2eaaa3aae089f928f0112b2a86d328190c280e3dcfd419"  # trakt client secret
 __builtin__.search_db_location = ""  # location of search db
 
 import os

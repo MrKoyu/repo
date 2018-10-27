@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
-
 
 import re,urllib,urlparse,json,random,base64
 
@@ -78,10 +77,10 @@ class source:
             if not cookie == None: headers['Cookie'] = cookie
             if not referer == None: headers['Referer'] = referer
             result = client.request(url, post=post, headers=headers, output=output, close=close)
-            print result
+            print(result)
             result = result.decode('iso-8859-1').encode('utf-8')
             result = urllib.unquote_plus(result)
-            return result
+            return(result)
         except:
             return
 
@@ -89,15 +88,14 @@ class source:
     def directdl_cache(self, url):
         try:
             url = urlparse.urljoin(base64.b64decode(self.b_link), url)
-            print url
+            print(url)
             result = self.request(url)
-            print result
+            print(result)
             result = re.compile('id=(\d+)>.+?href=(.+?)>').findall(result)
             result = [(re.sub('http.+?//.+?/','/', i[1]), 'tt' + i[0]) for i in result]
-            return result
+            return(result)
         except:
             return
-
 
     def sources(self, url, hostDict, hostprDict):
         try:
@@ -123,7 +121,7 @@ class source:
                 
                 q = urlparse.urljoin(self.base_link, q)
                 result = client.request(q)
-                print q
+                print(q)
                 result = json.loads(result)
 
                 result = result['results']
@@ -140,15 +138,15 @@ class source:
                     if not any(x == y for x in f): raise Exception()
 
                     quality = i['quality']
-                    
-                    
-                    
+
+
+
                     quality = quality.upper()
 
                     size = i['size']
                     size = float(size)/1024
                     size = '%.2f GB' % size
-   
+
                     if any(x in quality for x in ['HEVC', 'X265', 'H265']): info = '%s | HEVC' % size
                     else: info = size
 
@@ -158,7 +156,7 @@ class source:
 
                     url = i['links']
                     #for x in url.keys(): links.append({'url': url[x], 'quality': quality, 'info': info})
-                    
+
                     links = []
                     
                     for x in url.keys(): links.append({'url': url[x], 'quality': quality})

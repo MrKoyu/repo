@@ -54,10 +54,8 @@
 		<setting type="lsep" label="Logos:"/>
 		<setting id="channel.num" label="Show Channel Numbers" type="bool" default="true" />
 		<setting id="logos.enabled" label="30117" type="bool" default="true" />
-		<setting id="logos.source" label="Logo Provider" type="enum" default="0" lvalues="30143|Subscription Logos|30147" visible="eq(-1,true)"/>
+		<setting id="logos.source" label="Logo Provider" type="enum" default="0" lvalues="30143|XML Logos|30147" visible="eq(-1,true)"/>
         <setting id="logos.folder" label="30116" type="folder" visible="eq(-1,2) + eq(-2,true) " />
-		<setting id="sub.logos" label="Subsription Logo Packs" type="action" visible="eq(-2,1) + eq(-3,true) " action="RunScript($CWD/config.py,logo)" default=""/>
-		<setting id="sub.logos.url" label="Logo Packs URL" type="text" visible="false" default="" />
 
 	</category>
 	

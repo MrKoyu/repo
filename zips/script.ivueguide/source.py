@@ -425,20 +425,19 @@ class Database(object):
                 c.executemany(
                     'INSERT OR IGNORE INTO channels(id, title, logo, stream_url, source, visible, weight) VALUES(?, ?, ?, ?, ?, ?, ?)',
                     channels, )
-                temp = current_db
-                conn2 = sqlite3.connect(temp, detect_types=sqlite3.PARSE_DECLTYPES, check_same_thread=False)
-                conn2.execute('BEGIN')
-                c2 = conn2.cursor()
-                result = c2.execute('SELECT * from programs')
-                getlist = result.fetchall()
                 if progress_callback:
-                    progress_callback(35)
-                c.executemany(
-                    'INSERT OR IGNORE INTO programs(channel, title, start_date, end_date, description, categories, image_large, image_small, season, episode, is_movie, date, language, source, updates_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    getlist, )
+                    progress_callback(32)
+
+
+                #c.execute("DROP TABLE IF EXISTS programs") 
+                c.execute("ATTACH DATABASE ? AS db2", (current_db,))
+                c.execute("SELECT * FROM db2.sqlite_master WHERE type='table' AND name='programs'")
+                c.fetchone()[0]
+                c.execute("INSERT INTO programs SELECT * FROM db2.programs") 
                 if progress_callback:
                     progress_callback(99)
-                conn2.close()
+        
+
 
 
             # channels updated
@@ -1143,7 +1142,7 @@ class XMLTVSource(Source):
         self.logoSource = int(addon.getSetting('logos.source'))
 
 	LOGO_URL = addon.getSetting('logos')
-        SUB_LOGO_URL = addon.getSetting('sub.logos.url')	
+
 		
         # make sure the folder in the user's profile exists or create it!
         if not os.path.exists(XMLTVSource.PLUGIN_DATA):
@@ -1152,7 +1151,7 @@ class XMLTVSource(Source):
         if self.logoSource == XMLTVSource.LOGO_SOURCE_IVUE:
             self.logoFolder = LOGO_URL
         elif self.logoSource == XMLTVSource.LOGO_SOURCE_SUB:
-            self.logoFolder = SUB_LOGO_URL
+            self.logoFolder = None
         else:
             self.logoFolder = str(addon.getSetting('logos.folder'))
 
@@ -1383,10 +1382,19 @@ class XMLTVSource(Source):
                     logo = None
                     if logoFolder:
                         logoFile = os.path.join(logoFolder, title + '.png')
-                        if (self.logoSource == XMLTVSource.LOGO_SOURCE_IVUE) or (self.logoSource == XMLTVSource.LOGO_SOURCE_SUB):
+                        if self.logoSource == XMLTVSource.LOGO_SOURCE_IVUE:
                             logo = logoFile.replace(' ', '%20')  # needed due to fetching from a server!
                         elif xbmcvfs.exists(logoFile):
                             logo = logoFile  # local file instead of remote!
+                    else:
+                        iconElement = elem.find("icon")
+                        if iconElement is not None: 
+                            logo = iconElement.get("src")
+                        else:
+                            logoURL = ADDON.getSetting('logos')
+                            logoFile = os.path.join(logoURL, title + '.png')
+                            logo = logoFile.replace(' ', '%20')
+
                     streamElement = self.matchCustomStreamUrl(cid)#elem.find("stream")
                     streamUrl = None
                     if streamElement is not None:
@@ -1453,10 +1461,19 @@ class XMLTVSource(Source):
             logo = None
             if logoFolder:
                 logoFile = os.path.join(logoFolder, title + '.png')
-            if (self.logoSource == XMLTVSource.LOGO_SOURCE_IVUE) or (self.logoSource == XMLTVSource.LOGO_SOURCE_SUB):
-                logo = logoFile.replace(' ', '%20')  # needed due to fetching from a server!
-            elif xbmcvfs.exists(logoFile):
-                logo = logoFile  # local file instead of remote!
+                if (self.logoSource == XMLTVSource.LOGO_SOURCE_IVUE) or (self.logoSource == XMLTVSource.LOGO_SOURCE_SUB):
+                    logo = logoFile.replace(' ', '%20')  # needed due to fetching from a server!
+                elif xbmcvfs.exists(logoFile):
+                    logo = logoFile  # local file instead of remote!
+            else:
+                iconElement = self.searchXml(channel, 'icon src="', '" />')
+                if iconElement is not None: 
+                    logo = iconElement
+                else:
+                    logoURL = ADDON.getSetting('logos')
+                    logoFile = os.path.join(logoURL, title + '.png')
+                    logo = logoFile.replace(' ', '%20')
+
             streamElement = self.matchCustomStreamUrl(cid.decode("utf8"))#elem.find("stream")
             streamUrl = None
             if streamElement is not None:

@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,8 +29,8 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['putlocker.systems', 'cartoonhd.website', 'cartoonhd.online', 'cartoonhd.cc', 'cartoonhd.life', 'cartoonhd.zone']
-        self.base_link = 'http://cartoonhd.zone'
+        self.domains = ['cartoon-hd.press']
+        self.base_link = 'https://cartoon-hd.press'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

@@ -75,7 +75,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="4.6" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="4.7" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -173,7 +173,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.hypersonicIPTV2"
        name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
-       version="4.1"
+       version="4.2"
        provider-name="GhostBuilder">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -192,7 +192,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.metalliq" name="[COLOR gold]M[/COLOR]etalli[COLOR gold]Q[/COLOR] [COLOR gold]GOLDEN[/COLOR]" version="5.0.17krypton" provider-name="[COLOR gold][B]Last Version[/B][/COLOR]">
+<addon id="plugin.video.metalliq" name="[COLOR gold]M[/COLOR]etalli[COLOR gold]Q[/COLOR] [COLOR gold]GOLDEN[/COLOR]" version="6.0.17krypton" provider-name="[COLOR gold][B]Last Version[/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="repository.cdrepo"/>
@@ -257,10 +257,10 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.metalliq-forqed" name="[COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed" version="6.0.17krypton" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR]">
+<addon id="plugin.video.metalliq-forqed" name="[COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed" version="7.0.17krypton" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
-		<import addon="repository.cdrepo" version="1.2"/>
+		<import addon="repository.cdrepo" version="4.6"/>
 		<import addon="script.module.requests" version="2.9.1"/>
 		<import addon="script.module.futures" version="2.2.0"/>
 	</requires>
@@ -371,7 +371,7 @@ V2.0.0.3
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.bkr" version="3.0.0.1" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
+<addon id="plugin.video.bkr" version="3.0.0.2" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
         <import addon="script.bkr.artwork" version="2018.04.02"/>
@@ -392,7 +392,7 @@ V2.0.0.3
         <disclaimer lang="en">The author does not host any content, nor is he affiliated with any of the content providers.</disclaimer>
         <platform>all</platform>
         <news>
-V3.0.0.1
+V3.0.0.2
 -New Official Repo
 -Intial Release
 -Fork of Boxset Kings
@@ -463,7 +463,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.kiddo" name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B]" version="4.0.0.4" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.kiddo" name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B]" version="4.0.0.5" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="script.module.universalscrapers" version="1.0.0" />
@@ -585,81 +585,88 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.youtube" name="YouTube" version="6.0.0beta1" provider-name="bromix">
+<addon id="plugin.video.youtube" name="YouTube" version="6.2.0" provider-name="bromix">
     <requires>
         <import addon="xbmc.python" version="2.20.0"/>
-        <import addon="script.module.six"/>
+        <import addon="script.module.six" version="1.11.0"/>
         <import addon="script.module.requests" version="2.12.4"/>
+        <import addon="script.module.inputstreamhelper" version="0.2.2" optional="true"/>
     </requires>
     <extension point="xbmc.python.pluginsource" library="resources/lib/default.py">
         <provides>video</provides>
     </extension>
-    <extension point="xbmc.service" library="resources/lib/startup.py" start="startup"/>
+    <extension point="xbmc.service" library="resources/lib/startup.py" start="login"/>
     <extension point="xbmc.python.module" library="resources/lib/"/>
     <extension point="xbmc.addon.metadata">
         <news>
-[add] Python 3 compat.
-[add] Settings -> Maintenance -> Delete temporary files
-[add] Settings -> General -> Rate video after watching
-[add] Settings -> API -> Enable API configuration page
-        - when enabled, visit http://ipaddress:port/api to configure API keys from a web browser
-        - port is configured in Settings - HTTP Server - Port
-[add] Storing personal api keys in api_keys.json, restore keys from json on settings loss
-[add] Storing login tokens in access_manager.json, restore tokens from json on settings loss
-[add] youtube_registration module, register developer keys and use them by appending an addon_id=:addon_id parameter to youtube add-on plugin urls
-[add] screensaver=true parameter to /play route - no suggested videos, no post play events, don't ask for quality
-[add] play route for channel live streams
-        - plugin://plugin.video.youtube/play/?channel_id=UCLA_DiR1FfKNvjuUpBHmylQ&amp;live=1
-[fix] Signature deciphering
-[fix] context menu after playback
-[fix] alternative player, do not append headers
-[fix/upd] post play events happen post play
-[fix/upd] set title from metadata on play
-[upd] Use monitor to track api key changes
-[upd] Dutch strings [MB1968]
-[upd] French strings [bubuleur]
-[upd] Greek strings [twilight0]
-[upd] Spanish strings [roliverosc]
+6.2.0
+[add] Context menu -&gt; &#39;Play with subtitles&#39; |contrib: solarus|
+[add] Option to download subtitles before playback in Settings -&gt; General -&gt; Configure subtitles
+[add] Refresh context menu to all videos/live streams
+[add] &amp;strm=true parameter for strm files in Kodi 18 |contrib: vlmaksime|
+    - use description from library and set watched status
+[add] &#39;Settings -&gt; Advanced -&gt; Use YouTube website urls&#39; for external/alternative players
+            eg. Player: MPC-BE, URL: https://www.youtube.com/watch?v=C0NyvxTJGcQ
+[fix] Reported background progress dialog percentage
+[fix] Playlist items, use video_items instead of playback_items
+[fix] search history size
+[fix] remove Spanish (Latin America)|es-419 from the setup wizard, causing invalidLanguage and invalidRelevanceLanguage errors
+[upd] Improve speed of playback starting and resolver
+            before: min: 1.5s max: 2.6s median: 1.7s
+            after:  min: 0.9s max: 2.6s median: 1.2s
+[chg] refactor logging and system version
+[chg] Localize confirmation
+[lang] el_gr strings |contrib: twilight0|
+[lang] es_es strings |contrib: roliverosc|
+[lang] es_mx strings |contrib: Intel11|
+[lang] it_it strings |contrib: SebastianoPistore|
+[lang] nl_nl strings |contrib: Markman-B|
+[lang] ru_ru strings |contrib: vlmaksime|
         </news>
         <assets>
             <icon>icon.png</icon>
             <fanart>fanart.jpg</fanart>
         </assets>
-        <summary lang="en_gb">Plugin for YouTube</summary>
-        <description lang="en_gb">YouTube is one of the biggest video-sharing websites of the world.</description>
-        <disclaimer lang="en_gb">This plugin is not endorsed by Google</disclaimer>
-        <summary lang="he_il">תוסף עבור YouTube</summary>
-        <description lang="he_il">YouTube הוא אחד מאתרי שיתוף הווידאו הגדולים בעולם.</description>
-        <summary lang="de_de">Plugin für YouTube</summary>
-        <description lang="de_de">YouTube ist eines der größten Video-Sharing-Websites der Welt.</description>
-        <summary lang="pl_pl">Wtyczka YouTube</summary>
-        <description lang="pl_pl">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description>
-        <summary lang="hu_hu">YouTube kiegészítő</summary>
-        <description lang="hu_hu">A YouTube világ egyik legnagyobb videómegosztó weboldala.</description>
-        <summary lang="es_es">Plugin para YouTube</summary>
-        <description lang="es_es">YouTube es uno de los mayores sitios web de intercambio de vídeos del mundo.</description>
-        <disclaimer lang="es_es">Este add-on no esta respaldado por Google</disclaimer>
-        <summary lang="ru_ru">Видеодополнение YouTube</summary>
-        <description lang="ru_ru">Данное дополнение позволяет находить и смотреть видео на всеми любимом сайте.</description>
-        <summary lang="fr_fr">Plugin pour YouTube</summary>
-        <description lang="fr_fr">YouTube est l'un des plus grands sites de partage vidéos du monde.</description>
-        <summary lang="zh_cn">YouTube附加元件</summary>
-        <description lang="zh_cn">「Youtube」是全世界最大的影片分享網站</description>
-        <summary lang="bg_bg">Добавка за YouTube</summary>
-        <description lang="bg_bg">YouTube е един от най-големите уеб сайтове за споделяне на видео в целия свят.</description>
-        <summary lang="el_gr">Πρόσθετο YouTube</summary>
-        <description lang="el_gr">Το YouTube είναι μία από τις μεγαλύτερες ιστοσελίδες διαμοιρασμού βίντεο στον κόσμο.</description>
-        <disclaimer lang="el_gr">Η παρούσα μικροεφαρμογή δεν έχει υϊοθετηθεί από την Google</disclaimer>
-        <summary lang="nb_no">Tillegg for YouTube</summary>
-        <description lang="nb_no">YouTube er en av verdens største nettsider for videodeling.</description>
-        <language></language>
+        <summary lang="en_GB">Plugin for YouTube</summary>
+        <description lang="en_GB">YouTube is one of the biggest video-sharing websites of the world.</description>
+        <disclaimer lang="en_GB">This plugin is not endorsed by Google</disclaimer>
+        <summary lang="he_IL">תוסף עבור YouTube</summary>
+        <description lang="he_IL">YouTube הוא אחד מאתרי שיתוף הווידאו הגדולים בעולם.</description>
+        <summary lang="de_DE">Plugin für YouTube</summary>
+        <description lang="de_DE">YouTube ist eines der größten Video-Sharing-Websites der Welt.</description>
+        <summary lang="pl_PL">Wtyczka YouTube</summary>
+        <description lang="pl_PL">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description>
+        <summary lang="hu_HU">YouTube kiegészítő</summary>
+        <description lang="hu_HU">A YouTube világ egyik legnagyobb videómegosztó weboldala.</description>
+        <summary lang="es_ES">Plugin para YouTube</summary>
+        <description lang="es_ES">YouTube es uno de los sitios web para compartir videos más grande del mundo.</description>
+        <disclaimer lang="es_ES">Este add-on no está respaldado por Google</disclaimer>
+        <summary lang="es_MX">Plugin para YouTube</summary>
+        <description lang="es_MX">YouTube es uno de los más grandes sitios web de intercambio de videos del mundo.</description>
+        <disclaimer lang="es_MX">Este add-on no está respaldado por Google</disclaimer>
+        <summary lang="ru_RU">Видеодополнение YouTube</summary>
+        <description lang="ru_RU">YouTube - популярнейший видеохостинговый сайт, предоставляющий пользователям услуги хранения, доставки и показа видео.</description>
+        <summary lang="fr_FR">Plugin pour YouTube</summary>
+        <description lang="fr_FR">YouTube est l'un des plus grands sites de partage vidéos du monde.</description>
+        <summary lang="zh_CN">YouTube附加元件</summary>
+        <description lang="zh_CN">「Youtube」是全世界最大的影片分享網站</description>
+        <summary lang="zh_TW">YouTube附加元件</summary>
+        <description lang="zh_TW">「Youtube」是全世界最大的影片分享網站</description>
+        <disclaimer lang="zh_TW">此附加元件未由Google支持</disclaimer>
+        <summary lang="bg_BG">Добавка за YouTube</summary>
+        <description lang="bg_BG">YouTube е един от най-големите уеб сайтове за споделяне на видео в целия свят.</description>
+        <summary lang="el_GR">Πρόσθετο YouTube</summary>
+        <description lang="el_GR">Το YouTube είναι μία από τις μεγαλύτερες ιστοσελίδες διαμοιρασμού βίντεο στον κόσμο.</description>
+        <disclaimer lang="el_GR">Η παρούσα μικροεφαρμογή δεν έχει υϊοθετηθεί από την Google</disclaimer>
+        <summary lang="nb_NO">Tillegg for YouTube</summary>
+        <description lang="nb_NO">YouTube er en av verdens største nettsider for videodeling.</description>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
         <forum>https://forum.kodi.tv/showthread.php?tid=325740</forum>
         <website>https://www.youtube.com</website>
         <email>ytplugin at datanet dot ws</email>
         <source>https://github.com/jdf76/plugin.video.youtube</source>
-        <size>1776578</size>
+        <reuselanguageinvoker>true</reuselanguageinvoker>
     </extension>
 </addon>
 
@@ -791,7 +798,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.extendedinfo" name="[COLOR limegreen]EIM[/COLOR]4[COLOR limegreen]Q[/COLOR]ed" version="100.0.3" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR], original by phil65">
+<addon id="script.extendedinfo" name="[COLOR limegreen]EIM[/COLOR]4[COLOR limegreen]Q[/COLOR]ed" version="100.0.4" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR], original by phil65">
   <requires>
     <import addon="xbmc.python"                     version="2.19.0"/>
     <import addon="plugin.program.super.favourites"/>
@@ -909,8 +916,8 @@ provider-name="Team IVUE">
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.hypersonic.easytopair"
-  name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR] [COLOR gold]FREE WEEKDAY TRIAL[/COLOR]"
-  version="1.0" 
+  name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR] [COLOR gold]WEEKDAY TRIAL[/COLOR]"
+  version="1.2" 
   provider-name="CDTV Builds">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>

@@ -1,4 +1,8 @@
-- [COLORlime]To get your favorite add-on in the Movie selector go to EIM 4Qed settings and clear simple selector then rerun total setup in MetalliQ 4Qed.[/COLOR] 
+- [COLORlime]To get your favorite add-on in the Movie selector go to EIM 4Qed settings and clear simple selector then rerun total setup in MetalliQ 4Qed settings.[/COLOR] 
+
+v100.0.4
+- New Trakt Api
+- Fixed treanding shows
 
 v100.0.3
 - Fixed Library

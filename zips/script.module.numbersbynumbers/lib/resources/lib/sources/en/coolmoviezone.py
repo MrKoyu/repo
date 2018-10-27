@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['coolmoviezone.info']
-        self.base_link = 'http://coolmoviezone.info'
+        self.base_link = 'http://coolmoviezone.biz'
         self.search_link = '/index.php?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):

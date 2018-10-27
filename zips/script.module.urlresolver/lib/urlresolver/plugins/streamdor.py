@@ -31,19 +31,19 @@ class StreamDorResolver(UrlResolver):
     def __init__(self):
         self.net = common.Net()
 
-    def get_media_url(self, host, media_id):
+    def get_media_url(self, host, media_id):       
         web_url = self.get_url(host, media_id)
-
         html = self.net.http_GET(web_url).content
+        try:
+            match=re.compile('JuicyCodes\.Run\((.+?)\)').findall(html)[0]
+            juicy = match.replace('"+"','').replace('"','')
+            
+            theeval = base64.b64decode(juicy)
+            unpacked = jsunpack.unpack(theeval)
 
-        match=re.compile('JuicyCodes\.Run\((.+?)\)').findall(html)[0]
-        juicy = match.replace('"+"','').replace('"','')
-        
-        theeval = base64.b64decode(juicy)
-        unpacked = jsunpack.unpack(theeval)
-
-        result = re.compile('"fileEmbed":"(.+?)"').findall(unpacked)[0]
-
+            result = re.compile('"fileEmbed":"(.+?)"').findall(unpacked)[0]
+        except:
+            result = re.compile('"fileEmbed":"(.+?)"').findall(html)[0]
         import urlresolver
         return urlresolver.resolve(str(result))
 

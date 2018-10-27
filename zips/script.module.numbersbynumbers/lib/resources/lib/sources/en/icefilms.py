@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,12 +27,34 @@ from resources.lib.modules import log_utils
 from resources.lib.modules import cfscrape
 from resources.lib.modules import workers
 
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("https://ice.unblocked.lol"):
+        useurl = 'https://ice.unblocked.lol/'
+		
+    elif url_ok("https://icefilms.unblocked.lat"):
+        useurl = 'https://icefilms.unblocked.lat/'
+
+    elif url_ok("http://www.icefilms.info"):
+        useurl = 'http://www.icefilms.info/'
+
+
+    else: useurl = 'http://localhost/'
+    
+    return useurl
+
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['icefilms.info','icefilms.unblocked.vc','www6-icefilms6-info.unblocked.lol']
-        self.base_link = 'https://icefilms.unblocked.mx/'
+        self.base_link = HostChcker()
         self.search_link = urlparse.urljoin(self.base_link, 'search.php?q=%s+%s&x=0&y=0')
         self.list_url = urlparse.urljoin(self.base_link, 'membersonly/components/com_iceplayer/video.php?h=374&w=631&vid=%s&img=')
         self.post = 'id=%s&s=%s&iqs=&url=&m=%s&cap= &sec=%s&t=%s'

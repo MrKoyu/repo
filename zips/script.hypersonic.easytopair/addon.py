@@ -33,8 +33,8 @@ def menuoptions():
         )
         
     call = dialog.select('[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR] Easy To Pair[/COLOR]', [
-	'[B][COLOR white]=-=-=-=-=[/COLOR][/B][B][COLOR=gold]  FREE 24hs TRIAL  [/COLOR][/B][B][COLOR white]=-=-=-=-=[/COLOR][/B]',
-	'[COLOR forestgreen][B]*[/COLOR][COLOR gold]*[/COLOR][COLOR ghostwhite]*[/COLOR][COLOR mediumblue]*[/B][/COLOR][COLOR=ghostwhite]      Subscribe For a Free 24hs Weekday Trial[/COLOR]',
+	'[B][COLOR white]=-=-=-=-=[/COLOR][/B][B][COLOR=gold]  Enter 4 WEEKDAY 24hs TRIAL  [/COLOR][/B][B][COLOR white]=-=-=-=-=[/COLOR][/B]',
+	'[COLOR forestgreen][B]*[/COLOR][COLOR gold]*[/COLOR][COLOR ghostwhite]*[/COLOR][COLOR mediumblue]*[/B][/COLOR][COLOR=ghostwhite]      Subscribe For to get your 24hs Weekday Trial[/COLOR]',
 	'[COLOR forestgreen][B]*[/COLOR][COLOR gold]*[/COLOR][COLOR ghostwhite]*[/COLOR][COLOR mediumblue]*[/B][/COLOR][COLOR=ghostwhite]      Hypersonic IPTV2 Packages[/COLOR]',
 	'[B][COLOR white]=-=-=-=-=[/COLOR][/B][B][COLOR=gold]  UNLOCK YOUR TV PRO  [/COLOR][/B][B][COLOR white]=-=-=-=-=[/COLOR][/B]',
 	'[COLOR forestgreen][B]*[/COLOR][COLOR gold]*[/COLOR][COLOR ghostwhite]*[/COLOR][COLOR mediumblue]*[/B][/COLOR]      [COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR] Website',])
@@ -77,9 +77,9 @@ def function1():
 
 def function2():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://getnow.hypersonic-tv.com/home/freetrial' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://getnow.hypersonic-tv.com/home/trial' ) )
     else:
-        opensite = webbrowser . open('http://getnow.hypersonic-tv.com/home/freetrial')
+        opensite = webbrowser . open('http://getnow.hypersonic-tv.com/home/trial')
         
 def function3():
     if myplatform == 'android': # Android 

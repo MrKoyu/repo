@@ -8,7 +8,7 @@ from Utils import *
 from local_db import *
 import TheMovieDB as tmdb
 
-TRAKT_KEY = '82aa9a0f569bdeb78d6c89e4feb26e25484c0baa82b501abe9dd9f7a68f4c403'
+TRAKT_KEY = '988f3835e5410b3f5e5e90b922a8a0016ef21ec65a2fc63f68e44a6b03041fe7'
 BASE_URL = "https://api-v2launch.trakt.tv/"
 HEADERS = {
     'Content-Type': 'application/json',

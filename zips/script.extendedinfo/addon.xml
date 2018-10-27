@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.extendedinfo" name="[COLOR limegreen]EIM[/COLOR]4[COLOR limegreen]Q[/COLOR]ed" version="100.0.3" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR], original by phil65">
+<addon id="script.extendedinfo" name="[COLOR limegreen]EIM[/COLOR]4[COLOR limegreen]Q[/COLOR]ed" version="100.0.4" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR], original by phil65">
   <requires>
     <import addon="xbmc.python"                     version="2.19.0"/>
     <import addon="plugin.program.super.favourites"/>

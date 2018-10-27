@@ -21,8 +21,8 @@ from urlresolver.resolver import UrlResolver, ResolverError
 
 class StreamangoResolver(UrlResolver):
     name = "streamango"
-    domains = ['streamango.com', "streamcherry.com", "fruitstreams.com"]
-    pattern = '(?://|\.)((?:stream(?:ango|cherry)|fruitstreams)\.com)/(?:v/d|f|embed)/([0-9a-zA-Z]+)'
+    domains = ['streamango.com', 'streamcherry.com', 'fruitstreams.com', 'fruitadblock.net']
+    pattern = '(?://|\.)((?:stream(?:ango|cherry)|fruitstreams|fruitadblock)\.(?:com|net))/(?:v/d|f|embed)/([0-9a-zA-Z]+)'
     
     def __init__(self):
         self.net = common.Net()

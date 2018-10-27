@@ -14,12 +14,11 @@
         <setting label="Include specials" id="include_specials" type="bool" default="false"/>
         <setting label="TotalSetup Done" id="total_setup_done" type="bool" default="false" visible="false"/>
         <setting label="TotalSetup" option="close" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/setup/total)" visible="eq(-1,false)" />
-        <setting label="Rerun TotalSetup" option="close" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/setup/total)" visible="eq(-2,true)" />
+        <setting label="[COLOR limegreen]Rerun TotalSetup[/COLOR]" option="close" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/setup/total)" visible="eq(-2,true)" />
         <setting label="Players Setup" option="close" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/setup/player)" visible="eq(-3,true)"/>
         <setting label="Sources Setup" option="close" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/setup/sources)" visible="eq(-4,true)"/>
         <setting label="30010" id="players_update_url" type="text" default="http://cellardoortv.com/metalliq/players/" />
         <setting subsetting="true" option="close" label="30012" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/update_players)"/>
-        <setting subsetting="true" label="Install custom players from http://cellardoortv.com/metalliq/players/custom-metalliq-players/zipball" option="close" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/update_players/https%3a%2f%2fhttp://cellardoortv.com%2fcustom-metalliq-players%2fzipball)"/>
         <setting option="close" label="Clear Trakt account settings" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/cleartrakt)"/>
         <!--<setting label = "30417" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/authenticate_trakt)" />-->
         <setting label="trakt access token" id="trakt_access_token" type="text" visible="false" />
@@ -144,8 +143,8 @@
         <setting label="$LOCALIZE[14061] patch [LOWERCASE]$LOCALIZE[24001][/LOWERCASE]" id="autopatch" type="bool" default="false" />
         <setting label="$LOCALIZE[636] patches" id="autopatches" type="text" default="[[], [&quot;plugin.video.bennu&quot;, &quot;plugin.video.boxsetkings&quot;, &quot;plugin.video.covenant&quot;, &quot;plugin.video.exodus&quot;, &quot;plugin.video.flixnet&quot;, &quot;plugin.video.genesisreborn&quot;, &quot;plugin.video.gurzil&quot;, &quot;plugin.video.poseidon&quot;, &quot;plugin.video.redpill&quot;, &quot;plugin.video.sedundnes&quot;, &quot;plugin.video.showboxarize&quot;, &quot;plugin.video.tinklepad&quot;], [&quot;plugin.video.salts&quot;], [&quot;script.module.dudehere.routines&quot;]]" />
         <setting label="Patch" option="close" type="action" action="RunPlugin(plugin://plugin.video.metalliq-forqed/patch/all)"/>
-        <setting label="Trakt API client id" id="trakt_api_client_id" type="text" option="" default="82aa9a0f569bdeb78d6c89e4feb26e25484c0baa82b501abe9dd9f7a68f4c403" />
-        <setting label="Trakt API client secret" id="trakt_api_client_secret" subsetting="true" type="text" option="" default="7489cf06b98f1c1f143490fe7d718d900ecabe53db1df086a0d385ed8497b5c8" visible="!eq(-1,)" />
+        <setting label="Trakt API client id" id="trakt_api_client_id" type="text" option="" default="988f3835e5410b3f5e5e90b922a8a0016ef21ec65a2fc63f68e44a6b03041fe7" />
+        <setting label="Trakt API client secret" id="trakt_api_client_secret" subsetting="true" type="text" option="" default="556510aeb941dbf23a2eaaa3aae089f928f0112b2a86d328190c280e3dcfd419" visible="!eq(-1,)" />
         <setting label="TMDb API" id="tmdb_api" type="text" option="" default="0afc169ab40ca614af43a7b9c0a61e9b" />
         <setting label="TVDb API" id="tvdb_api" type="text" default="301109AD42360880" />
         <setting label="LastFM API key" id="lastfm_api_key" type="text" default="" />

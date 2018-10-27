@@ -1,4 +1,6 @@
 __author__ = 'bromix'
+from ...kodion.utils import ip_api
+
 
 DEFAULT_LANGUAGES = {u'items': [{u'snippet': {u'name': u'Afrikaans', u'hl': u'af'}, u'id': u'af'}, {u'snippet': {u'name': u'Azerbaijani', u'hl': u'az'}, u'id': u'az'}, {u'snippet': {u'name': u'Indonesian', u'hl': u'id'}, u'id': u'id'}, {u'snippet': {u'name': u'Malay', u'hl': u'ms'}, u'id': u'ms'},
                                 {u'snippet': {u'name': u'Catalan', u'hl': u'ca'}, u'id': u'ca'}, {u'snippet': {u'name': u'Czech', u'hl': u'cs'}, u'id': u'cs'}, {u'snippet': {u'name': u'Danish', u'hl': u'da'}, u'id': u'da'}, {u'snippet': {u'name': u'German', u'hl': u'de'}, u'id': u'de'},
@@ -59,10 +61,13 @@ def _process_language(provider, context):
     else:
         items = json_data['items']
     language_list = []
+    invalid_ids = [u'es-419']  # causes hl not a valid language error. Issue #418
     for item in items:
-        language_id = item['id']
+        if item['id'] in invalid_ids:
+            continue
         language_name = item['snippet']['name']
-        language_list.append((language_name, language_id))
+        hl = item['snippet']['hl']
+        language_list.append((language_name, hl))
     language_list = sorted(language_list, key=lambda x: x[0])
     language_id = context.get_ui().on_select(
         context.localize(provider.LOCAL_MAP['youtube.setup_wizard.select_language']), language_list)
@@ -76,9 +81,9 @@ def _process_language(provider, context):
         items = json_data['items']
     region_list = []
     for item in items:
-        region_id = item['id']
         region_name = item['snippet']['name']
-        region_list.append((region_name, region_id))
+        gl = item['snippet']['gl']
+        region_list.append((region_name, gl))
     region_list = sorted(region_list, key=lambda x: x[0])
     region_id = context.get_ui().on_select(context.localize(provider.LOCAL_MAP['youtube.setup_wizard.select_region']),
                                            region_list)
@@ -91,5 +96,18 @@ def _process_language(provider, context):
     provider.reset_client()
 
 
+def _process_geo_location(provider, context):
+    settings = context.get_settings()
+    if not context.get_ui().on_yes_no_input(context.get_name(), context.localize(provider.LOCAL_MAP['youtube.perform.geolocation'])):
+        return
+
+    locator = ip_api.Locator(context)
+    locator.locate_requester()
+    coordinates = locator.coordinates()
+    if coordinates:
+        settings.set_location('{lat},{lon}'.format(lat=coordinates[0], lon=coordinates[1]))
+
+
 def process(provider, context):
     _process_language(provider, context)
+    _process_geo_location(provider, context)

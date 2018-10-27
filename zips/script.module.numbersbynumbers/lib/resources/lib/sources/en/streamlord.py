@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,14 +17,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-
-import re,urllib,urlparse
+import re,traceback,urllib,urlparse
 
 from resources.lib.modules import control
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import jsunpack
-
+from resources.lib.modules import log_utils
 
 class source:
     def __init__(self):
@@ -36,15 +35,15 @@ class source:
         self.user = control.setting('streamlord.user')
         self.password = control.setting('streamlord.pass')
 
-
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
             url = {'imdb': imdb, 'title': title, 'year': year}
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('StreamLord - Exception: \n' + str(failure))
             return
-
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
@@ -52,8 +51,9 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('StreamLord - Exception: \n' + str(failure))
             return
-
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
@@ -65,8 +65,9 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('StreamLord - Exception: \n' + str(failure))
             return
-
 
     def sources(self, url, hostDict, hostprDict):
         try:
@@ -161,10 +162,9 @@ class source:
 
             return sources
         except:
+            failure = traceback.format_exc()
+            log_utils.log('StreamLord - Exception: \n' + str(failure))
             return sources
-
 
     def resolve(self, url):
         return url
-
-

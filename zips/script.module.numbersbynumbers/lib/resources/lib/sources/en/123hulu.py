@@ -1,6 +1,7 @@
+# -*- coding: UTF-8 -*-
+
 '''
-    Numbers By Numbers Add-on
-    Copyright (C) 2016 Numbers By Numbers
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,8 +15,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 '''
+
 import re
 import urllib
 import urlparse
@@ -26,14 +27,10 @@ from resources.lib.modules import client, cleantitle, directstream, dom_parser2
 
 class source:
     def __init__(self):
-        '''
-        Constructor defines instances variables
-
-        '''
         self.priority = 1
         self.language = ['en']
-        self.domains = ['123hulu.com']
-        self.base_link = 'http://123hulu.com'
+        self.domains = ['123hulu.com','123hulu.unblockall.org']
+        self.base_link = 'http://123hulu.unblockall.org'
         self.movies_search_path = ('search-movies/%s.html')
 
     def movie(self, imdb, title, localtitle, aliases, year):

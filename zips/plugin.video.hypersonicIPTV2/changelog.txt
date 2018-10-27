@@ -1,3 +1,8 @@
+[B]Version 4.2[/B]
+- Added Radio category 
+- Reorganised 24/7 Shows by alphabetical order
+- Fixed empty categories
+
 [B]Version 4.1[/B]
 - Added Nascar and Formula 1 categories and icons
 - Fixed 24/7 Shows 
@@ -10,7 +15,7 @@
 [B]Version 3.9[/B]
 - Fixed empty categories
 - Added new canadian category
-- reorganised international by alphabetical order
+- Reorganised international by alphabetical order
 
 [B]Version 3.6[/B]
 - Fixed empty categories

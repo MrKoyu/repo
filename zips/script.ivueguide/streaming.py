@@ -211,14 +211,42 @@ class StreamsService(object):
                     stream = str(stream.replace("<channel>", channel.replace(" ","%20")))
 
 
-                if label.lower() == channel.lower():
+                if label.lower() == channel.lower().replace(':',''):
                     exact_matches.append((id, label, stream))
                 if int(self.addon.getSetting('addon.match')) > 0:
                     labelx = re.sub(r' ','',label.lower())
-                    title = re.sub(r' ','',channel.lower())
+                    title = re.sub(r' ','',channel.lower().replace(':',''))
                     titleRe = r".*%s.*" % re.escape(title)
                     if re.match(titleRe,labelx):
                         sub_matches.append((id, label, stream))
+
+        kodiFaves = self.loadFavourites()
+        superFavs = self.loadSuperFavs()
+        if kodiFaves:
+            id = 'kodi-favourite'           
+            for (label, stream) in kodiFaves:
+
+                if label.lower() == str(channel.title).lower().replace(':',''):
+                    exact_matches.append((id, label, stream))
+                if int(self.addon.getSetting('addon.match')) > 0:
+                    labelx = re.sub(r' ','',label.lower())
+                    title = re.sub(r' ','',str(channel.title).lower().replace(':',''))
+                    titleRe = r".*%s.*" % re.escape(title)
+                    if re.match(titleRe,labelx):
+                        sub_matches.append((id, label, stream))
+
+        if superFavs:
+            id = 'super-favourite'           
+            for (label, stream) in superFavs:
+                if label.lower() == str(channel.title).lower().replace(':',''):
+                    exact_matches.append((id, label, stream))
+                if int(self.addon.getSetting('addon.match')) > 0:
+                    labelx = re.sub(r' ','',label.lower())
+                    title = re.sub(r' ','',str(channel.title).lower().replace(':',''))
+                    titleRe = r".*%s.*" % re.escape(title)
+                    if re.match(titleRe,labelx):
+                        sub_matches.append((id, label, stream))
+
 
         exact_matches = set(exact_matches)
         sorted_exact_matches = sorted(exact_matches, key=lambda match: match[1])
@@ -227,20 +255,6 @@ class StreamsService(object):
         matches = sorted_exact_matches
         if int(self.addon.getSetting('addon.match')) > 0:
             matches = matches + sorted_sub_matches
-        kodiFaves = self.loadFavourites()
-        superFavs = self.loadSuperFavs()
-        if kodiFaves:
-            id = 'kodi-favourite'           
-            for (label, stream) in kodiFaves:
-                label = label.upper()
-                if label == str(channel.title).upper():
-                    matches.append((id, label, stream))
-        if superFavs:
-            id = 'super-favourite'           
-            for (label, stream) in superFavs:
-                label = label.upper()
-                if label == str(channel.title).upper():
-                    matches.append((id, label, stream))
 
         if len(matches) == 1:
 
@@ -280,11 +294,39 @@ class StreamsService(object):
                     stream = str(stream.replace("<channel>", channel.title.replace(" ","%20")))
 
 
-                if label.lower() == str(channel.title).lower():
+                if label.lower() == str(channel.title).lower().replace(':',''):
                     exact_matches.append((id, label, stream))
                 if int(self.addon.getSetting('addon.match')) > 0:
                     labelx = re.sub(r' ','',label.lower())
-                    title = re.sub(r' ','',str(channel.title).lower())
+                    title = re.sub(r' ','',str(channel.title).lower().replace(':',''))
+                    titleRe = r".*%s.*" % re.escape(title)
+                    if re.match(titleRe,labelx):
+                        sub_matches.append((id, label, stream))
+
+        kodiFaves = self.loadFavourites()
+        superFavs = self.loadSuperFavs()
+        if kodiFaves:
+            id = 'kodi-favourite'           
+            for (label, stream) in kodiFaves:
+
+                if label.lower() == str(channel.title).lower().replace(':',''):
+                    exact_matches.append((id, label, stream))
+                if int(self.addon.getSetting('addon.match')) > 0:
+                    labelx = re.sub(r' ','',label.lower())
+                    title = re.sub(r' ','',str(channel.title).lower().replace(':',''))
+                    titleRe = r".*%s.*" % re.escape(title)
+                    if re.match(titleRe,labelx):
+                        sub_matches.append((id, label, stream))
+
+
+        if superFavs:
+            id = 'super-favourite'           
+            for (label, stream) in superFavs:
+                if label.lower() == str(channel.title).lower().replace(':',''):
+                    exact_matches.append((id, label, stream))
+                if int(self.addon.getSetting('addon.match')) > 0:
+                    labelx = re.sub(r' ','',label.lower())
+                    title = re.sub(r' ','',str(channel.title).lower().replace(':',''))
                     titleRe = r".*%s.*" % re.escape(title)
                     if re.match(titleRe,labelx):
                         sub_matches.append((id, label, stream))
@@ -296,20 +338,6 @@ class StreamsService(object):
         matches = sorted_exact_matches
         if int(self.addon.getSetting('addon.match')) > 0:
             matches = matches + sorted_sub_matches
-        kodiFaves = self.loadFavourites()
-        superFavs = self.loadSuperFavs()
-        if kodiFaves:
-            id = 'kodi-favourite'           
-            for (label, stream) in kodiFaves:
-                label = label.upper()
-                if label == str(channel.title).upper():
-                    matches.append((id, label, stream))
-        if superFavs:
-            id = 'super-favourite'           
-            for (label, stream) in superFavs:
-                label = label.upper()
-                if label == str(channel.title).upper():
-                    matches.append((id, label, stream))
 
 
         if len(matches) == 1:
@@ -342,10 +370,10 @@ class StreamsService(object):
                     stream = str(stream.replace("<channel>", channel.replace(" ","%20")))
 
 
-                if label.lower() == channel.lower():
+                if label.lower() == channel.lower().replace(':',''):
                     exact_matches.append((id, label, stream))
                 labelx = re.sub(r' ','',label.lower())
-                title = re.sub(r' ','',channel.lower())
+                title = re.sub(r' ','',channel.lower().replace(':',''))
                 labelRe = r".*%s.*" % re.escape(labelx)
                 titleRe = r".*%s.*" % re.escape(title)
                 if re.match(titleRe,labelx):
@@ -353,26 +381,45 @@ class StreamsService(object):
                 elif re.match(labelRe,title) and label != 'e':
                     sub_matches.append((id, label, stream))
 
+        kodiFaves = self.loadFavourites()
+        superFavs = self.loadSuperFavs()
+        if kodiFaves:
+            id = 'kodi-favourite'           
+            for (label, stream) in kodiFaves:
+
+                if label.lower() == channel.lower().replace(':',''):
+                    exact_matches.append((id, label, stream))
+                labelx = re.sub(r' ','',label.lower())
+                title = re.sub(r' ','',channel.lower().replace(':',''))
+                labelRe = r".*%s.*" % re.escape(labelx)
+                titleRe = r".*%s.*" % re.escape(title)
+                if re.match(titleRe,labelx):
+                    sub_matches.append((id, label, stream))
+                elif re.match(labelRe,title) and label != 'e':
+                    sub_matches.append((id, label, stream))
+
+        if superFavs:
+            id = 'super-favourite'           
+            for (label, stream) in superFavs:
+                if label.lower() == channel.lower().replace(':',''):
+                    exact_matches.append((id, label, stream))
+                labelx = re.sub(r' ','',label.lower())
+                title = re.sub(r' ','',channel.lower().replace(':',''))
+                labelRe = r".*%s.*" % re.escape(labelx)
+                titleRe = r".*%s.*" % re.escape(title)
+                if re.match(titleRe,labelx):
+                    sub_matches.append((id, label, stream))
+                elif re.match(labelRe,title) and label != 'e':
+                    sub_matches.append((id, label, stream))
+
+
+
         exact_matches = set(exact_matches)
         sorted_exact_matches = sorted(exact_matches, key=lambda match: match[1])
         sub_matches = set(sub_matches) - set(exact_matches)
         sorted_sub_matches = sorted(sub_matches, key=lambda match: match[1])
         matches = sorted_exact_matches
         matches = matches + sorted_sub_matches
-        kodiFaves = self.loadFavourites()
-        superFavs = self.loadSuperFavs()
-        if kodiFaves:
-            id = 'kodi-favourite'           
-            for (label, stream) in kodiFaves:
-                label = label.upper()
-                if label == str(channel.title).upper():
-                    matches.append((id, label, stream))
-        if superFavs:
-            id = 'super-favourite'           
-            for (label, stream) in superFavs:
-                label = label.upper()
-                if label == str(channel.title).upper():
-                    matches.append((id, label, stream))
 
         return matches
 

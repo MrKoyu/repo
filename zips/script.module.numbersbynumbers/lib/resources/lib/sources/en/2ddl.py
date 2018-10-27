@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['2ddl.io']
-        self.base_link = 'http://2ddl.io'
+        self.base_link = 'http://2ddl.ws/'
         self.search_link = '/search/%s/feed/rss2/'
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -146,7 +146,7 @@ class source:
                     info = ' | '.join(info)
 
                     sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'info': info,
-                                    'direct': False, 'debridonly': True})
+                                    'direct': False, 'debridonly': False})
                 except:
                     pass
 

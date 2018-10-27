@@ -1324,8 +1324,11 @@ class TVGuide(xbmcgui.WindowXML):
         except:
             pass
 
-        if not program.imageSmall == '':
-            self.setControlImage(self.C_MAIN_IMAGE, program.imageSmall)
+        if program.imageSmall is not None:
+            if not program.imageSmall == '':
+                self.setControlImage(self.C_MAIN_IMAGE, program.imageSmall)
+            else:
+                self.setControlImage(self.C_MAIN_IMAGE, 'tvguide-logo-epg.png')
         else:
             self.setControlImage(self.C_MAIN_IMAGE, 'tvguide-logo-epg.png')
 
@@ -1526,12 +1529,13 @@ class TVGuide(xbmcgui.WindowXML):
                 self._showControl(C_MAIN_OSD_PLUGIN_ICON)
 
             try:
-                control = self.getControl(self.C_MAIN_OSD_PROGIMAGE)
-                if control:
-                    if not self.osdProgram.imageSmall =='':
+                if self.osdProgram.imageSmall is not None:
+                    if not self.osdProgram.imageSmall == '':
                         self.setControlImage(self.C_MAIN_OSD_PROGIMAGE, self.osdProgram.imageSmall)
                     else:
                         self.setControlImage(self.C_MAIN_OSD_PROGIMAGE, 'tvguide-logo-epg.png')
+                else:
+                    self.setControlImage(self.C_MAIN_OSD_PROGIMAGE, 'tvguide-logo-epg.png')
             except:
                 pass
 
@@ -1554,12 +1558,13 @@ class TVGuide(xbmcgui.WindowXML):
                 self.setControlLabel(self.C_NEXT_OSD_TIME, '')
 
             try:
-                control = self.getControl(self.C_MAIN_OSD_NEXTIMAGE)
-                if control:
+                if nextOsdProgram.imageSmall is not None:
                     if not nextOsdProgram.imageSmall == '':
                         self.setControlImage(self.C_MAIN_OSD_NEXTIMAGE, nextOsdProgram.imageSmall)
                     else:
                         self.setControlImage(self.C_MAIN_OSD_NEXTIMAGE, 'tvguide-logo-epg.png')
+                else:
+                    self.setControlImage(self.C_MAIN_OSD_NEXTIMAGE, 'tvguide-logo-epg.png')
             except:
                 pass
 
@@ -1644,6 +1649,7 @@ class TVGuide(xbmcgui.WindowXML):
             if idx >= len(channels):
                 self.setControlImage(4110 + idx, ' ')
                 self.setControlLabel(4010 + idx, ' ')
+                self.setControlLabel(40100 + idx, ' ')
             else:
                 channelStart += 1
                 channel = channels[idx]
@@ -1670,7 +1676,7 @@ class TVGuide(xbmcgui.WindowXML):
                     self.setControlLabel(4010 + idx, '[COLOR %s]%s[/COLOR]' % (color, channel.title))
                     try:
                         chanNum = self.getControl(40100 + idx)
-                        if chanNum:
+                        if xbmc.getCondVisibility( "Control.IsVisible(%s)" % str(40100 + idx) ):
                             self.setControlLabel(40100 + idx, '[COLOR %s]%s[/COLOR]' % (color, chanidx))
                             self.setControlLabel(4010 + idx, '[COLOR %s]%s[/COLOR]' % (color, channel.title))
                         else:
@@ -2156,8 +2162,12 @@ class PopupMenu(xbmcgui.WindowXMLDialog):
         try:
 
             picControl = self.getControl(self.C_POPUP_PROGRAM_IMAGE)
-            if not self.program.imageSmall == '':
-                picControl.setImage(self.program.imageSmall)
+
+            if self.program.imageSmall is not None:
+                if not self.program.imageSmall == '':
+                    picControl.setImage(self.program.imageSmall)
+                else:
+                    picControl.setImage('tvguide-logo-epg.png')
             else:
                 picControl.setImage('tvguide-logo-epg.png')
         except:
@@ -2932,8 +2942,10 @@ class ChooseStreamAddonDialog(xbmcgui.WindowXMLDialog):
         listControl = \
             self.getControl(ChooseStreamAddonDialog.C_SELECTION_LIST)
         listControl.addItems(items)
-
-        self.setFocus(listControl)
+        try:
+            self.setFocus(listControl)
+        except:
+            pass
 
     def onAction(self, action):
         if action.getId() in [ACTION_PARENT_DIR, ACTION_PREVIOUS_MENU, KEY_NAV_BACK]:
@@ -3079,10 +3091,14 @@ class ProgramListDialog(xbmcgui.WindowXMLDialog):
                 item.setProperty('Remind', 'search_planner.png')
 
                 #
-            if not program.imageSmall == '':
-                program_image = program.imageSmall
+            if program.imageSmall is not None:
+                if not program.imageSmall == '':
+                    program_image = program.imageSmall
+                else:
+                    program_image = 'tvguide-logo-epg.png'
             else:
                 program_image = 'tvguide-logo-epg.png'
+
             item.setProperty('ProgramImage', program_image)
             items.append(item)
 

@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
 __author__ = 'bromix'
-__all__ = ['kodion', 'youtube', 'key_sets']
+__all__ = ['kodion', 'youtube', 'key_sets', 'refresh']
 
 key_sets = {
     'youtube-tv': {
         'id': 'ODYxNTU2NzA4NDU0LWQ2ZGxtM2xoMDVpZGQ4bnBlazE4azZiZThiYTNvYzY4',
         'key': 'QUl6YVN5QzZmdlpTSkhBN1Z6NWo4akNpS1J0N3RVSU9xakUyTjNn',
         'secret': 'U2JvVmhvRzlzMHJOYWZpeENTR0dLWEFU'
-    },
-    'own': {
-        'key': '',
-        'id': '',
-        'secret': ''
     },
     'provided': {
         '0': {  # youtube-plugin-for-kodi-2

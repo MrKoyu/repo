@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['moviesplanet.is','moviesplanet.tv']
+        self.domains = ['moviesplanet.tv']
         self.base_link = 'https://www.moviesplanet.tv'
         self.search_link = '/ajax/search.php'
         self.user = control.setting('moviesplanet.user')

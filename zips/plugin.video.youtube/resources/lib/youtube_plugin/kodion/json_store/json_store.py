@@ -25,45 +25,47 @@ from copy import deepcopy
 import xbmcvfs
 import xbmc
 
+from .. import logger
+
 
 class JSONStore(object):
     def __init__(self, filename):
-        self.base_path = 'special://profile/addon_data/plugin.video.youtube/'
-        self.filename = xbmc.translatePath(self.base_path + filename)
+        addon_id = 'plugin.video.youtube'
+        self.base_path = 'special://profile/addon_data/%s/' % addon_id
+        self.filename = xbmc.translatePath(''.join([self.base_path, filename]))
         self._data = None
-        if xbmcvfs.exists(self.filename):
-            self.load(force=True)
-        else:
-            self._data = dict()
+        self.load()
         self.set_defaults()
 
     def set_defaults(self):
-        self.save(self._data)
+        raise NotImplementedError
 
     def save(self, data):
-        if data != self._data or self._data == dict():
-            self._data = data
+        if data != self._data:
+            self._data = deepcopy(data)
             if not xbmcvfs.exists(self.base_path):
                 if not self.make_dirs(self.base_path):
-                    xbmc.log('[plugin.video.youtube] JSONStore Save |{filename}| failed to create directories.'.format(filename=self.filename), xbmc.LOGDEBUG)
+                    logger.log_debug('JSONStore Save |{filename}| failed to create directories.'.format(filename=self.filename))
                     return
             with open(self.filename, 'w') as jsonfile:
-                xbmc.log('[plugin.video.youtube] JSONStore Save |{filename}|'.format(filename=self.filename), xbmc.LOGDEBUG)
-                json.dump(data, jsonfile, indent=4, sort_keys=True)
+                logger.log_debug('JSONStore Save |{filename}|'.format(filename=self.filename))
+                json.dump(self._data, jsonfile, indent=4, sort_keys=True)
 
-    def load(self, force=False):
-        if force or not self._data:
+    def load(self):
+        if xbmcvfs.exists(self.filename):
             with open(self.filename, 'r') as jsonfile:
                 data = json.load(jsonfile)
                 self._data = data
-                xbmc.log('[plugin.video.youtube] JSONStore Load |{filename}|'.format(filename=self.filename), xbmc.LOGDEBUG)
-                return deepcopy(self._data)
+                logger.log_debug('JSONStore Load |{filename}|'.format(filename=self.filename))
         else:
-            return deepcopy(self._data)
+            self._data = dict()
+
+    def get_data(self):
+        return deepcopy(self._data)
 
     def make_dirs(self, path):
         if not path.endswith('/'):
-            path += '/'
+            path = ''.join([path, '/'])
         path = xbmc.translatePath(path)
         if not xbmcvfs.exists(path):
             try:

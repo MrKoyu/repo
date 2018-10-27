@@ -4,6 +4,10 @@
  
 [COLOR crimson]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.0.4[/COLOR][/B]
+[B][COLOR crimson]• [/COLOR][/B] New Trakt API
+[B][COLOR crimson]• [/COLOR][/B] Fixed Scrappers
+
 [B][COLOR limegreen]V2.0.0.3[/COLOR][/B]
 [B][COLOR crimson]• [/COLOR][/B] Fixed import missing in addon.xml
 [B][COLOR crimson]• [/COLOR][/B] Changed icons resolution from 256x256 to 512x512

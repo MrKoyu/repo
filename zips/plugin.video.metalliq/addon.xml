@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.metalliq" name="[COLOR gold]M[/COLOR]etalli[COLOR gold]Q[/COLOR] [COLOR gold]GOLDEN[/COLOR]" version="5.0.17krypton" provider-name="[COLOR gold][B]Last Version[/B][/COLOR]">
+<addon id="plugin.video.metalliq" name="[COLOR gold]M[/COLOR]etalli[COLOR gold]Q[/COLOR] [COLOR gold]GOLDEN[/COLOR]" version="6.0.17krypton" provider-name="[COLOR gold][B]Last Version[/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="repository.cdrepo"/>

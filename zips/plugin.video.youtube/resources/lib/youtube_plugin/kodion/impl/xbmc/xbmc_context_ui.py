@@ -108,36 +108,54 @@ class XbmcContextUI(AbstractContextUI):
         _header = header
         if not _header:
             _header = self._context.get_name()
-        _header = utils.to_unicode(_header)
+        _header = utils.to_utf8(_header)
 
         _image = image_uri
         if not _image:
             _image = self._context.get_icon()
 
-        _message = utils.to_unicode(message)
-        _message = _message.replace(',', ' ')
-        _message = _message.replace('\n', ' ')
+        _message = utils.to_utf8(message)
+        try:
+            _message = _message.replace(',', ' ')
+            _message = _message.replace('\n', ' ')
+        except TypeError:
+            _message = _message.replace(b',', b' ')
+            _message = _message.replace(b'\n', b' ')
+            _message = utils.to_unicode(_message)
+            _header = utils.to_unicode(_header)
 
-        xbmc.executebuiltin(
-            "Notification(%s, %s, %d, %s)" % (_header, _message, time_milliseconds, _image))
+        xbmc.executebuiltin("Notification(%s, %s, %d, %s)" % (_header, _message, time_milliseconds, _image))
 
     def open_settings(self):
         self._xbmc_addon.openSettings()
 
     def refresh_container(self):
-        xbmc.executebuiltin("Container.Refresh")
+        script_uri = 'special://home/addons/%s/resources/lib/youtube_plugin/refresh.py' % self._context.get_id()
+        xbmc.executebuiltin('RunScript(%s)' % script_uri)
 
     @staticmethod
     def set_home_window_property(property_id, value):
-        property_id = 'plugin.video.youtube-' + property_id
+        property_id = ''.join(['plugin.video.youtube-', property_id])
         xbmcgui.Window(10000).setProperty(property_id, value)
 
     @staticmethod
     def get_home_window_property(property_id):
-        property_id = 'plugin.video.youtube-' + property_id
+        property_id = ''.join(['plugin.video.youtube-', property_id])
         return xbmcgui.Window(10000).getProperty(property_id) or None
 
     @staticmethod
     def clear_home_window_property(property_id):
-        property_id = 'plugin.video.youtube-' + property_id
+        property_id = ''.join(['plugin.video.youtube-', property_id])
         xbmcgui.Window(10000).clearProperty(property_id)
+
+    @staticmethod
+    def bold(value):
+        return ''.join(['[B]', value, '[/B]'])
+
+    @staticmethod
+    def uppercase(value):
+        return ''.join(['[UPPERCASE]', value, '[/UPPERCASE]'])
+
+    @staticmethod
+    def color(color, value):
+        return ''.join(['[COLOR=', color.lower(), ']', value, '[/COLOR]'])

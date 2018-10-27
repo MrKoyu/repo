@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ class source:
         self.language = ['en']
         self.genre_filter = ['animation', 'anime']
         self.domains = ['gogoanimemobile.com', 'gogoanimemobile.net', 'gogoanime.io']
-        self.base_link = 'http://ww1.gogoanime.io'
+        self.base_link = 'https://www2.gogoanime.se/'
         self.search_link = '/search.html?keyword=%s'
         self.episode_link = '/%s-episode-%s'
 

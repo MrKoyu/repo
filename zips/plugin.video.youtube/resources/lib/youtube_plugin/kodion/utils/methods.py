@@ -8,6 +8,7 @@ from six import next
 from six import string_types
 
 import os
+import copy
 import re
 
 from ..constants import localize
@@ -28,7 +29,7 @@ def to_utf8(text):
     result = text
     if isinstance(text, string_types):
         try:
-            result = text.encode('utf-8')
+            result = text.encode('utf-8', 'ignore')
         except UnicodeDecodeError:
             pass
 
@@ -37,9 +38,9 @@ def to_utf8(text):
 
 def to_unicode(text):
     result = text
-    if isinstance(text, string_types):
+    if isinstance(text, string_types) or isinstance(text, bytes):
         try:
-            result = text.decode('utf-8')
+            result = text.decode('utf-8', 'ignore')
         except (AttributeError, UnicodeEncodeError):
             pass
 
@@ -84,38 +85,44 @@ def select_stream(context, stream_data_list, quality_map_override=None, ask_for_
     audio_only = False if ask_for_quality else settings.audio_only()  # don't filter streams to audio only if we're asking for quality
 
     if audio_only:  # check for live stream, audio only not supported
+        context.log_debug('Select stream: Audio only')
         for item in stream_data_list:
             if item.get('Live', False):
+                context.log_debug('Select stream: Live stream, audio only not available')
                 audio_only = False
                 break
 
     if audio_only:
-        use_dash = False
-        stream_data_list = [item for item in stream_data_list
-                            if (item.get('dash/audio', False) and
-                                not item.get('dash/video', False))]
+        audio_stream_data_list = [item for item in stream_data_list
+                                  if (item.get('dash/audio', False) and
+                                      not item.get('dash/video', False))]
 
-    if use_dash:
-        if settings.dash_support_addon() and not context.addon_enabled('inputstream.adaptive'):
-            if context.get_ui().on_yes_no_input(context.get_name(), context.localize(30579)):
-                use_dash = context.set_addon_enabled('inputstream.adaptive')
-            else:
-                use_dash = False
+        if audio_stream_data_list:
+            use_dash = False
+            stream_data_list = audio_stream_data_list
+        else:
+            context.log_debug('Select stream: Audio only, no audio only streams found')
 
-    try:
-        inputstream_version = xbmcaddon.Addon('inputstream.adaptive').getAddonInfo('version')
-        live_dash_supported = loose_version(inputstream_version) >= loose_version('2.0.12')
-    except RuntimeError:
-        live_dash_supported = False
+    dash_live = settings.use_dash_live_streams() and 'live' in context.inputstream_adaptive_capabilities()
+    dash_videos = settings.use_dash_videos()
 
-    if not live_dash_supported:
-        stream_data_list = [item for item in stream_data_list
-                            if ((item['container'] != 'mpd') or
-                                ((item['container'] == 'mpd') and
-                                 (item.get('Live') is not True)))]
+    if use_dash and any([item['container'] == 'mpd' for item in stream_data_list]):
+        use_dash = context.use_inputstream_adaptive()
 
     if not use_dash:
         stream_data_list = [item for item in stream_data_list if (item['container'] != 'mpd')]
+    else:
+        if not dash_live:
+            stream_data_list = [item for item in stream_data_list
+                                if ((item['container'] != 'mpd') or
+                                    ((item['container'] == 'mpd') and
+                                     (item.get('Live') is not True)))]
+
+        if not dash_videos:
+            stream_data_list = [item for item in stream_data_list
+                                if ((item['container'] != 'mpd') or
+                                    ((item['container'] == 'mpd') and
+                                     (item.get('Live') is True)))]
 
     def _find_best_fit_video(_stream_data):
         if audio_only:
@@ -126,12 +133,20 @@ def select_stream(context, stream_data_list, quality_map_override=None, ask_for_
     sorted_stream_data_list = sorted(stream_data_list, key=_sort_stream_data, reverse=True)
 
     context.log_debug('selectable streams: %d' % len(sorted_stream_data_list))
+    log_streams = list()
     for sorted_stream_data in sorted_stream_data_list:
-        context.log_debug('selectable stream: %s' % sorted_stream_data)
+        log_data = copy.deepcopy(sorted_stream_data)
+        if 'license_info' in log_data:
+            log_data['license_info']['url'] = '[not shown]' if log_data['license_info'].get('url') else None
+            log_data['license_info']['token'] = '[not shown]' if log_data['license_info'].get('token') else None
+        else:
+            log_data['url'] = re.sub(r'ip=\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', 'ip=xxx.xxx.xxx.xxx', log_data['url'])
+        log_streams.append(log_data)
+    context.log_debug('selectable streams: \n%s' % '\n'.join(str(stream) for stream in log_streams))
 
     selected_stream_data = None
     if ask_for_quality and len(sorted_stream_data_list) > 1:
-        items = []
+        items = list()
         for sorted_stream_data in sorted_stream_data_list:
             items.append((sorted_stream_data['title'], sorted_stream_data))
 
@@ -142,7 +157,11 @@ def select_stream(context, stream_data_list, quality_map_override=None, ask_for_
         selected_stream_data = find_best_fit(sorted_stream_data_list, _find_best_fit_video)
 
     if selected_stream_data is not None:
-        context.log_debug('selected stream: %s' % selected_stream_data)
+        log_data = copy.deepcopy(selected_stream_data)
+        if 'license_info' in log_data:
+            log_data['license_info']['url'] = '[not shown]' if log_data['license_info'].get('url') else None
+            log_data['license_info']['token'] = '[not shown]' if log_data['license_info'].get('token') else None
+        context.log_debug('selected stream: %s' % log_data)
 
     return selected_stream_data
 
@@ -201,7 +220,7 @@ def print_items(items):
 
 def make_dirs(path):
     if not path.endswith('/'):
-        path += '/'
+        path = ''.join([path, '/'])
     path = xbmc.translatePath(path)
     if not xbmcvfs.exists(path):
         try:

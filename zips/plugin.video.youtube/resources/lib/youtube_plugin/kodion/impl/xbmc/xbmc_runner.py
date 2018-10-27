@@ -60,7 +60,7 @@ class XbmcRunner(AbstractProviderRunner):
             pass
 
     def _set_resolved_url(self, context, base_item, succeeded=True):
-        item = xbmc_items.to_item(context, base_item)
+        item = xbmc_items.to_playback_item(context, base_item)
         item.setPath(base_item.get_uri())
         xbmcplugin.setResolvedUrl(self.handle, succeeded=succeeded, listitem=item)
 
@@ -77,9 +77,16 @@ class XbmcRunner(AbstractProviderRunner):
         """
 
     def _add_directory(self, context, directory_item, item_count=0):
-        item = xbmcgui.ListItem(label=directory_item.get_name(),
-                                iconImage=u'DefaultFolder.png',
-                                thumbnailImage=directory_item.get_image())
+        major_version = context.get_system_version().get_version()[0]
+        if major_version > 17:
+            item = xbmcgui.ListItem(label=directory_item.get_name(),
+                                    iconImage=u'DefaultFolder.png',
+                                    thumbnailImage=directory_item.get_image(),
+                                    offscreen=True)
+        else:
+            item = xbmcgui.ListItem(label=directory_item.get_name(),
+                                    iconImage=u'DefaultFolder.png',
+                                    thumbnailImage=directory_item.get_image())
 
         # only set fanart is enabled
 
@@ -90,6 +97,7 @@ class XbmcRunner(AbstractProviderRunner):
                                      replaceItems=directory_item.replace_context_menu())
 
         item.setInfo(type=u'video', infoLabels=info_labels.create_from_item(context, directory_item))
+        item.setPath(directory_item.get_uri())
 
         xbmcplugin.addDirectoryItem(handle=self.handle,
                                     url=directory_item.get_uri(),
@@ -99,16 +107,23 @@ class XbmcRunner(AbstractProviderRunner):
 
     def _add_video(self, context, video_item, item_count=0):
         item = xbmc_items.to_video_item(context, video_item)
-
+        item.setPath(video_item.get_uri())
         xbmcplugin.addDirectoryItem(handle=self.handle,
                                     url=video_item.get_uri(),
                                     listitem=item,
                                     totalItems=item_count)
 
     def _add_image(self, context, image_item, item_count):
-        item = xbmcgui.ListItem(label=image_item.get_name(),
-                                iconImage=u'DefaultPicture.png',
-                                thumbnailImage=image_item.get_image())
+        major_version = context.get_system_version().get_version()[0]
+        if major_version > 17:
+            item = xbmcgui.ListItem(label=image_item.get_name(),
+                                    iconImage=u'DefaultPicture.png',
+                                    thumbnailImage=image_item.get_image(),
+                                    offscreen=True)
+        else:
+            item = xbmcgui.ListItem(label=image_item.get_name(),
+                                    iconImage=u'DefaultPicture.png',
+                                    thumbnailImage=image_item.get_image())
 
         # only set fanart is enabled
         if image_item.get_fanart() and self.settings.show_fanart():
@@ -118,6 +133,7 @@ class XbmcRunner(AbstractProviderRunner):
 
         item.setInfo(type=u'picture', infoLabels=info_labels.create_from_item(context, image_item))
 
+        item.setPath(image_item.get_uri())
         xbmcplugin.addDirectoryItem(handle=self.handle,
                                     url=image_item.get_uri(),
                                     listitem=item,
@@ -125,7 +141,7 @@ class XbmcRunner(AbstractProviderRunner):
 
     def _add_audio(self, context, audio_item, item_count):
         item = xbmc_items.to_audio_item(context, audio_item)
-
+        item.setPath(audio_item.get_uri())
         xbmcplugin.addDirectoryItem(handle=self.handle,
                                     url=audio_item.get_uri(),
                                     listitem=item,

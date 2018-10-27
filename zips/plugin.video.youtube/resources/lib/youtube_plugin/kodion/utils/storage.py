@@ -11,11 +11,11 @@ import time
 
 
 class Storage(object):
-    def __init__(self, filename, max_item_count=1000, max_file_size_kb=-1):
+    def __init__(self, filename, max_item_count=0, max_file_size_kb=-1):
         self._table_name = 'storage'
         self._filename = filename
         if not self._filename.endswith('.sqlite'):
-            self._filename += '.sqlite'
+            self._filename = ''.join([self._filename, '.sqlite'])
         self._file = None
         self._cursor = None
         self._max_item_count = max_item_count
@@ -41,8 +41,9 @@ class Storage(object):
             if not os.path.exists(path):
                 os.makedirs(path)
 
-            self._file = sqlite3.connect(self._filename, check_same_thread=False, detect_types=sqlite3.PARSE_DECLTYPES,
-                                         timeout=1)
+            self._file = sqlite3.connect(self._filename, check_same_thread=False,
+                                         detect_types=sqlite3.PARSE_DECLTYPES, timeout=1)
+
             self._file.isolation_level = None
             self._cursor = self._file.cursor()
             self._cursor.execute('PRAGMA journal_mode=MEMORY')
@@ -57,15 +58,15 @@ class Storage(object):
 
         """
         Tests revealed that sqlite has problems to release the database in time. This happens no so often, but just to
-        be sure, we try at least 5 times to execute out statement.
+        be sure, we try at least 3 times to execute out statement.
         """
-        for tries in range(5):
+        for tries in range(3):
             try:
                 return self._cursor.execute(query, values)
             except TypeError:
                 return None
             except:
-                time.sleep(2)
+                time.sleep(0.1)
         else:
             return None
 
@@ -91,9 +92,12 @@ class Storage(object):
         if not os.path.exists(self._filename):
             return
 
-        file_size_kb = (os.path.getsize(self._filename) // 1024)
-        if file_size_kb >= self._max_file_size_kb:
-            os.remove(self._filename)
+        try:
+            file_size_kb = (os.path.getsize(self._filename) // 1024)
+            if file_size_kb >= self._max_file_size_kb:
+                os.remove(self._filename)
+        except OSError:
+            pass
 
     def _create_table(self):
         self._open()
@@ -111,29 +115,37 @@ class Storage(object):
         def _encode(obj):
             return sqlite3.Binary(pickle.dumps(obj, protocol=pickle.HIGHEST_PROTOCOL))
 
-        self._open()
-        now = datetime.datetime.now()
-        if not now.microsecond:  # now is to the second
-            now += datetime.timedelta(microseconds=1)  # add 1 microsecond, required for dbapi2
-        query = 'REPLACE INTO %s (key,time,value) VALUES(?,?,?)' % self._table_name
-        self._execute(True, query, values=[item_id, now, _encode(item)])
-        self._optimize_item_count()
-        self._close()
+        if self._max_file_size_kb < 1 and self._max_item_count < 1:
+            self._optimize_item_count()
+        else:
+            self._open()
+            now = datetime.datetime.now() + datetime.timedelta(microseconds=1)  # add 1 microsecond, required for dbapi2
+            query = 'REPLACE INTO %s (key,time,value) VALUES(?,?,?)' % self._table_name
+            self._execute(True, query, values=[item_id, now, _encode(item)])
+            self._close()
+            self._optimize_item_count()
 
     def _optimize_item_count(self):
-        self._open()
-        query = 'SELECT key FROM %s ORDER BY time DESC LIMIT -1 OFFSET %d' % (self._table_name, self._max_item_count)
-        result = self._execute(False, query)
-        if result is not None:
-            for item in result:
-                self._remove(item[0])
-        self._close()
+        if self._max_item_count < 1:
+            if not self._is_empty():
+                self._clear()
+        else:
+            self._open()
+            query = 'SELECT key FROM %s ORDER BY time DESC LIMIT -1 OFFSET %d' % (self._table_name, self._max_item_count)
+            result = self._execute(False, query)
+            if result is not None:
+                for item in result:
+                    self._remove(item[0])
+            self._close()
 
     def _clear(self):
         self._open()
         query = 'DELETE FROM %s' % self._table_name
         self._execute(True, query)
         self._create_table()
+        self._close()
+        self._open()
+        self._execute(False, 'VACUUM')
         self._close()
 
     def _is_empty(self):

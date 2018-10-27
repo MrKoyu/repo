@@ -1,6 +1,10 @@
 __author__ = 'bromix'
 
+import copy
+import traceback
+
 import requests
+
 from .login_client import LoginClient
 from ..helper.video_info import VideoInfo
 from ..helper.utils import get_shelf_index_by_title
@@ -48,7 +52,7 @@ class YouTube(LoginClient):
 
         return 'C%s%s%sAA' % (high[high_iteration], low[low_iteration], overflow_token)
 
-    def update_watch_history(self, video_id):
+    def update_watch_history(self, video_id, url):
         headers = {'Host': 'www.youtube.com',
                    'Connection': 'keep-alive',
                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.36 Safari/537.36',
@@ -69,25 +73,49 @@ class YouTube(LoginClient):
         if self._access_token:
             params['access_token'] = self._access_token
 
-        url = 'https://www.youtube.com/user_watch'
+        try:
+            result = requests.get(url, params=params, headers=headers, verify=self._verify, allow_redirects=True)
+        except:
+            context.log_error('Failed to update watch history |%s|' % traceback.print_exc())
 
-        result = requests.get(url, params=params, headers=headers, verify=self._verify, allow_redirects=True)
-
-    def get_video_streams(self, context, video_id=None, player_config=None, cookies=None):
+    def get_video_streams(self, context, video_id=None, player_config=None, cookies=None, embeddable=False):
         video_info = VideoInfo(context, access_token=self._access_token, language=self._language)
 
-        video_streams = video_info.load_stream_infos(video_id, player_config, cookies)
+        video_streams = video_info.load_stream_infos(video_id, player_config, cookies, embeddable)
 
         # update title
         for video_stream in video_streams:
-            if not video_stream.get('dash/video', False) and video_stream.get('dash/audio', False):
-                title = '[B]%s[/B] (%s; / %s@%d)' % (
-                    video_stream['title'], video_stream['container'],
-                    video_stream['audio']['encoding'], video_stream['audio']['bitrate'])
-            else:
-                title = '[B]%s[/B] (%s;%s / %s@%d)' % (
-                    video_stream['title'], video_stream['container'], video_stream['video']['encoding'],
-                    video_stream['audio']['encoding'], video_stream['audio']['bitrate'])
+            title = '%s (%s)' % (context.get_ui().bold(video_stream['title']), video_stream['container'])
+
+            if 'audio' in video_stream and 'video' in video_stream:
+                if video_stream['audio']['bitrate'] > 0 and video_stream['video']['encoding'] and \
+                        video_stream['audio']['encoding']:
+                    title = '%s (%s; %s / %s@%d)' % (context.get_ui().bold(video_stream['title']),
+                                                     video_stream['container'],
+                                                     video_stream['video']['encoding'],
+                                                     video_stream['audio']['encoding'],
+                                                     video_stream['audio']['bitrate'])
+
+                elif video_stream['video']['encoding'] and video_stream['audio']['encoding']:
+                    title = '%s (%s; %s / %s)' % (context.get_ui().bold(video_stream['title']),
+                                                  video_stream['container'],
+                                                  video_stream['video']['encoding'],
+                                                  video_stream['audio']['encoding'])
+            elif 'audio' in video_stream and 'video' not in video_stream:
+                if video_stream['audio']['encoding'] and video_stream['audio']['bitrate'] > 0:
+                    title = '%s (%s; %s@%d)' % (context.get_ui().bold(video_stream['title']),
+                                                video_stream['container'],
+                                                video_stream['audio']['encoding'],
+                                                video_stream['audio']['bitrate'])
+
+            elif 'audio' in video_stream or 'video' in video_stream:
+                encoding = video_stream.get('audio', dict()).get('encoding')
+                if not encoding:
+                    encoding = video_stream.get('video', dict()).get('encoding')
+                if encoding:
+                    title = '%s (%s; %s)' % (context.get_ui().bold(video_stream['title']),
+                                             video_stream['container'],
+                                             encoding)
 
             video_stream['title'] = title
 
@@ -214,7 +242,7 @@ class YouTube(LoginClient):
         return self._perform_v3_request(method='GET', path='guideCategories', params=params)
 
     def get_popular_videos(self, page_token=''):
-        params = {'part': 'snippet',
+        params = {'part': 'snippet,status',
                   'maxResults': str(self._max_results),
                   'regionCode': self._region,
                   'hl': self._language,
@@ -224,7 +252,7 @@ class YouTube(LoginClient):
         return self._perform_v3_request(method='GET', path='videos', params=params)
 
     def get_video_category(self, video_category_id, page_token=''):
-        params = {'part': 'snippet,contentDetails',
+        params = {'part': 'snippet,contentDetails,status',
                   'maxResults': str(self._max_results),
                   'videoCategoryId': video_category_id,
                   'chart': 'mostPopular',
@@ -349,7 +377,7 @@ class YouTube(LoginClient):
             page_token = ''
 
         # prepare params
-        params = {'part': 'snippet',
+        params = {'part': 'snippet,status',
                   'myRating': 'dislike',
                   'maxResults': str(self._max_results)}
         if page_token:
@@ -357,16 +385,21 @@ class YouTube(LoginClient):
 
         return self._perform_v3_request(method='GET', path='videos', params=params)
 
-    def get_videos(self, video_id):
+    def get_videos(self, video_id, live_details=False):
         """
         Returns a list of videos that match the API request parameters
         :param video_id: list of video ids
+        :param live_details: also retrieve liveStreamingDetails
         :return:
         """
         if isinstance(video_id, list):
             video_id = ','.join(video_id)
 
-        params = {'part': 'snippet,contentDetails',
+        parts = ['snippet,contentDetails,status']
+        if live_details:
+            parts.append(',liveStreamingDetails')
+
+        params = {'part': ''.join(parts),
                   'id': video_id}
         return self._perform_v3_request(method='GET', path='videos', params=params)
 
@@ -378,7 +411,7 @@ class YouTube(LoginClient):
                   'id': playlist_id}
         return self._perform_v3_request(method='GET', path='playlists', params=params)
 
-    def get_live_events(self, event_type='live', order='relevance', page_token=''):
+    def get_live_events(self, event_type='live', order='relevance', page_token='', location=False):
         """
 
         :param event_type: one of: 'live', 'completed', 'upcoming'
@@ -397,7 +430,15 @@ class YouTube(LoginClient):
                   'eventType': event_type,
                   'regionCode': self._region,
                   'hl': self._language,
+                  'relevanceLanguage': self._language,
                   'maxResults': str(self._max_results)}
+
+        if location:
+            location = context.get_settings().get_location()
+            if location:
+                params['location'] = location
+                params['locationRadius'] = context.get_settings().get_location_radius()
+
         if page_token:
             params['pageToken'] = page_token
 
@@ -420,7 +461,7 @@ class YouTube(LoginClient):
 
         return self._perform_v3_request(method='GET', path='search', params=params, quota_optimized=True)
 
-    def search(self, q, search_type=['video', 'channel', 'playlist'], event_type='', channel_id='', order='relevance', safe_search='moderate', page_token=''):
+    def search(self, q, search_type=['video', 'channel', 'playlist'], event_type='', channel_id='', order='relevance', safe_search='moderate', page_token='', location=False):
         """
         Returns a collection of search results that match the query parameters specified in the API request. By default,
         a search result set identifies matching video, channel, and playlist resources, but you can also configure
@@ -450,7 +491,9 @@ class YouTube(LoginClient):
                   'part': 'snippet',
                   'regionCode': self._region,
                   'hl': self._language,
+                  'relevanceLanguage': self._language,
                   'maxResults': str(self._max_results)}
+
         if event_type and event_type in ['live', 'upcoming', 'completed']:
             params['eventType'] = event_type
         if search_type:
@@ -471,6 +514,12 @@ class YouTube(LoginClient):
             if params.get(key) is not None:
                 params['type'] = 'video'
                 break
+
+        if params['type'] == 'video' and location:
+            location = context.get_settings().get_location()
+            if location:
+                params['location'] = location
+                params['locationRadius'] = context.get_settings().get_location_radius()
 
         return self._perform_v3_request(method='GET', path='search', params=params, quota_optimized=False)
 
@@ -537,6 +586,9 @@ class YouTube(LoginClient):
                 _result['items'] = _items
                 _result['continue'] = True
 
+            if 'offset' in _result and _result['offset'] >= 100:
+                _result['offset'] -= 100
+
             if len(_result['items']) < self._max_results:
                 if 'continue' in _result:
                     del _result['continue']
@@ -549,6 +601,119 @@ class YouTube(LoginClient):
             return _result
 
         return _perform(_page_token=page_token, _offset=offset, _result=result)
+
+    def get_purchases(self, page_token, offset):
+        if not page_token:
+            page_token = ''
+
+        shelf_title = 'Purchases'
+
+        result = {'items': [],
+                  'next_page_token': page_token,
+                  'offset': offset}
+
+        def _perform(_page_token, _offset, _result, _shelf_index=None):
+            _post_data = {
+                'context': {
+                    'client': {
+                        'clientName': 'TVHTML5',
+                        'clientVersion': '5.20150304',
+                        'theme': 'CLASSIC',
+                        'acceptRegion': '%s' % self._region,
+                        'acceptLanguage': '%s' % self._language.replace('_', '-')
+                    },
+                    'user': {
+                        'enableSafetyMode': False
+                    }
+                }
+            }
+            if _page_token:
+                _post_data['continuation'] = _page_token
+            else:
+                _post_data['browseId'] = 'FEmy_youtube'
+
+            _json_data = self._perform_v1_tv_request(method='POST', path='browse', post_data=_post_data)
+
+            _data = {}
+            if 'continuationContents' in _json_data:
+                _data = _json_data.get('continuationContents', {}).get('horizontalListContinuation', {})
+            elif 'contents' in _json_data:
+                _contents = _json_data.get('contents', {}).get('sectionListRenderer', {}).get('contents', [{}])
+
+                if _shelf_index is None:
+                    _shelf_index = get_shelf_index_by_title(context, _json_data, shelf_title)
+
+                if _shelf_index is not None:
+                    _data = _contents[_shelf_index].get('shelfRenderer', {}).get('content', {}).get('horizontalListRenderer', {})
+
+            _items = _data.get('items', [])
+            if not _result:
+                _result = {'items': []}
+
+            _new_offset = self._max_results - len(_result['items']) + _offset
+            if _offset > 0:
+                _items = _items[_offset:]
+            _result['offset'] = _new_offset
+
+            for _item in _items:
+                _item = _item.get('gridVideoRenderer', {})
+                if _item:
+                    _video_item = {'id': _item['videoId'],
+                                   'title': _item.get('title', {}).get('runs', [{}])[0].get('text', ''),
+                                   'channel': _item.get('shortBylineText', {}).get('runs', [{}])[0].get('text', '')}
+                    _result['items'].append(_video_item)
+
+            _continuations = _data.get('continuations', [{}])[0].get('nextContinuationData', {}).get('continuation', '')
+            if _continuations and len(_result['items']) <= self._max_results:
+                _result['next_page_token'] = _continuations
+
+                if len(_result['items']) < self._max_results:
+                    _result = _perform(_page_token=_continuations, _offset=0, _result=_result, _shelf_index=shelf_index)
+
+            # trim result
+            if len(_result['items']) > self._max_results:
+                _items = _result['items']
+                _items = _items[:self._max_results]
+                _result['items'] = _items
+                _result['continue'] = True
+
+            if len(_result['items']) < self._max_results:
+                if 'continue' in _result:
+                    del _result['continue']
+
+                if 'next_page_token' in _result:
+                    del _result['next_page_token']
+
+                if 'offset' in _result:
+                    del _result['offset']
+
+            return _result
+
+        shelf_index = None
+        if self._language != 'en' and not self._language.startswith('en-') and not page_token:
+            #  shelf index is a moving target, make a request in english first to find the correct index by title
+            _en_post_data = {
+                'context': {
+                    'client': {
+                        'clientName': 'TVHTML5',
+                        'clientVersion': '5.20150304',
+                        'theme': 'CLASSIC',
+                        'acceptRegion': 'US',
+                        'acceptLanguage': 'en-US'
+                    },
+                    'user': {
+                        'enableSafetyMode': False
+                    }
+                },
+                'browseId': 'FEmy_youtube'
+            }
+
+            json_data = self._perform_v1_tv_request(method='POST', path='browse', post_data=_en_post_data)
+            shelf_index = get_shelf_index_by_title(context, json_data, shelf_title)
+
+        result = _perform(_page_token=page_token, _offset=offset, _result=result, _shelf_index=shelf_index)
+
+        return result
 
     def get_saved_playlists(self, page_token, offset):
         if not page_token:
@@ -617,7 +782,7 @@ class YouTube(LoginClient):
                     for _thumb in _thumbs:
                         _thumb_url = _thumb.get('url', '')
                         if _thumb_url.startswith('//'):
-                            _thumb_url = 'https:' + _thumb_url
+                            _thumb_url = ''.join(['https:', _thumb_url])
                         if _thumb_url.endswith('/default.jpg'):
                             _video_item['thumbnails']['default']['url'] = _thumb_url
                         elif _thumb_url.endswith('/mqdefault.jpg'):
@@ -864,8 +1029,10 @@ class YouTube(LoginClient):
         _url = 'https://www.googleapis.com/youtube/v3/%s' % path.strip('/')
 
         result = None
-
-        context.log_debug('[data] v3 request: |{0}| path: |{1}| params: |{2}| post_data: |{3}|'.format(method, path, params, post_data))
+        log_params = copy.deepcopy(params)
+        if 'location' in log_params:
+            log_params['location'] = 'xx.xxxx,xx.xxxx'
+        context.log_debug('[data] v3 request: |{0}| path: |{1}| params: |{2}| post_data: |{3}|'.format(method, path, log_params, post_data))
         if method == 'GET':
             result = requests.get(_url, params=_params, headers=_headers, verify=self._verify, allow_redirects=allow_redirects)
         elif method == 'POST':

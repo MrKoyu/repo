@@ -2,6 +2,7 @@ from six.moves import BaseHTTPServer
 from six.moves.urllib.parse import parse_qs, urlparse
 from six.moves import xrange
 
+import json
 import os
 import re
 import requests
@@ -11,34 +12,63 @@ import xbmc
 import xbmcaddon
 import xbmcgui
 
+from .. import logger
+
 
 class YouTubeRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     def __init__(self, request, client_address, server):
-        addon = xbmcaddon.Addon('plugin.video.youtube')
+        self.addon_id = 'plugin.video.youtube'
+        addon = xbmcaddon.Addon(self.addon_id)
         whitelist_ips = addon.getSetting('kodion.http.ip.whitelist')
         whitelist_ips = ''.join(whitelist_ips.split())
-        whitelist_ips = whitelist_ips.split(',')
-        local_ranges = ('10.', '172.16.', '192.168.')
-        local_ips = ['127.0.0.1', 'localhost', '::1']
-        self.local_ranges = local_ranges
-        self.whitelist_ips = whitelist_ips + local_ips
+        self.whitelist_ips = whitelist_ips.split(',')
+        self.local_ranges = ('10.', '172.16.', '192.168.', '127.0.0.1', 'localhost', '::1')
         self.chunk_size = 1024 * 64
-        self.base_path = 'special://temp/plugin.video.youtube'
+        self.base_path = 'special://temp/%s' % self.addon_id
         BaseHTTPServer.BaseHTTPRequestHandler.__init__(self, request, client_address, server)
+
+    def connection_allowed(self):
+        client_ip = self.client_address[0]
+        split_ip = client_ip.split('.')
+        log_ip = 'unknown'
+        if len(split_ip) == 4:
+            log_ip = '%s.%s.' % (split_ip[0], split_ip[1])
+        log_lines = ['HTTPServer: Connection from |%s|' % log_ip]
+        conn_allowed = client_ip.startswith(self.local_ranges)
+        log_lines.append('Local range: |%s|' % str(conn_allowed))
+        if not conn_allowed:
+            conn_allowed = client_ip in self.whitelist_ips
+            log_lines.append('Whitelisted: |%s|' % str(conn_allowed))
+
+        if not conn_allowed:
+            logger.log_debug('HTTPServer: Connection from |%s| not allowed' % log_ip)
+        else:
+            logger.log_debug(' '.join(log_lines))
+        return conn_allowed
 
     def do_GET(self):
         addon = xbmcaddon.Addon('plugin.video.youtube')
-        dash_proxy_enabled = addon.getSetting('kodion.mpd.proxy') == 'true'
+        dash_proxy_enabled = addon.getSetting('kodion.mpd.videos') == 'true' and addon.getSetting('kodion.video.quality.mpd') == 'true'
         api_config_enabled = addon.getSetting('youtube.api.config.page') == 'true'
 
-        if not self.client_address[0].startswith(self.local_ranges) and not self.client_address[0] in self.whitelist_ips:
+        if self.path == '/client_ip':
+            client_json = json.dumps({"ip": "{ip}".format(ip=self.client_address[0])})
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Content-Length', len(client_json))
+            self.end_headers()
+            self.wfile.write(client_json)
+
+        logger.log_debug('HTTPServer: Request uri path |{proxy_path}|'.format(proxy_path=self.path))
+
+        if not self.connection_allowed():
             self.send_error(403)
         else:
             if dash_proxy_enabled and self.path.endswith('.mpd'):
-                file_path = xbmc.translatePath(self.base_path + self.path)
+                file_path = xbmc.translatePath(''.join([self.base_path, self.path]))
                 file_chunk = True
-                xbmc.log('[plugin.video.youtube] HTTPServer: Request |{proxy_path}| -> |{file_path}|'.format(proxy_path=self.path, file_path=file_path), xbmc.LOGDEBUG)
+                logger.log_debug('HTTPServer: Request file path |{file_path}|'.format(file_path=file_path))
                 try:
                     with open(file_path, 'rb') as f:
                         self.send_response(200)
@@ -112,20 +142,21 @@ class YouTubeRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 self.end_headers()
                 for chunk in self.get_chunks(html):
                     self.wfile.write(chunk)
-                xbmc.executebuiltin('NotifyAll(plugin.video.youtube,check_api_keys,\\"{}\\")')
             elif self.path == '/ping':
                 self.send_error(204)
             else:
-                self.send_error(403)
+                self.send_error(501)
 
     def do_HEAD(self):
-        if not self.client_address[0].startswith(self.local_ranges) and not self.client_address[0] in self.whitelist_ips:
+        logger.log_debug('HTTPServer: Request uri path |{proxy_path}|'.format(proxy_path=self.path))
+
+        if not self.connection_allowed():
             self.send_error(403)
         else:
             addon = xbmcaddon.Addon('plugin.video.youtube')
-            dash_proxy_enabled = addon.getSetting('kodion.mpd.proxy') == 'true'
+            dash_proxy_enabled = addon.getSetting('kodion.mpd.videos') == 'true' and addon.getSetting('kodion.video.quality.mpd') == 'true'
             if dash_proxy_enabled and self.path.endswith('.mpd'):
-                file_path = xbmc.translatePath(self.base_path + self.path)
+                file_path = xbmc.translatePath(''.join([self.base_path, self.path]))
                 if not os.path.isfile(file_path):
                     response = 'File Not Found: |{proxy_path}| -> |{file_path}|'.format(proxy_path=self.path, file_path=file_path)
                     self.send_error(404, response)
@@ -135,7 +166,75 @@ class YouTubeRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                     self.send_header('Content-Length', os.path.getsize(file_path))
                     self.end_headers()
             else:
+                self.send_error(501)
+
+    def do_POST(self):
+        logger.log_debug('HTTPServer: Request uri path |{proxy_path}|'.format(proxy_path=self.path))
+
+        if not self.connection_allowed():
+            self.send_error(403)
+        elif self.path.startswith('/widevine'):
+            license_url = xbmcgui.Window(10000).getProperty('plugin.video.youtube-license_url')
+            license_token = xbmcgui.Window(10000).getProperty('plugin.video.youtube-license_token')
+
+            if not license_url:
+                self.send_error(404)
+                return
+            if not license_token:
                 self.send_error(403)
+                return
+
+            size_limit = None
+
+            length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(length)
+
+            li_headers = {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer %s' % license_token
+            }
+
+            result = requests.post(url=license_url, headers=li_headers, data=post_data, stream=True)
+
+            response_length = int(result.headers.get('content-length'))
+            content = result.raw.read(response_length)
+
+            content_split = content.split('\r\n\r\n'.encode('utf-8'))
+            response_header = content_split[0].decode('utf-8', 'ignore')
+            response_body = content_split[1]
+            response_length = len(response_body)
+
+            match = re.search('^Authorized-Format-Types:\s*(?P<authorized_types>.+?)\r*$', response_header, re.MULTILINE)
+            if match:
+                authorized_types = match.group('authorized_types').split(',')
+                logger.log_debug('HTTPServer: Found authorized formats |{authorized_fmts}|'.format(authorized_fmts=authorized_types))
+
+                fmt_to_px = {'SD': (1280 * 528) - 1, 'HD720': 1280 * 720, 'HD': 7680 * 4320}
+                if 'HD' in authorized_types:
+                    size_limit = fmt_to_px['HD']
+                elif 'HD720' in authorized_types:
+                    if xbmc.getCondVisibility('system.platform.android') == 1:
+                        size_limit = fmt_to_px['HD720']
+                    else:
+                        size_limit = fmt_to_px['SD']
+                elif 'SD' in authorized_types:
+                    size_limit = fmt_to_px['SD']
+
+            self.send_response(200)
+
+            if size_limit:
+                self.send_header('X-Limit-Video', 'max={size_limit}px'.format(size_limit=str(size_limit)))
+            for d in list(result.headers.items()):
+                if re.match('^[Cc]ontent-[Ll]ength$', d[0]):
+                    self.send_header(d[0], response_length)
+                else:
+                    self.send_header(d[0], d[1])
+            self.end_headers()
+
+            for chunk in self.get_chunks(response_body):
+                self.wfile.write(chunk)
+        else:
+            self.send_error(501)
 
     def log_message(self, format, *args):
         return
@@ -341,7 +440,8 @@ class Pages(object):
 
 
 def get_http_server(address=None, port=None):
-    addon = xbmcaddon.Addon('plugin.video.youtube')
+    addon_id = 'plugin.video.youtube'
+    addon = xbmcaddon.Addon(addon_id)
     address = address if address else addon.getSetting('kodion.http.listen')
     address = address if re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', address) else '0.0.0.0'
     port = int(port) if port else 50152
@@ -349,7 +449,7 @@ def get_http_server(address=None, port=None):
         server = BaseHTTPServer.HTTPServer((address, port), YouTubeRequestHandler)
         return server
     except socket.error as e:
-        xbmc.log('[plugin.video.youtube] HTTPServer: Failed to start |{address}:{port}| |{response}|'.format(address=address, port=port, response=str(e)), xbmc.LOGDEBUG)
+        logger.log_debug('HTTPServer: Failed to start |{address}:{port}| |{response}|'.format(address=address, port=port, response=str(e)))
         xbmcgui.Dialog().notification(addon.getAddonInfo('name'), str(e),
                                       xbmc.translatePath('special://home/addons/{0!s}/icon.png'.format(addon.getAddonInfo('id'))),
                                       5000, False)
@@ -357,7 +457,8 @@ def get_http_server(address=None, port=None):
 
 
 def is_httpd_live(address=None, port=None):
-    addon = xbmcaddon.Addon('plugin.video.youtube')
+    addon_id = 'plugin.video.youtube'
+    addon = xbmcaddon.Addon(addon_id)
     address = address if address else addon.getSetting('kodion.http.listen')
     address = '127.0.0.1' if address == '0.0.0.0' else address
     address = address if re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', address) else '127.0.0.1'
@@ -365,8 +466,25 @@ def is_httpd_live(address=None, port=None):
     url = 'http://{address}:{port}/ping'.format(address=address, port=port)
     try:
         response = requests.get(url)
-        xbmc.log('[plugin.video.youtube] HTTPServer: Ping |{address}:{port}| |{response}|'.format(address=address, port=port, response=response.status_code), xbmc.LOGDEBUG)
+        logger.log_debug('HTTPServer: Ping |{address}:{port}| |{response}|'.format(address=address, port=port, response=response.status_code))
         return response.status_code == 204
     except:
-        xbmc.log('[plugin.video.youtube] HTTPServer: Ping |{address}:{port}| |{response}|'.format(address=address, port=port, response='failed'), xbmc.LOGDEBUG)
+        logger.log_debug('HTTPServer: Ping |{address}:{port}| |{response}|'.format(address=address, port=port, response='failed'))
         return False
+
+
+def get_client_ip_address(address=None, port=None):
+    addon_id = 'plugin.video.youtube'
+    addon = xbmcaddon.Addon(addon_id)
+    address = address if address else addon.getSetting('kodion.http.listen')
+    address = '127.0.0.1' if address == '0.0.0.0' else address
+    address = address if re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', address) else '127.0.0.1'
+    port = int(port) if port else 50152
+    url = 'http://{address}:{port}/client_ip'.format(address=address, port=port)
+    response = requests.get(url)
+    ip_address = None
+    if response.status_code == 200:
+        response_json = response.json()
+        if response_json:
+            ip_address = response_json.get('ip')
+    return ip_address

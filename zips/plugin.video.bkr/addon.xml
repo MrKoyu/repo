@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.bkr" version="3.0.0.1" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
+<addon id="plugin.video.bkr" version="3.0.0.2" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
         <import addon="script.bkr.artwork" version="2018.04.02"/>
@@ -20,7 +20,7 @@
         <disclaimer lang="en">The author does not host any content, nor is he affiliated with any of the content providers.</disclaimer>
         <platform>all</platform>
         <news>
-V3.0.0.1
+V3.0.0.2
 -New Official Repo
 -Intial Release
 -Fork of Boxset Kings

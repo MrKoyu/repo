@@ -3,7 +3,7 @@ from six.moves import urllib
 import os
 
 from .. import constants
-from ..logging import log
+from .. import logger
 from ..utils import *
 
 
@@ -12,10 +12,15 @@ class AbstractContext(object):
         if not params:
             params = {}
 
+        self._system_version = None
+
         self._cache_path = None
+        self._debug_path = None
 
         self._function_cache = None
+        self._data_cache = None
         self._search_history = None
+        self._playback_history = None
         self._favorite_list = None
         self._watch_later_list = None
         self._access_manager = None
@@ -48,11 +53,33 @@ class AbstractContext(object):
             self._cache_path = os.path.join(self.get_data_path(), 'kodion')
         return self._cache_path
 
+    def get_playback_history(self):
+        if not self._playback_history:
+            uuid = self.get_access_manager().get_current_user_id()
+            db_file = os.path.join(os.path.join(self.get_data_path(), 'playback'), str(uuid))
+            self._playback_history = PlaybackHistory(db_file)
+        return self._playback_history
+
+    def get_data_cache(self):
+        if not self._data_cache:
+            max_cache_size_mb = self.get_settings().get_int(constants.setting.CACHE_SIZE, -1)
+            if max_cache_size_mb <= 0:
+                max_cache_size_mb = 5
+            else:
+                max_cache_size_mb = max_cache_size_mb / 2.0
+            self._data_cache = DataCache(os.path.join(self._get_cache_path(), 'data_cache'),
+                                         max_file_size_mb=max_cache_size_mb)
+        return self._data_cache
+
     def get_function_cache(self):
         if not self._function_cache:
-            max_cache_size_mb = self.get_settings().get_int(constants.setting.CACHE_SIZE, 5)
+            max_cache_size_mb = self.get_settings().get_int(constants.setting.CACHE_SIZE, -1)
+            if max_cache_size_mb <= 0:
+                max_cache_size_mb = 5
+            else:
+                max_cache_size_mb = max_cache_size_mb / 2.0
             self._function_cache = FunctionCache(os.path.join(self._get_cache_path(), 'cache'),
-                                                 max_file_size_kb=max_cache_size_mb * 1024)
+                                                 max_file_size_mb=max_cache_size_mb)
         return self._function_cache
 
     def get_search_history(self):
@@ -93,7 +120,10 @@ class AbstractContext(object):
         raise NotImplementedError()
 
     def get_system_version(self):
-        raise NotImplementedError()
+        if not self._system_version:
+            self._system_version = SystemVersion(version='', releasename='', appname='')
+
+        return self._system_version
 
     def create_uri(self, path=u'/', params=None):
         if not params:
@@ -116,18 +146,24 @@ class AbstractContext(object):
                     params[param] = str(params[param])
 
                 uri_params[param] = to_utf8(params[param])
-            uri += '?' + urllib.parse.urlencode(uri_params)
+            uri = '?'.join([uri, urllib.parse.urlencode(uri_params)])
 
         return uri
 
     def get_path(self):
         return self._path
 
+    def set_path(self, value):
+        self._path = value
+
     def get_params(self):
         return self._params
 
     def get_param(self, name, default=None):
         return self.get_params().get(name, default)
+
+    def set_param(self, name, value):
+        self._params[name] = value
 
     def get_data_path(self):
         """
@@ -179,24 +215,23 @@ class AbstractContext(object):
     def add_sort_method(self, *sort_methods):
         raise NotImplementedError()
 
-    def log(self, text, log_level=constants.log.NOTICE):
-        log_line = '[%s] %s' % (self.get_id(), text)
-        log(log_line, log_level)
+    def log(self, text, log_level=logger.NOTICE):
+        logger.log(text, log_level, self.get_id())
 
     def log_warning(self, text):
-        self.log(text, constants.log.WARNING)
+        self.log(text, logger.WARNING)
 
     def log_error(self, text):
-        self.log(text, constants.log.ERROR)
+        self.log(text, logger.ERROR)
 
     def log_notice(self, text):
-        self.log(text, constants.log.NOTICE)
+        self.log(text, logger.NOTICE)
 
     def log_debug(self, text):
-        self.log(text, constants.log.DEBUG)
+        self.log(text, logger.DEBUG)
 
     def log_info(self, text):
-        self.log(text, constants.log.INFO)
+        self.log(text, logger.INFO)
 
     def clone(self, new_path=None, new_params=None):
         raise NotImplementedError()

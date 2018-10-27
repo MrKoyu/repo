@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Numbers By Numbers Add-on
+    Numbers Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,8 +29,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['divxcrawler.tv']
-        self.base_link = 'http://www.divxcrawler.tv'
+        self.domains = ['divxcrawler.club']
+        self.base_link = 'http://www.divxcrawler.club'
         self.search_link = '/latest.htm'
         self.search_link2 = '/streaming.htm'
         self.search_link3 = '/movies.htm'

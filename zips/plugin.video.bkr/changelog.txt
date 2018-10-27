@@ -10,6 +10,9 @@
  
 [COLOR crimson]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V3.0.0.2[/COLOR][/B]
+[B][COLOR crimson]• [/COLOR][/B] New Trakt API
+
 [B][COLOR limegreen]V3.0.0.1[/COLOR][/B]
 [B][COLOR crimson]• [/COLOR][/B] New Official Repo
 [B][COLOR crimson]• [/COLOR][/B] Intial Release

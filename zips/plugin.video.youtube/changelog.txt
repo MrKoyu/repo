@@ -1,22 +1,139 @@
+6.2.0
+[add] Context menu -> 'Play with subtitles' |contrib: solarus|
+[add] Option to download subtitles before playback in Settings -> General -> Configure subtitles
+[add] Refresh context menu to all videos/live streams
+[add] &strm=true parameter for strm files in Kodi 18 |contrib: vlmaksime|
+    - use description from library and set watched status
+[add] 'Settings -> Advanced -> Use YouTube website urls' for external/alternative players
+            eg. Player: MPC-BE, URL: https://www.youtube.com/watch?v=C0NyvxTJGcQ
+            eg. playercorefactory.xml
+                <?xml version="1.0" encoding="UTF-8"?>
+                <playercorefactory>
+                    <players>
+                        <player name="MPC-BE" type="ExternalPlayer" audio="false" video="true">
+                            <filename>C:\Program Files\MPC-BE x64\mpc-be64.exe</filename>
+                            <args>"{1}" /fullscreen /close</args>
+                            <hidexbmc>true</hidexbmc>
+                            <hideconsole>true</hideconsole>
+                            <warpcursor>none</warpcursor>
+                        </player>
+                    </players>
+                    <rules action="prepend">
+                       <rule filename="(?:http)*s*:*[/]{0,2}(?:www\.)*youtu(?:\.be/|be\.com/(?:embed/|watch/|v/|.*?[?&/]v=))[a-zA-Z0-9_\-]{11}.*" player="MPC-BE" />
+                    </rules>
+                </playercorefactory>
+[fix] Reported background progress dialog percentage
+[fix] Playlist items, use video_items instead of playback_items
+[fix] search history size
+[fix] remove Spanish (Latin America)|es-419 from the setup wizard, causing invalidLanguage and invalidRelevanceLanguage errors
+[upd] Improve speed of playback starting and resolver
+            before: min: 1.5s max: 2.6s median: 1.7s
+            after:  min: 0.9s max: 2.6s median: 1.2s
+[chg] refactor logging and system version
+[chg] Localize confirmation
+[lang] el_gr strings |contrib: twilight0|
+[lang] es_es strings |contrib: roliverosc|
+[lang] es_mx strings |contrib: Intel11|
+[lang] it_it strings |contrib: SebastianoPistore|
+[lang] nl_nl strings |contrib: Markman-B|
+[lang] ru_ru strings |contrib: vlmaksime|
+
+6.1.4
+[fix] Signature function not found
+
+6.1.3
+[fix] timedelta.total_seconds python 2.6 compat.
+
+6.1.2
+[fix] dash settings check and defaults
+[fix] addon-check raised warning for services complex entry point
+[fix] codacy raised issue in http server (https://app.codacy.com/app/Kodi/repo-plugins/pullRequest?prid=2080401)
+[chg] move seek to onPlayBackStarted, onAVStarted only in K18
+[chg] geolocation provider changed from ipstack to ip-api
+[del] frodo listitem art compatibility
+[lang] ru_ru strings |contrib: Burgaduk|
+[lang] zh_tw strings |contrib: Zankio|
+
+6.1.1
+[fix] http proxy using incorrect setting id causing 403 errors
+
+6.1.0
+[add] Multi-user support
+    - Switch User folder (default: on) Settings -> Folders
+    - User management (Add, Remove, Rename, Switch) Settings - Users
+    - Signed in users are green, Current user has an *
+[add/upd] add data cache and optimize caching
+    - add Settings -> Maintenance -> Clear data cache/Delete data cache
+    - increase allowed cache size
+    - database accesses per 50 videos: before: 70~100 after: 4~6
+    - load time of 50 videos w/ no cached videos: before: ~11.6 secs, after: ~3 secs
+    - load time of 50 videos w/ all cached videos: before: ~0.8 secs, after: ~0.7 secs
+    - cached size per 50 videos: before ~1MB, after ~550KB
+[add] Refresh after watching (default: off) Settings -> General
+[add] Completed Live folder (default: on) Settings -> Folders
+[add] Upcoming Live folder (default: on) Settings -> Folders
+[add] My Location folder (default: on) Settings -> Advanced -> Enable setup-wizard
+[add] Play count minimum percent (default: 85%) Settings -> General -> Play count minimum percent
+[add] Playback history (default: off) Settings -> Advanced -> Use playback history
+[add] Time since published for videos as item properties Property(PublishedSince), Property(PublishedLocal) |contrib: pannal|
+[add] Check My IP, Settings -> HTTP Server
+[add] Developer authentication, allowing add-ons to use their own access tokens
+    - see youtube_authentication.py, youtube_registration.py, youtube_requests.py, and youtube_resolver.py
+[upd] YouTube UTC datetimes to local timezone |contrib: pannal|
+[upd] Localize API key errors, provide a more descriptive notification
+[fix] Add to YouTube watch history
+[fix] My Channel videos (Error 403)
+[fix] allow fallback to dash, when using Audio only
+[fix] Signature function not found error for some users
+[fix] Context Menu -> More -> Related Videos w/ Kodi 18
+[fix] Sign In/Sign Out causing crash with Kodi 18 nightlies
+[fix] Channel 'mine' caching
+[fix] Time changing when playing generated dash
+[lang] es_es strings |contrib: roliverosc|
+[lang] el_gr strings |contrib: twilight0|
+[lang] nl_nl strings |contrib: Markman-B|
+
+6.0.2
+[fix] incorrectly raised 'Proxy is not running' error
+
+6.0.1
+[fix] notification encoding
+
 6.0.0
 [add] Python 3 compat.
 [add] Settings -> Maintenance -> Delete temporary files
 [add] Settings -> General -> Rate video after watching
 [add] Settings -> API -> Enable API configuration page
-        - when enabled, visit http://ipaddress:port/api to configure API keys from a web browser
-        - port is configured in Settings - HTTP Server - Port
-[add] Storing personal api keys in api_keys.json, restore keys from json on settings loss
-[add] Storing login tokens in access_manager.json, restore tokens from json on settings loss
-[add] youtube_registration module, register developer keys and use them by appending an addon_id=:addon_id parameter to youtube add-on plugin urls
+    - when enabled, visit http://<ipaddress>:<port>/api to configure API keys from a web browser
+    - port is configured in Settings - HTTP Server - Port
+[chg] Storing personal api keys in api_keys.json
+[chg] Storing login tokens in access_manager.json
+[add] youtube_registration module, register developer keys and use them by appending an addon_id=<addon_id> parameter to youtube add-on plugin urls
 [add] screensaver=true parameter to /play route - no suggested videos, no post play events, don't ask for quality
 [add] play route for channel live streams
-        - plugin://plugin.video.youtube/play/?channel_id=UCLA_DiR1FfKNvjuUpBHmylQ&live=1
+    - plugin://plugin.video.youtube/play/?channel_id=UCLA_DiR1FfKNvjuUpBHmylQ&live=1
+[add] Purchases
+    - requires Kodi 18
+    - requires inputstream.adaptive >= 2.2.12
+    - if a purchase fails after 10 seconds
+        - provide a debug log
+        - set InputStream Adaptive -> Settings -> Stream selection -> manual
+        - change video stream during playback to preferred working resolution
+    - huge thanks to peak3d
+[add] relevanceLanguage to search requests
+[add] Refresh to My Subscriptions (Filtered)
+[fix] mpeg-dash proxy with multi-profiles
+[fix] search input, now works with Yatse
 [fix] Signature deciphering
 [fix] context menu after playback
 [fix] alternative player, do not append headers
+[fix] My Subscriptions (Filtered) channel matching
+[fix] Audio only, failover to video if no audio only streams available
+[fix] My Subscriptions missing page 3
+[fix/upd] function cache, update max rows and resolve hang on some requests
 [fix/upd] post play events happen post play
 [fix/upd] set title from metadata on play
-[upd] Use monitor to track api key changes
+[chg] only automatically remove temp folder at start-up
 [upd] Dutch strings [MB1968]
 [upd] French strings [bubuleur]
 [upd] Greek strings [twilight0]

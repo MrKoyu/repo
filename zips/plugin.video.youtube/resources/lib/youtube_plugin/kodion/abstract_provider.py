@@ -24,10 +24,10 @@ class AbstractProvider(object):
 
         # register some default paths
         self.register_path('^/$', '_internal_root')
-        self.register_path('^/' + constants.paths.WATCH_LATER + '/(?P<command>add|remove|list)/?$',
+        self.register_path(''.join(['^/', constants.paths.WATCH_LATER, '/(?P<command>add|remove|list)/?$']),
                            '_internal_watch_later')
-        self.register_path('^/' + constants.paths.FAVORITES + '/(?P<command>add|remove|list)/?$', '_internal_favorite')
-        self.register_path('^/' + constants.paths.SEARCH + '/(?P<command>input|query|list|remove|clear|rename)/?$',
+        self.register_path(''.join(['^/', constants.paths.FAVORITES, '/(?P<command>add|remove|list)/?$']), '_internal_favorite')
+        self.register_path(''.join(['^/', constants.paths.SEARCH, '/(?P<command>input|query|list|remove|clear|rename)/?$']),
                            '_internal_search')
         self.register_path('(?P<path>.*\/)extrafanart\/([\?#].+)?$', '_internal_on_extra_fanart')
 
@@ -197,17 +197,16 @@ class AbstractProvider(object):
             result, query = context.get_ui().on_keyboard_input(context.localize(constants.localize.SEARCH_TITLE))
             incognito = str(context.get_param('incognito', False)).lower() == 'true'
             channel_id = context.get_param('channel_id', '')
-            addon_id = context.get_param('addon_id', '')
-            item_params = {'q': query}
-            if addon_id:
-                item_params.update({'addon_id': addon_id})
-            if incognito:
-                item_params.update({'incognito': incognito})
-            if channel_id:
-                item_params.update({'channel_id': channel_id})
             if result:
-                context.execute('Container.Update(%s)' % context.create_uri([constants.paths.SEARCH, 'query'], item_params))
-
+                # context.execute('Container.Update(%s)' % context.create_uri([constants.paths.SEARCH, 'query'], item_params))
+                # Container.Update doesn't work with Remotes(Yatse)
+                try:
+                    if not incognito and not channel_id:
+                        search_history.update(query)
+                    context.set_path('/kodion/search/query/')
+                    return self.on_search(query, context, re_match)
+                except:
+                    return list()
             return True
         elif command == 'query':
             incognito = str(context.get_param('incognito', False)).lower() == 'true'
@@ -218,14 +217,15 @@ class AbstractProvider(object):
                     search_history.update(query)
                 return self.on_search(query, context, re_match)
             except:
-                result = []
-                return result
+                return list()
         else:
             context.set_content_type(constants.content_type.FILES)
             result = []
 
+            location = str(context.get_param('location', False)).lower() == 'true'
+
             # 'New Search...'
-            new_search_item = items.NewSearchItem(context, fanart=self.get_alternative_fanart(context))
+            new_search_item = items.NewSearchItem(context, fanart=self.get_alternative_fanart(context), location=location)
             result.append(new_search_item)
 
             for search in search_history.list():
@@ -234,8 +234,7 @@ class AbstractProvider(object):
                     search = search.get_name()
 
                 # we create a new instance of the SearchItem
-                search_history_item = items.SearchHistoryItem(context, search,
-                                                              fanart=self.get_alternative_fanart(context))
+                search_history_item = items.SearchHistoryItem(context, search, fanart=self.get_alternative_fanart(context), location=location)
                 result.append(search_history_item)
 
             if search_history.is_empty():
