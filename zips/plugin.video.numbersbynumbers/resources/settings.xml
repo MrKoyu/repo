@@ -2,7 +2,7 @@
 <settings>
     <category label="32310">
         <setting id="appearance.alt" type="action" label="32311" default="-" option="close" action="RunPlugin(plugin://plugin.video.numbersbynumbers/?action=artwork)" visible="!System.HasAddon(script.numbersbynumbers.artwork)" />
-		<setting id="appearance.1" type="select" label="32311" values="Blue|Green|NumbersByNumbers|Red" default="numbers" visible="System.HasAddon(script.numbersbynumbers.artwork)" />
+		<setting id="appearance.1" type="select" label="32311" values="numbers" default="numbers" visible="System.HasAddon(script.numbersbynumbers.artwork)" />
 		<setting id="scrapers.timeout.1" type="slider" label="32312" default="60" range="10,60" option="int" />
 		<setting id="trakt.user" type="text" default="" visible="false" />
 		<setting id="indicators.alt" type="enum" label="32313" lvalues="32314|32315" default="1" visible="!eq(-1,)" />

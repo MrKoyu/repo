@@ -73,6 +73,130 @@ if action == None:
     cache.cache_version_check()
     navigator.navigator().root()
 
+if action == 'boxsetsNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().root()
+    
+elif action == 'actionNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().action()
+    
+elif action == 'actionliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().action(lite=True)
+
+elif action == 'adventureNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().adventure()
+    
+elif action == 'adventureliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().adventure(lite=True)
+    
+elif action == 'animationNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().animation()
+    
+elif action == 'animationliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().animation(lite=True)
+    
+elif action == 'comedyNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().comedy()
+    
+elif action == 'comedyliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().comedy(lite=True)
+    
+elif action == 'crimeNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().crime()
+    
+elif action == 'crimeliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().crime(lite=True)
+    
+elif action == 'dramaNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().drama()
+    
+elif action == 'dramaliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().drama(lite=True)
+    
+elif action == 'familyNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().family()
+    
+elif action == 'familyliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().family(lite=True)
+    
+elif action == 'fantasyNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().fantasy()
+    
+elif action == 'fantasyliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().fantasy(lite=True)
+
+elif action == 'horrorNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().horror()
+    
+elif action == 'horrorliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().horror(lite=True)
+    
+elif action == 'mysteryNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().mystery()
+    
+elif action == 'mysteryliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().mystery(lite=True)
+    
+elif action == 'romanceNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().romance()
+    
+elif action == 'romanceliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().romance(lite=True)
+    
+elif action == 'scifiNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().scifi()
+    
+elif action == 'scifiliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().scifi(lite=True)
+    
+elif action == 'thrillerNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().thriller()
+    
+elif action == 'thrillerliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().thriller(lite=True)
+    
+elif action == 'westernNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().western()
+    
+elif action == 'westernliteNavigator':
+    from resources.lib.indexers import bxsets
+    bxsets.navigator().western(lite=True)
+
+elif action == 'movies2':
+    from resources.lib.indexers import movies2
+    movies2.movies().get(url)
+
+elif action == 'movieFavourites':
+    from resources.lib.indexers import movies
+    movies.movies().favourites()
+
 elif action == 'movieNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().movies()

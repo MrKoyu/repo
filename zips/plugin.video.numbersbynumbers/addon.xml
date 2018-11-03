@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.0.4" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.0.5" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="script.module.numbersbynumbers" />
@@ -26,7 +26,7 @@
 			<fanart>fanart.jpg</fanart>
 		</assets>
 		<news>
-V2.0.0.4
+V2.0.0.5
 - The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.
         </news>
 	</extension>

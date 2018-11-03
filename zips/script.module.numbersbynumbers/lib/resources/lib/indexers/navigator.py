@@ -45,6 +45,8 @@ class navigator:
         if not control.setting('lists.widget') == '0':
             self.addDirectoryItem(32003, 'mymovieNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
             self.addDirectoryItem(32004, 'mytvNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
+            self.addDirectoryItem(32616, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32617, 'boxsetsNavigator', 'boxsets1.png', 'boxsets1.png')
 
         self.addDirectoryItem('[B][COLOR forestgreen]• [/COLOR][/B][COLOR ghostwhite]Documentaries[/COLOR]', 'docuHeaven', 'documentaries.png', 'DefaultMovies.png')
 
