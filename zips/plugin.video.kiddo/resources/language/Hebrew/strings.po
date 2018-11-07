@@ -1,4 +1,4 @@
-# Addon Name: Kiddo
+# Addon Name: kiddo
 # Addon id: plugin.video.kiddo
 # Addon Provider: Brackets
 msgid ""
@@ -534,8 +534,8 @@ msgid "Resume"
 msgstr "חדש ניגון"
 
 msgctxt "#32504"
-msgid "EIMify Your Jen"
-msgstr "EIMify את ה-Jen שלך"
+msgid "EIMify Your kiddo"
+msgstr "EIMify את ה-kiddo שלך"
 
 msgctxt "#32505"
 msgid "Meta Info Language"
@@ -566,8 +566,8 @@ msgid "Select Link"
 msgstr "בחר קישור"
 
 msgctxt "#32512"
-msgid "Choose Jen Theme"
-msgstr "בחר ערכת נושא Jen"
+msgid "Choose kiddo Theme"
+msgstr "בחר ערכת נושא kiddo"
 
 msgctxt "#32513"
 msgid "Select Theme"

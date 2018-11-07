@@ -266,7 +266,7 @@ def get_xml(url):
 
 
 def main():
-    main_url = "http://planetx.pw/files/main.xml"  #your main.xml url goes here
+    main_url = "http://yoururl/yourmain.xml"  #your main.xml url goes here
     sections = [
         {'name': 'jen', # can change jen to whatever you want.  This wil name the output xml jen.xml
          'url': "http://yoururlforthesectionyouwant.xml", # your section xml goes here

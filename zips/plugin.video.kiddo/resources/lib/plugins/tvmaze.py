@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
     Plugin for TvMaze
     Copyright (C) 2018, TonyH
@@ -17,6 +18,12 @@
 
     -------------------------------------------------------------
 
+    Version:
+        2018-08-19
+            - TV Calendar added. See example below
+        2018-05-14
+            Latest version to include with a Jen Release
+
     Usage Examples:
 
 
@@ -27,6 +34,12 @@
 
     -------------------------------------------------------------
 
+    TV CALENDAR usage
+    <dir>
+        <title>TV Calendar</title>
+        <tvmaze>calendar</tvmaze>
+    </dir>
+    -------------------------------------------------------------
     <dir>
     <title>Unites States Networks</title>
     <tvmaze>country/United States/1</tvmaze>
@@ -145,9 +158,9 @@
 """    
 
 import requests,re,json,os
-import koding
+import datetime
 import __builtin__
-import xbmc,xbmcaddon
+import xbmc, xbmcaddon
 from koding import route
 from resources.lib.plugin import Plugin
 from resources.lib.util.context import get_context_items
@@ -190,6 +203,7 @@ class TVMAZE(Plugin):
                 result_item['fanart_small'] = result_item["fanart"]
                 return result_item
             elif "network/" in item.get("tvmaze", ""):
+                item = JenItem(item_xml)
                 result_item = {
                     'label': item["title"],
                     'icon': item.get("thumbnail", addon_icon),
@@ -210,8 +224,9 @@ class TVMAZE(Plugin):
                     'fanart_image': result_item["fanart"]
                 }
                 result_item['fanart_small'] = result_item["fanart"]
-                return result_item    
+                return result_item
             elif "show/" in item.get("tvmaze", ""):
+                item = JenItem(item_xml)
                 result_item = {
                     'label': item["title"],
                     'icon': item.get("thumbnail", addon_icon),
@@ -220,7 +235,7 @@ class TVMAZE(Plugin):
                     'url': item.get("tvmaze", ""),
                     'folder': True,
                     'imdb': "0",
-                    'content': "files",
+                    'content': "tvshows",
                     'season': "0",
                     'episode': "0",
                     'info': {},
@@ -232,8 +247,9 @@ class TVMAZE(Plugin):
                     'fanart_image': result_item["fanart"]
                 }
                 result_item['fanart_small'] = result_item["fanart"]
-                return result_item 
+                return result_item
             elif "season/" in item.get("tvmaze", ""):
+                item = JenItem(item_xml)
                 result_item = {
                     'label': item["title"],
                     'icon': item.get("thumbnail", addon_icon),
@@ -242,20 +258,21 @@ class TVMAZE(Plugin):
                     'url': item.get("tvmaze", ""),
                     'folder': True,
                     'imdb': "0",
-                    'content': "files",
+                    'content': "seasons",
                     'season': "0",
                     'episode': "0",
                     'info': {},
                     'year': "0",
-                    'context': get_context_items(item),
+                    'context': {},
                     "summary": item.get("summary", None)
                 }
                 result_item["properties"] = {
                     'fanart_image': result_item["fanart"]
                 }
                 result_item['fanart_small'] = result_item["fanart"]
-                return result_item                 
+                return result_item
             elif "web_channel/" in item.get("tvmaze", ""):
+                item = JenItem(item_xml)
                 result_item = {
                     'label': item["title"],
                     'icon': item.get("thumbnail", addon_icon),
@@ -276,13 +293,59 @@ class TVMAZE(Plugin):
                     'fanart_image': result_item["fanart"]
                 }
                 result_item['fanart_small'] = result_item["fanart"]
-                return result_item 
+                return result_item
+            elif "calendar" in item.get("tvmaze", ""):
+                item = JenItem(item_xml)
+                result_item = {
+                    'label': item["title"],
+                    'icon': item.get("thumbnail", addon_icon),
+                    'fanart': item.get("fanart", addon_fanart),
+                    'mode': "calendar",
+                    'url': item.get("tvmaze", ""),
+                    'folder': True,
+                    'imdb': "0",
+                    'content': "files",
+                    'season': "0",
+                    'episode': "0",
+                    'info': {},
+                    'year': "0",
+                    'context': get_context_items(item),
+                    "summary": item.get("summary", None)
+                }
+                result_item["properties"] = {
+                    'fanart_image': result_item["fanart"]
+                }
+                result_item['fanart_small'] = result_item["fanart"]
+                return result_item
+            elif "day" in item.get("tvmaze", ""):
+                item = JenItem(item_xml)
+                result_item = {
+                    'label': item["title"],
+                    'icon': item.get("thumbnail", addon_icon),
+                    'fanart': item.get("fanart", addon_fanart),
+                    'mode': "day_episode",
+                    'url': item.get("tvmaze", ""),
+                    'folder': True,
+                    'imdb': "0",
+                    'content': "files",
+                    'season': "0",
+                    'episode': "0",
+                    'info': {},
+                    'year': "0",
+                    'context': get_context_items(item),
+                    "summary": item.get("summary", None)
+                }
+                result_item["properties"] = {
+                    'fanart_image': result_item["fanart"]
+                }
+                result_item['fanart_small'] = result_item["fanart"]
+                return result_item
 
 @route(mode='country', args=["url"])
 def get_country(url):
     xml = ""
     if "all" in url:
-        html = "https://www.tvmaze.com/networks" 
+        html = "https://www.tvmaze.com/networks"
         html2 = requests.get(html).content
         block = re.compile('<option value=""></option>(.+?)</select>',re.DOTALL).findall(html2)
         match = re.compile('<option value="(.+?)">(.+?)</option>',re.DOTALL).findall(str(block))
@@ -291,20 +354,20 @@ def get_country(url):
                    "<title>%s</title>"\
                    "<tvmaze>country/%s/1</tvmaze>"\
                    "</dir>" % (country, country)
-                   
+
         jenlist = JenList(xml)
         display_list(jenlist.get_list(), jenlist.get_content_type())
     else:
         last = url.split("/")[-2]
         num = url.split("/")[-1]
-        html = "https://www.tvmaze.com/networks" 
+        html = "https://www.tvmaze.com/networks"
         html2 = requests.get(html).content
         block = re.compile('<option value=""></option>(.+?)</select>',re.DOTALL).findall(html2)
         match = re.compile('<option value="(.+?)">(.+?)</option>',re.DOTALL).findall(str(block))
         for number, country in match:
             if country == last:
                 html3 = "https://www.tvmaze.com/networks?Network%5Bcountry_enum%5D="+number+"&Network%5Bsort%5D=1&page="+num
-                html4 = requests.get(html3).content 
+                html4 = requests.get(html3).content
                 match = re.compile('<div class="card primary grid-x">.+?<a href="(.+?)".+?<img src="(.+?)".+?<a href=".+?">(.+?)</a>',re.DOTALL).findall(html4)
                 for link, image, name in match:
                     link = link.split("/")[-2]
@@ -326,9 +389,9 @@ def get_country(url):
                            "<thumbnail>http://www.clker.com/cliparts/a/f/2/d/1298026466992020846arrow-hi.png</thumbnail>"\
                            "</dir>" % (last, next_page)
                 except:
-                    pass                                   
+                    pass
         jenlist = JenList(xml)
-        display_list(jenlist.get_list(), jenlist.get_content_type()) 
+        display_list(jenlist.get_list(), jenlist.get_content_type())
 
 @route(mode='web_channel', args=["url"])
 def get_web_channel(url):
@@ -336,7 +399,7 @@ def get_web_channel(url):
     #last = url.split("/")[-2]
     num = url.split("/")[-1]
     html = "https://www.tvmaze.com/webchannels?WebChannel%5Bcountry_enum%5D=&WebChannel%5Bsort%5D=1&page="+num
-    html2 = requests.get(html).content 
+    html2 = requests.get(html).content
     match = re.compile('<div class="card primary grid-x">.+?<a href="(.+?)".+?<img src="(.+?)".+?<a href=".+?">(.+?)</a>',re.DOTALL).findall(html2)
     for link, image, name in match:
         link = link.split("/")[-2]
@@ -358,9 +421,9 @@ def get_web_channel(url):
                "<thumbnail>http://www.clker.com/cliparts/a/f/2/d/1298026466992020846arrow-hi.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
-        pass                                   
+        pass
     jenlist = JenList(xml)
-    display_list(jenlist.get_list(), jenlist.get_content_type())    
+    display_list(jenlist.get_list(), jenlist.get_content_type())
 
 
 
@@ -392,14 +455,15 @@ def get_network(url):
                "<thumbnail>http://www.clker.com/cliparts/a/f/2/d/1298026466992020846arrow-hi.png</thumbnail>"\
                "</dir>" % (last, next_page)
     except:
-        pass                           
+        pass
     jenlist = JenList(xml)
-    display_list(jenlist.get_list(), jenlist.get_content_type()) 
+    display_list(jenlist.get_list(), jenlist.get_content_type())
 
 @route(mode='show', args=["url"])
 def get_show(url):
     xml = ""
     tv_title = url.split("/")[-2]
+    tv_title = remove_non_ascii(tv_title)
     Title = remove_non_ascii(tv_title)
     Title = Title.lower()
     Title = Title.encode('utf8')
@@ -408,6 +472,8 @@ def get_show(url):
     html2 = requests.get(html).json()
     result = html2['results'][0]
     tmdb_id = result['id']
+    date = result['first_air_date']
+    year = date.split("-")[0]
     fanart = result['backdrop_path']
     fanart = fanart.replace("/", "")
     tmdb_fanart = "https://image.tmdb.org/t/p/original/"+str(fanart)
@@ -421,17 +487,16 @@ def get_show(url):
     for seasons in seas:
         thumb = seasons['poster_path']
         thumb = "https://image.tmdb.org/t/p/original"+str(thumb)
-        title = seasons['name']
+        title = remove_non_ascii(seasons["name"])
         sea_num = seasons['season_number']
-        air_date = seasons['air_date']
-        year = air_date.split("-")[0]
+        sea_year = seasons['air_date']
         xml += "<dir>"\
                "<title>%s</title>"\
                "<year>%s</year>"\
                "<thumbnail>%s</thumbnail>"\
                "<fanart>%s</fanart>"\
-               "<tvmaze>season/%s/%s/%s/%s/%s/%s</tvmaze>"\
-               "</dir>" % (title, year, thumb, tmdb_fanart, tv_title, fanart, imdb, tvdb, tmdb_id, sea_num)
+               "<tvmaze>season/%s/%s/%s/%s/%s/%s/%s</tvmaze>"\
+               "</dir>" % (title, year, thumb, tmdb_fanart, year, tv_title, fanart, imdb, tvdb, tmdb_id, sea_num)
 
     jenlist = JenList(xml)
     display_list(jenlist.get_list(), jenlist.get_content_type())
@@ -439,26 +504,26 @@ def get_show(url):
 
 @route(mode='season', args=["url"])
 def get_season(url):
-    xml = "" 
+    xml = ""
     sea_num = url.split("/")[-1]
-    if len(sea_num)==1:
-        sea_num = "0"+sea_num
+    sea_num = str(sea_num)
     tmdb_id = url.split("/")[-2]
     tvdb = url.split("/")[-3]
     imdb = url.split("/")[-4]
-    tv_title = url.split("/")[-6]
     fanart = url.split("/")[-5]
+    tv_title = url.split("/")[-6]
+    year = url.split("/")[-7]
     tmdb_fanart = "https://image.tmdb.org/t/p/original/"+str(fanart)
     html = "https://api.themoviedb.org/3/tv/%s/season/%s?api_key=%s&language=en-US" % (tmdb_id, sea_num, TMDB_api_key)
-    html = requests.get(html).json()
-    eps = html['episodes']
+    html2 = requests.get(html).json()
+    eps = html2['episodes']
     for episodes in eps:
+        epi_num = episodes['episode_number']
         thumb = episodes['still_path']
         thumb = "https://image.tmdb.org/t/p/original"+str(thumb)
         title = episodes['name']
-        air_date = episodes['air_date']
-        year = air_date.split("-")[0]
-        episode_num = episodes['episode_number']
+        title = remove_non_ascii(title)
+        premiered = episodes['air_date']
         xml += "<item>"\
               "<title>%s</title>"\
               "<meta>"\
@@ -467,7 +532,8 @@ def get_season(url):
               "<content>episode</content>"\
               "<tvshowtitle>%s</tvshowtitle>"\
               "<year>%s</year>"\
-              "<premiered></premiered>"\
+              "<title>%s</title>"\
+              "<premiered>%s</premiered>"\
               "<season>%s</season>"\
               "<episode>%s</episode>"\
               "</meta>"\
@@ -477,23 +543,174 @@ def get_season(url):
               "</link>"\
               "<thumbnail>%s</thumbnail>"\
               "<fanart>%s</fanart>"\
-              "</item>" % (title, imdb, tvdb, tv_title, year, sea_num, episode_num, thumb, tmdb_fanart) 
+              "</item>" % (title, imdb, tvdb, tv_title, year, title, premiered, sea_num, epi_num, thumb, tmdb_fanart)
+
 
     jenlist = JenList(xml)
     display_list(jenlist.get_list(), jenlist.get_content_type())
 
 
-def get_network(url):
-    html = requests.get(url).content
-    match = re.compile('<div class="card primary grid-x">.+?<a href="(.+?)".+?<img src="(.+?)".+?<a href=".+?">(.+?)</a>',re.DOTALL).findall(html4)
-    for link, image, name in match:
-        link = link.split("/")[-2]
-        thumb = "http:"+image
-        xml = "<dir>"\
-               "<title>%s</title>"\
-               "<thumbnail>%s</thumbnail>"\
-               "</dir>" % (name, thumb)
-        return xml               
+@route(mode='calendar')
+def calendars():
+    calendar_link = 'http://api.tvmaze.com/schedule?date=%s'
+    xml = ""
+    m = "January|February|March|April|May|June|July|August|September|October|November|December".encode('utf-8').split('|')
+    try:
+        months = [(m[0], 'January'), (m[1], 'February'), (m[2], 'March'), (m[3], 'April'), (m[4], 'May'),
+                  (m[5], 'June'), (m[6], 'July'), (m[7], 'August'), (m[8], 'September'), (m[9], 'October'),
+                  (m[10], 'November'), (m[11], 'December')]
+    except:
+        months = []
+
+    d = "Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday".encode('utf-8').split('|')
+    try:
+        days = [(d[0], 'Monday'), (d[1], 'Tuesday'), (d[2], 'Wednesday'), (d[3], 'Thursday'), (d[4], 'Friday'),
+                (d[5], 'Saturday'), (d[6], 'Sunday')]
+    except:
+        days = []
+
+    for i in range(0, 30):
+        try:
+            date_time = (datetime.datetime.utcnow() - datetime.timedelta(hours=5))
+            name = (date_time - datetime.timedelta(days=i))
+            name = ("[B]%s[/B] : %s" % (name.strftime('%A'), name.strftime('%d %B'))).encode('utf-8')
+            for m in months: name = name.replace(m[1], m[0])
+            for d in days: name = name.replace(d[1], d[0])
+            try:
+                name = name.encode('utf-8')
+            except:
+                pass
+
+            url = calendar_link % (date_time - datetime.timedelta(days=i)).strftime('%Y-%m-%d')
+            xml +="<item>"\
+                  "<title>%s</title>"\
+                  "<tvmaze>%s|day</tvmaze>"\
+                  "<thumbnail>%s</thumbnail>"\
+                  "<fanart>%s</fanart>"\
+                  "</item>" % (name, url, addon_icon, addon_fanart)
+        except:
+            pass
+
+    jenlist = JenList(xml)
+    display_list(jenlist.get_list(), jenlist.get_content_type())
+
+
+@route(mode='day_episode', args=['url'])
+def tvmaze_list(url):
+    import traceback
+    xml = ""
+    url = url.split('|')[0]
+    try:
+        result = requests.get(url).content
+        items = json.loads(result)
+    except:
+        return
+
+    for item in items:
+        try:
+            title = item['name']
+            title = remove_non_ascii(title)
+
+            season = item['season']
+            if not season: season = '0'
+
+            episode = item['number']
+            if not episode: episode = '0'
+
+            tvshowtitle = item['show']['name']
+            tvshowtitle = remove_non_ascii(tvshowtitle)
+
+            year = item['show']['premiered']
+            year = re.findall('(\d{4})', year)[0]
+            year = year.encode('utf-8')
+
+            imdb = item['show']['externals']['imdb']
+            if imdb is None or imdb == '':
+                imdb = '0'
+            else:
+                imdb = 'tt' + re.sub('[^0-9]', '', str(imdb))
+            imdb = imdb.encode('utf-8')
+
+            tvdb = item['show']['externals']['thetvdb']
+            if tvdb is None or tvdb == '': continue
+            tvdb = re.sub('[^0-9]', '', str(tvdb))
+            tvdb = tvdb.encode('utf-8')
+
+            try:
+                poster = item['show']['image']['original']
+            except:
+                poster = '0'
+            if poster is None or poster == '':
+                poster = '0'
+            poster = poster.encode('utf-8')
+
+            try:
+                thumb1 = item['show']['image']['original']
+            except:
+                thumb1 = '0'
+            try:
+                thumb2 = item['image']['original']
+            except:
+                thumb2 = '0'
+            if thumb2 is None or thumb2 == '0':
+                thumb = thumb1
+            else:
+                thumb = thumb2
+            if thumb is None or thumb == '': thumb = '0'
+            thumb = thumb.encode('utf-8')
+
+            premiered = item['airdate']
+            try:
+                premiered = re.findall('(\d{4}-\d{2}-\d{2})', premiered)[0]
+            except:
+                premiered = '0'
+            premiered = premiered.encode('utf-8')
+
+            final_title = '{0} - {1}x{2} - {3}' .format(tvshowtitle, season, episode, title)
+            xml += "<item>" \
+                   "<title>%s</title>"\
+                   "<meta>" \
+                   "<imdb>%s</imdb>" \
+                   "<tvdb>%s</tvdb>" \
+                   "<content>episode</content>" \
+                   "<tvshowtitle>%s</tvshowtitle>" \
+                   "<year>%s</year>" \
+                   "<title>%s</title>" \
+                   "<premiered>%s</premiered>" \
+                   "<season>%s</season>" \
+                   "<episode>%s</episode>" \
+                   "</meta>" \
+                   "<link>" \
+                   "<sublink>search</sublink>" \
+                   "<sublink>searchsd</sublink>" \
+                   "</link>" \
+                   "<thumbnail>%s</thumbnail>" \
+                   "<fanart>%s</fanart>" \
+                   "</item>" % (final_title, imdb, tvdb, tvshowtitle, year, title,
+                                premiered, int(season), int(episode), thumb, poster)
+
+
+        except Exception:
+            import xbmcgui
+            failure = traceback.format_exc()
+            xbmcgui.Dialog().textviewer('Exception', str(failure))
+
+    xml = remove_non_ascii(xml)
+    jenlist = JenList(xml)
+    display_list(jenlist.get_list(), jenlist.get_content_type())
+
+
+# def get_network(url):
+#     html = requests.get(url).content
+#     match = re.compile('<div class="card primary grid-x">.+?<a href="(.+?)".+?<img src="(.+?)".+?<a href=".+?">(.+?)</a>',re.DOTALL).findall(html4)
+#     for link, image, name in match:
+#         link = link.split("/")[-2]
+#         thumb = "http:"+image
+#         xml = "<dir>"\
+#                "<title>%s</title>"\
+#                "<thumbnail>%s</thumbnail>"\
+#                "</dir>" % (name, thumb)
+#         return xml               
 
 
 

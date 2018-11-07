@@ -1,4 +1,4 @@
-# Addon Name: Kiddo
+# Addon Name: kiddo
 # Addon id: plugin.video.kiddo
 # Addon Provider: Brackets
 msgid ""
@@ -12,6 +12,58 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "#30200"
+msgid "User Account"
+msgstr ""
+
+msgctxt "#30201"
+msgid "Username"
+msgstr ""
+
+msgctxt "#30202"
+msgid "Password"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Hide Successful Login Messages"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Login URL"
+msgstr ""
+
+msgctxt "#30205"
+msgid "Login Verified Message"
+msgstr ""
+
+msgctxt "#30206"
+msgid "Username Form Name"
+msgstr ""
+
+msgctxt "#30207"
+msgid "Password Form Name"
+msgstr ""
+
+msgctxt "#30208"
+msgid "Session Length (in hours)"
+msgstr ""
+
+msgctxt "#30209"
+msgid "Login Notification Style"
+msgstr ""
+
+msgctxt "#30210"
+msgid "Text to display on successful login"
+msgstr ""
+
+msgctxt "#30211"
+msgid "Text to display on failed login"
+msgstr ""
+
+msgctxt "#30212"
+msgid "Text to display if no login provided"
+msgstr ""
 
 msgctxt "#30401"
 msgid "[COLOR teal]Are You Sure?[/COLOR]"
@@ -504,7 +556,7 @@ msgid "Resume"
 msgstr ""
 
 msgctxt "#32504"
-msgid "EIMify Your Jen"
+msgid "EIMify Your kiddo"
 msgstr ""
 
 msgctxt "#32505"
@@ -536,7 +588,7 @@ msgid "Select Link"
 msgstr ""
 
 msgctxt "#32512"
-msgid "Choose Jen Theme"
+msgid "Choose kiddo Theme"
 msgstr ""
 
 msgctxt "#32513"
@@ -789,4 +841,12 @@ msgstr ""
 
 msgctxt "#30059"
 msgid "All Episodes"
+msgstr ""
+
+msgctxt "#30060"
+msgid "Root XML Location"
+msgstr ""
+
+msgctxt "#30061"
+msgid "Search DB Location"
 msgstr ""
