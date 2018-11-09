@@ -568,7 +568,7 @@ def imdbmovies(url):
         xml += "<dir>"\
                "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                "<imdburl>http://www.imdb.com/search/title%s</imdburl>"\
-               "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+               "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
         pass
@@ -615,7 +615,7 @@ def imdbseries(url):
         xml += "<dir>"\
                "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                "<imdburl>http://www.imdb.com/search/title%s</imdburl>"\
-               "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+               "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
         pass
@@ -832,7 +832,7 @@ def imdbyears(url):
         xml += "<dir>"\
                "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                "<imdburl>http://www.imdb.com/search/title%s</imdburl>"\
-               "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+               "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
         pass
@@ -873,7 +873,7 @@ def imdbyearstv(url):
         xml += "<dir>"\
                "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                "<imdburl>http://www.imdb.com/search/title%s</imdburl>"\
-               "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+               "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
         pass
@@ -916,7 +916,7 @@ def imdbgenres(url):
         xml += "<dir>"\
                "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                "<imdburl>http://www.imdb.com/search/title%s</imdburl>"\
-               "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+               "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
         pass
@@ -958,7 +958,7 @@ def imdbgenrestv(url):
         xml += "<dir>"\
                "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                "<imdburl>http://www.imdb.com/search/title%s</imdburl>"\
-               "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+               "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
         pass
@@ -993,7 +993,7 @@ def imdbactors(url):
                 xml += "<dir>"\
                        "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                        "<imdburl>actor%s</imdburl>"\
-                       "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+                       "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                        "</dir>" % (url)
             except:
                 pass
@@ -1181,7 +1181,7 @@ def imdbNextPage(url):
         xml += "<dir>"\
                "<title>[COLOR dodgerblue]Next Page >>[/COLOR]</title>"\
                "<imdburl>http://www.imdb.com/search/title%s</imdburl>"\
-               "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+               "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                "</dir>" % (next_page)
     except:
         pass

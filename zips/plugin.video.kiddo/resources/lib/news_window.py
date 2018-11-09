@@ -22,7 +22,7 @@ from koding import route, Run
 
 addon_id = xbmcaddon.Addon().getAddonInfo('id')
 ownAddon = xbmcaddon.Addon(id=addon_id)
-message_xml_url = ownAddon.getSetting('aHR0cDovL2NlbGxhcmRvb3J0di5jb20va2lkZG8vbWVzc2FnZS9tZXNzYWdlLnhtbA==')
+message_xml_url = ownAddon.getSetting('http://cellardoortv.com/kiddo/message/message.xml')
 
 
 @route(mode="dialog_example")

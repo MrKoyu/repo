@@ -444,7 +444,7 @@ def trakt(url):
             xml += "<dir>\n"\
                    "\t<title>%s</title>\n"\
                    "\t<trakt>%s</trakt>\n"\
-                   "\t<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>\n"\
+                   "\t<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>\n"\
                    "\t<summary>Go To Page %s</summary>\n"\
                    "</dir>" % (myPage, next_url, page + 1)
         xml = remove_non_ascii(xml)

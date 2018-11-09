@@ -543,7 +543,7 @@ def tmdb(url):
             xml += "<dir>"\
                    "<title>%s</title>"\
                    "<tmdb>%s</tmdb>"\
-                   "<thumbnail>https://image.ibb.co/gtsNjw/next.png</thumbnail>"\
+                   "<thumbnail>https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_kiddo/kiddo_next.png</thumbnail>"\
                    "<summary>Go To Page %s</summary>"\
                    "</dir>" % (myPage, next_url, page + 1)
         __builtin__.content_type = content

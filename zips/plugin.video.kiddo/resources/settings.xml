@@ -84,10 +84,10 @@
         <setting id="debug" type="bool" label="API's" default="false" visible="true"/>
         <setting id="first_run" label="first run" type="bool" default="false" visible="false"/>
         <setting label="Cache Location" id="cache_folder" type="folder" default="special://profile/addon_data/plugin.video.kiddo/" visible="false"/>
-        <setting label="TVDB API Key" type="text" id="tvdb_api_key" option="hidden" default="N0UzOENDMzE1QzZEQkYwNA==" visible="eq(-3,true)"/>
-        <setting label="TMDB API Key" type="text" id="tmdb_api_key" option="hidden" default="MGFmYzE2OWFiNDBjYTYxNGFmNDNhN2I5YzBhNjFlOWI=" visible="eq(-4,true)"/>
-        <setting label="Trakt Client ID" type="text" id="trakt_api_client_id" option="hidden" default="OTg4ZjM4MzVlNTQxMGIzZjVlNWU5MGI5MjJhOGEwMDE2ZWYyMWVjNjVhMmZjNjNmNjhlNDRhNmIwMzA0MWZlNw==" visible="eq(-5,true)"/>
-        <setting label="Trakt Client Secret" type="text" id="trakt_api_client_secret" option="hidden" visible="!eq(-1,true) + eq(-6,true)" default="NTU2NTEwYWViOTQxZGJmMjNhMmVhYWEzYWFlMDg5ZjkyOGYwMTEyYjJhODZkMzI4MTkwYzI4MGUzZGNmZDQxOQ=="/>
+        <setting label="TVDB API Key" type="text" id="tvdb_api_key" option="hidden" default="7E38CC315C6DBF04" visible="eq(-3,true)"/>
+        <setting label="TMDB API Key" type="text" id="tmdb_api_key" option="hidden" default="0afc169ab40ca614af43a7b9c0a61e9b" visible="eq(-4,true)"/>
+        <setting label="Trakt Client ID" type="text" id="trakt_api_client_id" option="hidden" default="988f3835e5410b3f5e5e90b922a8a0016ef21ec65a2fc63f68e44a6b03041fe7" visible="eq(-5,true)"/>
+        <setting label="Trakt Client Secret" type="text" id="trakt_api_client_secret" option="hidden" visible="!eq(-1,true) + eq(-6,true)" default="556510aeb941dbf23a2eaaa3aae089f928f0112b2a86d328190c280e3dcfd419"/>
         <setting label="Last.fm API Key" type="text" id="lastfm_api_key" option="hidden" default="API KEY GOES HERE" visible="eq(-7,true)"/>
         <setting label="Last.fm Secret" type="text" id="lastfm_secret" option="hidden" visible="!eq(-1,true) + eq(-8,true)" default="API KEY GOES HERE"/>
         <setting id="TRAKT_ACCESS_TOKEN" label="" type="text" visible="false"/>
