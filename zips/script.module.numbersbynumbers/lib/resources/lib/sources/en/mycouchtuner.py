@@ -25,13 +25,12 @@ from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import proxy
 
-
 class source:
 	def __init__(self):
 		self.priority = 1
 		self.language = ['en']
-		self.domains = ['mycouchtuner.li']
-		self.base_link = 'http://mycouchtuner.li'
+		self.domains = ['1mycouchtuner.co','mycouchtuner.li','ecouchtuner.eu']
+		self.base_link = 'http://1mycouchtuner.co'
 		self.search_link = '/watch-%s-online/'
 
 	def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):

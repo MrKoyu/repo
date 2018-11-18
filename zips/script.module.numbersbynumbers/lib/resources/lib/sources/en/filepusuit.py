@@ -25,13 +25,16 @@ from resources.lib.modules import client
 from resources.lib.modules import proxy
 from resources.lib.modules import log_utils
 from resources.lib.modules import source_utils 
+from resources.lib.modules import cfscrape
+
 class source:
     def __init__(self):
         self.priority = 1                           
         self.language = ['en']                      
         self.domains = ['filepursuit.com']           
         self.base_link = 'https://filepursuit.com'  
-        self.search_link = '/search5/%s/' 
+        self.search_link = '/zearch/%s/' 
+		self.scraper = cfscrape.create_scraper()
  
     def movie(self, imdb, title, localtitle, aliases, year):
        
@@ -86,7 +89,7 @@ class source:
        
         try:
             sources = []
- 
+            scraper = cfscrape.create_scraper()
            
             query = url
  
@@ -95,7 +98,7 @@ class source:
             url = self.base_link + self.search_link % query
  
  
-            r = client.request(url)
+            r = scraper.get(url).content
  
  
             try:

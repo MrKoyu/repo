@@ -75,7 +75,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="5.0" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="5.1" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -337,7 +337,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.0.5" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.0.6" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="script.module.numbersbynumbers" />
@@ -364,8 +364,8 @@
 			<fanart>fanart.jpg</fanart>
 		</assets>
 		<news>
-V2.0.0.5
-- The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.
+V2.0.0.6
+- The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.
         </news>
 	</extension>
 </addon>
@@ -503,7 +503,7 @@ provider-name="Team IVUE">
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="plugin.video.SportsDevil"
-  version="2018.06.23"
+  version="2018.09.20"
   name="SportsDevil"
   provider-name="SportsDevil">
   <requires>
@@ -570,7 +570,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.youtube" name="YouTube" version="6.2.0" provider-name="bromix">
+<addon id="plugin.video.youtube" name="YouTube" version="6.2.2" provider-name="bromix">
     <requires>
         <import addon="xbmc.python" version="2.20.0"/>
         <import addon="script.module.six" version="1.11.0"/>
@@ -584,29 +584,14 @@ provider-name="Team IVUE">
     <extension point="xbmc.python.module" library="resources/lib/"/>
     <extension point="xbmc.addon.metadata">
         <news>
-6.2.0
-[add] Context menu -&gt; &#39;Play with subtitles&#39; |contrib: solarus|
-[add] Option to download subtitles before playback in Settings -&gt; General -&gt; Configure subtitles
-[add] Refresh context menu to all videos/live streams
-[add] &amp;strm=true parameter for strm files in Kodi 18 |contrib: vlmaksime|
-    - use description from library and set watched status
-[add] &#39;Settings -&gt; Advanced -&gt; Use YouTube website urls&#39; for external/alternative players
-            eg. Player: MPC-BE, URL: https://www.youtube.com/watch?v=C0NyvxTJGcQ
-[fix] Reported background progress dialog percentage
-[fix] Playlist items, use video_items instead of playback_items
-[fix] search history size
-[fix] remove Spanish (Latin America)|es-419 from the setup wizard, causing invalidLanguage and invalidRelevanceLanguage errors
-[upd] Improve speed of playback starting and resolver
-            before: min: 1.5s max: 2.6s median: 1.7s
-            after:  min: 0.9s max: 2.6s median: 1.2s
-[chg] refactor logging and system version
-[chg] Localize confirmation
-[lang] el_gr strings |contrib: twilight0|
-[lang] es_es strings |contrib: roliverosc|
-[lang] es_mx strings |contrib: Intel11|
-[lang] it_it strings |contrib: SebastianoPistore|
-[lang] nl_nl strings |contrib: Markman-B|
-[lang] ru_ru strings |contrib: vlmaksime|
+6.2.2
+[fix] signature function not found on some videos
+
+6.2.1
+[fix] some streams reporting as Unavailable
+[fix] utf-8 file paths
+[fix] settings, and switch user causing perpetual busy dialog on Kodi 18
+[lang] sk_sk strings |contrib: jose1711|
         </news>
         <assets>
             <icon>icon.png</icon>
@@ -645,6 +630,7 @@ provider-name="Team IVUE">
         <disclaimer lang="el_GR">Η παρούσα μικροεφαρμογή δεν έχει υϊοθετηθεί από την Google</disclaimer>
         <summary lang="nb_NO">Tillegg for YouTube</summary>
         <description lang="nb_NO">YouTube er en av verdens største nettsider for videodeling.</description>
+        <language></language>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
         <forum>https://forum.kodi.tv/showthread.php?tid=325740</forum>
@@ -1014,7 +1000,7 @@ provider-name="Team IVUE">
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.module.requests"
        name="requests"
-       version="2.18.4"
+       version="2.19.1"
        provider-name="kennethreitz">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
@@ -1057,7 +1043,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.038" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.039" provider-name="Brackets">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 	</requires>
@@ -1072,7 +1058,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.numbersbynumbers.artwork" version="1.0.2" name="Numbers By Numbers Artwork" provider-name="Brackets">
+<addon id="script.numbersbynumbers.artwork" version="1.0.3" name="Numbers By Numbers Artwork" provider-name="Brackets">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>

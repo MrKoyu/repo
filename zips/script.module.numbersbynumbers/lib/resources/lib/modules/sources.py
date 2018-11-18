@@ -1150,9 +1150,9 @@ class sources:
         return title
 
     def getConstants(self):
-        self.itemProperty = 'plugin.video.numbers.container.items'
+        self.itemProperty = 'plugin.video.numbersbynumbers.container.items'
 
-        self.metaProperty = 'plugin.video.numbers.container.meta'
+        self.metaProperty = 'plugin.video.numbersbynumbers.container.meta'
 
         from resources.lib.sources import sources
 

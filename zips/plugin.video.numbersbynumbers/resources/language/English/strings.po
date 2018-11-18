@@ -928,11 +928,11 @@ msgid "Click to clear search history"
 msgstr ""
 
 msgctxt "#32606"
-msgid "Prem"
+msgid "[B][COLOR ghostwhite]• [/COLOR][/B][COLOR limegreen]Paid[/COLOR]"
 msgstr ""
 
 msgctxt "#32607"
-msgid "Normal"
+msgid "[B][COLOR ghostwhite]• [/COLOR][/B][COLOR gold]Free[/COLOR]"
 msgstr ""
 
 msgctxt "#32608"

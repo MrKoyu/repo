@@ -27,10 +27,10 @@ from resources.lib.modules import source_utils
 
 class source:
     def __init__(self):
-        self.priority = 0
+        self.priority = 1
         self.language = ['en']
-        self.domains = ['cartoon-hd.press']
-        self.base_link = 'https://cartoon-hd.press'
+        self.domains = ['cartoonhd.care']
+        self.base_link = 'https://cartoonhd.care'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

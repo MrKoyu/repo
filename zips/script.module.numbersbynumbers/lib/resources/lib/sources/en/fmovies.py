@@ -29,7 +29,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['fmovies.sc']
-        self.base_link = 'http://fmovies.sc'
+        self.base_link = 'http://www4.fmovies.sc'
         self.search_link = '/watch/%s-%s-online.html' 
         
     def movie(self, imdb, title, localtitle, aliases, year):

@@ -1,21 +1,16 @@
 # -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-'''
-    Numbers Add-on
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+# Addon Name: Numbers
+# Addon id: plugin.video.numbersbynumbers
+# Addon Provider: numbers
 
 import re,traceback,urllib,urlparse,json
 
@@ -25,14 +20,15 @@ from resources.lib.modules import control
 from resources.lib.modules import debrid
 from resources.lib.modules import log_utils
 from resources.lib.modules import source_utils
+from resources.lib.modules import cfscrape
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['rlsbb.com', 'rlsbb.ru']
-        self.base_link = 'http://rlsbb.ru'
-        self.search_base_link = 'http://search.rlsbb.ru'
+        self.domains = ['rlsbb.to']
+        self.base_link = 'http://rlsbb.to'
+        self.search_base_link = 'http://search.rlsbb.to'
         self.search_cookie = 'serach_mode=rlsbb'
         self.search_link = '/lib/search526049.php?phrase=%s&pindex=1&content=true'
 
@@ -73,6 +69,7 @@ class source:
     def sources(self, url, hostDict, hostprDict):
         try:
             sources = []
+            scraper = cfscrape.create_scraper()
 
             if url == None: return sources
 
@@ -96,10 +93,10 @@ class source:
             url = self.search_link % urllib.quote_plus(query)
             url = urlparse.urljoin(self.base_link, url)
 
-            url = "http://rlsbb.ru/" + query                                
+            url = "http://rlsbb.to/" + query                                
             if 'tvshowtitle' not in data: url = url + "-1080p"				 
 
-            r = client.request(url)                                         
+            r = scraper.get(url).content                                         
             
             if r == None and 'tvshowtitle' in data:
                 season = re.search('S(.*?)E', hdlr)
@@ -110,8 +107,8 @@ class source:
                 query = query.replace("&", "and")
                 query = query.replace("  ", " ")
                 query = query.replace(" ", "-")
-                url = "http://rlsbb.ru/" + query
-                r = client.request(url)
+                url = "http://rlsbb.to/" + query
+                r = scraper.get(url).content
 
             
             for loopCount in range(0,2):
@@ -123,11 +120,11 @@ class source:
                     query = query.replace("&", " and ").replace("  ", " ").replace(" ", "-")    
                     query = query + "-" + premDate                      
                     
-                    url = "http://rlsbb.ru/" + query            
+                    url = "http://rlsbb.to/" + query            
                     url = url.replace('The-Late-Show-with-Stephen-Colbert','Stephen-Colbert')   
                     
 
-                    r = client.request(url)
+                    r = scraper.get(url).content
                     
                 posts = client.parseDOM(r, "div", attrs={"class": "content"})   
                 hostDict = hostprDict + hostDict                                

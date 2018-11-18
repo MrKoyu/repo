@@ -29,7 +29,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['hdpopcorns.co','hdpopcorns.eu']
-        self.base_link = 'https://hdpopcorns.co'
+        self.base_link = 'http://hdpopcorns.co'
         self.search_link = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -56,7 +56,7 @@ class source:
         if url == None: return
         try:
             OPEN = client.request(url)
-            headers = {'Origin':'https://hdpopcorns.co', 'Referer':url,
+            headers = {'Origin':'http://hdpopcorns.co', 'Referer':url,
                        'X-Requested-With':'XMLHttpRequest', 'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
             try:
                 params = re.compile('FileName1080p.+?value="(.+?)".+?FileSize1080p.+?value="(.+?)".+?value="(.+?)"',re.DOTALL).findall(OPEN)

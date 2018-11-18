@@ -28,8 +28,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['coolmoviezone.info']
-        self.base_link = 'http://coolmoviezone.biz'
+        self.domains = ['coolmoviezone.online']
+        self.base_link = 'https://coolmoviezone.online'
         self.search_link = '/index.php?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):

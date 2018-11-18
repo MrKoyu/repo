@@ -30,7 +30,7 @@ class source:
 		self.priority = 1
 		self.language = ['en']
 		self.domains = ['reddit.com']
-		self.base_link = 'https://www.reddit.com/user/nbatman/m/streaming2/search?q=%s&restrict_sr=on'
+		self.base_link = 'https://www.reddit.com/user/eggman19/m/streaming2/search?q=%s&restrict_sr=on'
 
 	def movie(self, imdb, title, localtitle, aliases, year):
 		try:

@@ -31,15 +31,14 @@ class source:
     def __init__(self):       
         self.priority = 1
         self.language = ['en']
-        self.domains = ['tvbox.unblocked.mx/']
-        self.base_link = 'https://tvbox.unblocked.mx/'
-        self.search_link_tv = 'https://tvbox.unblocked.mx/tvshows'
-        self.search_link_movie = 'https://tvbox.unblocked.mx/movies'
+        self.domains = ['tvbox.ag']
+        self.base_link = 'https://tvbox.ag'
+        self.search_link_tv = 'https://tvbox.ag/tvshows'
+        self.search_link_movie = 'https://tvbox.ag/movies'
 
-    
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
-            result = client.request(self.search_link_movie)
+            result = client.request(self.search_link_movie, cookie='check=2')
             m = client.parseDOM(result, 'div', attrs={'class': 'masonry'})[0]
             m = dom_parser.parse_dom(m, 'a', req='href')
             m = [(i.attrs['href'], i.content) for i in m]
@@ -53,7 +52,7 @@ class source:
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
 
         try:
-            result = client.request(self.search_link_tv)
+            result = client.request(self.search_link_tv, cookie='check=2')
             m = client.parseDOM(result, 'div', attrs={'class': 'masonry'})[0]
             m = dom_parser.parse_dom(m, 'a', req='href')
             m = [(i.attrs['href'], i.content) for i in m]
@@ -64,15 +63,14 @@ class source:
         except:
             return
 
-
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
             if url == None: return
 
             url = urlparse.urljoin(self.base_link, url)
             for i in range(3):
-                result = client.request(url, timeout=10)
-                if not result == None: break  
+                result = client.request(url, cookie='check=2', timeout=10)
+                if not result == None: break
 
             title = cleantitle.get(title)
             premiered = re.compile('(\d{4})-(\d{2})-(\d{2})').findall(premiered)[0]
@@ -85,7 +83,6 @@ class source:
         except:
             return
 
-
     def sources(self, url, hostDict, hostprDict):
         try:
             sources = []
@@ -93,7 +90,7 @@ class source:
             if url == None: return sources
             url = urlparse.urljoin(self.base_link, url)
             for i in range(3):
-                result = client.request(url)
+                result = client.request(url, cookie='check=2')
                 if not result == None: break
             
             links = re.compile('onclick="report\(\'([^\']+)').findall(result)         

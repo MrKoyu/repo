@@ -28,6 +28,7 @@ from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import source_utils
 from resources.lib.modules import dom_parser2
+from resources.lib.modules import cfscrape
 
 
 class source:
@@ -35,9 +36,9 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['movie4k.is','movie4k.ws']
-        self.base_link = 'http://www.movie4k.is'
+        self.base_link = 'https://movie4k.is'
         self.search_link = '/?s=%s'
-
+        self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -45,7 +46,6 @@ class source:
             return url
         except:
             return
-
 
     def sources(self, url, hostDict, hostprDict):
         try:
@@ -57,10 +57,10 @@ class source:
             h = {'User-Agent': client.randomagent()}
             title = cleantitle.geturl(url['title']).replace('-', '+')
             url = urlparse.urljoin(self.base_link, self.search_link % title)
-            r = requests.get(url, headers=h)
+            r = self.scraper.get(url, headers=h)
             r = BeautifulSoup(r.text, 'html.parser').find('div', {'class': 'item'})
             r = r.find('a')['href']
-            r = requests.get(r, headers=h)
+            r = self.scraper.get(r, headers=h)
             r = BeautifulSoup(r.content, 'html.parser')
             quality = r.find('span', {'class': 'calidad2'}).text
             url = r.find('div', {'class':'movieplay'}).find('iframe')['src']
@@ -71,9 +71,6 @@ class source:
             sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
             return sources
         except:
-            print("Unexpected error in Furk Script: check_api", sys.exc_info()[0])
-            exc_type, exc_obj, exc_tb = sys.exc_info()
-            print(exc_type, exc_tb.tb_lineno)
             return sources
 
     def resolve(self, url):

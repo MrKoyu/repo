@@ -31,7 +31,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['ultrahdindir.com']
-        self.base_link = 'http://ultrahdindir.com'
+        self.base_link = 'https://ultrahdindir.com/'
         self.post_link = '/index.php?do=search'
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -122,13 +122,12 @@ class source:
 
                             if 'ftp' in url: host = 'COV'; direct = True;
                             else: direct = False; host= 'turbobit.net'
-                            
 
                             host = client.replaceHTMLCodes(host)
                             host = host.encode('utf-8')
 
                             sources.append({'source': host, 'quality': quality, 'language': 'en',
-                                            'url': url, 'info': info, 'direct': direct, 'debridonly': True})
+                                            'url': url, 'info': info, 'direct': direct, 'debridonly': False})
 
                         except:
                             pass
