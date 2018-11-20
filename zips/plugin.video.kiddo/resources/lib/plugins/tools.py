@@ -14,6 +14,14 @@
         Drop this PY in the plugins folder, and use whatever tools below you want.
 
     Version:
+        2018.11.17
+            - Updated the PAIR_LIST (replaced the_video_me with vevio; replaced vid_up_me with vidup, replaced vshare with videoshare)
+                - updated URL for openload and vidup
+            - Added AUTH_LIST to authorize ResolveURL with RealDebrid or AllDebrid 
+                - added <authwith> tags
+                - can use authlist to display both debrid services, or specific entry from AUTH_LIST to authorize only that service
+            - Added customizable settings for 2 Colors for the header & list of items displayed in the Pair/Authorize windows
+
         2018.7.14
             - Updated password code to cache a session for X amt of time
             - Adjust the timer via the SESSION_HOURS in settings.xml (or in code)
@@ -44,9 +52,19 @@
             <heading></heading> - Displays the entry as normal, but performs no action (not a directory or "item")
             <mysettings>0/0</mysettings> - Opens settings dialog to the specified Tab and section (0 indexed)
             <pairwith></pairwith> - Used for pairing with sites. See list below of supported sites with this plugin
+            <authwith></authwith> - Used for authorizing Debrid services (RealDebrid, AllDebrid).
             <passreq></passreq> - Used to password protect submenus. Format is base64 encoded string formatted like this:
                 Password|link_to_xml
             <trailer>plugin://plugin.video.youtube/play/?video_id=ChA0qNHV1D4</trailer>
+            
+
+    *** COLORS ***
+        Set your desired colors for COLOR1 & COLOR2 within "" on lines 144 & 145 below.
+        COLOR1 is for the header & COLOR2 is for the items list, displayed in the Pair/Authorize window.
+        The color values can be alphanumeric (example: red, limegreen) or Hex (example: ffff0000, FF00FF00).
+        If colors are left blank, they will display as the default color set within the skin you're using.
+
+    -------------------------------------------------------------
 
     Usage Examples:
 
@@ -62,13 +80,28 @@
         </item>
 
         <item>
-            <title>Pair With Sites</title>
+            <title>Pair With Sites</title>              ### Gives option to pair device with any of the pairing sites in the PAIR_LIST on line 156 below ### 
             <pairwith>pairlist</pairwith>
         </item>
 
         <item>
-            <title>Pair Openload</title>
-            <pairwith>openload</pairwith>
+            <title>Pair Openload</title>                ### Opens Openload site to pair device with ###
+            <pairwith>openload</pairwith>               ### To paith with a site other than "openload", use any of the sites listed in the PAIR_LIST on line 156 below
+        </item>
+
+        <item>
+            <title>Authorize Debrid</title> 
+            <authwith>authlist</authwith>               ### Gives option to authorize ResolveURL with either AllDebrid or RealDebrid service ###
+        </item>
+
+        <item>
+            <title>Authorize RealDebrid</title>
+            <authwith>realdebrid</authwith>             ### Displays code to authorize ResolveURL with RealDebrid, then displays the RealDebrid site to enter the code in ###
+        </item>
+
+        <item>
+            <title>Authorize AllDebrid</title>
+            <authwith>alldebrid</authwith>              ### Displays code to authorize ResolveURL with AllDebrid, then displays the AllDebrid site to enter the code in ###
         </item>
 
         <item>
@@ -118,14 +151,21 @@ this_addon   = xbmcaddon.Addon(id=addon_id)
 addon_fanart = xbmcaddon.Addon().getAddonInfo('fanart')
 addon_icon   = xbmcaddon.Addon().getAddonInfo('icon')
 addon_path   = xbmcaddon.Addon().getAddonInfo('path')
+COLOR1 = "limegreen"
+COLOR2 = "palegreen"
+
 
 PAIR_LIST = [ ("flashx", "https://www.flashx.tv/?op=login&redirect=https://www.flashx.tv/pairing.php"),
-        ("openload", "https://olpair.com/pair"),
+        ("openload", "https://olpair.com"),
         ("streamango", "https://streamango.com/pair"),
         ("streamcherry", "https://streamcherry.com/pair"),
-        ("the_video_me", "https://vev.io/pair"),
-        ("vid_up_me", "https://vidup.me/pair"),
-        ("vshare", "http://vshare.eu/pair") ]
+        ("vevio", "https://vev.io/pair"),
+        ("vidup", "https://vidup.io/pair"),
+        ("videoshare", "http://vshare.eu/pair") ]
+
+
+AUTH_LIST = [ ("realdebrid", "http://real-debrid.com/device"),
+        ("alldebrid", "https://alldebrid.com/pin") ]
 
 
 class JenTools(Plugin):
@@ -229,6 +269,25 @@ class JenTools(Plugin):
                 "summary": item.get("summary", None)
             }
             return result_item
+        elif "<authwith>" in item_xml:
+            item = JenItem(item_xml)
+            result_item = {
+                'label': item["title"],
+                'icon': item.get("thumbnail", addon_icon),
+                'fanart': item.get("fanart", addon_fanart),
+                'mode': "AUTHWITH",
+                'url': item.get("authwith", ""),
+                'folder': False,
+                'imdb': "0",
+                'content': "files",
+                'season': "0",
+                'episode': "0",
+                'info': {},
+                'year': "0",
+                'context': get_context_items(item),
+                "summary": item.get("summary", None)
+            }
+            return result_item
         elif "<trailer>" in item_xml:
             item = JenItem(item_xml)
             result_item = {
@@ -284,7 +343,11 @@ def password_handler(url):
     expires_at = this_addon.getSetting('PASS_EXIRES_AT')
     if time.time() > expires_at or expires_at == '':
         input = ''
-        keyboard = xbmc.Keyboard(input, '[COLOR red]Are you worthy?[/COLOR]')
+        if not COLOR1 == "":
+            enterpass = "[COLOR %s]Are you worthy?[/COLOR]" % COLOR1
+        else:
+            enterpass = "Are you worthy?"
+        keyboard = xbmc.Keyboard(input, enterpass)
         keyboard.doModal()
         if keyboard.isConfirmed():
             input = keyboard.getText()
@@ -300,10 +363,14 @@ def password_handler(url):
                 prot_xml = xml_file.read()
                 xml_file.close()
         else:
+            if not COLOR2 == "":
+                passfail = "[COLOR %s]Wrong Answer...You are not worthy![/COLOR]" % COLOR2
+            else:
+                passfail = "Wrong Answer...You are not worthy!"
             prot_xml += "<dir>"\
-                    "    <title>[COLOR yellow]Wrong Answer! You are not worthy[/COLOR]</title>"\
+                    "    <title>%s</title>"\
                     "    <thumbnail>https://nsx.np.dl.playstation.net/nsx/material/c/ce432e00ce97a461b9a8c01ce78538f4fa6610fe-1107562.png</thumbnail>"\
-                    "</dir>"
+                    "</dir>" % passfail
     else:
         if 'http' in xml_loc:
             prot_xml = requests.get(xml_loc).content
@@ -325,15 +392,15 @@ def pairing_handler(url):
         if 'pairlist' in url:
             names = []
             for item in PAIR_LIST:
-                the_title = 'Pair for %s' % (item[0].replace('_', ' ').capitalize())
+                the_title = '[COLOR %s]Pair with [COLOR %s]%s[/COLOR]' % (COLOR1, COLOR2, item[0].capitalize())
                 names.append(the_title)
-            selected = xbmcgui.Dialog().select('Select Site',names)
+            selected = xbmcgui.Dialog().select('[COLOR %s]Select Site To Pair Device With[/COLOR]' % COLOR2, names)
 
             if selected ==  -1:
                 return
 
             # If you add [COLOR] etc to the title stuff in names loop above, this will strip all of that out and make it usable here
-            pair_item = re.sub('\[.*?]','',names[selected]).replace('Pair for ', '').replace(' ', '_').lower()
+            pair_item = re.sub('\[.*?]','',names[selected]).replace('Pair with ', '').lower()
             for item in PAIR_LIST:
                 if str(item[0]) == pair_item:
                     site = item[1]
@@ -346,11 +413,55 @@ def pairing_handler(url):
 
         check_os = platform()
         if check_os == 'android': 
-            spam_time = xbmc.executebuiltin('StartAndroidActivity(,android.intent.action.VIEW,,%s)' % (site))
+            open_site = xbmc.executebuiltin('StartAndroidActivity(,android.intent.action.VIEW,,%s)' % (site))
         elif check_os == 'osx':
            os.system("open " + site)
         else:
-            spam_time = webbrowser.open(site)
+            open_site = webbrowser.open(site)
+    except:
+        failure = traceback.format_exc()
+        xbmcgui.Dialog().textviewer('Exception',str(failure))
+        pass
+
+
+@route(mode="AUTHWITH", args=["url"])
+def authRD(url):
+    try:
+        site = ''
+        if 'authlist' in url:
+            names = []
+            for item in AUTH_LIST:
+                the_title = '[COLOR %s]Authorize with [COLOR %s]%s[/COLOR]' % (COLOR1, COLOR2, item[0].capitalize())
+                names.append(the_title)
+            selected = xbmcgui.Dialog().select('[COLOR %s]Select Debrid Service To Authorize With[/COLOR]' % COLOR2, names)
+
+            if selected ==  -1:
+                return
+
+            # If you add [COLOR] etc to the title stuff in names loop above, this will strip all of that out and make it usable here
+            auth_item = re.sub('\[.*?]','',names[selected]).replace('Authorize with ', '').lower()
+            for item in AUTH_LIST:
+                if str(item[0]) == auth_item:
+                    site = item[1]
+                    break
+        else:
+            for item in AUTH_LIST:
+                if str(item[0]) == url:
+                    site = item[1]
+                    break
+        if str(item[0]) == "realdebrid":
+            auth_mode = "auth_rd"
+        else:
+            auth_mode = "auth_ad"
+        xbmc.executebuiltin("RunPlugin(plugin://script.module.resolveurl/?mode=%s)" % auth_mode)
+        time.sleep(20)
+        check_os = platform()
+        if check_os == 'android': 
+            open_site = xbmc.executebuiltin('StartAndroidActivity(,android.intent.action.VIEW,,%s)' % (site))
+        elif check_os == 'osx':
+           os.system("open " + site)
+        else:
+            open_site = webbrowser.open(site)
     except:
         failure = traceback.format_exc()
         xbmcgui.Dialog().textviewer('Exception',str(failure))
