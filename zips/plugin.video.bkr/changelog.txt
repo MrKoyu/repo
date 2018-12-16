@@ -10,6 +10,13 @@
  
 [COLOR crimson]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V3.0.0.3[/COLOR][/B]
+[B][COLOR crimson]• [/COLOR][/B] script.module.schism.common update v2018.12.16
+[B][COLOR crimson]• [/COLOR][/B] Requests vulnerability found in …/incapsula/requirements.txt on Oct 29 fixed
+[B][COLOR crimson]• [/COLOR][/B] Vulnerable versions was 2.19.1 - Patched version: 2.20.0
+[B][COLOR crimson]• [/COLOR][/B] Requests Upgrade to version 2.20.0
+[B][COLOR crimson]• [/COLOR][/B] More info here: https://nvd.nist.gov/vuln/detail/CVE-2018-18074
+
 [B][COLOR limegreen]V3.0.0.2[/COLOR][/B]
 [B][COLOR crimson]• [/COLOR][/B] New Trakt API
 

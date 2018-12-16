@@ -1,3 +1,11 @@
+[B]Version 4.3[/B]
+- Added US Documentary category 
+- Added SKY Sports category
+- Added BT Sports category
+- Added BBC Red Button category
+- Fixed 24/7 Kids
+- Fixed empty categories
+
 [B]Version 4.2[/B]
 - Added Radio category 
 - Reorganised 24/7 Shows by alphabetical order

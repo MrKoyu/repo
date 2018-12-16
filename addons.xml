@@ -75,7 +75,29 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="5.4" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+<addon id="plugin.program.chrome.launcher" name="Chrome Launcher" version="1.1.5" provider-name="alelec (AddonScriptorDE)">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.pydevd" version="2.1.0" optional="true"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Launch websites via Chrome in Kiosk-mode</summary>
+        <language></language>
+        <description lang="en">Launch websites via Chrome in Kiosk-mode</description>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <source>https://github.com/AddonScriptorDE/plugin.program.chrome.launcher</source>
+        <forum>http://forum.xbmc.org/showthread.php?tid=170965</forum>
+        <email>AddonScriptorDE at yahoo dot de</email>
+        <website></website>
+    </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8"?>
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="5.6" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -173,7 +195,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.hypersonicIPTV2"
        name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
-       version="4.2"
+       version="4.3"
        provider-name="GhostBuilder">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -371,7 +393,7 @@ V2.0.0.6
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.bkr" version="3.0.0.2" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
+<addon id="plugin.video.bkr" version="3.0.0.3" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
     <requires>
         <import addon="xbmc.python" version="2.19.0"/>
         <import addon="script.bkr.artwork" version="2018.04.02"/>
@@ -379,7 +401,7 @@ V2.0.0.6
         <import addon="script.module.metahandler" version="2.9.0"/>
         <import addon="script.module.requests" version="2.12.4"/>
         <import addon="script.module.beautifulsoup" version="3.2.1"/>
-        <import addon="script.module.schism.common" version="2017.06.08"/>
+        <import addon="script.module.schism.common" version="2018.12.16"/>
         <import addon="script.module.futures" version="2.2.0"/>
         <import addon="script.module.universalscrapers" version="1.0.0"/>
     </requires>
@@ -392,12 +414,12 @@ V2.0.0.6
         <disclaimer lang="en">The author does not host any content, nor is he affiliated with any of the content providers.</disclaimer>
         <platform>all</platform>
         <news>
-V3.0.0.2
+V3.0.0.3
 -New Official Repo
 -Intial Release
 -Fork of Boxset Kings
 -Added Artwork Script
-		</news>
+    </news>
         <assets>
             <icon>icon.gif</icon>
             <fanart>fanart.jpg</fanart>
@@ -424,42 +446,6 @@ provider-name="Team IVUE">
   <description lang="en">Now includes a fully functioning back up and restore feature</description>
   <disclaimer lang="en">Modified by TeamJDM from the original code from "Primeaval" </disclaimer>
 </extension>
-</addon>
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.Redemption"
-       name="[COLOR crimson]Redemption[/COLOR]" 
-       version="1.7"
-       provider-name="BucKy">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.t0mm0.common" version="2.0.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" version="3.0.0"/>
-    <import addon="script.module.urlresolver" optional="true"/>
-    <import addon="script.module.simplejson" /> 
-    <import addon="script.common.plugin.cache" version="2.5.2"/>
-    <import addon="script.module.metahandler" version="2.5.1"/>
-    <import addon="script.module.python.koding.aio" version="0.0.1"/>
-    <import addon="script.module.bybmodules"  version="0.0.0.1"/>
-    <import addon="script.module.resolveurl" version="5.0.07"/>
-    <import addon="script.module.dateutil" version="2.5.3"/>
-    <import addon="script.module.universalscrapers" version="1.0.9"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en_gb">Redemption Addon</summary>
-    <description lang="en_gb">Redemption Addon</description>
-    <platform>all</platform>
-  </extension>
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -1236,7 +1222,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.schism.common" name="Elysium Common Libraries" version="2017.06.08" provider-name="Elysium">
+<addon id="script.module.schism.common" name="BK Reborn Common Libraries" version="2018.12.16" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="script.module.six" />
@@ -1246,8 +1232,8 @@ provider-name="Team IVUE">
 	<extension point="xbmc.python.module" library="lib" />
 	<extension point="xbmc.addon.metadata">
 		<platform>all</platform>
-		<summary lang="en">Collection of modules used by Elysium</summary>
-		<description lang="en">Collection of modules used by Elysium</description>
+		<summary lang="en">Collection of modules used by BK Reborn</summary>
+		<description lang="en">Collection of modules used by BK Reborn</description>
 		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
 	</extension>
 </addon>
