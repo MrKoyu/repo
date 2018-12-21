@@ -69,7 +69,7 @@ class movies:
         self.person_link = 'http://www.imdb.com/search/title?title_type=feature,tv_movie&production_status=released&role=%s&sort=year,desc&count=40&start=1'
         self.keyword_link = 'http://www.imdb.com/search/title?title_type=feature,tv_movie,documentary&num_votes=100,&release_date=,date[0]&keywords=%s&sort=moviemeter,asc&count=40&start=1'
         self.oscars_link = 'http://www.imdb.com/search/title?title_type=feature,tv_movie&production_status=released&groups=oscar_best_picture_winners&sort=year,desc&count=40&start=1'
-        self.theaters_link = 'http://www.imdb.com/search/title?title_type=feature&num_votes=1000,&release_date=date[365],date[0]&sort=release_date_us,desc&count=40&start=1'
+        self.theaters_link = 'https://www.imdb.com/search/title?title_type=feature&num_votes=1000,&release_date=date[365],date[0]&sort=moviemeter,asc&count=40&start=1'
         self.year_link = 'http://www.imdb.com/search/title?title_type=feature,tv_movie&num_votes=100,&production_status=released&year=%s,%s&sort=moviemeter,asc&count=40&start=1'
 
         if self.hidecinema == 'true':
@@ -250,28 +250,28 @@ class movies:
 
     def genres(self):
         genres = [
-            ('Action', 'action', True),
-            ('Adventure', 'adventure', True),
-            ('Animation', 'animation', True),
-            ('Anime', 'anime', False),
-            ('Biography', 'biography', True),
-            ('Comedy', 'comedy', True),
-            ('Crime', 'crime', True),
-            ('Documentary', 'documentary', True),
-            ('Drama', 'drama', True),
-            ('Family', 'family', True),
-            ('Fantasy', 'fantasy', True),
-            ('History', 'history', True),
-            ('Horror', 'horror', True),
-            ('Music ', 'music', True),
-            ('Musical', 'musical', True),
-            ('Mystery', 'mystery', True),
-            ('Romance', 'romance', True),
-            ('Science Fiction', 'sci_fi', True),
-            ('Sport', 'sport', True),
-            ('Thriller', 'thriller', True),
-            ('War', 'war', True),
-            ('Western', 'western', True)
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Action[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'action', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Adventure[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'adventure', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Animation[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'animation', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Anime[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'anime', False),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Biography[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'biography', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Comedy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'comedy', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Crime[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'crime', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Documentary[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'documentary', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Drama[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'drama', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Family[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'family', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Fantasy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'fantasy', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]History[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'history', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Horror[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'horror', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Music[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'music', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Musical[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'musical', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Mystery[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'mystery', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Romance[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'romance', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Science Fiction[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'sci_fi', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Sport[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'sport', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Thriller[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'thriller', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]War[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'war', True),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Western[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'western', True)
         ]
 
         for i in genres: self.list.append(

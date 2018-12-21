@@ -4,17 +4,20 @@
  
 [COLOR crimson]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.0.7[/COLOR][/B]
+[B][COLOR crimson]• [/COLOR][/B] Fixed In Theaters category
+[B][COLOR crimson]• [/COLOR][/B] Fixed Scrapers
+
 [B][COLOR limegreen]V2.0.0.6[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] Updated Scrapers
+[B][COLOR crimson]• [/COLOR][/B] Fixed Scrapers
 
 [B][COLOR limegreen]V2.0.0.5[/COLOR][/B]
 [B][COLOR crimson]• [/COLOR][/B] Added Boxsets category
 [B][COLOR crimson]• [/COLOR][/B] Added Networks category to home menu
-[B][COLOR crimson]• [/COLOR][/B] Fixed In Theaters category
 
 [B][COLOR limegreen]V2.0.0.4[/COLOR][/B]
 [B][COLOR crimson]• [/COLOR][/B] New Trakt API
-[B][COLOR crimson]• [/COLOR][/B] Updated Scrapers
+[B][COLOR crimson]• [/COLOR][/B] Fixed Scrapers
 
 [B][COLOR limegreen]V2.0.0.3[/COLOR][/B]
 [B][COLOR crimson]• [/COLOR][/B] Fixed import missing in addon.xml

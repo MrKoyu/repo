@@ -1,7 +1,18 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
-    Numbers Add-on
+ ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
+ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
+▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
+▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
+▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
+░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
+░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
+   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
+         ░    ░            ░    ░         ░  ░   ░           ░  
+                                     ░                          
+
+    NuMbErS Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,12 +28,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re
-import urllib
-import urlparse
-from resources.lib.modules import cleantitle
-from resources.lib.modules import client
-from resources.lib.modules import proxy
+import re,urllib,urlparse
+from resources.lib.modules import cleantitle,client,proxy
 
 
 class source:
@@ -30,7 +37,8 @@ class source:
 		self.priority = 1
 		self.language = ['en']
 		self.domains = ['reddit.com']
-		self.base_link = 'https://www.reddit.com/user/eggman19/m/streaming2/search?q=%s&restrict_sr=on'
+		self.base_link = 'https://www.reddit.com/user/nbatman/m/streaming2/search?q=%s&restrict_sr=on'
+
 
 	def movie(self, imdb, title, localtitle, aliases, year):
 		try:
@@ -41,6 +49,7 @@ class source:
 			return url
 		except:
 			return
+
 
 	def sources(self, url, hostDict, hostprDict):
 		try:
@@ -54,12 +63,10 @@ class source:
 					elif '720' in info: quality = 'HD'
 					elif '480' in info: quality = 'SD'
 					else: quality = 'SD'
-					
 					url = '%s://%s/%s' % (http,host,ext)
 					if 'google' in host: host = 'GDrive'
 					if 'Google' in host: host = 'GDrive'
 					if 'GOOGLE' in host: host = 'GDrive'
-					
 					sources.append({
 						'source': host,
 						'quality': quality,
@@ -75,5 +82,7 @@ class source:
 			return
 		return sources
 
+
 	def resolve(self, url):
 		return url
+
