@@ -1,3 +1,9 @@
+2018.08.28
+- fix compilation artwork
+- fix next page
+- remove myfreemp3 functions
+- minor cosmetic cleanups
+
 2017.09.09
 - fixed by qahanik (thank you very much!)
 - changed versioning to date-format

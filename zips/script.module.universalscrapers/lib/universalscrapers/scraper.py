@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import abc
 import xbmcaddon
 
@@ -73,3 +75,6 @@ class Scraper:
           {'source': music source (str), 'quality': quality (str), 'scraper': scraper name (str) , 'url': url (str), 'direct': bool}
         """
         pass
+
+    def resolve(self, link):
+        return link

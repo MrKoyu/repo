@@ -1,19 +1,19 @@
-import urllib,urllib2,re,xbmcplugin,xbmcgui,os
-import cookielib
+# -*- coding: utf-8 -*-
+#Bugatsinho fixes 28/08/2018
+
+import urllib, urllib2, re
+import xbmcplugin, xbmcgui, os, xbmc, sys
 import settings, time
 import requests
-import glob
-import shutil
 from t0mm0.common.net import Net
 from threading import Thread
 from mutagen.easyid3 import EasyID3
 from mutagen.mp3 import MP3
 
+
 cookie_jar = settings.cookie_jar()
 net = Net()
 ADDON = settings.addon()
-#GOTHAM_FIX = settings.gotham_fix()
-#GOLDEN_PATH = settings.golden_path()
 GOTHAM_FIX = False
 GOLDEN_PATH = False
 KEEP_DOWNLOADS = settings.keep_downloads()
@@ -37,6 +37,8 @@ audio_fanart = ""
 iconart = xbmc.translatePath(os.path.join('special://home/addons/plugin.audio.mp3streams', 'icon.png'))
 download_lock = os.path.join(MUSIC_DIR, 'downloading.txt')
 xbmc_version=xbmc.getInfoLabel("System.BuildVersion")[:4]
+ua = 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
+
 
 GOTHAM_FIX_2 = ADDON.getSetting('gotham_fix_2') == 'true'
 if GOTHAM_FIX_2:
@@ -48,7 +50,7 @@ def newPlay(pl, clear):
 
 def open_url(url):
     req = urllib2.Request(url)
-    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+    req.add_header('User-Agent', ua)
     response = urllib2.urlopen(req)
     link=response.read()
     response.close()
@@ -64,7 +66,7 @@ def GET_url(url):
         header_dict['Connection'] = 'keep-alive'
     if 'goldenmp3' in url:
         header_dict['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-        header_dict['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.1; rv:35.0) Gecko/20100101 Firefox/35.0'
+        header_dict['User-Agent'] = ua
         header_dict['Host'] = 'www.goldenmp3.ru'
         header_dict['Referer'] = 'http://www.goldenmp3.ru/compilations/events/albums'
         header_dict['Connection'] = 'keep-alive'
@@ -75,7 +77,7 @@ def GET_url(url):
 
 def get_cookie():
     header_dict = {}
-    header_dict['User-Agent'] = 'Mozilla/5.0 (Windows NT 6.2; rv:24.0) Gecko/20100101 Firefox/24.0'
+    header_dict['User-Agent'] = ua
     header_dict['Connection'] = 'keep-alive'
     net.set_cookies(cookie_jar)
     link = net.http_GET('http://musicmp3.ru/', headers=header_dict).content.encode("utf-8").rstrip()
@@ -85,7 +87,7 @@ def CATEGORIES():
     addDir('Artists','http://musicmp3.ru/artists.html',21,art + 'artists.jpg','')
     addDir('Top Albums','http://musicmp3.ru/genres.html',12,art + 'topalbums.jpg','')
     addDir('New Albums','http://musicmp3.ru/new_albums.html',12,art + 'newalbums.jpg','')
-    addDir('Compilations','url',400,'','')
+    addDir('Compilations','url',400,art + 'compilations.jpg','')
     addDir('Billboard Charts','url',101,art + 'billboardcharts.jpg','')
     addDir('Search Artists','url',24,art + 'searchartists.jpg','')
     addDir('Search Albums','url',24,art + 'searchalbums.jpg','')
@@ -122,10 +124,9 @@ def charts():
     addDir('Top 50 Classical Compilation Albums','http://www.officialcharts.com/charts/classical-compilation-albums-chart/',102,artbillboard +'billboardcharts.jpg','')
     addDir('Top 30 Jazz & Blues Albums','http://www.officialcharts.com/charts/jazz-and-blues-albums-chart/',102,artbillboard +'billboardcharts.jpg','')
     addDir('Top 20 Christian & Gospel Albums','http://www.officialcharts.com/charts/christian-and-gospel-albums-chart/',102,artbillboard +'billboardcharts.jpg','')
-    #addDir('UK Album Chart','http://www.billboard.com/charts/united-kingdom-albums',102,artbillboard +'ukalbumchart.jpg','')
-    #addDir('UK Single Chart - Top 100','http://www.officialcharts.com/singles-chart/',102,artbillboard +'uksinglecharttop100.jpg','')
-    #addDir('BillBoard 200','http://www.officialcharts.com/charts/billboard-200/',102,artbillboard +'billboard200.jpg','')
-    #addDir('Hot 100 Singles','http://www.billboard.com/charts/hot-100',102,artbillboard +'hot100singles.jpg','')
+    #addDir('UK Single Chart - Top 100','https://www.billboard.com/charts/official-uk-songs',102,artbillboard +'uksinglecharttop100.jpg','')
+    #addDir('BillBoard 200','https://www.billboard.com/charts/billboard-200',102,artbillboard +'billboard200.jpg','')
+    #addDir('Hot 100 Singles','https://www.billboard.com/charts/hot-100',102,artbillboard +'hot100singles.jpg','')
     #addDir('Country Albums','http://www.billboard.com/charts/country-albums',102,artbillboard +'countryalbums.jpg','')
     #addDir('HeatSeeker Albums','http://www.billboard.com/charts/heatseekers-albums',102,artbillboard +'heatseekeralbums.jpg','')
     #addDir('Independent Albums','http://www.billboard.com/charts/independent-albums',102,artbillboard +'independentalbums.jpg','')
@@ -141,13 +142,13 @@ def charts():
     #addDir('Top R&B/Hip-Hop Albums','http://www.billboard.com/charts/r-and-b-albums',102,artbillboard +'toprandbandhiphop.jpg','')
     #addDir('Dance Electronic Albums','http://www.billboard.com/charts/dance-electronic-albums',102,artbillboard +'danceandelectronic.jpg','')
 
-def chart_lists(name, url):
+def chart_lists(name, url): #102
     req = urllib2.Request(url)
-    req.add_header('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+    req.add_header('User-Agent', ua)
     response = urllib2.urlopen(req)
-    link=response.read()
+    link = response.read()
     response.close()
-    if "officialcharts" in url:
+    if "officialcharts.com" in url:
         all_list = regex_get_all(link, '<div class="track">', '<div class="label')
         for list in all_list:
             iconimage = regex_from_to(list, '<img src="', '"')
@@ -162,10 +163,10 @@ def chart_lists(name, url):
                     addDir(artist.replace('&amp;', '&') + ' - ' + title.replace('&amp;', '&'),artist.replace('&amp;', '&') + ' ' + title.replace('&amp;', '&'),28,iconimage,'')
             elif 'albums' in type:
                 addDir(artist.replace('&amp;', '&') + ' - ' + title.replace('&amp;', '&'),'url',25,iconimage,'')
-    elif "billboard" in url and '<span class="chart_position' not in link:
-        link=link.replace('\n','').replace('\t','')
-        match=re.compile('<span class="this-week">(.+?)</span> <span class="last-week">(.+?)</span></div><div class="row-image"(.+?)<div class="row-title"><h2>(.+?)</h2><h3><a href="(.+?)" data-tracklabel="Artist Name">(.+?)</a>').findall(link)
-        for pos,lw,iconimage,title,artisturl,artist in match:
+    elif "billboard.com" in url:
+        link = link.replace('\n', '').replace('\t', '')
+        match = re.compile('<span class="this-week">(.+?)</span> <span class="last-week">(.+?)</span></div><div class="row-image"(.+?)<div class="row-title"><h2>(.+?)</h2><h3><a href="(.+?)" data-tracklabel="Artist Name">(.+?)</a>').findall(link)
+        for pos, lw, iconimage, title, artisturl, artist in match:
             text = "%s %s" % (artist, title)
             try:
                 iconimage='http' + regex_from_to(iconimage,'http','"').replace(')','')
@@ -216,7 +217,7 @@ def all_artists(name, url):
     pgnum = int(url[pgnumf:]) + 1
     nxtpgurl = url[:pgnumf]
     nxtpgurl = "%s%s" % (nxtpgurl, pgnum)
-    addDir('>> Next page',nxtpgurl,31,xbmc.translatePath(os.path.join('special://home/addons/plugin.audio.mp3streams', 'art', 'nextpage.jpg')),'')
+    addDir('>> Next page', nxtpgurl, 31, art + 'nextpage.jpg', str(pgnumf))
     setView('movies', 'default')
 
 def sub_dir(name, url, icon):
@@ -244,7 +245,7 @@ def all_genres(name, url):
     all_genres = re.compile('<li class="small_list__item"><a class="small_list__link" href="(.+?)">(.+?)</a></li>').findall(link)
     for url1, title in all_genres:
         addDir(title.replace('&amp;', 'and'),'http://musicmp3.ru' + url1,22,'http://www.pearljamlive.com/images/pic_home.jpg','')
-    addDir('>> Next page',nxtpgurl,13,xbmc.translatePath(os.path.join('special://home/addons/plugin.audio.mp3streams', 'art', 'nextpage.jpg')))
+    addDir('>> Next page', nxtpgurl, 13, art + 'nextpage.jpg', next)
 
 def genre_sub_dir(name, url, icon):
     link = GET_url(url)
@@ -255,7 +256,7 @@ def genre_sub_dir(name, url, icon):
 
 def genre_sub_dir2(name, url, icon):
     link = GET_url(url)
-    addDir('Top ' + name + ' Albums',url,15,os.path.join(genre, 'alltopalbums.jpg'),'')
+    addDir('Top ' + name + ' Albums',url,15,os.path.join(artgenre, 'alltopalbums.jpg'),'')
     sub_dir = re.compile('<li class="menu_sub__item"><a class="menu_sub__link" href="(.+?)">(.+?)</a></li>').findall(link)
     for url, title in sub_dir:
         addDir(title.replace('&amp;', 'and'),'http://musicmp3.ru' + url + '?page=1',15,icon,'')
@@ -270,17 +271,17 @@ def compilations_menu():
     addDir('Events','http://www.goldenmp3.ru/compilations/events/albums',401,art + 'newalbums.jpg','n')
 
 def compilations_list(name, url, iconimage, page):
-    if page != 'n':
-        nextpage=int(page)+1
-        nxtpgurl="%s%s" % (url,nextpage)
-        url="%s%s" % (url,page)
     link = open_url(url)
     match=re.compile('<a href="(.+?)"><img alt="(.+?)" src="(.+?)"/></a><a class="(.+?)" href="(.+?)">(.+?)</a><span class="(.+?)">(.+?)</span><span class="f_year">(.+?)</span><span class="ga_price">(.+?)</span>').findall(link)
     #match=re.compile('<a href="(.+?)"><img alt="(.+?)" src="(.+?)" /></a><a class="(.+?)" href="(.+?)">(.+?)</a><span class="(.+?)">(.+?)</span><span class="f_year">(.+?)</span><span class="ga_price">(.+?)</span></div>').findall(link)
-    for url,d1,iconimage,cl,url2,title,cl,artist,year,prc in match:
-        url='http://www.goldenmp3.ru'+url
-        addDir(title.replace('&amp;', 'and'),url,5,iconimage,'albums')
-    addDir('>> Next page',nxtpgurl,401,xbmc.translatePath(os.path.join('special://home/addons/plugin.audio.mp3streams', 'art', 'nextpage.jpg')),str(nextpage))
+    for link, d1, iconimage, cl, url2, title, cl, artist, year, prc in match:
+        link ='http://www.goldenmp3.ru' + link
+        addDir(title.replace('&amp;', 'and'), link, 5, iconimage, 'albums')
+    if page != 'n':
+        nextpage = int(page) + 1
+        nxtpgurl = "%s%s" % (url, nextpage)
+        url = "%s%s" % (url, page)
+        addDir('>> Next page', nxtpgurl, 401, art + 'nextpage.jpg', str(nextpage))
     setView('movies', 'album')
 
 def search(name, url):
@@ -358,7 +359,7 @@ def album_list(name, url):
     pgnum = int(url[pgnumf:]) + 1
     nxtpgurl = url[:pgnumf]
     nxtpgurl = "%s%s" % (nxtpgurl, pgnum)
-    addDir('>> Next page',nxtpgurl,15,xbmc.translatePath(os.path.join('special://home/addons/plugin.audio.mp3streams', 'art', 'nextpage.jpg')),'')
+    addDir('>> Next page', nxtpgurl, 15, art + 'nextpage.jpg', str(pgnumf))
     setView('movies', 'album')
 
 def albums(name, url):
@@ -448,16 +449,7 @@ def play_album(name, url, iconimage, mix, clear):
             else:
                 trn = album.replace('.&ensp','')
             if GOTHAM_FIX:
-                try:
-                    alturl = 'http://www.myfreemp3.eu/music/%s+%s' % (artist.replace('&amp; ', '').replace('& ', '').replace(' and ', ' '), songname.replace('&amp; ', '').replace('& ', '').replace(' and ', ' '))
-                    alturl = alturl.replace(' ', '+').lower()
-                    link = open_url(alturl)
-                    data = regex_from_to(link, 'data-aid=', '"').replace('"','').replace('\\','')
-                    url = 'http://myfreemp3.eu/play/%s_24662006e9/' % data
-                    response = requests.get(url,allow_redirects=False)
-                    url = response.headers['location']
-                except:
-                    url = find_url(trn).strip() + id
+                url = find_url(trn).strip() + id
             else:
                 url = 'https://listen.musicmp3.ru/' + id #'http://files.musicmp3.ru/lofi/' + id #find_url(trn).strip() + id
             songname = songname.replace('&amp;', 'and')
@@ -472,7 +464,7 @@ def play_album(name, url, iconimage, mix, clear):
                 album = nalbum.replace('&amp;', 'and')
                 title = "%s. %s - %s" % (count, ntrack, songname)
             else:
-                artist = artist1.replace('&amp;', 'and')
+                artist = artist.replace('&amp;', 'and')
                 album = name.replace('&amp;', 'and')
                 title = "%s. %s" % (trn, songname)
                 dur=dur.replace('(','').replace(')','')
@@ -516,7 +508,7 @@ def play_album(name, url, iconimage, mix, clear):
             album = nalbum.replace('&amp;', 'and')
             title = "%s. %s - %s" % (count, ntrack, songname)
         else:
-            artist = artist1.replace('&amp;', 'and')
+            artist = artist.replace('&amp;', 'and')
             album = name.replace('&amp;', 'and')
             title = "%s. %s" % (trn, songname)
             dur=str((int(dur.split(':')[0])*60) + int(dur.split(':')[1]))
@@ -723,7 +715,7 @@ class Getid3Thread(Thread):
 def get_artist_icon(name, url):
     xbmc.log("724 name = {0}\nurl = {1}".format(name, url), xbmc.LOGNOTICE)
     data_path = os.path.join(ARTIST_ART, name + '.jpg')
-    xbmc.log("726 datapath = {0}".format(datapath), xbmc.LOGNOTICE)
+    xbmc.log("726 datapath = {0}".format(data_path), xbmc.LOGNOTICE)
     if not os.path.exists(data_path):
         dlThread = DownloadIconThread(name, url, data_path)
         dlThread.start()
@@ -834,41 +826,6 @@ class DownloadIconThread(Thread):
         data = self.data
         urllib.urlretrieve(data, path)
 
-def myfreemp3(url):
-    addDir('Artists','url',701,art + 'artists.jpg','')
-    addDir('Charts','http://www.myfreemp3.eu/chart/',702,art + 'billboardcharts.jpg','')
-    addDir('Genres','http://www.myfreemp3.eu/genres/',703,art + 'genres.jpg','')
-    addDir('Search','url',704,art + 'searchsongs.jpg','')
-
-def myfreemp3_artists(url):
-    alphabet =  ['0..9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U','V', 'W', 'X', 'Y', 'Z']
-    for a in alphabet:
-        addDir(a, 'http://www.myfreemp3.eu/artists/%s/' % a.lower(),705,xbmc.translatePath(os.path.join('special://home/addons/plugin.audio.mp3streams', 'art', a + '.png')), '')
-
-def myfreemp3_artislist(url):
-    link = open_url(url)
-    match = re.compile('<li><a class="hash" href="(.+?)">(.+?)</a></li>').findall(link)
-    for url,title in match:
-        url = 'http://www.myfreemp3.eu' + url
-        addDir(title, url,706,iconart, '')
-
-def myfreemp3_songs(name, url, iconimage):
-    playlist = []
-    link = open_url(url).replace("'",'"')
-    match = re.compile('<li id="(.+?)" class="track"><div onclick="player.playlist.playtrack(this);" class="controll_button playlist_button"> <div class="play"></div></div><a class="info" data-aid="(.+?)" data-current="(.+?)" data-duration="(.+?)">(.+?)</a><div class="add_panel"><div class="track_time">(.+?)</div><a class="bitrate butt bit"></a><a class="tip butt text" data-text="(.+?)"></a><a class="share butt"> </a> <!-- <a href="(.+?)" class="hash butt more_info"></a> --><a rel="nofollow" class="dw" href="(.+?)" onClick="window.open("(.+?)", "_blank")" >Download</a></div><div class="track_name"><a rel="nofollow" href="(.+?)" class="hash"><b class="artist">(.+?)</b></a><span class="name">(.+?)</span></div></li>').findall(link)
-    for id,uid,d1,dur,ftitle,ttime,text,share,d2,dllink,artisturl,artist,song in match:
-        url = 'http://myfreemp3.eu/play/%s_24662006e9/' % uid
-        addDirAudio(title.replace(' mp3', ''),url,10,iconimage,song,artist,'',dllink,'mfmp3')
-        liz=xbmcgui.ListItem(song, iconImage=iconimage, thumbnailImage=iconimage)
-        liz.setInfo('music', {'Title':song, 'Artist':artist, 'Album':album})
-        liz.setProperty('mimetype', 'audio/mpeg')
-        liz.setThumbnailImage(iconimage)
-        liz.setProperty('fanart_image', audio_fanart)
-        playlist.append((url, liz))
-    setView('music', 'song')
-
-def myfreemp3_charts(url):
-    pass
 
 def favourite_artists():
     if os.path.isfile(FAV_ARTIST):
@@ -1288,13 +1245,19 @@ params = get_params()
 url = None
 name = None
 mode = None
+songname = None
+artist= None
+album = None
+iconimage = None 
+dur = None
+type = None
 
 try:
-        url=urllib.unquote_plus(params["url"])
+        url = urllib.unquote_plus(params["url"])
 except:
         pass
 try:
-        name=urllib.unquote_plus(params["name"])
+        name = urllib.unquote_plus(params["name"])
 except:
         pass
 try:
@@ -1302,43 +1265,40 @@ try:
 except:
         pass
 try:
-        iconimage=urllib.unquote_plus(params["iconimage"])
+        iconimage = urllib.unquote_plus(params["iconimage"])
 except:
         pass
 try:
-        songname=urllib.unquote_plus(params["songname"])
+        songname = urllib.unquote_plus(params["songname"])
 except:
         pass
 try:
-        artist=urllib.unquote_plus(params["artist"])
+        artist = urllib.unquote_plus(params["artist"])
 except:
         pass
 try:
-        album=urllib.unquote_plus(params["album"])
+        album = urllib.unquote_plus(params["album"])
 except:
         pass
 try:
-        list=str(params["list"])
+        list = str(params["list"])
 except:
         pass
 try:
-        dur=str(params["dur"])
+        dur = str(params["dur"])
 except:
         pass
 try:
-        type=str(params["type"])
+        type = str(params["type"])
 except:
         pass
 
-if mode==None or url==None or len(url)<1:
+if mode == None or url==None or len(url)<1:
     CATEGORIES()
     #get_cookie()
 
-elif mode==4:
+elif mode == 4:
      charts()
-
-elif mode==1:
-    audio_result(name, url)
 
 elif mode ==5:
     if QUEUE_ALBUMS:
@@ -1472,26 +1432,6 @@ elif mode == 401:
 elif mode == 500:
     ADDON.openSettings()
 
-elif mode == 700:
-    myfreemp3(url)
-
-elif mode == 701:
-    myfreemp3_artists(url)
-
-elif mode == 702:
-    myfreemp3_charts(url)
-
-elif mode == 703:
-    myfreemp3_genres(url)
-
-elif mode == 704:
-    myfreemp3_search(url)
-
-elif mode == 705:
-    myfreemp3_artislist(url)
-
-elif mode == 706:
-    myfreemp3_songs(name, url, iconimage)
 
 elif mode == 999:
     import playerMP3
