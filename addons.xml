@@ -97,7 +97,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="5.8" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="5.9" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -1072,6 +1072,37 @@ provider-name="Team IVUE">
   <extension point="xbmc.addon.metadata">
     <summary>Metadata for NuMbErS Addon</summary>
     <description>Metadata for NuMbErS are maintained separately to make distribution of the the addon itself easier/faster.</description>
+    <platform>all</platform>
+        <assets>
+        <icon>icon.png</icon>
+    </assets>   
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.umpidy" name="Umpidy Module" version="999.999.999" provider-name="Grice Advice">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Umpidy</summary>
+        <assets>
+        <icon>icon.png</icon>
+    </assets>   
+  </extension>
+</addon>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.umpidy.artwork" version="999.999.999" name="Umpidy Artwork" provider-name="Grice Advice">
+  <requires>
+    <import addon="xbmc.python" version="2.19.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Themes for the Umpidy Addon</summary>
+    <description>Themes for Umpidy are maintained separately to make distribution of the the addon itself easier/faster.</description>
     <platform>all</platform>
         <assets>
         <icon>icon.png</icon>
