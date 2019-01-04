@@ -134,38 +134,38 @@ iv = "p2s5v8y/B?E(H+Mb"
 
 def addonIcon():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'icon.gif')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'fuckoff.gif')
     return addonInfo('icon')
 
 
 def addonThumb():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'poster.png')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'grice_advice_is_a_cunt.png')
     elif theme == '-': return 'DefaultFolder.png'
     return addonInfo('icon')
 
 
 def addonPoster():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'poster.png')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'grice_advice_is_a_cunt.png')
     return 'DefaultVideo.png'
 
 
 def addonBanner():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'banner.png')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'grice_advice_is_a_cunt.png')
     return 'DefaultVideo.png'
 
 
 def addonFanart():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'fanart.jpg')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'grice_can_not_code.jpg')
     return addonInfo('fanart')
 
 
 def addonNext():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'icon.gif')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'fuckoff.gif')
     return 'DefaultVideo.png'
 
 

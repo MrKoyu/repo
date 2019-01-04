@@ -39,26 +39,26 @@ queueMenu = control.lang(32065).encode('utf-8')
 
 class navigator:
     def root(self):
-        self.addDirectoryItem('[B][COLOR gold]• [/COLOR][/B][B][COLOR lime]Umpidy is a COPY & PASTE of NuMbErS Addon[/COLOR][/B][B][COLOR gold] •[/COLOR][/B]',  'movieNavigator',  'icon.gif',  'DefaultFolder.png')
-        self.addDirectoryItem('[B][COLOR gold]• [/COLOR][/B][B][COLOR lime]DO NOT SUPPORT PEOPLE SUCH AS GRICE ADVICE[/COLOR][/B][B][COLOR gold] •[/COLOR][/B]',  'movieNavigator',  'icon.gif',  'DefaultFolder.png')
-        self.addDirectoryItem(32001, 'movieNavigator', 'icon.gif', 'DefaultMovies.png')
-        self.addDirectoryItem(32002, 'tvNavigator', 'icon.gif', 'DefaultTVShows.png')
+        self.addDirectoryItem('[B][COLOR gold]• [/COLOR][/B][B][COLOR lime]Umpidy is a COPY & PASTE of NuMbErS Addon[/COLOR][/B][B][COLOR gold] •[/COLOR][/B]',  'movieNavigator',  'fuckoff.gif',  'DefaultFolder.png')
+        self.addDirectoryItem('[B][COLOR gold]• [/COLOR][/B][B][COLOR lime]DO NOT SUPPORT PEOPLE SUCH AS GRICE ADVICE[/COLOR][/B][B][COLOR gold] •[/COLOR][/B]',  'movieNavigator',  'fuckoff.gif',  'DefaultFolder.png')
+        self.addDirectoryItem(32001, 'movieNavigator', 'fuckoff.gif', 'DefaultMovies.png')
+        self.addDirectoryItem(32002, 'tvNavigator', 'fuckoff.gif', 'DefaultTVShows.png')
         if not control.setting('lists.widget') == '0':
-            self.addDirectoryItem(32003, 'mymovieNavigator', 'icon.gif', 'DefaultVideoPlaylists.png')
-            self.addDirectoryItem(32004, 'mytvNavigator', 'icon.gif', 'DefaultVideoPlaylists.png')
-            self.addDirectoryItem(32616, 'tvNetworks', 'icon.gif', 'DefaultTVShows.png')
-            self.addDirectoryItem(32617, 'boxsetsNavigator', 'icon.gif', 'grice_advice_is_a_cunt.png')
+            self.addDirectoryItem(32003, 'mymovieNavigator', 'fuckoff.gif', 'DefaultVideoPlaylists.png')
+            self.addDirectoryItem(32004, 'mytvNavigator', 'fuckoff.gif', 'DefaultVideoPlaylists.png')
+            self.addDirectoryItem(32616, 'tvNetworks', 'fuckoff.gif', 'DefaultTVShows.png')
+            self.addDirectoryItem(32617, 'boxsetsNavigator', 'fuckoff.gif', 'grice_advice_is_a_cunt.png')
 
-        self.addDirectoryItem('[B][COLOR forestgreen]• [/COLOR][/B][COLOR ghostwhite]Documentaries[/COLOR]', 'movieNavigator', 'icon.gif', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR forestgreen]• [/COLOR][/B][COLOR ghostwhite]Documentaries[/COLOR]', 'movieNavigator', 'fuckoff.gif', 'DefaultMovies.png')
 
-        self.addDirectoryItem(32008, 'toolNavigator', 'icon.gif', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32008, 'toolNavigator', 'fuckoff.gif', 'DefaultAddonProgram.png')
 
         downloads = True if control.setting('downloads') == 'true' and (len(control.listDir(control.setting('movie.download.path'))[0]) > 0 or len(control.listDir(control.setting('tv.download.path'))[0]) > 0) else False
         if downloads == True:
-            self.addDirectoryItem(32009, 'downloadNavigator', 'icon.gif', 'DefaultFolder.png')
+            self.addDirectoryItem(32009, 'downloadNavigator', 'fuckoff.gif', 'DefaultFolder.png')
 
-        self.addDirectoryItem(32010, 'searchNavigator', 'icon.gif', 'DefaultFolder.png')
-        #self.addDirectoryItem('Changelog',  'ShowChangelog',  'icon.gif',  'DefaultFolder.png')		
+        self.addDirectoryItem(32010, 'searchNavigator', 'fuckoff.gif', 'DefaultFolder.png')
+        #self.addDirectoryItem('Changelog',  'ShowChangelog',  'fuckoff.gif',  'DefaultFolder.png')		
 
         self.endDirectory()
 
@@ -119,7 +119,7 @@ class navigator:
         if traktIndicators == True:
             self.addDirectoryItem(32036, 'movies&url=trakthistory', 'trakt.png', 'DefaultMovies.png', queue=True)
 
-        self.addDirectoryItem(32039, 'movieUserlists', 'icon.gif', 'DefaultMovies.png')
+        self.addDirectoryItem(32039, 'movieUserlists', 'fuckoff.gif', 'DefaultMovies.png')
 
         if lite == False:
             self.addDirectoryItem(32031, 'movieliteNavigator', 'grice_advice_is_a_cunt.png', 'DefaultMovies.png')
@@ -182,15 +182,15 @@ class navigator:
             self.addDirectoryItem(32037, 'calendar&url=progress', 'trakt.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
             self.addDirectoryItem(32038, 'calendar&url=mycalendar', 'trakt.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
 
-        self.addDirectoryItem(32040, 'tvUserlists', 'icon.gif', 'DefaultTVShows.png')
+        self.addDirectoryItem(32040, 'tvUserlists', 'fuckoff.gif', 'DefaultTVShows.png')
 
         if traktCredentials == True:
-            self.addDirectoryItem(32041, 'episodeUserlists', 'icon.gif', 'DefaultTVShows.png')
+            self.addDirectoryItem(32041, 'episodeUserlists', 'fuckoff.gif', 'DefaultTVShows.png')
 
         if lite == False:
-            self.addDirectoryItem(32031, 'tvliteNavigator', 'icon.gif', 'DefaultTVShows.png')
-            self.addDirectoryItem(32028, 'tvPerson', 'icon.gif', 'DefaultTVShows.png')
-            self.addDirectoryItem(32010, 'tvSearch', 'icon.gif', 'DefaultTVShows.png')
+            self.addDirectoryItem(32031, 'tvliteNavigator', 'fuckoff.gif', 'DefaultTVShows.png')
+            self.addDirectoryItem(32028, 'tvPerson', 'fuckoff.gif', 'DefaultTVShows.png')
+            self.addDirectoryItem(32010, 'tvSearch', 'fuckoff.gif', 'DefaultTVShows.png')
 
         self.endDirectory()
 
@@ -207,15 +207,15 @@ class navigator:
         self.addDirectoryItem(32050, 'clearSources', 'grice_advice_is_a_cunt.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32604, 'clearCacheSearch', 'grice_advice_is_a_cunt.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32052, 'clearCache', 'grice_advice_is_a_cunt.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32073, 'authTrakt', 'icon.gif', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32073, 'authTrakt', 'fuckoff.gif', 'DefaultAddonProgram.png')
 
         self.endDirectory()
 
     def library(self):
         self.addDirectoryItem(32557, 'openSettings&query=4.0', 'grice_advice_is_a_cunt.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32558, 'updateLibrary&query=tool', 'icon.gif', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32559, control.setting('library.movie'), 'icon.gif', 'DefaultMovies.png', isAction=False)
-        self.addDirectoryItem(32560, control.setting('library.tv'), 'icon.gif', 'DefaultTVShows.png', isAction=False)
+        self.addDirectoryItem(32558, 'updateLibrary&query=tool', 'fuckoff.gif', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32559, control.setting('library.movie'), 'fuckoff.gif', 'DefaultMovies.png', isAction=False)
+        self.addDirectoryItem(32560, control.setting('library.tv'), 'fuckoff.gif', 'DefaultTVShows.png', isAction=False)
 
         if trakt.getTraktCredentialsInfo():
             self.addDirectoryItem(32561, 'moviesToLibrary&url=traktcollection', 'trakt.png', 'DefaultMovies.png')

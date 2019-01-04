@@ -44,7 +44,7 @@ queueMenu = control.lang(32065).encode('utf-8')
 
 class navigator:
     def root(self):
-        if inprogress_db == 'true': self.addDirectoryItem("In Progress", 'movieProgress', 'icon.gif', 'icon.gif')
+        if inprogress_db == 'true': self.addDirectoryItem("In Progress", 'movieProgress', 'fuckoff.gif', 'fuckoff.gif')
         self.addDirectoryItem('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]Action[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'actionNavigator', 'grice_advice_is_a_cunt.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]Adventure[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'adventureNavigator', 'grice_advice_is_a_cunt.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]Animation[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'animationNavigator', 'grice_advice_is_a_cunt.png', 'DefaultMovies.png')
