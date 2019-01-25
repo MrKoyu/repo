@@ -1,0 +1,471 @@
+﻿# Kodi Media Center language file
+# Addon Name: Youtube Music
+# Addon id: plugin.video.spotitube
+# Addon version: 2.1.2
+# Addon Provider: realvito
+msgid ""
+msgstr ""
+"Project-Id-Version: KODI-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2018-08-04 11:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "Addon Summary"
+msgid "Play Music via Youtube"
+msgstr ""
+
+msgctxt "Addon Description"
+msgid "Choose Music from different sources e.g. Billboard, iTunes, Spotify etc. and play it via Youtube.[CR][CR]For more information about all new features see - CHANGELOG.[CR]     TEST IT AND LIKE IT"
+msgstr ""
+
+#strings start
+# SETTINGS-CATEGORIES
+
+msgctxt "#30000"
+msgid "General"
+msgstr ""
+
+msgctxt "#30001"
+msgid "Search..."
+msgstr ""
+
+msgctxt "#30002"
+msgid "Services"
+msgstr ""
+
+msgctxt "#30003"
+msgid "View"
+msgstr ""
+
+#empty strings from id 30004 to 30100
+# SETTINGS-BUTTONS
+
+msgctxt "#30101"
+msgid "Region"
+msgstr ""
+
+msgctxt "#30102"
+msgid "[COLOR orangered]Blacklist filter[/COLOR] (seperated by ',')"
+msgstr ""
+
+msgctxt "#30103"
+msgid "     Cache Directory"
+msgstr ""
+
+msgctxt "#30104"
+msgid "     Cache Storage for single File (in Days)"
+msgstr ""
+
+msgctxt "#30105"
+msgid "     Show Title-Info on Video-playback"
+msgstr ""
+
+msgctxt "#30106"
+msgid "     Type"
+msgstr ""
+
+msgctxt "#30107"
+msgid "     Delay in Seconds"
+msgstr ""
+
+msgctxt "#30108"
+msgid "     Duration in Seconds"
+msgstr ""
+
+msgctxt "#30109"
+msgid "     Use Addon-Fanart as Background"
+msgstr ""
+
+msgctxt "#30110"
+msgid "     Beatport Subgenres anzeigen"
+msgstr ""
+
+msgctxt "#30111"
+msgid "     iTunes show Subgenres"
+msgstr ""
+
+msgctxt "#30112"
+msgid "     iTunes force Region"
+msgstr ""
+
+msgctxt "#30113"
+msgid "     Region ('us' for example)"
+msgstr ""
+
+msgctxt "#30114"
+msgid "     Spotify force Region"
+msgstr ""
+
+msgctxt "#30115"
+msgid "     Region ('us' for example)"
+msgstr ""
+
+msgctxt "#30116"
+msgid "     Force View"
+msgstr ""
+
+msgctxt "#30117"
+msgid "     ViewID (Genres)"
+msgstr ""
+
+msgctxt "#30118"
+msgid "     ViewID (Playlists)"
+msgstr ""
+
+msgctxt "#30119"
+msgid "     ViewID (Videos)"
+msgstr ""
+
+#empty strings from id 30120 to 30139
+
+msgctxt "#30140"
+msgid "     Displayed results per Page (Section e.g. Artist)"
+msgstr ""
+
+msgctxt "#30141"
+msgid "     Displayed results per Page (Videolists)"
+msgstr ""
+
+#empty strings from id 30142 to 30260
+# SETTINGS-TITLES
+
+msgctxt "#30261"
+msgid "[B][COLOR ff0099ff]CACHE[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30262"
+msgid "[B][COLOR ff0099ff]TITLEINFO[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30263"
+msgid "[B][COLOR ff0099ff]FANART[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30264"
+msgid "[B][COLOR ff0099ff]DEEZER - SEARCH[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30265"
+msgid "[B][COLOR ff0099ff]INFO[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30266"
+msgid "     [COLOR orangered]If the Deezer-Search does not show as much results as was selected in the settings, then duplicate entries were filtered out !!![/COLOR]"
+msgstr ""
+
+msgctxt "#30267"
+msgid "[B][COLOR ff0099ff]BEATPORT[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30268"
+msgid "[B][COLOR ff0099ff]iTUNES[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30269"
+msgid "[B][COLOR ff0099ff]SPOTIFY - REGIONAL[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30270"
+msgid "[B][COLOR ff0099ff]VIEWS[/COLOR][/B]"
+msgstr ""
+
+#empty strings from id 30271 to 30349
+# SETTINGS-DESCRIPTIONS
+
+#empty strings from id 30349 to 30500
+# WARNING-MESSAGES-OK
+
+#empty strings from id 30500 to 30520
+# WARNING-MESSAGES-NOTIFICATION
+
+#empty strings from id 30520 to 30600
+# PLUGIN-MAIN and SIDEMENU
+
+msgctxt "#30601"
+msgid "Beatport"
+msgstr ""
+
+msgctxt "#30602"
+msgid "Billboard"
+msgstr ""
+
+msgctxt "#30603"
+msgid "German Dj Playlist"
+msgstr ""
+
+msgctxt "#30604"
+msgid "Hype Machine"
+msgstr ""
+
+msgctxt "#30605"
+msgid "iTunes"
+msgstr ""
+
+msgctxt "#30606"
+msgid "Official Charts Company (UK)"
+msgstr ""
+
+msgctxt "#30607"
+msgid "Spotify"
+msgstr ""
+
+msgctxt "#30608"
+msgid "Hot 100"
+msgstr ""
+
+msgctxt "#30609"
+msgid "Billboard 200"
+msgstr ""
+
+msgctxt "#30610"
+msgid "Billboard ARCHIVE"
+msgstr ""
+
+msgctxt "#30611"
+msgid "Genres"
+msgstr ""
+
+msgctxt "#30612"
+msgid "Countries"
+msgstr ""
+
+msgctxt "#30613"
+msgid "More Choices"
+msgstr ""
+
+msgctxt "#30614"
+msgid "Latin"
+msgstr ""
+
+msgctxt "#30615"
+msgid "Smooth Jazz"
+msgstr ""
+
+msgctxt "#30616"
+msgid "Tropical"
+msgstr ""
+
+msgctxt "#30617"
+msgid "Soundtracks"
+msgstr ""
+
+msgctxt "#30618"
+msgid "Canada Hot-100"
+msgstr ""
+
+msgctxt "#30619"
+msgid "Japan Hot-100"
+msgstr ""
+
+msgctxt "#30620"
+msgid "Germany Songs"
+msgstr ""
+
+msgctxt "#30621"
+msgid "France Songs"
+msgstr ""
+
+msgctxt "#30622"
+msgid "U.K. Charts"
+msgstr ""
+
+msgctxt "#30623"
+msgid "Radio"
+msgstr ""
+
+msgctxt "#30624"
+msgid "Streaming"
+msgstr ""
+
+msgctxt "#30625"
+msgid "On-Demand"
+msgstr ""
+
+msgctxt "#30626"
+msgid "GERMAN-DJ-PLAYLIST - International"
+msgstr ""
+
+msgctxt "#30627"
+msgid "GERMAN-DJ-PLAYLIST - Schlager"
+msgstr ""
+
+#empty strings from id 30628 to 30634
+
+msgctxt "#30635"
+msgid "* All Genres *"
+msgstr ""
+
+msgctxt "#30636"
+msgid "Popular: Now"
+msgstr ""
+
+msgctxt "#30637"
+msgid "Popular: Last Week"
+msgstr ""
+
+msgctxt "#30638"
+msgid "Time Machine"
+msgstr ""
+
+msgctxt "#30639"
+msgid "Offiicial Top-100"
+msgstr ""
+
+msgctxt "#30640"
+msgid "UK Top-40"
+msgstr ""
+
+msgctxt "#30641"
+msgid "Asian Top-40"
+msgstr ""
+
+msgctxt "#30642"
+msgid "Updated"
+msgstr ""
+
+msgctxt "#30643"
+msgid "Most Downloaded"
+msgstr ""
+
+msgctxt "#30644"
+msgid "Most Sales"
+msgstr ""
+
+msgctxt "#30645"
+msgid "Streaming"
+msgstr ""
+
+msgctxt "#30646"
+msgid "Vinyl"
+msgstr ""
+
+msgctxt "#30647"
+msgid "Scottish Charts"
+msgstr ""
+
+msgctxt "#30648"
+msgid "Physical"
+msgstr ""
+
+msgctxt "#30649"
+msgid "End of the Year Charts"
+msgstr ""
+
+msgctxt "#30650"
+msgid "Classical"
+msgstr ""
+
+msgctxt "#30651"
+msgid "Dance"
+msgstr ""
+
+msgctxt "#30652"
+msgid "Rock & Metal"
+msgstr ""
+
+msgctxt "#30653"
+msgid "     VIRAL top 50 - daily"
+msgstr ""
+
+msgctxt "#30654"
+msgid "     VIRAL top 50 - weekly"
+msgstr ""
+
+msgctxt "#30655"
+msgid "     TOP Streams - daily"
+msgstr ""
+
+msgctxt "#30656"
+msgid "     TOP Streams - weekly"
+msgstr ""
+
+msgctxt "#30657"
+msgid "     Toplists"
+msgstr ""
+
+msgctxt "#30658"
+msgid "     Daily Topics"
+msgstr ""
+
+msgctxt "#30659"
+msgid "     Genres"
+msgstr ""
+
+msgctxt "#30660"
+msgid "Mar"
+msgstr ""
+
+msgctxt "#30661"
+msgid "May"
+msgstr ""
+
+msgctxt "#30662"
+msgid "Oct"
+msgstr ""
+
+msgctxt "#30663"
+msgid "Dec"
+msgstr ""
+
+#empty strings from id 30664 to 30800
+
+msgctxt "#30801"
+msgid "YOUTUBE-MUSIC Settings"
+msgstr ""
+
+msgctxt "#30802"
+msgid "Search ..."
+msgstr ""
+
+msgctxt "#30803"
+msgid "Search on Deezer"
+msgstr ""
+
+msgctxt "#30804"
+msgid "[B][COLOR FFFF456E]!!! NO Results were found for the Search term !!![/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30805"
+msgid "[COLOR orangered]Next Page  >>>[/COLOR]"
+msgstr ""
+
+msgctxt "#30806"
+msgid "Now playing:"
+msgstr ""
+
+msgctxt "#30807"
+msgid "[B][COLOR yellow]Add to YTM-Queue[/COLOR][/B]"
+msgstr ""
+
+#empty strings from id 30808 to 30830
+
+msgctxt "#30831"
+msgid "[B][COLOR chartreuse]+ Play All +[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30832"
+msgid "[B]Play >>> [COLOR chartreuse]Top 10[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30833"
+msgid "[B]Play >>> [COLOR chartreuse]Top 20[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30834"
+msgid "[B]Play >>> [COLOR chartreuse]Top 30[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30835"
+msgid "[B]Play >>> [COLOR chartreuse]Top 40[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#30836"
+msgid "[B]Play >>> [COLOR chartreuse]Top 50[/COLOR][/B]"
+msgstr ""

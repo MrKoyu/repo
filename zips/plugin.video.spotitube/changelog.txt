@@ -107,3 +107,21 @@
 - fixed: Hypem - "Popular: Last Week" and "Time-Machine" listing (html > json)
 - added: "https://spotifycharts.com" under "SPOTIFY - International" with *VIRAL top 50* and *TOP Streams* of many countries
 - changed: new Addon-fanart.jpg
+
+[B]Version 2.1.0  (18.05.2018)[/B] by realvito
+- fixed: German-DJ-Playlist - Video-Images are not displayed
+
+[B]Version 2.1.1  (18.06.2018)[/B] by realvito
+- fixed: Videolists under "SPOTIFY - Regional" are emty (Website changes)
+- removed: Regional in German-DJ-Playlist International (don't exist anymore)
+
+[B]Version 2.1.2  (05.08.2018)[/B] by realvito
+- fixed: all Videolists under "Billboard" are empty (Website-Structure changes)
+- fixed: Error if open Videolists under "Search"
+- changed: Language-Files from "strings.xml" to "strings.po"
+- added: make Addon compatible with PYTHON vers.3 (for KODI-19+) :-)
+
+B]Version 2.1.3  (06.01.2019)[/B] by realvito
+- fixed: Another time Billboard-Videolists are empty (Thanks for good work on the website)
+- fixed: Double-entries of Countries in folders of "SPOTIFY - International" (VIRAL top 50/TOP Streams)
+- optimized: Title-Search-Algorithm on Youtube (Original) - THX @digaogt on Github for the hint

@@ -32,12 +32,12 @@ def menuoptions():
 		function21
         )
         
-    call = dialog.select('[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR] Easy To Pair[/COLOR]', [
-	'[B][COLOR white]=-=-=-=-=[/COLOR][/B][B][COLOR=gold]  Enter 4 WEEKDAY 24hs TRIAL  [/COLOR][/B][B][COLOR white]=-=-=-=-=[/COLOR][/B]',
-	'[COLOR forestgreen][B]*[/COLOR][COLOR gold]*[/COLOR][COLOR ghostwhite]*[/COLOR][COLOR mediumblue]*[/B][/COLOR][COLOR=ghostwhite]      Subscribe For to get your 24hs Weekday Trial[/COLOR]',
-	'[COLOR forestgreen][B]*[/COLOR][COLOR gold]*[/COLOR][COLOR ghostwhite]*[/COLOR][COLOR mediumblue]*[/B][/COLOR][COLOR=ghostwhite]      Hypersonic IPTV2 Packages[/COLOR]',
-	'[B][COLOR white]=-=-=-=-=[/COLOR][/B][B][COLOR=gold]  UNLOCK YOUR TV PRO  [/COLOR][/B][B][COLOR white]=-=-=-=-=[/COLOR][/B]',
-	'[COLOR forestgreen][B]*[/COLOR][COLOR gold]*[/COLOR][COLOR ghostwhite]*[/COLOR][COLOR mediumblue]*[/B][/COLOR]      [COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR] Website',])
+    call = dialog.select('[COLOR steelblue]Hypersonic[/COLOR] [COLOR white]IPTV2[/COLOR] [COLOR steelblue]Portal[/COLOR]', [
+	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Packages & Prices[/COLOR]',
+	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Request Trial[/COLOR]',
+	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Channel List[/COLOR]',
+    '[COLOR deepskyblue]* [/COLOR] [COLOR white]Website[/COLOR]',
+	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Hypersonic TVPRO apk[/COLOR] [COLOR limegreen]Android Devices Only[/COLOR]',])
     # dialog.selectreturns
     #   0 -> escape pressed
     #   1 -> first item
@@ -71,33 +71,33 @@ myplatform = platform()
 
 def function1():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( '' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'https://gethypersonic.mytvpro.org/home/pricing' ) )
     else:
-        opensite = webbrowser . open('')
+        opensite = webbrowser . open('https://gethypersonic.mytvpro.org/home/pricing')
 
 def function2():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://getnow.hypersonic-tv.com/home/trial' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'https://gethypersonic.mytvpro.org/home/trial' ) )
     else:
-        opensite = webbrowser . open('http://getnow.hypersonic-tv.com/home/trial')
+        opensite = webbrowser . open('https://gethypersonic.mytvpro.org/home/trial')
         
 def function3():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://getnow.hypersonic-tv.com/home/pricing' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'https://gethypersonic.mytvpro.org/home/channel' ) )
     else:
-        opensite = webbrowser . open('http://getnow.hypersonic-tv.com/home/pricing')
+        opensite = webbrowser . open('https://gethypersonic.mytvpro.org/home/channel')
 		
 def function4():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( '' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'https://gethypersonic.mytvpro.org' ) )
     else:
-        opensite = webbrowser . open('')		
+        opensite = webbrowser . open('https://gethypersonic.mytvpro.org')		
 		
 def function5():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://getnow.hypersonic-tv.com' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://hypersonic-tv.com/apk/Hypersonic.apk' ) )
     else:
-        opensite = webbrowser . open('http://getnow.hypersonic-tv.com')
+        opensite = webbrowser . open('http://hypersonic-tv.com/apk/Hypersonic.apk')
 		
 def function6():
     if myplatform == 'android': # Android 

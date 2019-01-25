@@ -1,0 +1,471 @@
+﻿# Kodi Media Center language file
+# Addon Name: Youtube Music
+# Addon id: plugin.video.spotitube
+# Addon version: 2.1.2
+# Addon Provider: realvito
+msgid ""
+msgstr ""
+"Project-Id-Version: KODI-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2018-08-04 11:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "Addon Summary"
+msgid "Play Music via Youtube"
+msgstr "Musik über Youtube abspielen"
+
+msgctxt "Addon Description"
+msgid "Choose Music from different sources e.g. Billboard, iTunes, Spotify etc. and play it via Youtube.[CR][CR]For more information about all new features see - CHANGELOG.[CR]     TEST IT AND LIKE IT"
+msgstr "Musik aus verschiedenen Quellen z.B. Billboard, iTunes, Spotify etc. auswählen und über Youtube abspielen.[CR][CR]Für mehr Informationen zu allen Neuerungen siehe - CHANGELOG.[CR]     TEST IT AND LIKE IT"
+
+#strings start
+# SETTINGS-CATEGORIES
+
+msgctxt "#30000"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "#30001"
+msgid "Search..."
+msgstr "Suche..."
+
+msgctxt "#30002"
+msgid "Services"
+msgstr "Services"
+
+msgctxt "#30003"
+msgid "View"
+msgstr "Ansicht"
+
+#empty strings from id 30004 to 30100
+# SETTINGS-BUTTONS
+
+msgctxt "#30101"
+msgid "Region"
+msgstr "Region"
+
+msgctxt "#30102"
+msgid "[COLOR orangered]Blacklist filter[/COLOR] (seperated by ',')"
+msgstr "[COLOR orangered]Schwarze-Liste-Filter[/COLOR] (Einträge getrennt durch Komma ',')"
+
+msgctxt "#30103"
+msgid "     Cache Directory"
+msgstr "     Cache Verzeichnis"
+
+msgctxt "#30104"
+msgid "     Cache Storage for single File (in Days)"
+msgstr "     Cache Aufbewahrung für einzelne Datei (in Tagen)"
+
+msgctxt "#30105"
+msgid "     Show Title-Info on Video-playback"
+msgstr "     Titel-Informationen beim Abspielen anzeigen"
+
+msgctxt "#30106"
+msgid "     Type"
+msgstr "     Typ"
+
+msgctxt "#30107"
+msgid "     Delay in Seconds"
+msgstr "     Verzögerung in Sekunden"
+
+msgctxt "#30108"
+msgid "     Duration in Seconds"
+msgstr "     Einblendung in Sekunden"
+
+msgctxt "#30109"
+msgid "     Use Addon-Fanart as Background"
+msgstr "     Addon-Fanart als Hintergrund nutzen"
+
+msgctxt "#30110"
+msgid "     Beatport Subgenres anzeigen"
+msgstr "     Beatport show Subgenres"
+
+msgctxt "#30111"
+msgid "     iTunes show Subgenres"
+msgstr "     iTunes Subgenres anzeigen"
+
+msgctxt "#30112"
+msgid "     iTunes force Region"
+msgstr "     iTunes Region festlegen"
+
+msgctxt "#30113"
+msgid "     Region ('us' for example)"
+msgstr "     Region ('us' zum Beispiel)"
+
+msgctxt "#30114"
+msgid "     Spotify force Region"
+msgstr "     Spotify Region festlegen"
+
+msgctxt "#30115"
+msgid "     Region ('us' for example)"
+msgstr "     Region ('us' zum Beispiel)"
+
+msgctxt "#30116"
+msgid "     Force View"
+msgstr "     Darstellungsansicht forcieren"
+
+msgctxt "#30117"
+msgid "     ViewID (Genres)"
+msgstr "     DarstellungsID (Genres)"
+
+msgctxt "#30118"
+msgid "     ViewID (Playlists)"
+msgstr "     DarstellungsID (Abspiellisten)"
+
+msgctxt "#30119"
+msgid "     ViewID (Videos)"
+msgstr "     DarstellungsID (Videos)"
+
+#empty strings from id 30120 to 30139
+
+msgctxt "#30140"
+msgid "     Displayed results per Page (Section e.g. Artist)"
+msgstr "     Angezeigte Ergebnisse pro Seite (Rubrik z.B. Artist)"
+
+msgctxt "#30141"
+msgid "     Displayed results per Page (Videolists)"
+msgstr "     Angezeigte Ergebnisse pro Seite (Videolisten)"
+
+#empty strings from id 30142 to 30260
+# SETTINGS-TITLES
+
+msgctxt "#30261"
+msgid "[B][COLOR ff0099ff]CACHE[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]CACHE[/COLOR][/B]"
+
+msgctxt "#30262"
+msgid "[B][COLOR ff0099ff]TITLEINFO[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]TITELINFO[/COLOR][/B]"
+
+msgctxt "#30263"
+msgid "[B][COLOR ff0099ff]FANART[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]FANART[/COLOR][/B]"
+
+msgctxt "#30264"
+msgid "[B][COLOR ff0099ff]DEEZER - SEARCH[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]DEEZER - SUCHE[/COLOR][/B]"
+
+msgctxt "#30265"
+msgid "[B][COLOR ff0099ff]INFO[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]INFO[/COLOR][/B]"
+
+msgctxt "#30266"
+msgid "     [COLOR orangered]If the Deezer-Search does not show as much results as was selected in the settings, then duplicate entries were filtered out !!![/COLOR]"
+msgstr "     [COLOR orangered]Wenn in der Deezer-Suche nicht soviele Ergebnisse angezeigt werden, wie in den Einstellungen ausgewählt, dann wurden doppelte Einträge herausgefiltert !!![/COLOR]"
+
+msgctxt "#30267"
+msgid "[B][COLOR ff0099ff]BEATPORT[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]BEATPORT[/COLOR][/B]"
+
+msgctxt "#30268"
+msgid "[B][COLOR ff0099ff]iTUNES[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]iTUNES[/COLOR][/B]"
+
+msgctxt "#30269"
+msgid "[B][COLOR ff0099ff]SPOTIFY - REGIONAL[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]SPOTIFY - REGIONAL[/COLOR][/B]"
+
+msgctxt "#30270"
+msgid "[B][COLOR ff0099ff]VIEWS[/COLOR][/B]"
+msgstr "[B][COLOR ff0099ff]ANSICHT[/COLOR][/B]"
+
+#empty strings from id 30271 to 30349
+# SETTINGS-DESCRIPTIONS
+
+#empty strings from id 30349 to 30500
+# WARNING-MESSAGES-OK
+
+#empty strings from id 30500 to 30520
+# WARNING-MESSAGES-NOTIFICATION
+
+#empty strings from id 30520 to 30600
+# PLUGIN-MAIN and SIDEMENU
+
+msgctxt "#30601"
+msgid "Beatport"
+msgstr "Beatport"
+
+msgctxt "#30602"
+msgid "Billboard"
+msgstr "Billboard"
+
+msgctxt "#30603"
+msgid "German Dj Playlist"
+msgstr "Deutsche Dj Playlist"
+
+msgctxt "#30604"
+msgid "Hype Machine"
+msgstr "Hype Machine"
+
+msgctxt "#30605"
+msgid "iTunes"
+msgstr "iTunes"
+
+msgctxt "#30606"
+msgid "Official Charts Company (UK)"
+msgstr "Official Charts Company (UK)"
+
+msgctxt "#30607"
+msgid "Spotify"
+msgstr "Spotify"
+
+msgctxt "#30608"
+msgid "Hot 100"
+msgstr "Hot 100"
+
+msgctxt "#30609"
+msgid "Billboard 200"
+msgstr "Billboard 200"
+
+msgctxt "#30610"
+msgid "Billboard ARCHIVE"
+msgstr "Billboard ARCHIVE"
+
+msgctxt "#30611"
+msgid "Genres"
+msgstr "Genres"
+
+msgctxt "#30612"
+msgid "Countries"
+msgstr "Länder"
+
+msgctxt "#30613"
+msgid "More Choices"
+msgstr "Weitere Auswahl"
+
+msgctxt "#30614"
+msgid "Latin"
+msgstr "Lateinamerikanisch"
+
+msgctxt "#30615"
+msgid "Smooth Jazz"
+msgstr "Jazz"
+
+msgctxt "#30616"
+msgid "Tropical"
+msgstr "Tropisch"
+
+msgctxt "#30617"
+msgid "Soundtracks"
+msgstr "Filmmusik"
+
+msgctxt "#30618"
+msgid "Canada Hot-100"
+msgstr "Kanadas Hot-100"
+
+msgctxt "#30619"
+msgid "Japan Hot-100"
+msgstr "Japans Hot-100"
+
+msgctxt "#30620"
+msgid "Germany Songs"
+msgstr "Deutschland Songs"
+
+msgctxt "#30621"
+msgid "France Songs"
+msgstr "Frankreich Songs"
+
+msgctxt "#30622"
+msgid "U.K. Charts"
+msgstr "Grossbritannien Charts"
+
+msgctxt "#30623"
+msgid "Radio"
+msgstr "Aktuell im Radio"
+
+msgctxt "#30624"
+msgid "Streaming"
+msgstr "Direkt-Stream"
+
+msgctxt "#30625"
+msgid "On-Demand"
+msgstr "Besonders beliebt"
+
+msgctxt "#30626"
+msgid "GERMAN-DJ-PLAYLIST - International"
+msgstr "DEUTSCHE-DJ-PLAYLIST - International"
+
+msgctxt "#30627"
+msgid "GERMAN-DJ-PLAYLIST - Schlager"
+msgstr "DEUTSCHE-DJ-PLAYLIST - Schlager"
+
+#empty strings from id 30628 to 30634
+
+msgctxt "#30635"
+msgid "* All Genres *"
+msgstr "* Alle Genres *"
+
+msgctxt "#30636"
+msgid "Popular: Now"
+msgstr "Beliebt: Zurzeit"
+
+msgctxt "#30637"
+msgid "Popular: Last Week"
+msgstr "Beliebt: Vergangene Woche"
+
+msgctxt "#30638"
+msgid "Time Machine"
+msgstr "Zeit - Maschine"
+
+msgctxt "#30639"
+msgid "Offiicial Top-100"
+msgstr "Offizielle Top-100"
+
+msgctxt "#30640"
+msgid "UK Top-40"
+msgstr "UK Top-40"
+
+msgctxt "#30641"
+msgid "Asian Top-40"
+msgstr "Asien Top-40"
+
+msgctxt "#30642"
+msgid "Updated"
+msgstr "vor kurzem Neu"
+
+msgctxt "#30643"
+msgid "Most Downloaded"
+msgstr "Meiste Downloads"
+
+msgctxt "#30644"
+msgid "Most Sales"
+msgstr "Meiste Verkäufe"
+
+msgctxt "#30645"
+msgid "Streaming"
+msgstr "Oft gestreamt"
+
+msgctxt "#30646"
+msgid "Vinyl"
+msgstr "Vinyl"
+
+msgctxt "#30647"
+msgid "Scottish Charts"
+msgstr "Schottische Charts"
+
+msgctxt "#30648"
+msgid "Physical"
+msgstr "Zum Träumen"
+
+msgctxt "#30649"
+msgid "End of the Year Charts"
+msgstr "Ende des Jahres-Charts"
+
+msgctxt "#30650"
+msgid "Classical"
+msgstr "Klassik"
+
+msgctxt "#30651"
+msgid "Dance"
+msgstr "Dance"
+
+msgctxt "#30652"
+msgid "Rock & Metal"
+msgstr "Rock & Heavy Metal"
+
+msgctxt "#30653"
+msgid "     VIRAL top 50 - daily"
+msgstr "     VIRAL top 50 - täglich"
+
+msgctxt "#30654"
+msgid "     VIRAL top 50 - weekly"
+msgstr "     VIRAL top 50 - wöchentlich"
+
+msgctxt "#30655"
+msgid "     TOP Streams - daily"
+msgstr "     TOP Streams - täglich"
+
+msgctxt "#30656"
+msgid "     TOP Streams - weekly"
+msgstr "     TOP Streams - wöchentlich"
+
+msgctxt "#30657"
+msgid "     Toplists"
+msgstr "     Toplisten"
+
+msgctxt "#30658"
+msgid "     Daily Topics"
+msgstr "     Tägliche Themen"
+
+msgctxt "#30659"
+msgid "     Genres"
+msgstr "     Genres"
+
+msgctxt "#30660"
+msgid "Mar"
+msgstr "Mär"
+
+msgctxt "#30661"
+msgid "May"
+msgstr "Mai"
+
+msgctxt "#30662"
+msgid "Oct"
+msgstr "Okt"
+
+msgctxt "#30663"
+msgid "Dec"
+msgstr "Dez"
+
+#empty strings from id 30664 to 30800
+
+msgctxt "#30801"
+msgid "YOUTUBE-MUSIC Settings"
+msgstr "YOUTUBE-MUSIC Einstellungen"
+
+msgctxt "#30802"
+msgid "Search ..."
+msgstr "Suche ..."
+
+msgctxt "#30803"
+msgid "Search on Deezer"
+msgstr "Suche auf Deezer"
+
+msgctxt "#30804"
+msgid "[B][COLOR FFFF456E]!!! NO Results were found for the Search term !!![/COLOR][/B]"
+msgstr "[B][COLOR FFFF456E]!!! Zu dem gesuchten Begriff wurden KEINE Ergebnisse gefunden !!![/COLOR][/B]"
+
+msgctxt "#30805"
+msgid "[COLOR orangered]Next Page  >>>[/COLOR]"
+msgstr "[COLOR orangered]Nächste Seite  >>>[/COLOR]"
+
+msgctxt "#30806"
+msgid "Now playing:"
+msgstr "Jetzt läuft gerade:"
+
+msgctxt "#30807"
+msgid "[B][COLOR yellow]Add to YTM-Queue[/COLOR][/B]"
+msgstr "[B][COLOR yellow]In YTM-Abspielliste einreihen[/COLOR][/B]"
+
+#empty strings from id 30808 to 30830
+
+msgctxt "#30831"
+msgid "[B][COLOR chartreuse]+ Play All +[/COLOR][/B]"
+msgstr "[B][COLOR chartreuse]+ ALLES + Abspielen +[/COLOR][/B]"
+
+msgctxt "#30832"
+msgid "[B]Play >>> [COLOR chartreuse]Top 10[/COLOR][/B]"
+msgstr "[B][COLOR chartreuse]10 Titel[/COLOR] >>> Abspielen[/B]"
+
+msgctxt "#30833"
+msgid "[B]Play >>> [COLOR chartreuse]Top 20[/COLOR][/B]"
+msgstr "[B][COLOR chartreuse]20 Titel[/COLOR] >>> Abspielen[/B]"
+
+msgctxt "#30834"
+msgid "[B]Play >>> [COLOR chartreuse]Top 30[/COLOR][/B]"
+msgstr "[B][COLOR chartreuse]30 Titel[/COLOR] >>> Abspielen[/B]"
+
+msgctxt "#30835"
+msgid "[B]Play >>> [COLOR chartreuse]Top 40[/COLOR][/B]"
+msgstr "[B][COLOR chartreuse]40 Titel[/COLOR] >>> Abspielen[/B]"
+
+msgctxt "#30836"
+msgid "[B]Play >>> [COLOR chartreuse]Top 50[/COLOR][/B]"
+msgstr "[B][COLOR chartreuse]50 Titel[/COLOR] >>> Abspielen[/B]"
