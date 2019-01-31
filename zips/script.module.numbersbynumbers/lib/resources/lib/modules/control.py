@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 
-"""
-    Numbers By Numbers Add-on
+'''
+ ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
+ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
+▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
+▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
+▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
+░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
+░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
+   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
+         ░    ░            ░    ░         ░  ░   ░           ░  
+                                     ░                          
+
+    NuMbErS Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,7 +26,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
+'''
 
 
 import os
@@ -220,12 +231,6 @@ def yesnoDialog(line1, line2, line3, heading=addonInfo('name'), nolabel='', yesl
 
 def selectDialog(list, heading=addonInfo('name')):
     return dialog.select(heading, list)
-	
-	
-def moderator():
-    netloc = [urlparse.urlparse(sys.argv[0]).netloc, '','script.extendedinfo', 'script.EIM', 'plugin.video.titus', 'plugin.video.metalliq-forqed', 'script.TMI', 'plugin.video.OptiQ', 'script.SKI', 'plugin.video.Forqed', 'plugin.video.metalliq', 'plugin.video.live.streamspro', 'plugin.video.phstreams', 'plugin.video.cpstreams', 'plugin.video.tinklepad', 'script.tvguide.fullscreen', 'script.tvguide.assassins']
-
-    if not infoLabel('Container.PluginName') in netloc: sys.exit()	
 
 
 def metaFile():
@@ -243,7 +248,7 @@ def apiLanguage(ret_name=None):
     name = None
     name = setting('api.language')
     if not name: name = 'AUTO'
-
+    
     if name[-1].isupper():
         try: name = xbmc.getLanguage(xbmc.ENGLISH_NAME).split(' ')[0]
         except: pass

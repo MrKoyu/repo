@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Numbers Add-on
+ ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
+ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
+▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
+▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
+▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
+░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
+░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
+   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
+         ░    ░            ░    ░         ░  ░   ░           ░  
+                                     ░                          
+
+    NuMbErS Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,7 +35,7 @@ from resources.lib.modules import cache
 from resources.lib.modules import client
 from resources.lib.modules import control
 
-sysaddon = sys.argv[0] ; syshandle = int(sys.argv[1]) ; control.moderator()
+sysaddon = sys.argv[0] ; syshandle = int(sys.argv[1]) ; 
 artPath = control.artPath() ; addonFanart = control.addonFanart()
 
 class documentary:
@@ -90,7 +101,6 @@ class documentary:
         return self.list
 
     def docu_play(self, url):
-        control.moderator()
         try:
             docu_page = client.request(url)
             docu_item = client.parseDOM(docu_page, 'meta', attrs={'itemprop':'embedUrl'}, ret='content')[0]

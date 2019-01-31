@@ -1,33 +1,49 @@
-[B][COLOR limegreen]• [/COLOR][/B][B][COLOR yellowgreen] WELCOME TO NuMbErS LATEST UPDATES[/COLOR][/B][B][COLOR limegreen] •[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B][B][COLOR white] WELCOME TO NuMbErS LATEST UPDATES [/COLOR][/B][B][COLOR deepskyblue] •[/COLOR][/B]
 
-[B][COLOR limegreen]• [/COLOR][/B] CURRENT STATUS: [COLOR limegreen]Good![/COLOR]
+[B][COLOR lime]• [/COLOR][/B] [COLOR deepskyblue]CURRENT STATUS:[/COLOR] Outstanding!
+
+[B][COLOR deepskyblue]• [/COLOR][/B][B][COLOR crimson]WARNING![/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B][COLOR gold]Umpidy Addon is a COPY & PASTE of NuMbErS Addon[/COLOR][B][COLOR deepskyblue] •[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B][COLOR gold]DO NOT SUPPORT PEOPLE SUCH AS GRICE ADVICE[/COLOR][B][COLOR deepskyblue] •[/COLOR][/B]
  
-[COLOR crimson]********************************************************************************************[/COLOR]
+[COLOR deepskyblue]********************************************************************************************[/COLOR]
+
+[B][COLOR limegreen]V2.0.0.8[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Torrent support
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed the scrape issue with cf scrape
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers 
+[B][COLOR deepskyblue]• [/COLOR][/B] Changed urlresolver to resolveurl
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed NuMbErS search function to add db search
+[B][COLOR deepskyblue]• [/COLOR][/B] Made NuMbErS fully compatible with Kodi 18
 
 [B][COLOR limegreen]V2.0.0.7[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] Fixed In Theaters category
-[B][COLOR crimson]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed In Theaters category
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
 
 [B][COLOR limegreen]V2.0.0.6[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
 
 [B][COLOR limegreen]V2.0.0.5[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] Added Boxsets category
-[B][COLOR crimson]• [/COLOR][/B] Added Networks category to home menu
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Boxsets category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Networks category to home menu
 
 [B][COLOR limegreen]V2.0.0.4[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] New Trakt API
-[B][COLOR crimson]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] New Trakt API
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
 
 [B][COLOR limegreen]V2.0.0.3[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] Fixed import missing in addon.xml
-[B][COLOR crimson]• [/COLOR][/B] Changed icons resolution from 256x256 to 512x512
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed import missing in addon.xml
+[B][COLOR deepskyblue]• [/COLOR][/B] Changed icons resolution from 256x256 to 512x512
 
 [B][COLOR limegreen]V2.0.0.2[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] Added new artwork
-[B][COLOR crimson]• [/COLOR][/B] Added Top Documentary Films to Documentaries section 
-[B][COLOR crimson]• [/COLOR][/B] Fixed a few bugs 
+[B][COLOR deepskyblue]• [/COLOR][/B] Added new artwork
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Top Documentary Films to Documentaries section 
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed a few bugs 
 
 [B][COLOR limegreen]V2.0.0.1[/COLOR][/B]
-[B][COLOR crimson]• [/COLOR][/B] Initial release
-[B][COLOR crimson]• [/COLOR][/B] Covenant Fork
+[B][COLOR deepskyblue]• [/COLOR][/B] Initial release
+[B][COLOR deepskyblue]• [/COLOR][/B] Covenant Fork
+
+
+
+

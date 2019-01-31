@@ -8,9 +8,9 @@
  # ----------------------------------------------------------------------------
 #######################################################################
 
-# Addon Name: Numbers
+# Addon Name: NuMbErS
 # Addon id: plugin.video.numbersbynumbers
-# Addon Provider: Numbers
+# Addon Provider: NuMbErS
 
 import requests, json, sys
 from resources.lib.modules import source_utils, cleantitle, control

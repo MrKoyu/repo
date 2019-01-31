@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 
-"""
-    Numbers By Numbers Add-on
+'''
+ ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
+ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
+▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
+▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
+▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
+░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
+░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
+   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
+         ░    ░            ░    ░         ░  ░   ░           ░  
+                                     ░                          
+
+    NuMbErS Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,9 +26,9 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
+'''
 
-import re, os, urllib, urlparse, json, binascii, httplib
+import re, os, urllib, urlparse, json, binascii
 from resources.lib.modules import client
 
 
@@ -111,7 +122,6 @@ def google(url):
 def googletag(url, append_height=False):
     quality = re.compile('itag=(\d*)').findall(url)
     quality += re.compile('=m(\d*)$').findall(url)
-    quality += re.compile('\/m(\d+?)\/').findall(url)
     try:
         quality = quality[0]
     except:
@@ -149,38 +159,22 @@ def googletag(url, append_height=False):
         return []
 
 def googlepass(url):
-    # try:
-    #     try:
-    #         headers = dict(urlparse.parse_qsl(url.rsplit('|', 1)[1]))
-    #     except:
-    #         headers = None
-    #     url = url.split('|')[0].replace('\\', '')
-    #     url = client.request(url, headers=headers, output='geturl')
-    #     if 'requiressl=yes' in url:
-    #         url = url.replace('http://', 'https://')
-    #     else:
-    #         url = url.replace('https://', 'http://')
-    #     if headers: url += '|%s' % urllib.urlencode(headers)
-    #     return url
-    # except:
-    #     return
-    return url
+    try:
+        try:
+            headers = dict(urlparse.parse_qsl(url.rsplit('|', 1)[1]))
+        except:
+            headers = None
+        url = url.split('|')[0].replace('\\', '')
+        url = client.request(url, headers=headers, output='geturl')
+        if 'requiressl=yes' in url:
+            url = url.replace('http://', 'https://')
+        else:
+            url = url.replace('https://', 'http://')
+        if headers: url += '|%s' % urllib.urlencode(headers)
+        return url
+    except:
+        return
 
-def googleproxy(url):
-    path = urlparse.urlparse(url).path
-    netloc = urlparse.urlparse(url).netloc
-
-    request = httplib.HTTPSConnection(netloc)
-    request.request('GET', path)
-
-    response = request.getresponse()
-    headers = dict(response.getheaders())
-
-    location = headers['location']
-    cookie = headers['set-cookie'].split(';')[0]
-    url = '%s|Cookie=%s' % (location, cookie)
-
-    return url
 
 def vk(url):
     try:
@@ -295,3 +289,5 @@ def yandex(url):
         return url
     except:
         return
+
+

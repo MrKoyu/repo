@@ -39,8 +39,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['spacemov.is']
-        self.base_link = 'https://www0.spacemov.is'
+        self.domains = ['spacemov.cc']
+        self.base_link = 'https://spacemov.cc'
         self.search_link = '/search-query/%s+%s/'
         self.scraper = cfscrape.create_scraper()
 

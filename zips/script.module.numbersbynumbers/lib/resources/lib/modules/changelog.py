@@ -34,7 +34,7 @@ def get():
 			try:
 				xbmc.sleep(10)
 				retry -= 1
-				win.getControl(1).setLabel('Numbers version: %s' %(xbmcaddon.Addon().getAddonInfo('version')))
+				win.getControl(1).setLabel('NuMbErS Version: %s' %(xbmcaddon.Addon().getAddonInfo('version')))
 				win.getControl(5).setText(text)
 				return
 			except:

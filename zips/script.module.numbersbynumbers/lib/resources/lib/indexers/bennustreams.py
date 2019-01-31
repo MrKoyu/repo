@@ -1363,9 +1363,9 @@ class resolver:
             pass
 
         try:
-            import urlresolver
+            import resolveurl
 
-            hmf = urlresolver.HostedMediaFile(url=url)
+            hmf = resolveurl.HostedMediaFile(url=url)
 
             if hmf.valid_url() == False: raise Exception()
 

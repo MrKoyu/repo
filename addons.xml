@@ -97,7 +97,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.1" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.2" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -359,39 +359,40 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.0.7" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.0.8" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
     <import addon="script.numbersbynumbers.artwork" />
     <import addon="script.numbersbynumbers.metadata" />
-    <import addon="script.module.urlresolver" version="5.0.24"/>
+    <import addon="script.module.resolveurl" />
     <import addon="script.module.requests" />
     <import addon="script.module.metahandler" />
-                <import addon="plugin.video.youtube"/>
+    <import addon="plugin.video.youtube" />                                          
   </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
+  <extension point="xbmc.python.pluginsource" library="numbersbynumbers.py">
     <provides>video</provides>
+    <provides>audio</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Movies and TV Shows on [COLOR gold]NuMbErS[/COLOR]</summary>
-    <description lang="en">Please remember that NuMbErS is not an official part of the Kodi media player you are running, and therefore is not to be mentioned within official support channels of Kodi, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</description>
-    <disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
+    <description>Please remember that NuMbErS is not an official part of the Kodi media player you are running, and therefore is not to be mentioned within official support channels of Kodi, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</description>
+    <disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider. Updated and refactored by someone. Originally created by others.</disclaimer>
     <platform>all</platform>
-    <forum></forum>
-    <website></website>
-    <source></source>
+    <license></license>
     <assets>
       <icon>icon.gif</icon>
       <fanart>fanart.jpg</fanart>
+      <screenshot></screenshot>
+      <screenshot></screenshot>
+      <screenshot></screenshot>
+      <screenshot></screenshot>
     </assets>
-    <news>
-V2.0.0.7
-- The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.
-        </news>
+    <news>V2.0.0.8
+- The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</news>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
 </addon>
-
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.bkr" version="3.0.0.3" name="[COLOR gold][B]B[/B][/COLOR]oxset [COLOR gold][B]K[/B][/COLOR]ings [COLOR gold][B]Reborn[/B][/COLOR]" provider-name="[B][COLOR gold][Brackets][/COLOR][/B]">
@@ -1029,7 +1030,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.040" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.045" provider-name="Brackets">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>

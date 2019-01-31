@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Numbers Add-on
+ ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
+ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
+▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
+▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
+▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
+░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
+░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
+   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
+         ░    ░            ░    ░         ░  ░   ░           ░  
+                                     ░                          
+
+    NuMbErS Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,13 +29,14 @@
 '''
 
 
-import os,sys,urlparse
+import os, base64, sys, urllib2, urlparse
+import xbmc, xbmcaddon, xbmcgui
 
 from resources.lib.modules import control
 from resources.lib.modules import trakt
 from resources.lib.modules import cache
 
-sysaddon = sys.argv[0] ; syshandle = int(sys.argv[1]) ; control.moderator()
+sysaddon = sys.argv[0] ; syshandle = int(sys.argv[1]) ; 
 
 artPath = control.artPath() ; addonFanart = control.addonFanart()
 
@@ -45,10 +57,10 @@ class navigator:
         if not control.setting('lists.widget') == '0':
             self.addDirectoryItem(32003, 'mymovieNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
             self.addDirectoryItem(32004, 'mytvNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
-            self.addDirectoryItem(32616, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
-            self.addDirectoryItem(32617, 'boxsetsNavigator', 'boxsets1.png', 'boxsets1.png')
+            self.addDirectoryItem(32708, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32709, 'boxsetsNavigator', 'boxsets1.png', 'boxsets1.png')
 
-        self.addDirectoryItem('[B][COLOR forestgreen]• [/COLOR][/B][COLOR ghostwhite]Documentaries[/COLOR]', 'docuHeaven', 'documentaries.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32700, 'docuHeaven', 'documentaries.png', 'DefaultMovies.png')
 
         self.addDirectoryItem(32008, 'toolNavigator', 'tools.png', 'DefaultAddonProgram.png')
 
@@ -57,7 +69,7 @@ class navigator:
             self.addDirectoryItem(32009, 'downloadNavigator', 'downloads.png', 'DefaultFolder.png')
 
         self.addDirectoryItem(32010, 'searchNavigator', 'search.png', 'DefaultFolder.png')
-        #self.addDirectoryItem('Changelog',  'ShowChangelog',  'icon.gif',  'DefaultFolder.png')		
+        #self.addDirectoryItem('Changelog',  'ShowChangelog',  'icon.gif',  'DefaultFolder.png')        
 
         self.endDirectory()
 
@@ -71,13 +83,13 @@ class navigator:
         self.addDirectoryItem(32015, 'movieCertificates', 'certificates.png', 'DefaultMovies.png')
         self.addDirectoryItem(32017, 'movies&url=trending', 'people-watching.png', 'DefaultRecentlyAddedMovies.png')
         self.addDirectoryItem(32018, 'movies&url=popular', 'most-popular.png', 'DefaultMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Romantic Comedy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=romance', 'romance.png', 'DefaultMovies.png')	
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Marvel Studios[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=marvel', 'marvel_studios.png', 'DefaultMovies.png')	
+        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Romantic Comedy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=romance', 'romance.png', 'DefaultMovies.png')  
+        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Marvel Studios[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=marvel', 'marvel_studios.png', 'DefaultMovies.png') 
         self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]DC Movies[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=dcmovies', 'dc2.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]DC Animated[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=dcanimate', 'dc.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Horror 2018-2000[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=tophorr', 'horror.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Horror 1999-Under[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=horror', 'horror2.png', 'DefaultMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Standup Comedy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=standup', 'standup.png', 'DefaultMovies.png')		
+        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Standup Comedy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=standup', 'standup.png', 'DefaultMovies.png')       
         self.addDirectoryItem(32019, 'movies&url=views', 'most-voted.png', 'DefaultMovies.png')
         self.addDirectoryItem(32020, 'movies&url=boxoffice', 'box-office.png', 'DefaultMovies.png')
         self.addDirectoryItem(32021, 'movies&url=oscars', 'oscar-winners.png', 'DefaultMovies.png')
@@ -129,15 +141,15 @@ class navigator:
 
 
     def tvshows(self, lite=False):
-        self.addDirectoryItem(32609, 'tvGenres', 'genres2.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32016, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32610, 'tvLanguages', 'international2.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32611, 'tvCertificates', 'certificates2.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32612, 'tvshows&url=trending', 'people-watching2.png', 'DefaultRecentlyAddedEpisodes.png')
-        self.addDirectoryItem(32613, 'tvshows&url=popular', 'most-popular2.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32701, 'tvGenres', 'genres2.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32708, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32702, 'tvLanguages', 'international2.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32703, 'tvCertificates', 'certificates2.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32704, 'tvshows&url=trending', 'people-watching2.png', 'DefaultRecentlyAddedEpisodes.png')
+        self.addDirectoryItem(32705, 'tvshows&url=popular', 'most-popular2.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Marvel TV[/COLOR][B][COLOR firebrick] •[/COLOR][/B]', 'tvshows&url=marveltv', 'marvel_tv.png', 'DefaultMovies.png')
         self.addDirectoryItem(32023, 'tvshows&url=rating', 'highly-rated.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32614, 'tvshows&url=views', 'most-voted2.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32706, 'tvshows&url=views', 'most-voted2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32024, 'tvshows&url=airing', 'airing-today.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32025, 'tvshows&url=active', 'returning-tvshows.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32026, 'tvshows&url=premiere', 'new-tvshows.png', 'DefaultTVShows.png')
@@ -148,7 +160,7 @@ class navigator:
             if not control.setting('lists.widget') == '0':
                 self.addDirectoryItem(32004, 'mytvliteNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
 
-            self.addDirectoryItem(32615, 'tvPerson', 'people-search2.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32706, 'tvPerson', 'people-search2.png', 'DefaultTVShows.png')
             self.addDirectoryItem(32010, 'tvSearch', 'search2.png', 'DefaultTVShows.png')
 
         self.endDirectory()
@@ -195,23 +207,28 @@ class navigator:
 
 
     def tools(self):
+        self.addDirectoryItem(32609, 'urlResolverRDTorrent', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32073, 'authTrakt', 'trakt.png', 'DefaultAddonProgram.png')
+        #self.addDirectoryItem(32640, 'urlResolverRDAuthorize', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32043, 'openSettings&query=0.0', 'tools.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32044, 'openSettings&query=3.1', 'tools.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32045, 'openSettings&query=1.0', 'tools.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32046, 'openSettings&query=6.0', 'tools.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32047, 'openSettings&query=2.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32044, 'openSettings&query=4.1', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32628, 'openSettings&query=1.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32045, 'openSettings&query=2.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32046, 'openSettings&query=7.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32047, 'openSettings&query=3.0', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32556, 'libraryNavigator', 'tools.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32048, 'openSettings&query=5.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32048, 'openSettings&query=6.0', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32049, 'viewsNavigator', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32050, 'clearSources', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32604, 'clearCacheSearch', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32052, 'clearCache', 'tools.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32073, 'authTrakt', 'trakt.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32614, 'clearMetaCache', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32613, 'clearAllCache', 'tools.png', 'DefaultAddonProgram.png')
 
         self.endDirectory()
 
     def library(self):
-        self.addDirectoryItem(32557, 'openSettings&query=4.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32557, 'openSettings&query=5.0', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32558, 'updateLibrary&query=tool', 'library_update.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32559, control.setting('library.movie'), 'movies.png', 'DefaultMovies.png', isAction=False)
         self.addDirectoryItem(32560, control.setting('library.tv'), 'tvshows.png', 'DefaultTVShows.png', isAction=False)
@@ -344,11 +361,6 @@ class navigator:
         item.setArt({'icon': thumb, 'thumb': thumb})
         if not addonFanart == None: item.setProperty('Fanart_Image', addonFanart)
         control.addItem(handle=syshandle, url=url, listitem=item, isFolder=isFolder)
-
-    def getMenuEnabled(self, menu_title):
-        is_enabled = control.setting(menu_title).strip()
-        if (is_enabled == '' or is_enabled == 'false'): return False
-        return True
 
     def endDirectory(self):
         control.content(syshandle, 'addons')
