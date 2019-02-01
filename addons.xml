@@ -97,7 +97,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.2" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.3" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -359,7 +359,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.0.8" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.0.9" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
@@ -388,7 +388,7 @@
       <screenshot></screenshot>
       <screenshot></screenshot>
     </assets>
-    <news>V2.0.0.8
+    <news>V2.0.0.9
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</news>
         <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -1030,7 +1030,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.045" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.046" provider-name="Brackets">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>
@@ -1045,19 +1045,19 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.numbersbynumbers.artwork" version="1.0.3" name="Numbers By Numbers Artwork" provider-name="Brackets">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0"/>
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<summary>Themes for the Numbers By Numbers Addon</summary>
-		<description>Themes for Numbers are maintained separately to make distribution of the the addon itself easier/faster.</description>
-		<platform>all</platform>
+<addon id="script.numbersbynumbers.artwork" version="1.0.4" name="NuMbErS Artwork" provider-name="Brackets">
+  <requires>
+    <import addon="xbmc.python" version="2.19.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Themes for the NuMbErS Addon</summary>
+    <description>Themes for NuMbErS are maintained separately to make distribution of the the addon itself easier/faster.</description>
+    <platform>all</platform>
         <assets>
-	      <icon>icon.png</icon>
-		</assets>		
-	</extension>
+        <icon>icon.png</icon>
+    </assets>   
+  </extension>
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>

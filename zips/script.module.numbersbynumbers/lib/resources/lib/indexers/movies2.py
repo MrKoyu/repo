@@ -1571,8 +1571,8 @@ class movies:
                 if isEstuary == True:
                     try: del meta['cast']
                     except: pass
-                if "tt" in imdb: sysmetalliq = "plugin://plugin.video.metalliq/movies/add_to_library_parsed/imdb/%s/direct.Bone Crusher.q" % imdb
-                elif not tmdb == "0" or tmdb == None: sysmetalliq = "plugin://plugin.video.metalliq/movies/add_to_library_parsed/tmdb/%s/direct.Bone Crusher.q" % tmdb
+                if "tt" in imdb: sysmetalliq = "plugin.video.metalliq-forqed/movies/add_to_library_parsed/imdb/%s/direct.numbersbynumbers.cdtv" % imdb
+                elif not tmdb == "0" or tmdb == None: sysmetalliq = "plugin.video.metalliq-forqed/movies/add_to_library_parsed/tmdb/%s/direct.numbersbynumbers.cdtv" % tmdb
                 else: sysmetalliq = "0"
                 sysmeta = urllib.quote_plus(json.dumps(meta))
                 

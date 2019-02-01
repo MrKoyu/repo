@@ -276,7 +276,7 @@ class tvshows:
             {
                 'name': cleangenre.lang(i[0], self.lang),
                 'url': self.genre_link % i[1] if i[2] else self.keyword_link % i[1],
-                'image': 'genres.png',
+                'image': 'genres2.png',
                 'action': 'tvshows'
             })
 
@@ -285,67 +285,67 @@ class tvshows:
 
     def networks(self):
         networks = [
-            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]A&E[/COLOR][B][COLOR firebrick] •[/COLOR][/B]', '/networks/29/ae', 'https://i.imgur.com/xLDfHjH.png'),
-            ('ABC', '/networks/3/abc', 'https://i.imgur.com/qePLxos.png'),
-            ('AMC', '/networks/20/amc', 'https://i.imgur.com/ndorJxi.png'),
-            ('AT-X', '/networks/167/at-x', 'https://i.imgur.com/JshJYGN.png'),
-            ('Adult Swim', '/networks/10/adult-swim', 'https://i.imgur.com/jCqbRcS.png'),
-            ('Amazon', '/webchannels/3/amazon', 'https://i.imgur.com/ru9DDlL.png'),
-            ('Animal Planet', '/networks/92/animal-planet', 'https://i.imgur.com/olKc4RP.png'),
-            ('Audience', '/networks/31/audience-network', 'https://i.imgur.com/5Q3mo5A.png'),
-            ('BBC America', '/networks/15/bbc-america', 'https://i.imgur.com/TUHDjfl.png'),
-            ('BBC Four', '/networks/51/bbc-four', 'https://i.imgur.com/PNDalgw.png'),
-            ('BBC One', '/networks/12/bbc-one', 'https://i.imgur.com/u8x26te.png'),
-            ('BBC Three', '/webchannels/71/bbc-three', 'https://i.imgur.com/SDLeLcn.png'),
-            ('BBC Two', '/networks/37/bbc-two', 'https://i.imgur.com/SKeGH1a.png'),
-            ('BET', '/networks/56/bet', 'https://i.imgur.com/ZpGJ5UQ.png'),
-            ('Bravo', '/networks/52/bravo', 'https://i.imgur.com/TmEO3Tn.png'),
-            ('CBC', '/networks/36/cbc', 'https://i.imgur.com/unQ7WCZ.png'),
-            ('CBS', '/networks/2/cbs', 'https://i.imgur.com/8OT8igR.png'),
-            ('CTV', '/networks/48/ctv', 'https://i.imgur.com/qUlyVHz.png'),
-            ('CW', '/networks/5/the-cw', 'https://i.imgur.com/Q8tooeM.png'),
-            ('CW Seed', '/webchannels/13/cw-seed', 'https://i.imgur.com/nOdKoEy.png'),
-            ('Cartoon Network', '/networks/11/cartoon-network', 'https://i.imgur.com/zmOLbbI.png'),
-            ('Channel 4', '/networks/45/channel-4', 'https://i.imgur.com/6ZA9UHR.png'),
-            ('Channel 5', '/networks/135/channel-5', 'https://i.imgur.com/5ubnvOh.png'),
-            ('Cinemax', '/networks/19/cinemax', 'https://i.imgur.com/zWypFNI.png'),
-            ('Comedy Central', '/networks/23/comedy-central', 'https://i.imgur.com/ko6XN77.png'),
-            ('Crackle', '/webchannels/4/crackle', 'https://i.imgur.com/53kqZSY.png'),
-            ('Discovery Channel', '/networks/66/discovery-channel', 'https://i.imgur.com/8UrXnAB.png'),
-            ('Discovery ID', '/networks/89/investigation-discovery', 'https://i.imgur.com/07w7BER.png'),
-            ('Disney Channel', '/networks/78/disney-channel', 'https://i.imgur.com/ZCgEkp6.png'),
-            ('Disney XD', '/networks/25/disney-xd', 'https://i.imgur.com/PAJJoqQ.png'),
-            ('E! Entertainment', '/networks/43/e', 'https://i.imgur.com/3Delf9f.png'),
-            ('E4', '/networks/41/e4', 'https://i.imgur.com/frpunK8.png'),
-            ('FOX', '/networks/4/fox', 'https://i.imgur.com/6vc0Iov.png'),
-            ('FX', '/networks/13/fx', 'https://i.imgur.com/aQc1AIZ.png'),
-            ('Freeform', '/networks/26/freeform', 'https://i.imgur.com/f9AqoHE.png'),
-            ('HBO', '/networks/8/hbo', 'https://i.imgur.com/Hyu8ZGq.png'),
-            ('HGTV', '/networks/192/hgtv', 'https://i.imgur.com/INnmgLT.png'),
-            ('Hallmark', '/networks/50/hallmark-channel', 'https://i.imgur.com/zXS64I8.png'),
-            ('History Channel', '/networks/53/history', 'https://i.imgur.com/LEMgy6n.png'),
-            ('ITV', '/networks/35/itv', 'https://i.imgur.com/5Hxp5eA.png'),
-            ('Lifetime', '/networks/18/lifetime', 'https://i.imgur.com/tvYbhen.png'),
-            ('MTV', '/networks/22/mtv', 'https://i.imgur.com/QM6DpNW.png'),
-            ('NBC', '/networks/1/nbc', 'https://i.imgur.com/yPRirQZ.png'),
-            ('National Geographic', '/networks/42/national-geographic-channel', 'https://i.imgur.com/XCGNKVQ.png'),
-            ('Netflix', '/webchannels/1/netflix', 'https://i.imgur.com/jI5c3bw.png'),
-            ('Nickelodeon', '/networks/27/nickelodeon', 'https://i.imgur.com/OUVoqYc.png'),
-            ('PBS', '/networks/85/pbs', 'https://i.imgur.com/r9qeDJY.png'),
-            ('Showtime', '/networks/9/showtime', 'https://i.imgur.com/SawAYkO.png'),
-            ('Sky1', '/networks/63/sky-1', 'https://i.imgur.com/xbgzhPU.png'),
-            ('Starz', '/networks/17/starz', 'https://i.imgur.com/Z0ep2Ru.png'),
-            ('Sundance', '/networks/33/sundance-tv', 'https://i.imgur.com/qldG5p2.png'),
-            ('Syfy', '/networks/16/syfy', 'https://i.imgur.com/9yCq37i.png'),
-            ('TBS', '/networks/32/tbs', 'https://i.imgur.com/RVCtt4Z.png'),
-            ('TLC', '/networks/80/tlc', 'https://i.imgur.com/c24MxaB.png'),
-            ('TNT', '/networks/14/tnt', 'https://i.imgur.com/WnzpAGj.png'),
-            ('TV Land', '/networks/57/tvland', 'https://i.imgur.com/1nIeDA5.png'),
-            ('Travel Channel', '/networks/82/travel-channel', 'https://i.imgur.com/mWXv7SF.png'),
-            ('TruTV', '/networks/84/trutv', 'https://i.imgur.com/HnB3zfc.png'),
-            ('USA', '/networks/30/usa-network', 'https://i.imgur.com/Doccw9E.png'),
-            ('VH1', '/networks/55/vh1', 'https://i.imgur.com/IUtHYzA.png'),
-            ('WGN', '/networks/28/wgn-america', 'https://i.imgur.com/TL6MzgO.png')
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]A&E[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/29/ae', 'https://i.imgur.com/xLDfHjH.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]ABC[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/3/abc', 'https://i.imgur.com/qePLxos.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]AMC[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/20/amc', 'https://i.imgur.com/ndorJxi.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]AT-X[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/167/at-x', 'https://i.imgur.com/JshJYGN.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Adult Swim[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/10/adult-swim', 'https://i.imgur.com/jCqbRcS.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Amazon[/COLOR][B][COLOR red] •[/COLOR][/B]', '/webchannels/3/amazon', 'https://i.imgur.com/ru9DDlL.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Animal Planet[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/92/animal-planet', 'https://i.imgur.com/olKc4RP.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Audience[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/31/audience-network', 'https://i.imgur.com/5Q3mo5A.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]BBC America[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/15/bbc-america', 'https://i.imgur.com/TUHDjfl.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]BBC Four[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/51/bbc-four', 'https://i.imgur.com/PNDalgw.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]BBC One[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/12/bbc-one', 'https://i.imgur.com/u8x26te.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]BBC Three[/COLOR][B][COLOR red] •[/COLOR][/B]', '/webchannels/71/bbc-three', 'https://i.imgur.com/SDLeLcn.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]BBC Two[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/37/bbc-two', 'https://i.imgur.com/SKeGH1a.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]BET[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/56/bet', 'https://i.imgur.com/ZpGJ5UQ.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Bravo[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/52/bravo', 'https://i.imgur.com/TmEO3Tn.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]CBC[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/36/cbc', 'https://i.imgur.com/unQ7WCZ.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]CBS[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/2/cbs', 'https://i.imgur.com/8OT8igR.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]CTV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/48/ctv', 'https://i.imgur.com/qUlyVHz.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]CW[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/5/the-cw', 'https://i.imgur.com/Q8tooeM.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]CW Seed[/COLOR][B][COLOR red] •[/COLOR][/B]', '/webchannels/13/cw-seed', 'https://i.imgur.com/nOdKoEy.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Cartoon Network[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/11/cartoon-network', 'https://i.imgur.com/zmOLbbI.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Channel 4[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/45/channel-4', 'https://i.imgur.com/6ZA9UHR.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Channel 5[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/135/channel-5', 'https://i.imgur.com/5ubnvOh.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Cinemax[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/19/cinemax', 'https://i.imgur.com/zWypFNI.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Comedy Central[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/23/comedy-central', 'https://i.imgur.com/ko6XN77.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Crackle[/COLOR][B][COLOR red] •[/COLOR][/B]', '/webchannels/4/crackle', 'https://i.imgur.com/53kqZSY.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Discovery Channel[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/66/discovery-channel', 'https://i.imgur.com/8UrXnAB.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Discovery ID[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/89/investigation-discovery', 'https://i.imgur.com/07w7BER.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Disney Channel[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/78/disney-channel', 'https://i.imgur.com/ZCgEkp6.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Disney XD[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/25/disney-xd', 'https://i.imgur.com/PAJJoqQ.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]E! Entertainment[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/43/e', 'https://i.imgur.com/3Delf9f.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]E4[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/41/e4', 'https://i.imgur.com/frpunK8.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]FOX[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/4/fox', 'https://i.imgur.com/6vc0Iov.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]FX[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/13/fx', 'https://i.imgur.com/aQc1AIZ.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Freeform[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/26/freeform', 'https://i.imgur.com/f9AqoHE.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]HBO[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/8/hbo', 'https://i.imgur.com/Hyu8ZGq.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]HGTV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/192/hgtv', 'https://i.imgur.com/INnmgLT.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Hallmark[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/50/hallmark-channel', 'https://i.imgur.com/zXS64I8.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]History Channel[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/53/history', 'https://i.imgur.com/LEMgy6n.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]ITV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/35/itv', 'https://i.imgur.com/5Hxp5eA.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Lifetime[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/18/lifetime', 'https://i.imgur.com/tvYbhen.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]MTV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/22/mtv', 'https://i.imgur.com/QM6DpNW.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]NBC[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/1/nbc', 'https://i.imgur.com/yPRirQZ.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]National Geographic[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/42/national-geographic-channel', 'https://i.imgur.com/XCGNKVQ.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Netflix[/COLOR][B][COLOR red] •[/COLOR][/B]', '/webchannels/1/netflix', 'https://i.imgur.com/jI5c3bw.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Nickelodeon[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/27/nickelodeon', 'https://i.imgur.com/OUVoqYc.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]PBS[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/85/pbs', 'https://i.imgur.com/r9qeDJY.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Showtime[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/9/showtime', 'https://i.imgur.com/SawAYkO.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Sky1[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/63/sky-1', 'https://i.imgur.com/xbgzhPU.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Starz[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/17/starz', 'https://i.imgur.com/Z0ep2Ru.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Sundance[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/33/sundance-tv', 'https://i.imgur.com/qldG5p2.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Syfy[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/16/syfy', 'https://i.imgur.com/9yCq37i.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]TBS[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/32/tbs', 'https://i.imgur.com/RVCtt4Z.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]TLC[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/80/tlc', 'https://i.imgur.com/c24MxaB.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]TNT[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/14/tnt', 'https://i.imgur.com/WnzpAGj.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]TV Land[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/57/tvland', 'https://i.imgur.com/1nIeDA5.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Travel Channel[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/82/travel-channel', 'https://i.imgur.com/mWXv7SF.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]TruTV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/84/trutv', 'https://i.imgur.com/HnB3zfc.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]USA[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/30/usa-network', 'https://i.imgur.com/Doccw9E.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]VH1[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/55/vh1', 'https://i.imgur.com/IUtHYzA.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]WGN[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/28/wgn-america', 'https://i.imgur.com/TL6MzgO.png')
         ]
 
         for i in networks: self.list.append(
@@ -356,50 +356,50 @@ class tvshows:
 
     def languages(self):
         languages = [
-            ('Arabic', 'ar'),
-            ('Bosnian', 'bs'),
-            ('Bulgarian', 'bg'),
-            ('Chinese', 'zh'),
-            ('Croatian', 'hr'),
-            ('Dutch', 'nl'),
-            ('English', 'en'),
-            ('Finnish', 'fi'),
-            ('French', 'fr'),
-            ('German', 'de'),
-            ('Greek', 'el'),
-            ('Hebrew', 'he'),
-            ('Hindi ', 'hi'),
-            ('Hungarian', 'hu'),
-            ('Icelandic', 'is'),
-            ('Italian', 'it'),
-            ('Japanese', 'ja'),
-            ('Korean', 'ko'),
-            ('Norwegian', 'no'),
-            ('Persian', 'fa'),
-            ('Polish', 'pl'),
-            ('Portuguese', 'pt'),
-            ('Punjabi', 'pa'),
-            ('Romanian', 'ro'),
-            ('Russian', 'ru'),
-            ('Serbian', 'sr'),
-            ('Spanish', 'es'),
-            ('Swedish', 'sv'),
-            ('Turkish', 'tr'),
-            ('Ukrainian', 'uk')
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Arabic[/COLOR]', 'ar'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Bosnian[/COLOR]', 'bs'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Bulgarian[/COLOR]', 'bg'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Chinese[/COLOR]', 'zh'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Croatian[/COLOR]', 'hr'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Dutch[/COLOR]', 'nl'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]English[/COLOR]', 'en'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Finnish[/COLOR]', 'fi'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]French[/COLOR]', 'fr'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]German[/COLOR]', 'de'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Greek[/COLOR]', 'el'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Hebrew[/COLOR]', 'he'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Hindi[/COLOR]', 'hi'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Hungarian[/COLOR]', 'hu'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Icelandic[/COLOR]', 'is'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Italian[/COLOR]', 'it'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Japanese[/COLOR]', 'ja'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Korean[/COLOR]', 'ko'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Norwegian[/COLOR]', 'no'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Persian[/COLOR]', 'fa'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Polish[/COLOR]', 'pl'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Portuguese[/COLOR]', 'pt'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Punjabi[/COLOR]', 'pa'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Romanian[/COLOR]', 'ro'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Russian[/COLOR]', 'ru'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Serbian[/COLOR]', 'sr'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Spanish[/COLOR]', 'es'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Swedish[/COLOR]', 'sv'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Turkish[/COLOR]', 'tr'),
+            ('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Ukrainian[/COLOR]', 'uk')
         ]
 
         for i in languages: self.list.append(
-            {'name': str(i[0]), 'url': self.language_link % i[1], 'image': 'languages.png', 'action': 'tvshows'})
+            {'name': str(i[0]), 'url': self.language_link % i[1], 'image': 'international2.png', 'action': 'tvshows'})
         self.addDirectory(self.list)
         return self.list
 
 
     def certifications(self):
-        certificates = ['TV-G', 'TV-PG', 'TV-14', 'TV-MA']
+        certificates = ['[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-G[/COLOR]', '[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-PG[/COLOR]', '[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-14[/COLOR]', '[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-MA[/COLOR]']
 
         for i in certificates: self.list.append(
             {'name': str(i), 'url': self.certification_link % str(i).replace('-', '_').lower(),
-             'image': 'certificates.png', 'action': 'tvshows'})
+             'image': 'certificates2.png', 'action': 'tvshows'})
         self.addDirectory(self.list)
         return self.list
 
@@ -1157,99 +1157,43 @@ class tvshows:
 
             try:
                 poster2 = art['tvposter']
-                poster2 = [x for x in poster2 if x.get('lang') == self.lang][::-1] + [x for x in poster2 if
-                                                                                      x.get('lang') == 'en'][::-1] + [x
-                                                                                                                      for
-                                                                                                                      x
-                                                                                                                      in
-                                                                                                                      poster2
-                                                                                                                      if
-                                                                                                                      x.get(
-                                                                                                                          'lang') in [
-                                                                                                                          '00',
-                                                                                                                          '']][
-                                                                                                                     ::-1]
+                poster2 = [x for x in poster2 if x.get('lang') == self.lang][::-1] + [x for x in poster2 if x.get('lang') == 'en'][::-1] + [x for x in poster2 if x.get('lang') in ['00', '']][::-1]
                 poster2 = poster2[0]['url'].encode('utf-8')
             except:
                 poster2 = '0'
 
             try:
                 fanart2 = art['showbackground']
-                fanart2 = [x for x in fanart2 if x.get('lang') == self.lang][::-1] + [x for x in fanart2 if
-                                                                                      x.get('lang') == 'en'][::-1] + [x
-                                                                                                                      for
-                                                                                                                      x
-                                                                                                                      in
-                                                                                                                      fanart2
-                                                                                                                      if
-                                                                                                                      x.get(
-                                                                                                                          'lang') in [
-                                                                                                                          '00',
-                                                                                                                          '']][
-                                                                                                                     ::-1]
+                fanart2 = [x for x in fanart2 if x.get('lang') == self.lang][::-1] + [x for x in fanart2 if x.get('lang') == 'en'][::-1] + [x for x in fanart2 if x.get('lang') in ['00', '']][::-1]
                 fanart2 = fanart2[0]['url'].encode('utf-8')
             except:
                 fanart2 = '0'
 
             try:
                 banner2 = art['tvbanner']
-                banner2 = [x for x in banner2 if x.get('lang') == self.lang][::-1] + [x for x in banner2 if
-                                                                                      x.get('lang') == 'en'][::-1] + [x
-                                                                                                                      for
-                                                                                                                      x
-                                                                                                                      in
-                                                                                                                      banner2
-                                                                                                                      if
-                                                                                                                      x.get(
-                                                                                                                          'lang') in [
-                                                                                                                          '00',
-                                                                                                                          '']][
-                                                                                                                     ::-1]
+                banner2 = [x for x in banner2 if x.get('lang') == self.lang][::-1] + [x for x in banner2 if x.get('lang') == 'en'][::-1] + [x for x in banner2 if x.get('lang') in ['00', '']][::-1]
                 banner2 = banner2[0]['url'].encode('utf-8')
             except:
                 banner2 = '0'
 
             try:
-                if 'hdtvlogo' in art:
-                    clearlogo = art['hdtvlogo']
-                else:
-                    clearlogo = art['clearlogo']
-                clearlogo = [x for x in clearlogo if x.get('lang') == self.lang][::-1] + [x for x in clearlogo if
-                                                                                          x.get('lang') == 'en'][
-                                                                                         ::-1] + [x for x in clearlogo
-                                                                                                  if x.get('lang') in [
-                                                                                                      '00', '']][::-1]
+                if 'hdtvlogo' in art: clearlogo = art['hdtvlogo']
+                else: clearlogo = art['clearlogo']
+                clearlogo = [x for x in clearlogo if x.get('lang') == self.lang][::-1] + [x for x in clearlogo if x.get('lang') == 'en'][::-1] + [x for x in clearlogo if x.get('lang') in ['00', '']][::-1]
                 clearlogo = clearlogo[0]['url'].encode('utf-8')
             except:
                 clearlogo = '0'
 
             try:
-                if 'hdclearart' in art:
-                    clearart = art['hdclearart']
-                else:
-                    clearart = art['clearart']
-                clearart = [x for x in clearart if x.get('lang') == self.lang][::-1] + [x for x in clearart if
-                                                                                        x.get('lang') == 'en'][::-1] + [
-                                                                                                                           x
-                                                                                                                           for
-                                                                                                                           x
-                                                                                                                           in
-                                                                                                                           clearart
-                                                                                                                           if
-                                                                                                                           x.get(
-                                                                                                                               'lang') in [
-                                                                                                                               '00',
-                                                                                                                               '']][
-                                                                                                                       ::-1]
+                if 'hdclearart' in art: clearart = art['hdclearart']
+                else: clearart = art['clearart']
+                clearart = [x for x in clearart if x.get('lang') == self.lang][::-1] + [x for x in clearart if x.get('lang') == 'en'][::-1] + [x for x in clearart if x.get('lang') in ['00', '']][::-1]
                 clearart = clearart[0]['url'].encode('utf-8')
             except:
                 clearart = '0'
 
-            item = {'title': title, 'year': year, 'imdb': imdb, 'tvdb': tvdb, 'poster': poster, 'poster2': poster2,
-                    'banner': banner, 'banner2': banner2, 'fanart': fanart, 'fanart2': fanart2, 'clearlogo': clearlogo,
-                    'clearart': clearart, 'premiered': premiered, 'studio': studio, 'genre': genre,
-                    'duration': duration, 'rating': rating, 'votes': votes, 'mpaa': mpaa, 'cast': cast, 'plot': plot}
-            item = dict((k, v) for k, v in item.iteritems() if not v == '0')
+            item = {'title': title, 'year': year, 'imdb': imdb, 'tvdb': tvdb, 'poster': poster, 'poster2': poster2, 'banner': banner, 'banner2': banner2, 'fanart': fanart, 'fanart2': fanart2, 'clearlogo': clearlogo, 'clearart': clearart, 'premiered': premiered, 'studio': studio, 'genre': genre, 'duration': duration, 'rating': rating, 'votes': votes, 'mpaa': mpaa, 'cast': cast, 'plot': plot}
+            item = dict((k,v) for k, v in item.iteritems() if not v == '0')
             self.list[i].update(item)
 
             if artmeta == False: raise Exception()

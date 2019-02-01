@@ -142,12 +142,12 @@ class navigator:
 
     def tvshows(self, lite=False):
         self.addDirectoryItem(32701, 'tvGenres', 'genres2.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32708, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
+        #self.addDirectoryItem(32708, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32702, 'tvLanguages', 'international2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32703, 'tvCertificates', 'certificates2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32704, 'tvshows&url=trending', 'people-watching2.png', 'DefaultRecentlyAddedEpisodes.png')
         self.addDirectoryItem(32705, 'tvshows&url=popular', 'most-popular2.png', 'DefaultTVShows.png')
-        self.addDirectoryItem('[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Marvel TV[/COLOR][B][COLOR firebrick] •[/COLOR][/B]', 'tvshows&url=marveltv', 'marvel_tv.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32710, 'tvshows&url=marveltv', 'marvel_tv.png', 'DefaultMovies.png')
         self.addDirectoryItem(32023, 'tvshows&url=rating', 'highly-rated.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32706, 'tvshows&url=views', 'most-voted2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32024, 'tvshows&url=airing', 'airing-today.png', 'DefaultTVShows.png')

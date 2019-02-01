@@ -311,38 +311,38 @@ class movies:
 
     def languages(self):
         languages = [
-            ('Arabic', 'ar'),
-            ('Bosnian', 'bs'),
-            ('Bulgarian', 'bg'),
-            ('Chinese', 'zh'),
-            ('Croatian', 'hr'),
-            ('Dutch', 'nl'),
-            ('English', 'en'),
-            ('Finnish', 'fi'),
-            ('French', 'fr'),
-            ('German', 'de'),
-            ('Greek', 'el'),
-            ('Hebrew', 'he'),
-            ('Hindi ', 'hi'),
-            ('Hungarian', 'hu'),
-            ('Icelandic', 'is'),
-            ('Italian', 'it'),
-            ('Japanese', 'ja'),
-            ('Korean', 'ko'),
-            ('Macedonian', 'mk'),
-            ('Norwegian', 'no'),
-            ('Persian', 'fa'),
-            ('Polish', 'pl'),
-            ('Portuguese', 'pt'),
-            ('Punjabi', 'pa'),
-            ('Romanian', 'ro'),
-            ('Russian', 'ru'),
-            ('Serbian', 'sr'),
-            ('Slovenian', 'sl'),
-            ('Spanish', 'es'),
-            ('Swedish', 'sv'),
-            ('Turkish', 'tr'),
-            ('Ukrainian', 'uk')
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Arabic[/COLOR]', 'ar'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Bosnian[/COLOR]', 'bs'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Bulgarian[/COLOR]', 'bg'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Chinese[/COLOR]', 'zh'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Croatian[/COLOR]', 'hr'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Dutch[/COLOR]', 'nl'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]English[/COLOR]', 'en'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Finnish[/COLOR]', 'fi'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]French[/COLOR]', 'fr'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]German[/COLOR]', 'de'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Greek[/COLOR]', 'el'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Hebrew[/COLOR]', 'he'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Hindi[/COLOR]', 'hi'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Hungarian[/COLOR]', 'hu'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Icelandic[/COLOR]', 'is'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Italian[/COLOR]', 'it'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Japanese[/COLOR]', 'ja'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Korean[/COLOR]', 'ko'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Macedonian[/COLOR]', 'mk'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Norwegian[/COLOR]', 'no'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Persian[/COLOR]', 'fa'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Polish[/COLOR]', 'pl'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Portuguese[/COLOR]', 'pt'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Punjabi[/COLOR]', 'pa'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Romanian[/COLOR]', 'ro'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Russian[/COLOR]', 'ru'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Serbian[/COLOR]', 'sr'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Slovenian[/COLOR]', 'sl'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Spanish[/COLOR]', 'es'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Swedish[/COLOR]', 'sv'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Turkish[/COLOR]', 'tr'),
+            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Ukrainian[/COLOR]', 'uk')
         ]
 
         for i in languages: self.list.append(
@@ -352,7 +352,7 @@ class movies:
 
 
     def certifications(self):
-        certificates = ['G', 'PG', 'PG-13', 'R', 'NC-17']
+        certificates = ['[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]G[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]PG[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]PG-13[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]R[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]NC-17[/COLOR]']
 
         for i in certificates: self.list.append(
             {'name': str(i), 'url': self.certification_link % str(i).replace('-', '_').lower(),

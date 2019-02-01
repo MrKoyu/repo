@@ -8,11 +8,15 @@
  
 [COLOR deepskyblue]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.0.9[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Networks category
+[B][COLOR deepskyblue]• [/COLOR][/B] Changed URLresolver to ResolveURL
+[B][COLOR deepskyblue]• [/COLOR][/B] Added ResolveURL settings to Tools category
+
 [B][COLOR limegreen]V2.0.0.8[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Torrent support
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed the scrape issue with cf scrape
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers 
-[B][COLOR deepskyblue]• [/COLOR][/B] Changed urlresolver to resolveurl
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed NuMbErS search function to add db search
 [B][COLOR deepskyblue]• [/COLOR][/B] Made NuMbErS fully compatible with Kodi 18
 
