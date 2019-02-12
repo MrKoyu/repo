@@ -97,7 +97,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.4" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.5" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -359,7 +359,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.0.9" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.1.0" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
@@ -388,7 +388,7 @@
       <screenshot></screenshot>
       <screenshot></screenshot>
     </assets>
-    <news>V2.0.0.9
+    <news>V2.0.1.0
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</news>
         <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -556,7 +556,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.youtube" name="YouTube" version="6.3.1" provider-name="anxdpanic, bromix">
+<addon id="plugin.video.youtube" name="YouTube" version="6.4.0" provider-name="anxdpanic, bromix">
     <requires>
         <import addon="xbmc.python" version="2.20.0"/>
         <import addon="script.module.six" version="1.11.0"/>
@@ -570,31 +570,24 @@ provider-name="Team IVUE">
     <extension point="xbmc.python.module" library="resources/lib/"/>
     <extension point="xbmc.addon.metadata">
         <news>
-6.3.1
-[fix] ensure playback monitoring is monitoring the correct item
-[fix] check for abortRequested while processing purchased collections
-[upd] Use setArt instead of iconImage, thumbnailImage and setProperty('fanart_image')
-
-6.3.0
-[add] support for keymapping of some endpoints, wiki: https://kodi.wiki/view/Add-on:YouTube#Keymaps
-[add] 'Rate videos in playlists' setting to 'Settings - General - Rate after watching'
-[add] Support for purchased collections |contrib: MisterD81|
-[fix] Playback of some videos (e.g. music videos)
-[fix] Live stream playback
-[fix] post play add to watch history
-[fix] fix add-ons playback history not saving
-[fix] playback monitoring/post play events triggering for the wrong videos in some cases
-[fix] call setResolvedUrl(False) if get_video_streams fails
-[upd] code cosmetics and resolve inspections
-[upd] improve watch history tracking, actively report watch times and state during playback
-[upd] sign in/out, switch user, and settings ListItems to isFolder=False and isPlayable=False
-[upd] improve watch later playlist id retrieval and feedback
-[upd] Use SPDX license identifier
-[lang] de_de strings |contrib: tobhor|
-[lang] el_gr strings |contrib: twilight0|
-[lang] es_es strings |contrib: roliverosc|
-[lang] ko_kr strings |contrib: parkmino|
-[lang] nl_nl strings |contrib: Markman-B|
+6.4.0
+[add] 4K videos with InputStream Adaptive >= v2.3.14
+        - Thanks to @peak3d
+[fix] some videos not playing when logged in
+[fix] reset function cache at restart/update to resolve issues persisting due to cached results
+[fix] service potentially not shutting down http server
+[fix] added to playlist/subscriptions notifications
+[fix] only generate mpeg-dash file if adaptive formats are available
+[fix] map frame rates to more common representation to lessen the chance of double refresh changes (applies only to generated mpeg-dash files)
+[fix] currently playing file check when playing file is a plugin:// url
+[chg] Settings - General - Autoplay suggested videos
+        - limit playlist size to 1000 videos
+        - request less relevant videos at one time
+        - old behavior: add 50 most relevant videos for each video played, repeats allowed
+            - result: a lot of barely relevant videos in groups of 50
+        - new behavior: add single most relevant video, no repeats
+            - result: next video is always the most relevant video to the last video played
+[upd] player javascript retrieval
         </news>
         <assets>
             <icon>icon.png</icon>
@@ -1030,7 +1023,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.046" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.047" provider-name="Brackets">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>
@@ -1104,26 +1097,6 @@ provider-name="Team IVUE">
         <assets>
         <icon>icon.png</icon>
     </assets>   
-  </extension>
-</addon>
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.diamond.eim.metalliq" name="[B][COLOR white]I Installed[/COLOR] [COLOR lime]EIM and MetalliQ 2[/COLOR][/B]" version="999.999.996" provider-name="Community">
-  <requires>
-    <import addon="script.module.movietheaterbutter" />
-    <import addon="script.movietheaterbutter.artwork" />
-        <import addon="xbmc.python" version="2.19.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource">
-  <provides>video</provides>
-  </extension>
-    <extension point="xbmc.addon.metadata">
-    <summary lang="en">[COLOR lime]Installer to teach Diamomd not to overwrite addons in other repositories without permission[/COLOR]</summary>
-    <description lang="en">Not a Video Add-On, it just fixes Diamomd's mistake for overwriting MetalliQ 4Qed with higher version. Do not support people such as Diamond Builds. You may remove this now, thank you.</description>
-    <disclaimer>The owners and submitters to this repository do not host or distribute any of the content displayed by these addons nor do they have any affiliation with the content providers.</disclaimer> 
-    <platform>all</platform>
-    <forum>n/a</forum>
-    <website>n/a</website>
   </extension>
 </addon>
 
