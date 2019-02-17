@@ -1,0 +1,333 @@
+# Addon Name: OKA
+# Addon id: plugin.video.oka
+# Addon Provider: OKA BYB 
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.oka\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+
+
+msgctxt "#30001"
+msgid "Full Addon Search"
+msgstr חיפוש בהרחבה"
+
+msgctxt "#30002"
+msgid "UserName"
+msgstr "שם משתמש"
+
+msgctxt "#30003"
+msgid "Password"
+msgstr "סיסמה"
+
+msgctxt "#30004"
+msgid "Enable"
+msgstr "אפשר"
+
+msgctxt "#30006"
+msgid "Username and Passwords"
+msgstr "שם משתמש ןסיסמה"
+
+msgctxt "#30005"
+msgid "General"
+msgstr "כללי"
+
+msgctxt "#30007"
+msgid ""DeBug Mode""
+msgstr ""
+
+msgctxt "#30008"
+msgid "Resolver  of urls"
+msgstr ""
+
+msgctxt "#30009"
+msgid "Select which Resolver to use"
+msgstr "בחר באיזה Resolver להשתמש"
+
+msgctxt "#30010"
+msgid "Use Icon as Fanart"
+msgstr "השתמש באייקון כפנארט"
+
+msgctxt "#30011"
+msgid "Browse XML DataBase"
+msgstr "עיין במאגר ה XML"
+
+msgctxt "#30012"
+msgid "Browse Community"
+msgstr "עיין במאגר הקהילה"
+
+msgctxt "#30013"
+msgid "Pulsar"
+msgstr ""
+
+msgctxt "#30014"
+msgid "MetaData API Keys and settings"
+msgstr "מטה-דטה, מפתחות API ןהגדרות"
+
+msgctxt "#30015"
+msgid "TMDB API Key"
+msgstr "מפתח API TMDB"
+
+msgctxt "#30016"
+msgid "Use my TMDB Data"
+msgstr "השתמש במידע TMDB שלי"
+
+msgctxt "#30017"
+msgid "Use Season and Episode number in tv show title"
+msgstr "השתמש במספרי עונות ופרקים בכותרת של הסדרות"
+
+msgctxt "#30018"
+msgid "API Key"
+msgstr "מפתח API"
+
+msgctxt "#30019"
+msgid "The TV DB API Key"
+msgstr "מפתח API של TVDB"
+
+msgctxt "#30020"
+msgid "YouTube"
+msgstr ""
+
+msgctxt "#30021"
+msgid "Search YouTube"
+msgstr "חיפוש ב YouTube"
+
+msgctxt "#30022"
+msgid "Long video's in YouTube Search"
+msgstr "חיפוש סרטים ארוכים ב YouTube"
+
+msgctxt "#30023"
+msgid "History"
+msgstr "היסטוריה"
+
+msgctxt "#30024"
+msgid "Show search history in menu"
+msgstr "הראה היסטוריית חיפוש בתפריט"
+
+msgctxt "#30025"
+msgid "Clear Search History"
+msgstr "נקה היסטוריית חיפוש"
+
+msgctxt "#30026"
+msgid "DailyMotion"
+msgstr ""
+
+msgctxt "#30027"
+msgid "Search DailyMotion"
+msgstr "חיפןש ב DailyMotion"
+
+msgctxt "#30028"
+msgid "Family Filter"
+msgstr "סינון משפחה"
+
+msgctxt "#30029"
+msgid "Podcast"
+msgstr ""
+
+msgctxt "#30030"
+msgid "Limit how many podcasts returned"
+msgstr "הגבל כמות פודקאסטים לחיפוש"
+
+msgctxt "#30031"
+msgid "Max Length of Podcast List"
+msgstr "הגבל אורך רשימת פודקאסטים"
+
+msgctxt "#30032"
+msgid "UniScraper"
+msgstr ""
+
+msgctxt "#30033"
+msgid "Output list as a Dialog Select GUI"
+msgstr "הצג רשימה כדיאלוג"
+
+msgctxt "#30034"
+msgid "Developer mode"
+msgstr "מצב מפתח"
+
+msgctxt "#30035"
+msgid "Premiumize"
+msgstr ""
+
+msgctxt "#30036"
+msgid "API key is missing do you wish to enter in settings?"
+msgstr "חסר מפתח API האם להכניס בהגדרות?"
+
+msgctxt "#30037"
+msgid "We failed to reach a server. -  Trying BackUp Server"
+msgstr "נכשל בהשגת השרת...לנסות שרת חלופי?"
+
+msgctxt "#30038"
+msgid "Do You wish to continue in base mode?"
+msgstr "להמשיך במצב בסיסי?"
+
+msgctxt "#30039"
+msgid "Failed to reach server"
+msgstr "נכשל בהשגת השרת"
+
+msgctxt "#30040"
+msgid "Search"
+msgstr "חיפוש"
+
+msgctxt "#30041"
+msgid "Tools and Settings"
+msgstr "כלים והגדרות"
+
+
+msgctxt "#30042"
+msgid "Favorites"
+msgstr "מועדפים"
+
+msgctxt "#30043"
+msgid "XML Database"
+msgstr "מאגר XML"
+
+msgctxt "#30044"
+msgid "Community Files"
+msgstr "קבצי קהילה"
+
+msgctxt "#30045"
+msgid "Search History"
+msgstr "היסטוריית חיפוש"
+
+msgctxt "#30046"
+msgid "Search: Youtube"
+msgstr "חיפוש ב YouTube"
+
+msgctxt "#30047"
+msgid "Search: dailymotion"
+msgstr "חיפוש ה DailyMotion"
+
+msgctxt "#30048"
+msgid "Pulsar:IMDB"
+msgstr ""
+
+msgctxt "#30049"
+msgid "My TMDB Data"
+msgstr "מידע TMDB שלי"
+
+msgctxt "#30050"
+msgid "Videos"
+msgstr "וידיאו"
+
+msgctxt "#30051"
+msgid "PlayLists"
+msgstr "רשימות ניגון"
+
+msgctxt "#30052"
+msgid "Search this Channel"
+msgstr "חפש בערוץ"
+
+msgctxt "#30053"
+msgid "What would you like to search for?"
+msgstr "מה ברצונך לחפש?"
+
+msgctxt "#30054"
+msgid "Search TV Shows"
+msgstr "חפש סדרה"
+
+msgctxt "#30055"
+msgid "Search Movies"
+msgstr "חפש סרט"
+
+msgctxt "#30056"
+msgid "Search Addon"
+msgstr "חפש הרחבה"
+
+msgctxt "#30057"
+msgid "Enter Name of TV"
+msgstr "הכנס שם סדרה"
+
+msgctxt "#30058"
+msgid "Enter Name of Movie"
+msgstr "הכנס שם סרט"
+
+msgctxt "#30059"
+msgid "Open settings"
+msgstr "פתח הגדרות"
+
+msgctxt "#30060"
+msgid "Delete Cookies"
+msgstr "מחק מטמון"
+
+msgctxt "#30061"
+msgid "OpenSettings of Dependencies"
+msgstr "פתח הגדרות תלויות"
+
+msgctxt "#30062"
+msgid "Deleting Cookies"
+msgstr "מחק מטמון"
+
+msgctxt "#30063"
+msgid "Searching Cookies in "
+msgstr "חפש מטמון ב.."
+
+msgctxt "#30064"
+msgid "Process Complete"
+msgstr "הושלם"
+
+msgctxt "#30065"
+msgid "Files deleted"
+msgstr "הקבצים נמחקו"
+
+msgctxt "#30066"
+msgid "Removing"
+msgstr "מסיר"
+
+msgctxt "#30067"
+msgid "Cookie file"
+msgstr "קבצי מטמון"
+
+msgctxt "#30068"
+msgid "Open settings for addon"
+msgstr "פתח הגדרות הרחבה"
+
+msgctxt "#30069"
+msgid "Clear all Cookies from Cookie cache"
+msgstr "נקה מטמון ממאגר המטמון"
+
+msgctxt "#30070"
+msgid "Open settings of all dependencies required by this addon"
+msgstr "פתח הגדות של כל התלויות שהרחבה זו משתמשת"
+
+msgctxt "#30071"
+msgid "No Files to delete"
+msgstr "אין קבצים למחוק"
+
+msgctxt "#30072"
+msgid "The Cookie Jar is empty"
+msgstr "המטמון ריק"
+
+msgctxt "#30073"
+msgid "Open settings for"
+msgstr "פתח הגדרות של"
+
+msgctxt ""
+msgid ""
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""
+
+msgctxt ""
+msgid ""
+msgstr ""

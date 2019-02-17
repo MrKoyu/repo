@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol always="true">99</defaultcontrol>
+	<coordinates>
+		<posx>390</posx>
+		<posy>150</posy>
+	</coordinates>
+	<animation effect="fade" time="500">WindowOpen</animation>
+	<animation effect="fade" time="500">WindowClose</animation>
+	<controls>
+		<control type="group" id="100">
+			<posx>0</posx>
+			<posy>0</posy>
+			<control type="image">
+				<width>500</width>
+				<height>70</height>
+				<texture colordiffuse=$INFO[Window(Home).Property(HEADCOLOR)]>$INFO[Window(Home).Property(HEAD_BASE_PNG)]</texture>
+			</control>
+			<control type="label" id="1">
+				<description>header label</description>
+				<posx>5</posx>
+				<posy>5</posy>
+				<width>400</width>
+				<height>68</height>
+				<font>font13_title</font>
+				<label>$INFO[Window(Home).Property(HEADER)]</label>
+				<textcolor>$INFO[Window(Home).Property(HEADTXTCOLOR)]</textcolor>
+				<shadowcolor>$INFO[Window(Home).Property(HEADTXTSHAD)]</shadowcolor>
+			</control>
+			<control type="button" id="98">
+				<description>Close Window button</description>
+				<posx>430</posx>
+				<posy>5</posy>
+				<width>60</width>
+				<height>60</height>
+				<label>-</label>
+				<font>-</font>
+				<onclick>PreviousMenu</onclick>
+				<texturefocus >icon.png</texturefocus>
+				<texturenofocus colordiffuse="144ffffff">icon.png</texturenofocus>
+				<onleft>100</onleft>
+				<onright>100</onright>
+				<onup>100</onup>
+				<ondown>99</ondown>
+				<visible>system.getbool(input.enablemouse)</visible>
+			</control>
+		</control>
+		<control type="group">
+			<posx>0</posx>
+			<posy>69</posy>
+			<control type="image">
+				<width>500</width>
+				<height>300</height>
+				<texture colordiffuse=$INFO[Window(Home).Property(BODYCOLOR)] >$INFO[Window(Home).Property(BODY_BASE_PNG)]</texture>
+			</control>
+			<control type="label" id="9">
+				<width>480</width>
+				<height>230</height>
+				<top>10</top>
+				<left>10</left>
+				<label>$INFO[Window(Home).Property(TEXT)]</label>
+				<font>font12</font>
+				<wrapmultiline>true</wrapmultiline>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>$INFO[Window(Home).Property(BODYTXTCOLOR)]</textcolor>
+				<shadowcolor>$INFO[Window(Home).Property(BODYTXTSHAD)]</shadowcolor>
+			</control>
+			<control type="button" id="99">
+				<description>OK button</description>
+				<posx>213</posx>
+				<posy>255</posy>
+				<width>75</width>
+				<height>37</height>
+				<label>OK</label>
+				<textcolor>$INFO[Window(Home).Property(BUTTONTXTCOLOR)]</textcolor>
+				<focusedcolor>$INFO[Window(Home).Property(BUTTONTXTCOLOR)]</focusedcolor>
+				<font>font12</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<onclick>PreviousMenu</onclick>
+				<texturefocus   colordiffuse=$INFO[Window(Home).Property(BUTTONFOCUSCOLOR)]>white_100_square.png</texturefocus>
+				<texturenofocus colordiffuse=$INFO[Window(Home).Property(BUTTONCOLOR)]>white_75_square.png</texturenofocus>
+				<onleft>98</onleft>
+				<onright>98</onright>
+				<onup>98</onup>
+				<ondown>99</ondown>
+				<visible>system.getbool(input.enablemouse)</visible>
+			</control>
+		</control>
+	</controls>
+</window>

@@ -8,6 +8,9 @@
  
 [COLOR deepskyblue]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.1.1[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+
 [B][COLOR limegreen]V2.0.1.0[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Trailers crashing on Kodi 18
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
