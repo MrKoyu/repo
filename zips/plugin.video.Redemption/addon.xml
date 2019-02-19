@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.Redemption"
-       name="[COLORred]Redemption[/COLOR]" 
+       name="[COLORcrimson]Redemption[/COLOR]" 
        version="1.9"
        provider-name="BucKy">
   <requires>
@@ -28,8 +28,8 @@
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en_gb">[COLORred]Redemption Addon[/COLOR]</summary>
-    <description lang="en_gb">[COLORblue]Big Thanks To LnU For Maintaining The Addon Whilst I Was Away.[/COLOR]Redemption Is A 3rd Party Addon And Is Not Linked To Kodi In Any Way. All Content Within Is Freely Available On The Internet.</description>
+    <summary lang="en_gb">[COLORcrimson]Redemption Addon[/COLOR]</summary>
+    <description lang="en_gb">[COLORdeepskyblue]Big Thanks To LnU For Maintaining The Addon Whilst I Was Away. [/COLOR]Redemption Is A 3rd Party Addon And Is Not Linked To Kodi In Any Way. All Content Within Is Freely Available On The Internet.</description>
     <platform>all</platform>
   </extension>
 </addon>

@@ -97,7 +97,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.6" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+    <addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="6.7" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -359,7 +359,7 @@
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.1.1" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold]░▒▓[/COLOR] [B][COLOR gold]Brackets[/COLOR][/B] [COLOR gold]▓▒░[/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.1.2" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold]░▒▓[/COLOR] [B][COLOR gold]Brackets[/COLOR][/B] [COLOR gold]▓▒░[/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
@@ -387,7 +387,7 @@
       <screenshot>resources/media/screenshot-02.jpg</screenshot>
       <screenshot>resources/media/screenshot-03.jpg</screenshot>
     </assets>
-    <news>V2.0.1.1
+    <news>V2.0.1.2
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</news>
         <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -451,7 +451,7 @@ provider-name="Team IVUE">
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.Redemption"
-       name="[COLORred]Redemption[/COLOR]" 
+       name="[COLORcrimson]Redemption[/COLOR]" 
        version="1.9"
        provider-name="BucKy">
   <requires>
@@ -479,8 +479,8 @@ provider-name="Team IVUE">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en_gb">[COLORred]Redemption Addon[/COLOR]</summary>
-    <description lang="en_gb">[COLORblue]Big Thanks To LnU For Maintaining The Addon Whilst I Was Away.[/COLOR]Redemption Is A 3rd Party Addon And Is Not Linked To Kodi In Any Way. All Content Within Is Freely Available On The Internet.</description>
+    <summary lang="en_gb">[COLORcrimson]Redemption Addon[/COLOR]</summary>
+    <description lang="en_gb">[COLORdeepskyblue]Big Thanks To LnU For Maintaining The Addon Whilst I Was Away. [/COLOR]Redemption Is A 3rd Party Addon And Is Not Linked To Kodi In Any Way. All Content Within Is Freely Available On The Internet.</description>
     <platform>all</platform>
   </extension>
 </addon>
@@ -1058,7 +1058,7 @@ provider-name="Team IVUE">
 </addon>
 
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.048" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.049" provider-name="Brackets">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>

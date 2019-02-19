@@ -8,9 +8,9 @@
 # ----------------------------------------------------------------------------
 #######################################################################
 
-# Addon Name: Eggman
-# Addon id: Eggman
-# Addon Provider: Eggman
+# Addon Name: NuMbErS
+# Addon id: NuMbErS
+# Addon Provider: NuMbErS
 
 import re
 import traceback
