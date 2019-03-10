@@ -1,5 +1,9 @@
 - [COLORlime]To get your favorite add-on in the Movie selector go to EIM 4Qed settings and clear simple selector then rerun total setup in MetalliQ 4Qed settings.[/COLOR] 
 
+v100.3.17krypton
+- Fixed tvshows-infoscreen and changed some textures
+- Kodi 18 version available from EIM4D repo - [COLOR lime]http://cellardoortv.com/repository/4qed/[/COLOR]
+
 v100.2.0 
 - Many builds/configurations had been scratched out or overwritten by other forks with higher version number
 - Version number changed to fix EIM4QED

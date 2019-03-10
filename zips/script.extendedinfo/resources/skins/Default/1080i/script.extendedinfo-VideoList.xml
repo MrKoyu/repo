@@ -46,7 +46,7 @@
                 <control type="image">
                     <posx>468</posx>
                     <posy>107</posy>
-                    <width>330</width>
+                    <width>332</width>
                     <height>412</height>
                     <visible>Control.HasFocus(500) + IsEmpty(Window.Property(alt_layout))</visible>
                     <animation type="WindowOpen" reversible="false">
