@@ -6,11 +6,11 @@
  # can do whatever you want with this stuff. If we meet some day, and you think
  # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
  # ----------------------------------------------------------------------------
-#######################################################################
+####################################################################### 
 
-# Addon Name: NuMbErS
-# Addon id: plugin.video.numbersbynumbers
-# Addon Provider: NuMbErS
+# Addon Name: Numbers
+# Addon id: Numbers
+# Addon Provider: Numbers
 
 import re
 import urllib

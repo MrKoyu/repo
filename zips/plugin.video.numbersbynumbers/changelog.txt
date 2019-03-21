@@ -2,11 +2,18 @@
 
 [B][COLOR lime]• [/COLOR][/B] [COLOR deepskyblue]CURRENT STATUS:[/COLOR] Outstanding!
 
-[B][COLOR deepskyblue]• [/COLOR][/B][B][COLOR crimson]WARNING![/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B][COLOR gold]Umpidy Addon is a COPY & PASTE of NuMbErS Addon[/COLOR][B][COLOR deepskyblue] •[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B][COLOR gold]DO NOT SUPPORT PEOPLE SUCH AS GRICE ADVICE[/COLOR][B][COLOR deepskyblue] •[/COLOR][/B]
  
 [COLOR deepskyblue]********************************************************************************************[/COLOR]
+
+[B][COLOR limegreen]V2.0.1.4[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Debrid only
+[B][COLOR deepskyblue]• [/COLOR][/B] Added pre emptive termantion
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed username not showing for trakt in Kodi 18
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed people search in TV Shows category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Hulu and Youtube Red to Networks category
+[B][COLOR deepskyblue]• [/COLOR][/B] Cleaned up scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed cf scrape - Thanks to MrEggman
+[B][COLOR deepskyblue]• [/COLOR][/B] New category Collections added - Thanks to MrClownman
 
 [B][COLOR limegreen]V2.0.1.3[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed resume on playback for Kodi 18

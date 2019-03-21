@@ -15,6 +15,11 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    For v1.9 Jen:
+    
+        2019.11.03
+            - Updated sources.py to include magnet and torrent links
 """
 import random
 
@@ -816,6 +821,16 @@ def get_sources(item):
                     player=jenplayer,
                     resolver=resolveurl,
                 )
+        elif preset.endswith('.torrent') or preset.startswith('magnet'):
+            played = koding.Play_Video(
+                preset,
+                showbusy=False,
+                ignore_dp=True,
+                item=listitem,
+                player=jenplayer,
+                resolver=resolveurl,
+            )
+                    
         else:
             # who knows
             busy_dialog.close()

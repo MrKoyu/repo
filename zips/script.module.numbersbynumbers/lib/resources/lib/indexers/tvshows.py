@@ -324,6 +324,7 @@ class tvshows:
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]HGTV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/192/hgtv', 'https://i.imgur.com/INnmgLT.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Hallmark[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/50/hallmark-channel', 'https://i.imgur.com/zXS64I8.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]History Channel[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/53/history', 'https://i.imgur.com/LEMgy6n.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Hulu[/COLOR][B][COLOR red] •[/COLOR][/B]', '/webchannels/2/hulu', 'https://i.imgur.com/uSD2Cdw.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]ITV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/35/itv', 'https://i.imgur.com/5Hxp5eA.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Lifetime[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/18/lifetime', 'https://i.imgur.com/tvYbhen.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]MTV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/22/mtv', 'https://i.imgur.com/QM6DpNW.png'),
@@ -343,6 +344,7 @@ class tvshows:
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]TV Land[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/57/tvland', 'https://i.imgur.com/1nIeDA5.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Travel Channel[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/82/travel-channel', 'https://i.imgur.com/mWXv7SF.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]TruTV[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/84/trutv', 'https://i.imgur.com/HnB3zfc.png'),
+            ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]Youtube Red[/COLOR][B][COLOR red] •[/COLOR][/B]', '/webchannels/43/youtube-premium', 'https://i.imgur.com/ZfewP1Y.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]USA[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/30/usa-network', 'https://i.imgur.com/Doccw9E.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]VH1[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/55/vh1', 'https://i.imgur.com/IUtHYzA.png'),
             ('[B][COLOR red]• [/COLOR][/B][COLOR ghostwhite]WGN[/COLOR][B][COLOR red] •[/COLOR][/B]', '/networks/28/wgn-america', 'https://i.imgur.com/TL6MzgO.png')

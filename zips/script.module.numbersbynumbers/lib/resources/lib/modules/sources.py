@@ -430,6 +430,10 @@ class sources:
 
         line1 = line2 = line3 = ""
 
+        debrid_only = control.setting('debrid.only')
+
+        pre_emp =  control.setting('preemptive.termination')
+        pre_emp_limit = control.setting('preemptive.limit')
         source_4k = d_source_4k = 0
         source_1080 = d_source_1080 = 0
         source_720 = d_source_720 = 0
@@ -444,6 +448,17 @@ class sources:
         pdiag_bg_format = '4K:%s(%s)|1080p:%s(%s)|720p:%s(%s)|SD:%s(%s)|T:%s(%s)'.split('|')
 
         for i in range(0, 4 * timeout):
+            if str(pre_emp) == 'true':
+                if quality in ['0']:
+                    if (source_4k + d_source_4k) >= int(pre_emp_limit): break
+                elif quality in ['1']:
+                    if (source_1080 + d_source_1080) >= int(pre_emp_limit): break
+                elif quality in ['2']:
+                    if (source_720 + d_source_720) >= int(pre_emp_limit): break
+                elif quality in ['3']:
+                    if (source_sd + d_source_sd) >= int(pre_emp_limit): break
+                else:
+                    if (source_sd + d_source_sd) >= int(pre_emp_limit): break
             try:
                 if xbmc.abortRequested is True:
                     return sys.exit()
@@ -942,6 +957,9 @@ class sources:
         if provider == '':
             provider = 'false'
 
+        debrid_only = control.setting('debrid.only')
+        if debrid_only == '': 
+            debrid_only = 'false'
         sort = control.setting('torrent.sort')
         if sort == '':
             sort = 'false'
@@ -987,8 +1005,10 @@ class sources:
                 filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster and 'magnet:' not in str(i['url'])]
             else:
                 filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster or str(i['url']).startswith('magnet:')]
-        filter += [i for i in self.sources if not i['source'].lower() in self.hostprDict and i['debridonly'] is False]
+ 
 
+        if debrid_only == 'false' or  debrid.status() == False:
+            filter += [i for i in self.sources if not i['source'].lower() in self.hostprDict and i['debridonly'] is False]
         self.sources = filter
 
         for i in range(len(self.sources)):
@@ -1093,6 +1113,8 @@ class sources:
 
             if d.lower() == 'real-debrid':
                 d = 'RD'
+            elif d.lower() == 'premiumize.me':
+                d = 'PM'
 
             if not d == '':
                 label = '%02d | [B]%s | %s[/B] | ' % (int(i+1), d, p)

@@ -197,6 +197,34 @@ elif action == 'westernliteNavigator':
     from resources.lib.indexers import bxsets
     bxsets.navigator().western(lite=True)
 
+elif action == 'collectionsNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collections()
+
+elif action == 'collectionActors':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collectionActors()
+
+elif action == 'collectionBoxset':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collectionBoxset()
+
+elif action == 'collectionBoxsetKids':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collectionBoxsetKids()
+
+elif action == 'collectionKids':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collectionKids()
+
+elif action == 'collectionSuperhero':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collectionSuperhero()
+
+elif action == 'collections':
+    from resources.lib.indexers import collections
+    collections.collections().get(url)    
+
 elif action == 'movies2':
     from resources.lib.indexers import movies2
     movies2.movies().get(url)

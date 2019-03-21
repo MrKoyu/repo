@@ -1074,3 +1074,23 @@ msgstr ""
 msgctxt "#32710"
 msgid "[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Marvel TV[/COLOR][B][COLOR firebrick] •[/COLOR][/B]"
 msgstr ""
+
+msgctxt "#32711"
+msgid "[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Collections[/COLOR]"
+msgstr ""
+
+msgctxt "#32712"
+msgid "[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]People Search[/COLOR][B][COLOR firebrick] •[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#70001"
+msgid "Debrid Providers"
+msgstr ""
+
+msgctxt "#70002"
+msgid "Torrent Providers"
+msgstr ""
+
+msgctxt "#32711"
+msgid "[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Collections[/COLOR]"
+msgstr ""

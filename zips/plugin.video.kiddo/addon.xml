@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.kiddo" name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B]" version="4.0.1.1" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
+<addon id="plugin.video.kiddo" name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B]" version="4.0.1.2" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
     <requires>
         <import addon="xbmc.python" version="2.19.0" />
         <import addon="script.module.universalscrapers" version="1.0.0" />
@@ -18,9 +18,9 @@
     <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>audio video</provides>
     </extension>
-    <extension point="xbmc.service" library="service.py" start="[login|startup]" />
+    <extension point="xbmc.arrakis" library="service.py" start="[login|startup]" />
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">Special thanks to [COLORgold]NuMbErS[/COLOR] who wrote all the xmls in this Addon giving me the start to maintain one of the best kids addon to date. True story.</summary>
+        <summary lang="en">Special thanks to [COLORgold]NuMbErS[/COLOR]</summary>
         <description lang="en">[COLORgold]PG - Parental Guidance Suggested - Some Mild Rude Humor. Some Material may not Be Suitable for Children.[/COLOR][CR]The author is not responsible for the use of this addon and does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]The Search process is the same as a search engine with no data actual hosted by the developer.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</description>
         <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
         <platform>all</platform>

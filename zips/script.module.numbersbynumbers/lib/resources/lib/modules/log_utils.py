@@ -32,7 +32,7 @@ from xbmc import (LOGDEBUG, LOGERROR, LOGFATAL, LOGINFO,  # @UnusedImport
 
 name = control.addonInfo('name')
 # Using color coding, for color formatted log viewers like Assassin's Tools
-DEBUGPREFIX = '[COLOR red][ ATREIDES DEBUG ][/COLOR]'
+DEBUGPREFIX = '[COLOR red][ NUMBERS DEBUG ][/COLOR]'
 LOGPATH = xbmc.translatePath('special://logpath/')
 
 

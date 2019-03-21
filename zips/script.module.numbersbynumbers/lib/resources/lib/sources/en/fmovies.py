@@ -32,7 +32,7 @@ import re,urllib,urlparse,json
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import dom_parser2
-from resources.lib.modules import client
+from resources.lib.modules import source_utils
 from resources.lib.modules import cfscrape
 
 
@@ -41,7 +41,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['fmovies.sc']
-        self.base_link = 'http://www4.fmovies.sc'
+        self.base_link = 'http://www5.fmovies.sc'
         self.search_link = '/watch/%s-%s-online.html'
         self.scraper = cfscrape.create_scraper()
         
@@ -82,6 +82,7 @@ class source:
     def sources(self, url, hostDict, hostprDict):
         try:
             sources = []
+            hostDict = hostprDict + hostDict
             if url == None: return sources
             
             r = self.scraper.get(url).content
@@ -96,17 +97,20 @@ class source:
             for i in r[0]:
                 url = {'url': i.attrs['href'], 'data-film': i.attrs['data-film'], 'data-server': i.attrs['data-server'],'data-name': i.attrs['data-name']}
                 url = urllib.urlencode(url)
-                sources.append({'source': i.content, 'quality': quality, 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
+                valid, host = source_utils.is_host_valid(i.content, hostDict)
+                if valid:
+                    sources.append({'source': i.content, 'quality': quality, 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
             return sources
         except:
-            return sources
+            return
 
     def resolve(self, url):
         try:
             urldata = urlparse.parse_qs(url)
             urldata = dict((i, urldata[i][0]) for i in urldata)
             post = {'ipplugins': 1,'ip_film': urldata['data-film'], 'ip_server': urldata['data-server'], 'ip_name': urldata['data-name'],'fix': "0"}
-            p1 = self.scraper.get('http://fmovies.sc/ip.file/swf/plugins/ipplugins.php', post=post, referer=urldata['url'], XHR=True).content
+            self.scraper.headers.update({'Referer': urldata['url'], 'X-Requested-With': 'XMLHttpRequest'})
+            p1 = self.scraper.post('http://fmovies.sc/ip.file/swf/plugins/ipplugins.php', data=post).content
             p1 = json.loads(p1)
             p2 = self.scraper.get('http://fmovies.sc/ip.file/swf/ipplayer/ipplayer.php?u=%s&s=%s&n=0' %(p1['s'],urldata['data-server'])).content
             p2 = json.loads(p2)
