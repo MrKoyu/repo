@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.hypersonicIPTV2"
        name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
-       version="4.3"
-       provider-name="GhostBuilder">
+       version="4.4"
+       provider-name="Hypersonic">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
@@ -14,7 +14,7 @@
   <extension point="xbmc.addon.metadata">
     <summary lang="en">[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]</summary>
     <language>en</language>
-    <description lang="en">[COLOR steelblue]Hypersonic[/COLOR] [COLOR white]IPTV[/COLOR] Official Addon - The Future of Great Quality and Stable Streams - for more info go to [COLOR yellowgreen]http://getnow.hypersonic-tv.com[/COLOR]. Regards, Hypersonic Team.</description>
+    <description lang="en">[COLOR steelblue]Hypersonic[/COLOR] [COLOR white]IPTV[/COLOR] Official Addon - The Future of Great Quality and Stable Streams - for more info go to [COLOR lime]https://gethypersonic.mytvpro.org[/COLOR]. Regards, Hypersonic Team.</description>
      <platform>all</platform>
   </extension>
 </addon>
