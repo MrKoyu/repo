@@ -1,3 +1,12 @@
+[B]Version 5.0[/B]
+- Fixed advanced settings
+- Fixed constantly buffering and kodi to crash on some devices
+- Hit default in addon settings the login again with your Username and Password to set a new advanced settings
+
+[B]Version 4.4[/B]
+- Added a few new categories including Series to home menu
+- Fixed empty categories
+
 [B]Version 4.3[/B]
 - Added US Documentary category 
 - Added SKY Sports category
