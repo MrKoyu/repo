@@ -301,7 +301,7 @@
 
 </addon>
 
-<addon id="plugin.video.numbersbynumbers" version="2.0.1.4" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold]░▒▓[/COLOR] [B][COLOR gold]Brackets[/COLOR][/B] [COLOR gold]▓▒░[/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.1.5" name="[COLOR white][B]NuMbErS[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
@@ -329,7 +329,7 @@
       <screenshot>resources/media/screenshot-02.jpg</screenshot>
       <screenshot>resources/media/screenshot-03.jpg</screenshot>
     </assets>
-    <news>V2.0.1.4
+    <news>V2.0.1.5
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</news>
         <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -526,7 +526,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="plugin.video.youtube" name="YouTube" version="6.4.0" provider-name="anxdpanic, bromix">
+<addon id="plugin.video.youtube" name="YouTube" version="6.4.1" provider-name="anxdpanic, bromix">
     <requires>
         <import addon="xbmc.python" version="2.20.0"/>
         <import addon="script.module.six" version="1.11.0"/>
@@ -540,24 +540,22 @@ provider-name="Team IVUE">
     <extension point="xbmc.python.module" library="resources/lib/"/>
     <extension point="xbmc.addon.metadata">
         <news>
-6.4.0
-[add] 4K videos with InputStream Adaptive >= v2.3.14
-        - Thanks to @peak3d
-[fix] some videos not playing when logged in
-[fix] reset function cache at restart/update to resolve issues persisting due to cached results
-[fix] service potentially not shutting down http server
-[fix] added to playlist/subscriptions notifications
-[fix] only generate mpeg-dash file if adaptive formats are available
-[fix] map frame rates to more common representation to lessen the chance of double refresh changes (applies only to generated mpeg-dash files)
-[fix] currently playing file check when playing file is a plugin:// url
-[chg] Settings - General - Autoplay suggested videos
-        - limit playlist size to 1000 videos
-        - request less relevant videos at one time
-        - old behavior: add 50 most relevant videos for each video played, repeats allowed
-            - result: a lot of barely relevant videos in groups of 50
-        - new behavior: add single most relevant video, no repeats
-            - result: next video is always the most relevant video to the last video played
-[upd] player javascript retrieval
+6.4.1
+[upd] Use the activation url provided by the authentication request
+[add] add Settings - MPEG-DASH - Default to WEBM adaptation set
+        - required for 4k stream automatic selection
+[add] add Settings - MPEG-DASH - Include VP9.2
+        - includes HDR content in the manifest
+[add] add support for &amp;hide_folders=true parameter in search query urls
+        - when added to the url it will hide the Playlists, Channels, and Live folders
+[add] &amp;seek=&lt;time_in_seconds&gt; to play urls
+[fix] fix playback of Purchases
+[fix] fixed saved playlists that don't belong to a channel
+[fix] mpeg-dash frame rate representation
+[fix] datetime parsing if no datetime string is available
+[chg] handle playback monitoring in threads
+[lang] nl_nl strings |contrib: MB1968|
+[lang] el_gr strings |contrib: twilight0|
         </news>
         <assets>
             <icon>icon.png</icon>
@@ -891,6 +889,27 @@ provider-name="Team IVUE">
 	</extension>
 </addon>
 
+<addon id="script.module.cherrypy"
+       name="CherryPy Kodi module"
+       version="11.0.1"
+       provider-name="marcelveldt, CherryPy Team">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0"/>
+        <import addon="script.module.six" version="1.9.0"/>
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>CherryPy webserver packaged as Kodi module</summary>
+        <description>CherryPy is a pythonic, object-oriented web framework
+            CherryPy allows developers to build web applications in much the same way they would build any other object-oriented Python program. This results in smaller source code developed in less time.
+            CherryPy is now more than ten years old and it is has proven to be very fast and stable. It is being used in production by many sites, from the simplest to the most demanding.
+        </description>
+        <license>BSD</license>
+        <source>https://github.com/marcelveldt/script.module.cherrypy</source>
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="script.module.bybmodules"
    name="BYB Modules"
    version="0.0.2.2"
@@ -987,7 +1006,7 @@ provider-name="Team IVUE">
     </extension>
 </addon>
 
-<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.051" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMbErS Module" version="1.00.052" provider-name="Brackets">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>

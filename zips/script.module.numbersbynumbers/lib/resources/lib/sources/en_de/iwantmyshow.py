@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
 
 '''
- ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
- ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
-▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
-▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
-▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
-░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
-░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
-   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
-         ░    ░            ░    ░         ░  ░   ░           ░  
-                                     ░                          
-
-    NuMbErS Add-on
-
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -92,7 +79,7 @@ class source:
             s = client.request(self.base_link)
             s = re.findall('\'(http.+?)\'', s) + re.findall('\"(http.+?)\"', s)
             s = [i for i in s if urlparse.urlparse(self.base_link).netloc in i and len(i.strip('/').split('/')) > 3]
-            s = s[0] if s else urlparse.urljoin(self.base_link, 'v2')
+            s = s[0] if s else urlparse.urljoin(self.base_link, 'vv')
             s = s.strip('/')
 
             url = s + self.search_link % urllib.quote_plus(query)

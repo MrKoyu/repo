@@ -6,6 +6,10 @@
 [COLOR deepskyblue]********************************************************************************************[/COLOR]
 
 [B][COLOR limegreen]V2.0.1.4[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed cf scrape
+[B][COLOR deepskyblue]• [/COLOR][/B] Removed broken Scrapers
+
+[B][COLOR limegreen]V2.0.1.4[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Debrid only
 [B][COLOR deepskyblue]• [/COLOR][/B] Added pre emptive termantion
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed username not showing for trakt in Kodi 18

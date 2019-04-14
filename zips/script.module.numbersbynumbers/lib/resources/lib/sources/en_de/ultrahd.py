@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
 
 '''
- ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
- ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
-▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
-▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
-▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
-░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
-░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
-   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
-         ░    ░            ░    ░         ░  ░   ░           ░  
-                                     ░                          
-
-    NuMbErS Add-on
-
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -28,21 +15,21 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re,traceback,urllib,urlparse
+import re,urllib,urlparse,os
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
+from resources.lib.modules import control
 from resources.lib.modules import debrid
-from resources.lib.modules import dom_parser2
-from resources.lib.modules import log_utils
 from resources.lib.modules import source_utils
+from resources.lib.modules import dom_parser2
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['ultrahdindir.com']
-        self.base_link = 'https://ultrahdindir.com/'
+        self.base_link = 'http://ultrahdindir.com'
         self.post_link = '/index.php?do=search'
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -50,107 +37,84 @@ class source:
             url = {'imdb': imdb, 'title': title, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('UltraHD - Exception: \n' + str(failure))
+        except Exception:
             return
 
     def sources(self, url, hostDict, hostprDict):
+        sources = []
         try:
-            sources = []
+            if url is None:
+                return sources
 
-            if url == None: return sources
-
-            if debrid.status() is False: raise Exception()
+            if debrid.status() is False:
+                raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
 
-            title = data['title'].replace(':','').lower()
-            year = data['year']
-
-            query = '%s %s' % (data['title'], data['year'])
-            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
-
-            url = urlparse.urljoin(self.base_link, self.post_link)
-
-            post = 'do=search&subaction=search&search_start=0&full_search=0&result_from=1&story=%s' % urllib.quote_plus(query)
-
+            post = {'query': data['imdb']}
+            url = urlparse.urljoin(self.base_link, 'engine/ajax/search.php')
             r = client.request(url, post=post)
-            r = client.parseDOM(r, 'div', attrs={'class': 'box-out margin'})
-            r = [(dom_parser2.parse_dom(i, 'div', attrs={'class':'news-title'})) for i in r if data['imdb'] in i]
-            r = [(dom_parser2.parse_dom(i[0], 'a', req='href')) for i in r if i]
-            r = [(i[0].attrs['href'], i[0].content) for i in r if i]
+            urls = client.parseDOM(r, 'a', ret='href')
+            urls = [i for i in urls if not data['imdb'] in i]
 
             hostDict = hostprDict + hostDict
-
-            for item in r:
+            links = []
+            for u in urls:
                 try:
-                    name = item[1]
-                    y = re.findall('\((\d{4})\)', name)[0]
-                    if not y == year: raise Exception()
+                    data = client.request(u)
+                    data = re.findall('</iframe>(.+?)QuoteEEnd--><br /><br', data, re.DOTALL)[0]
+                    links += re.findall('''start--><b>(.+?)</b>.+?<b><a href=['"](.+?)['"]''', data, re.DOTALL)
 
-                    s = re.findall('((?:\d+\.\d+|\d+\,\d+|\d+)\s*(?:GB|GiB|Gb|MB|MiB|Mb))', name)
-                    s = s[0] if s else '0'
-                    data = client.request(item[0])
-                    data = dom_parser2.parse_dom(data, 'div', attrs={'id': 'r-content'})
-                    data = re.findall('\s*<b><a href=.+?>(.+?)</b>.+?<u><b><a href="(.+?)".+?</a></b></u>',
-                                      data[0].content, re.DOTALL)
-                    u = [(i[0], i[1], s) for i in data if i]
-
-                    for name, url, size in u:
-                        try:
-                            if '4K' in name:
-                                quality = '4K'
-                                quality = '4K'					 				  
-                            elif '1080p' in name:
-                                quality = '1080p'
-                            elif '720p' in name:
-                                quality = '720p'
-                            elif any(i in ['dvdscr', 'r5', 'r6'] for i in name):
-                                quality = 'SCR'
-                            elif any(i in ['camrip', 'tsrip', 'hdcam', 'hdts', 'dvdcam', 'dvdts', 'cam', 'telesync', 'ts']
-                                     for i in name):
-                                quality = 'CAM'
-                            else: quality = '720p'
-
-                            info = []
-                            if '3D' in name or '.3D.' in url: info.append('3D'); quality = '1080p'
-                            if any(i in ['hevc', 'h265', 'x265'] for i in name): info.append('HEVC')
-                            try:
-                                size = re.findall('((?:\d+\.\d+|\d+\,\d+|\d+)\s*(?:GB|GiB|Gb|MB|MiB|Mb))', size)[-1]
-                                div = 1 if size.endswith(('Gb', 'GiB', 'GB')) else 1024
-                                size = float(re.sub('[^0-9|/.|/,]', '', size)) / div
-                                size = '%.2f GB' % size
-                                info.append(size)
-                            except:
-                                pass
-
-                            info = ' | '.join(info)
-
-                            url = client.replaceHTMLCodes(url)
-                            url = url.encode('utf-8')
-                            if any(x in url for x in ['.rar', '.zip', '.iso', 'turk']):continue
-
-                            if 'ftp' in url: host = 'COV'; direct = True;
-                            else: direct = False; host= 'turbobit.net'
-
-                            host = client.replaceHTMLCodes(host)
-                            host = host.encode('utf-8')
-
-                            sources.append({'source': host, 'quality': quality, 'language': 'en',
-                                            'url': url, 'info': info, 'direct': direct, 'debridonly': False})
-
-                        except:
-                            pass
-                except:
+                except Exception:
                     pass
+            links = [(i[0], i[1]) for i in links if not 'vip' in i[0].lower()]
+            for name, url in links:
+                    try:
+                        name = re.sub('<.+?>', '', name)
+                        if '4K' in name:
+                            quality = '4K'
+
+                        elif '1080p' in name:
+                            quality = '1080p'
+                        elif '720p' in name:
+                            quality = '720p'
+                        else:
+                            quality = 'SD'
+
+                        info = []
+                        if '3D' in name or '.3D.' in url:
+                            info.append('3D')
+                            quality = '1080p'
+                        if any(i in ['hevc', 'h265', 'x265'] for i in name): info.append('HEVC')
+
+                        info = ' | '.join(info)
+
+                        url = client.replaceHTMLCodes(url)
+                        url = url.encode('utf-8')
+                        if any(x in url for x in ['.rar', '.zip', '.iso', 'turk']): raise Exception()
+
+                        if 'ftp' in url:
+                            host = 'CDN'
+                            direct = True
+                        else:
+                            valid, host = source_utils.is_host_valid(url, hostDict)
+                            if not valid: raise Exception()
+                            host = host
+                            direct = False
+
+                        host = client.replaceHTMLCodes(host)
+                        host = host.encode('utf-8')
+
+                        sources.append({'source': host, 'quality': quality, 'language': 'en',
+                                        'url': url, 'info': info, 'direct': direct, 'debridonly': True})
+                    except Exception:
+                        pass
 
             return sources
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('UltraHD - Exception: \n' + str(failure))
+        except Exception:
             return sources
+
 
     def resolve(self, url):
         return url

@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
 
 '''
- ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
- ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
-▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
-▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
-▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
-░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
-░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
-   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
-         ░    ░            ░    ░         ░  ░   ░           ░  
-                                     ░                          
-
-    NuMbErS Add-on
-
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +16,7 @@
 '''
 
 import re
-from resources.lib.modules import client,cleantitle,source_utils
+from resources.lib.modules import client,cleantitle,source_utils, cfscrape
 
 
 class source:
@@ -39,6 +26,7 @@ class source:
         self.domains = ['deepmovie.ch']
         self.base_link = 'https://www.deepmovie.ch'
         self.search_link = '/%s/'
+        self.scraper = cfscrape.create_scraper()
 
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -52,7 +40,7 @@ class source:
     def sources(self, url, hostDict, hostprDict):
         try:
             sources = []
-            r = client.request(url)
+            r = self.scraper.get(url).content
             try:
                 qual = re.compile('class="quality">(.+?)<').findall(r)
                 for i in qual:
