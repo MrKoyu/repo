@@ -17,13 +17,15 @@
 #  http://www.gnu.org/copyleft/gpl.html                                        #
 ################################################################################
 
-import os, re, shutil, time, xbmc, xbmcaddon, wizard as wiz
+import os, re, shutil, time, xbmc, xbmcaddon, thread, wizard as wiz, uservar
 try:
 	import json as simplejson 
 except:
 	import simplejson
 
 KODIV  = float(xbmc.getInfoLabel("System.BuildVersion")[:4])
+COLOR1 = uservar.COLOR1
+COLOR2 = uservar.COLOR2
 
 def getOld(old):
 	try:
@@ -72,10 +74,20 @@ def swapUS():
 	value = 'true'
 	query = '{"jsonrpc":"2.0", "method":"Settings.GetSettingValue","params":{"setting":%s}, "id":1}' % (new)
 	response = xbmc.executeJSONRPC(query)
-	wiz.log("get settings: %s" % str(response), xbmc.LOGDEBUG)
+	wiz.log("Unknown Sources Get Settings: %s" % str(response), xbmc.LOGDEBUG)
 	if 'false' in response:
+		thread.start_new_thread(dialogWatch, ())
+		xbmc.sleep(200)
 		query = '{"jsonrpc":"2.0", "method":"Settings.SetSettingValue","params":{"setting":%s,"value":%s}, "id":1}' % (new, value)
 		response = xbmc.executeJSONRPC(query)
-		wiz.ebi('SendClick(11)')
-		wiz.log("set settings: %s" % str(response), xbmc.LOGDEBUG)
-	return False
+		wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE), '[COLOR %s]Unknown Sources:[/COLOR] [COLOR %s]Enabled[/COLOR]' % (COLOR1, COLOR2))
+		wiz.log("Unknown Sources Set Settings: %s" % str(response), xbmc.LOGDEBUG)
+		
+def dialogWatch():
+	x = 0
+	while not xbmc.getCondVisibility("Window.isVisible(yesnodialog)") and x < 100:
+		x += 1
+		xbmc.sleep(100)
+	
+	if xbmc.getCondVisibility("Window.isVisible(yesnodialog)"):
+		xbmc.executebuiltin('SendClick(11)')

@@ -2,10 +2,14 @@
 
 [B][COLOR lime]• [/COLOR][/B] [COLOR deepskyblue]CURRENT STATUS:[/COLOR] Outstanding!
 
- 
-[COLOR deepskyblue]********************************************************************************************[/COLOR]
+ [COLOR deepskyblue]********************************************************************************************[/COLOR]
 
-[B][COLOR limegreen]V2.0.1.4[/COLOR][/B]
+
+[B][COLOR limegreen]V2.0.1.6[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+
+[B][COLOR limegreen]V2.0.1.5[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed cf scrape
 [B][COLOR deepskyblue]• [/COLOR][/B] Removed broken Scrapers
 

@@ -42,9 +42,11 @@ USERDATA       = os.path.join(HOME,     'userdata')
 PLUGIN         = os.path.join(ADDONS,   ADDON_ID)
 PACKAGES       = os.path.join(ADDONS,   'packages')
 ADDONDATA      = os.path.join(USERDATA, 'addon_data', ADDON_ID)
+TEXTCACHE      = os.path.join(ADDONDATA, 'Cache')
 FANART         = os.path.join(ADDONPATH,'fanart.jpg')
 ICON           = os.path.join(ADDONPATH,'icon.png')
 ART            = os.path.join(ADDONPATH,'resources', 'art')
+ADVANCED       = os.path.join(USERDATA, 'advancedsettings.xml')
 SKIN           = xbmc.getSkinDir()
 BUILDNAME      = wiz.getS('buildname')
 DEFAULTSKIN    = wiz.getS('defaultskin')
@@ -81,6 +83,8 @@ TOMORROW       = TODAY + timedelta(days=1)
 TWODAYS        = TODAY + timedelta(days=2)
 THREEDAYS      = TODAY + timedelta(days=3)
 ONEWEEK        = TODAY + timedelta(days=7)
+SKINCHECK      = ['skin.aftermath.zephyr', 'skin.aftermath.silvo', 'skin.aftermath.simple', 'skin.ccm.aftermath']
+RAM            = int(xbmc.getInfoLabel("System.Memory(total)")[:-2])
 KODIV          = float(xbmc.getInfoLabel("System.BuildVersion")[:4])
 EXCLUDES       = uservar.EXCLUDES
 BUILDFILE      = uservar.BUILDFILE
@@ -106,7 +110,9 @@ FAILED         = False
 def checkUpdate():
 	BUILDNAME      = wiz.getS('buildname')
 	BUILDVERSION   = wiz.getS('buildversion')
-	link           = wiz.openURL(BUILDFILE).replace('\n','').replace('\r','').replace('\t','')
+	bf             = wiz.textCache(BUILDFILE)
+	if bf == False: return
+	link           = bf.replace('\n','').replace('\r','').replace('\t','')
 	match          = re.compile('name="%s".+?ersion="(.+?)".+?con="(.+?)".+?anart="(.+?)"' % BUILDNAME).findall(link)
 	if len(match) > 0:
 		version = match[0][0]
@@ -120,6 +126,62 @@ def checkUpdate():
 			else: wiz.log("[Check Updates] [Installed Version: %s] [Current Version: %s] Update Window Disabled" % (BUILDVERSION, version), xbmc.LOGNOTICE)
 		else: wiz.log("[Check Updates] [Installed Version: %s] [Current Version: %s]" % (BUILDVERSION, version), xbmc.LOGNOTICE)
 	else: wiz.log("[Check Updates] ERROR: Unable to find build version in build text file", xbmc.LOGERROR)
+
+def checkInstalled():
+	current = ''
+	for skin in SKINCHECK:
+		skinpath = os.path.join(ADDONS,skin)
+		if os.path.exists(skinpath):
+			current = skin
+	if current == SKINCHECK[0]:
+		yes_pressed = DIALOG.yesno(ADDONTITLE,"[COLOR dodgerblue]Aftermath[/COLOR] Zephyr is currently outdated and is no longer being updated.", "Please download one of the newer community builds.", yeslabel="Build Menu", nolabel="Ignore")
+		if yes_pressed:	xbmc.executebuiltin('ActivateWindow(10025 , "plugin://%s/?mode=builds", return)' % ADDON_ID)
+		else: DIALOG.ok(ADDONTITLE, 'You can still install a community build from the [COLOR dodgerblue]Aftermath[/COLOR] Wizard.')
+	elif current == SKINCHECK[1]:
+		yes_pressed = DIALOG.yesno(ADDONTITLE,"[COLOR dodgerblue]Aftermath[/COLOR] Silvo is currently outdated and is no longer being updated.", "Please download one of the newer community builds.", yeslabel="Build Menu", nolabel="Ignore")
+		if yes_pressed:	xbmc.executebuiltin('ActivateWindow(10025 , "plugin://%s/?mode=builds", return)' % ADDON_ID)
+		else: DIALOG.ok(ADDONTITLE, 'You can still install a community build from the [COLOR dodgerblue]Aftermath[/COLOR] Wizard.')
+	elif current == SKINCHECK[2]:
+		if KODIV >= 16:
+			gui   = os.path.join(ADDOND, SKINCHECK[2], 'settings.xml')
+			f     = open(gui,mode='r'); g = f.read(); f.close()
+			match = re.compile('<setting id=\"SubSettings.3.Label\" type=\"string\">(.+?)<\/setting>').findall(g)
+			if len(match):
+				name, build, ver = match[0].replace('[COLOR dodgerblue]','').replace('[/COLOR]','').split(' ')
+			else:
+				build = "Simple"
+				ver = "v0.1"
+		else:
+			gui   = os.path.join(USERDATA,'guisettings.xml')
+			f     = open(gui,mode='r'); g = f.read(); f.close()
+			match = re.compile('<setting type=\"string\" name=\"skin.aftermath.simple.SubSettings.3.Label\">(.+?)<\/setting>').findall(g)
+			name, build, ver = match[0].replace('[COLOR dodgerblue]','').replace('[/COLOR]','').split(' ')
+		wiz.setS('buildname', 'Aftermath %s' % build)
+		wiz.setS('buildversion', ver[1:])
+		wiz.setS('lastbuildcheck', str(NEXTCHECK))
+		checkUpdate()
+	elif current == SKINCHECK[3]:
+		yes_pressed = DIALOG.yesno(ADDONTITLE,"[COLOR dodgerblue]Aftermath[/COLOR] CCM is currently outdated and is no longer being updated.", "Please download one of the newer community builds.", yeslabel="Build Menu", nolabel="Ignore")
+		if yes_pressed:	xbmc.executebuiltin('ActivateWindow(10025 , "plugin://%s/?mode=builds", return)' % ADDON_ID)
+		else: DIALOG.ok(ADDONTITLE, 'You can still install a community build from the [COLOR dodgerblue]Aftermath[/COLOR] Wizard.')
+	else:
+		notify.firstRunSettings()
+		notify.firstRun()
+
+def writeAdvanced():
+	if RAM > 1536: buffer = '209715200'
+	else: buffer = '104857600'
+	with open(ADVANCED, 'w+') as f:
+		f.write('<advancedsettings>\n')
+		f.write('	<network>\n')
+		f.write('		<buffermode>2</buffermode>\n')
+		f.write('		<cachemembuffersize>%s</cachemembuffersize>\n' % buffer)
+		f.write('		<readbufferfactor>5</readbufferfactor>\n')
+		f.write('		<curlclienttimeout>10</curlclienttimeout>\n')
+		f.write('		<curllowspeedtime>10</curllowspeedtime>\n')
+		f.write('	</network>\n')
+		f.write('</advancedsettings>\n')
+	f.close()
 
 def checkSkin():
 	wiz.log("[Build Check] Invalid Skin Check Start")
@@ -152,7 +214,7 @@ def checkSkin():
 				if DIALOG.yesno(ADDONTITLE, "[COLOR %s]It seems that the skin has been set back to [COLOR %s]%s[/COLOR]" % (COLOR2, COLOR1, SKIN[5:].title()), "Would you like to view a list of avaliable skins?[/COLOR]"):
 					choice = DIALOG.select("Select skin to switch to!", skinname)
 					if choice == -1: wiz.log("Skin was not reset", xbmc.LOGNOTICE); wiz.setS('defaultskinignore', 'true')
-					else: 
+					else:
 						gotoskin = skinlist[choice]
 						gotoname = skinname[choice]
 				else: wiz.log("Skin was not reset", xbmc.LOGNOTICE); wiz.setS('defaultskinignore', 'true')
@@ -163,17 +225,8 @@ def checkSkin():
 				else: wiz.log("Skin was not reset", xbmc.LOGNOTICE); wiz.setS('defaultskinignore', 'true')
 		else: wiz.log("No skins found in addons folder.", xbmc.LOGNOTICE); wiz.setS('defaultskinignore', 'true'); gotoskin = False
 	if gotoskin:
-		skinSwitch.swapSkins(gotoskin)
-		x = 0
-		xbmc.sleep(1000)
-		while not xbmc.getCondVisibility("Window.isVisible(yesnodialog)") and x < 150:
-			x += 1
-			xbmc.sleep(200)
-
-		if xbmc.getCondVisibility("Window.isVisible(yesnodialog)"):
-			wiz.ebi('SendClick(11)')
+		if wiz.swapSkins(gotoskin):
 			wiz.lookandFeelData('restore')
-		else: wiz.LogNotify("[COLOR %s]%s[/COLOR]" % (COLOR1, ADDONTITLE),'[COLOR %s]Skin Swap Timed Out![/COLOR]' % COLOR2)
 	wiz.log("[Build Check] Invalid Skin Check End", xbmc.LOGNOTICE)
 
 while xbmc.Player().isPlayingVideo():
@@ -220,6 +273,9 @@ try:
 except:
 	pass
 
+wiz.log("Flushing Aged Cached Text Files")
+wiz.flushOldCache()
+
 wiz.log("[Auto Install Repo] Started", xbmc.LOGNOTICE)
 if AUTOINSTALL == 'Yes' and not os.path.exists(os.path.join(ADDONS, REPOID)):
 	workingxml = wiz.workingURL(REPOADDONXML)
@@ -247,12 +303,12 @@ if AUTOINSTALL == 'Yes' and not os.path.exists(os.path.join(ADDONS, REPOID)):
 				xbmc.sleep(500)
 				wiz.forceUpdate(True)
 				wiz.log("[Auto Install Repo] Successfully Installed", xbmc.LOGNOTICE)
-			else: 
+			else:
 				wiz.LogNotify("[COLOR %s]Repo Install Error[/COLOR]" % COLOR1, "[COLOR %s]Invalid url for zip![/COLOR]" % COLOR2)
 				wiz.log("[Auto Install Repo] Was unable to create a working url for repository. %s" % workingrepo, xbmc.LOGERROR)
 		else:
 			wiz.log("Invalid URL for Repo Zip", xbmc.LOGERROR)
-	else: 
+	else:
 		wiz.LogNotify("[COLOR %s]Repo Install Error[/COLOR]" % COLOR1, "[COLOR %s]Invalid addon.xml file![/COLOR]" % COLOR2)
 		wiz.log("[Auto Install Repo] Unable to read the addon.xml file.", xbmc.LOGERROR)
 elif not AUTOINSTALL == 'Yes': wiz.log("[Auto Install Repo] Not Enabled", xbmc.LOGNOTICE)
@@ -301,7 +357,7 @@ if INSTALLED == 'true':
 		yes=DIALOG.yesno(ADDONTITLE, '[COLOR %s]%s[/COLOR] [COLOR %s]was not installed correctly!' % (COLOR1, COLOR2, BUILDNAME), 'Installed: [COLOR %s]%s[/COLOR] / Error Count: [COLOR %s]%s[/COLOR]' % (COLOR1, EXTRACT, COLOR1, EXTERROR), 'Would you like to try again?[/COLOR]', nolabel='[B]No Thanks![/B]', yeslabel='[B]Retry Install[/B]')
 		wiz.clearS('build')
 		FAILED = True
-		if yes: 
+		if yes:
 			wiz.ebi("PlayMedia(plugin://%s/?mode=install&name=%s&url=fresh)" % (ADDON_ID, urllib.quote_plus(BUILDNAME)))
 			wiz.log("[Installed Check] Fresh Install Re-activated", xbmc.LOGNOTICE)
 		else: wiz.log("[Installed Check] Reinstall Ignored")
@@ -310,15 +366,7 @@ if INSTALLED == 'true':
 		defaults = wiz.getS('defaultskin')
 		if not defaults == '':
 			if os.path.exists(os.path.join(ADDONS, defaults)):
-				skinSwitch.swapSkins(defaults)
-				x = 0
-				xbmc.sleep(1000)
-				while not xbmc.getCondVisibility("Window.isVisible(yesnodialog)") and x < 150:
-					x += 1
-					xbmc.sleep(200)
-
-				if xbmc.getCondVisibility("Window.isVisible(yesnodialog)"):
-					wiz.ebi('SendClick(11)')
+				if wiz.swapSkins(defaults):
 					wiz.lookandFeelData('restore')
 		if not wiz.currSkin() == defaults and not BUILDNAME == "":
 			gui = wiz.checkBuild(BUILDNAME, 'gui')
@@ -351,10 +399,7 @@ if FAILED == False:
 		wiz.log("[Build Check] Not a valid URL for Build File: %s" % BUILDFILE, xbmc.LOGNOTICE)
 	elif BUILDCHECK == '' and BUILDNAME == '':
 		wiz.log("[Build Check] First Run", xbmc.LOGNOTICE)
-		notify.firstRunSettings()
-		xbmc.sleep(500)
-		notify.firstRun()
-		xbmc.sleep(500)
+		checkInstalled()
 		wiz.setS('lastbuildcheck', str(NEXTCHECK))
 	elif not BUILDNAME == '':
 		wiz.log("[Build Check] Build Installed", xbmc.LOGNOTICE)
@@ -367,8 +412,8 @@ if FAILED == False:
 			wiz.log("[Build Check] Build Installed: Checking Updates", xbmc.LOGNOTICE)
 			wiz.setS('lastbuildcheck', str(NEXTCHECK))
 			checkUpdate()
-		else: 
-			wiz.log("[Build Check] Build Installed: Next check isnt until: %s / TODAY is: %s" % (BUILDCHECK, str(TODAY)), xbmc.LOGNOTICE)
+		else:
+			wiz.log("[Build Check] Build Installed: Next check isn't until: %s / TODAY is: %s" % (BUILDCHECK, str(TODAY)), xbmc.LOGNOTICE)
 
 wiz.log("[Trakt Data] Started", xbmc.LOGNOTICE)
 if KEEPTRAKT == 'true':
@@ -376,29 +421,29 @@ if KEEPTRAKT == 'true':
 		wiz.log("[Trakt Data] Saving all Data", xbmc.LOGNOTICE)
 		traktit.autoUpdate('all')
 		wiz.setS('traktlastsave', str(THREEDAYS))
-	else: 
-		wiz.log("[Trakt Data] Next Auto Save isnt until: %s / TODAY is: %s" % (TRAKTSAVE, str(TODAY)), xbmc.LOGNOTICE)
+	else:
+		wiz.log("[Trakt Data] Next Auto Save isn't until: %s / TODAY is: %s" % (TRAKTSAVE, str(TODAY)), xbmc.LOGNOTICE)
 else: wiz.log("[Trakt Data] Not Enabled", xbmc.LOGNOTICE)
 
-wiz.log("[Real Debrid Data] Started", xbmc.LOGNOTICE)
+wiz.log("[Debrid Data] Started", xbmc.LOGNOTICE)
 if KEEPREAL == 'true':
 	if REALSAVE <= str(TODAY):
-		wiz.log("[Real Debrid Data] Saving all Data", xbmc.LOGNOTICE)
+		wiz.log("[Debrid Data] Saving all Data", xbmc.LOGNOTICE)
 		debridit.autoUpdate('all')
 		wiz.setS('debridlastsave', str(THREEDAYS))
-	else: 
-		wiz.log("[Real Debrid Data] Next Auto Save isnt until: %s / TODAY is: %s" % (REALSAVE, str(TODAY)), xbmc.LOGNOTICE)
+	else:
+		wiz.log("[Debrid Data] Next Auto Save isn't until: %s / TODAY is: %s" % (REALSAVE, str(TODAY)), xbmc.LOGNOTICE)
 else: wiz.log("[Real Debrid Data] Not Enabled", xbmc.LOGNOTICE)
 
-wiz.log("[Login Data] Started", xbmc.LOGNOTICE)
+wiz.log("[Login Info] Started", xbmc.LOGNOTICE)
 if KEEPLOGIN == 'true':
 	if LOGINSAVE <= str(TODAY):
-		wiz.log("[Login Data] Saving all Data", xbmc.LOGNOTICE)
+		wiz.log("[Login Info] Saving all Data", xbmc.LOGNOTICE)
 		loginit.autoUpdate('all')
 		wiz.setS('loginlastsave', str(THREEDAYS))
-	else: 
-		wiz.log("[Login Data] Next Auto Save isnt until: %s / TODAY is: %s" % (LOGINSAVE, str(TODAY)), xbmc.LOGNOTICE)
-else: wiz.log("[Login Data] Not Enabled", xbmc.LOGNOTICE)
+	else:
+		wiz.log("[Login Info] Next Auto Save isn't until: %s / TODAY is: %s" % (LOGINSAVE, str(TODAY)), xbmc.LOGNOTICE)
+else: wiz.log("[Login Info] Not Enabled", xbmc.LOGNOTICE)
 
 wiz.log("[Auto Clean Up] Started", xbmc.LOGNOTICE)
 if AUTOCLEANUP == 'true':

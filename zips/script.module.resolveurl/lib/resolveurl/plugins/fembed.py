@@ -23,8 +23,8 @@ from resolveurl.resolver import ResolveUrl, ResolverError
 
 class FembedResolver(ResolveUrl):
     name = "fembed"
-    domains = ["fembed.com", "24hd.club"]
-    pattern = '(?://|\.)((?:fembed\.com|24hd\.club))/v/([a-zA-Z0-9]+)'
+    domains = ["fembed.com", "24hd.club", "vcdn.io"]
+    pattern = '(?://|\.)((?:fembed\.com|24hd\.club|vcdn\.io))/v/([a-zA-Z0-9]+)'
 
     def __init__(self):
         self.net = common.Net()
@@ -39,7 +39,7 @@ class FembedResolver(ResolveUrl):
             try:
                 js_data = json.loads(js_result)
                 if js_data.get('success'):
-                    sources = [(i.get('label'), 'https://www.%s%s' % (host, i.get('file'))) for i in js_data.get('data') if i.get('type') == 'mp4']
+                    sources = [(i.get('label'), i.get('file')) for i in js_data.get('data') if i.get('type') == 'mp4']
                     common.logger.log(sources)
                     sources = helpers.sort_sources_list(sources)
                     return helpers.pick_source(sources) + helpers.append_headers(headers)

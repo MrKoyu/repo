@@ -2,7 +2,7 @@
 <window>
     <coordinates>
         <left>635</left>
-        <top>180</top>
+        <top>160</top>
     </coordinates>
     <controls>
         <control type="group">
@@ -11,7 +11,7 @@
                 <posx>0</posx>
                 <posy>0</posy>
                 <width>650</width>
-                <height>720</height>
+                <height>765</height>
                 <texture border="2">Background/loguploader-dialog-bg.png</texture>
             </control>
             <control type="image">
@@ -269,7 +269,7 @@
         <control type="group" id="9001">
             <control type="button" id="201">
                 <left>350</left>
-                <top>630</top>
+                <top>675</top>
                 <width>300</width>
                 <height>90</height>
                 <font>font13</font>

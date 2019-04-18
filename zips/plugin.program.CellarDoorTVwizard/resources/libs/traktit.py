@@ -39,7 +39,7 @@ PLUGIN         = os.path.join(ADDONS,    ADDON_ID)
 PACKAGES       = os.path.join(ADDONS,    'packages')
 ADDONDATA      = os.path.join(USERDATA,  'addon_data', ADDON_ID)
 ADDOND         = os.path.join(USERDATA,  'addon_data')
-TRAKTFOLD      = os.path.join(ADDONDATA, 'Trakt')
+TRAKTFOLD      = os.path.join(ADDONDATA, 'trakt')
 ICON           = os.path.join(PLUGIN,    'icon.png')
 TODAY          = date.today()
 TOMORROW       = TODAY + timedelta(days=1)
@@ -48,153 +48,129 @@ KEEPTRAKT      = wiz.getS('keeptrakt')
 TRAKTSAVE      = wiz.getS('traktlastsave')
 COLOR1         = uservar.COLOR1
 COLOR2         = uservar.COLOR2
-ORDER          = ['elysium', 'placenta', 'genesis reborn', 'incursion', 'cerebro', 'salts', 'death streams', 'neptune rising', 'velocity', 'metalliq', 'meta', 'trakt']
+ORDER          = ['exodusredux', 'gaia', 'openmeta', 'overeasy', 'placenta', 'premiumizer', 'realizer', 'seren', 'trakt', 'yoda']
 
-TRAKTID = { 
-	'elysium': {
-		'name'     : 'Elysium',
-		'plugin'   : 'plugin.video.elysium',
-		'saved'    : 'elysium',
-		'path'     : os.path.join(ADDONS, 'plugin.video.elysium'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.elysium', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.elysium', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'elysium_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.elysium', 'settings.xml'),
-		'default'  : 'trakt.user',
-		'data'     : ['trakt.user', 'trakt.token', 'trakt.refresh'],
-		'activate' : 'RunPlugin(plugin://plugin.video.elysium/?action=authTrakt)'},
-	'placenta': {
-		'name'     : 'Placenta',
-		'plugin'   : 'plugin.video.placenta',
-		'saved'    : 'placenta',
-		'path'     : os.path.join(ADDONS, 'plugin.video.placenta'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.placenta', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.placenta', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'placenta_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.placenta', 'settings.xml'),
-		'default'  : 'trakt.user',
-		'data'     : ['trakt.user', 'trakt.refresh', 'trakt.token'],
-		'activate' : 'RunPlugin(plugin://plugin.video.placenta/?action=authTrakt)'},
-	'genesis reborn': {
-		'name'     : 'Genesis Reborn',
-		'plugin'   : 'plugin.video.genesisreborn',
-		'saved'    : 'genesisreborn',
-		'path'     : os.path.join(ADDONS, 'plugin.video.genesisreborn'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.genesisreborn', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.genesisreborn', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'elysium_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.genesisreborn', 'settings.xml'),
-		'default'  : 'trakt.user',
-		'data'     : ['trakt.user', 'trakt.token', 'trakt.refresh'],
-		'activate' : 'RunPlugin(plugin://plugin.video.genesisreborn/?action=authTrakt)'},
-	'incursion': {
-		'name'     : 'Incursion',
-		'plugin'   : 'plugin.video.incursion',
-		'saved'    : 'incursion',
-		'path'     : os.path.join(ADDONS, 'plugin.video.incursion'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.incursion', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.incursion', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'elysium_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.incursion', 'settings.xml'),
-		'default'  : 'trakt.user',
-		'data'     : ['trakt.user', 'trakt.token', 'trakt.refresh'],
-		'activate' : 'RunPlugin(plugin://plugin.video.incursion/?action=authTrakt)'},
-	'cerebro': {
-		'name'     : 'Cerebro',
-		'plugin'   : 'plugin.video.showboxarize2',
-		'saved'    : 'cerebo',
-		'path'     : os.path.join(ADDONS, 'plugin.video.showboxarize2'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.showboxarize2', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.showboxarize2', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'showboxarize2_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.showboxarize2', 'settings.xml'),
-		'default'  : 'trakt.user',
-		'data'     : ['trakt.user', 'trakt.refresh', 'trakt.token'],
-		'activate' : 'RunPlugin(plugin://plugin.video.showboxarize2/?action=authTrakt)'},
-	'salts': {
-		'name'     : 'Streaming All The Sources',
-		'plugin'   : 'plugin.video.salts',
-		'saved'    : 'salts',
-		'path'     : os.path.join(ADDONS, 'plugin.video.salts'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.salts', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.salts', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'salts_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.salts', 'settings.xml'),
-		'default'  : 'trakt_user',
-		'data'     : ['trakt_oauth_token', 'trakt_refresh_token', 'trakt_user'],
-		'activate' : 'RunPlugin(plugin://plugin.video.salts/?mode=auth_trakt)'},
-	'death streams': {
-		'name'     : 'Death Streams',
-		'plugin'   : 'plugin.video.blamo',
-		'saved'    : 'Death Streams',
-		'path'     : os.path.join(ADDONS, 'plugin.video.blamo'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.blamo', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.blamo', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'blamo_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.blamo', 'settings.xml'),
-		'default'  : 'trakt_user',
-		'data'     : ['trakt_oauth_token', 'trakt_refresh_token', 'trakt_user'],
-		'activate' : 'RunPlugin(plugin://plugin.video.blamo/?mode=auth_trakt)'},
-	'neptune rising': {
-		'name'     : 'Neptune Rising',
-		'plugin'   : 'plugin.video.neptune',
-		'saved'    : 'neptune rising',
-		'path'     : os.path.join(ADDONS, 'plugin.video.neptune'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.neptune', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.neptune', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'neptune_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.neptune', 'settings.xml'),
-		'default'  : 'trakt.user',
-		'data'     : ['trakt.user', 'trakt.token', 'trakt.refresh'],
-		'activate' : 'RunPlugin(plugin://plugin.video.neptune/?action=authTrakt)'},
-	'velocity': {
-		'name'     : 'Velocity',
-		'plugin'   : 'plugin.video.velocity',
-		'saved'    : 'velocity',
-		'path'     : os.path.join(ADDONS, 'plugin.video.velocity'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.velocity', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.velocity', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'velocity_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.velocity', 'settings.xml'),
-		'default'  : 'trakt_username',
-		'data'     : ['trakt_authorized', 'trakt_username', 'trakt_oauth_token', 'trakt_refresh_token'],
-		'activate' : 'RunPlugin(plugin://plugin.video.velocity/?mode=get_pin)'},
-	'metalliq': {
-		'name'     : 'MetalliQ',
-		'plugin'   : 'plugin.video.metalliq',
-		'saved'    : 'metalliq',
-		'path'     : os.path.join(ADDONS, 'plugin.video.metalliq'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.metalliq', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.metalliq', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'metalliq_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.metalliq', 'settings.xml'),
-		'default'  : 'trakt_access_token',
-		'data'     : ['trakt_access_token', 'trakt_refresh_token', 'trakt_expires_at'],
-		'activate' : 'RunPlugin(plugin://plugin.video.metalliq/authenticate_trakt)'},
-	'meta': {
-		'name'     : 'Meta',
-		'plugin'   : 'plugin.video.meta',
-		'saved'    : 'meta',
-		'path'     : os.path.join(ADDONS, 'plugin.video.meta'),
-		'icon'     : os.path.join(ADDONS, 'plugin.video.meta', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'plugin.video.meta', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'meta_trakt'),
-		'settings' : os.path.join(ADDOND, 'plugin.video.meta', 'settings.xml'),
-		'default'  : 'trakt_access_token',
-		'data'     : ['trakt_access_token', 'trakt_refresh_token', 'trakt_expires_at'],
-		'activate' : 'RunPlugin(plugin://plugin.video.meta/authenticate_trakt)'},
-	'trakt': {
-		'name'     : 'Trakt',
-		'plugin'   : 'script.trakt',
-		'saved'    : 'trakt',
-		'path'     : os.path.join(ADDONS, 'script.trakt'),
-		'icon'     : os.path.join(ADDONS, 'script.trakt', 'icon.png'),
-		'fanart'   : os.path.join(ADDONS, 'script.trakt', 'fanart.jpg'),
-		'file'     : os.path.join(TRAKTFOLD, 'trakt_trakt'),
-		'settings' : os.path.join(ADDOND, 'script.trakt', 'settings.xml'),
-		'default'  : 'user',
-		'data'     : ['user', 'Auth_Info', 'authorization'],
-		'activate' : 'RunScript(script.trakt, action=auth_info)'}
+TRAKTID = {
+    'placenta': {
+        'name'     : 'Placenta',
+        'plugin'   : 'plugin.video.placenta',
+        'saved'    : 'placenta',
+        'path'     : os.path.join(ADDONS, 'plugin.video.placenta'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.placenta', 'icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.placenta', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'placenta_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.placenta', 'settings.xml'),
+        'default'  : 'trakt.user',
+        'data'     : ['trakt.user', 'trakt.refresh', 'trakt.token'],
+        'activate' : 'RunPlugin(plugin://plugin.video.placenta/?action=authTrakt)'},
+    'gaia': {
+        'name'     : 'Gaia',
+        'plugin'   : 'plugin.video.gaia',
+        'saved'    : 'gaia',
+        'path'     : os.path.join(ADDONS, 'plugin.video.gaia'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.gaia', 'icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.gaia', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'gaia_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.gaia', 'settings.xml'),
+        'default'  : 'accounts.informants.trakt.user',
+        'data'     : ['accounts.informants.trakt.user', 'accounts.informants.trakt.refresh', 'accounts.informants.trakt.token'],
+        'activate' : 'RunPlugin(plugin://plugin.video.gaia/?action=traktAuthorize)'},
+    'overeasy': {
+        'name'     : 'Overeasy',
+        'plugin'   : 'plugin.video.overeasy',
+        'saved'    : 'overeasy',
+        'path'     : os.path.join(ADDONS, 'plugin.video.overeasy'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.overeasy', 'icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.overeasy', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'overeasy_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.overeasy', 'settings.xml'),
+        'default'  : 'trakt.user',
+        'data'     : ['trakt.refresh', 'trakt.token', 'trakt.user'],
+        'activate' : 'RunPlugin(plugin://plugin.video.overeasy/?action=authTrakt)'},
+    'seren': {
+        'name'     : 'Seren',
+        'plugin'   : 'plugin.video.seren',
+        'saved'    : 'seren',
+        'path'     : os.path.join(ADDONS, 'plugin.video.seren'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.seren', 'temp-icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.seren', 'temp-fanart.png'),
+        'file'     : os.path.join(TRAKTFOLD, 'seren_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.seren', 'settings.xml'),
+        'default'  : 'trakt.username',
+        'data'     : ['trakt.auth', 'trakt.refresh', 'trakt.username'],
+        'activate' : 'RunPlugin(plugin://plugin.video.seren/?action=authTrakt)'},
+    'trakt': {
+        'name'     : 'Trakt',
+        'plugin'   : 'script.trakt',
+        'saved'    : 'trakt',
+        'path'     : os.path.join(ADDONS, 'script.trakt'),
+        'icon'     : os.path.join(ADDONS, 'script.trakt', 'icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'script.trakt', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'trakt_trakt'),
+        'settings' : os.path.join(ADDOND, 'script.trakt', 'settings.xml'),
+        'default'  : 'user',
+        'data'     : ['authorization', 'user'],
+        'activate' : 'RunScript(script.trakt, action=auth_info)'},
+    'exodusredux': {
+        'name'     : 'Exodus Redux',
+        'plugin'   : 'plugin.video.exodusredux',
+        'saved'    : 'exodusredux',
+        'path'     : os.path.join(ADDONS, 'plugin.video.exodusredux'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.exodusredux', 'icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.exodusredux', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'exodusredux_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.exodusredux', 'settings.xml'),
+        'default'  : 'trakt.user',
+        'data'     : ['trakt.user', 'trakt.refresh', 'trakt.token'],
+        'activate' : 'RunPlugin(plugin://plugin.video.exodusredux/?action=authTrakt)'},
+    'openmeta': {
+        'name'     : 'OpenMeta',
+        'plugin'   : 'plugin.video.openmeta',
+        'saved'    : 'openmeta',
+        'path'     : os.path.join(ADDONS, 'plugin.video.openmeta'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.openmeta', 'resources/icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.openmeta', 'resources/fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'openmeta_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.openmeta', 'settings.xml'),
+        'default'  : 'trakt_access_token',
+        'data'     : ['trakt_access_token', 'trakt_refresh_token', 'trakt_expires_at    '],
+        'activate' : 'RunPlugin(plugin://plugin.video.openmeta/authenticate_trakt)'},
+    'yoda': {
+        'name'     : 'Yoda',
+        'plugin'   : 'plugin.video.yoda',
+        'saved'    : 'yoda',
+        'path'     : os.path.join(ADDONS, 'plugin.video.yoda'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.yoda', 'icon.jpg'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.yoda', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'yoda_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.yoda', 'settings.xml'),
+        'default'  : 'trakt.auth',
+        'data'     : ['trakt.token', 'trakt.refresh', 'trakt.auth'],
+        'activate' : 'RunPlugin(plugin://plugin.video.yoda/?action=authTrakt)'},
+    'premiumizer': {
+        'name'     : 'Premiumizer',
+        'plugin'   : 'plugin.video.premiumizer',
+        'saved'    : 'premiumizer',
+        'path'     : os.path.join(ADDONS, 'plugin.video.premiumizer'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.premiumizer', 'icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.premiumizer', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'premiumizer_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.premiumizer', 'settings.xml'),
+        'default'  : 'trakt.auth',
+        'data'     : ['trakt.token', 'trakt.refresh', 'trakt.auth'],
+        'activate' : 'RunPlugin(plugin://plugin.video.premiumizer/?action=authTrakt)'},
+    'realizer': {
+        'name'     : 'Realizer',
+        'plugin'   : 'plugin.video.realizer',
+        'saved'    : 'premiumizer',
+        'path'     : os.path.join(ADDONS, 'plugin.video.realizer'),
+        'icon'     : os.path.join(ADDONS, 'plugin.video.realizer', 'icon.png'),
+        'fanart'   : os.path.join(ADDONS, 'plugin.video.realizer', 'fanart.jpg'),
+        'file'     : os.path.join(TRAKTFOLD, 'realizer_trakt'),
+        'settings' : os.path.join(ADDOND, 'plugin.video.realizer', 'settings.xml'),
+        'default'  : 'trakt.auth',
+        'data'     : ['trakt.token', 'trakt.refresh', 'trakt.auth'],
+        'activate' : 'RunPlugin(plugin://plugin.video.realizer/?action=authTrakt)'}
 }
 
 def traktUser(who):
@@ -257,7 +233,7 @@ def updateTrakt(do, who):
 		if not user == '':
 			try:
 				with open(file, 'w') as f:
-					for trakt in data: 
+					for trakt in data:
 						f.write('<trakt>\n\t<id>%s</id>\n\t<value>%s</value>\n</trakt>\n' % (trakt, addonid.getSetting(trakt)))
 					f.close()
 				user = addonid.getSetting(default)
@@ -311,7 +287,7 @@ def autoUpdate(who):
 			if u == None or u == '': return
 			elif su == '': traktIt('update', who)
 			elif not u == su:
-				if DIALOG.yesno(ADDONTITLE, "[COLOR %s]Would you like to save the [COLOR %s]Trakt[/COLOR] data for [COLOR %s]%s[/COLOR]?" % (COLOR2, COLOR1, COLOR1, n), "Addon: [COLOR green][B]%s[/B][/COLOR]" % u, "Saved:[/COLOR] [COLOR red][B]%s[/B][/COLOR]" % su if not su == '' else 'Saved:[/COLOR] [COLOR red][B]None[/B][/COLOR]', yeslabel="[B][COLOR green]Save Data[/COLOR][/B]", nolabel="[B][COLOR red]No Cancel[/COLOR][/B]"):
+				if DIALOG.yesno(ADDONTITLE, "[COLOR %s]Would you like to save the [COLOR %s]Trakt Data[/COLOR] for [COLOR %s]%s[/COLOR]?" % (COLOR2, COLOR1, COLOR1, n), "Addon: [COLOR springgreen][B]%s[/B][/COLOR]" % u, "Saved:[/COLOR] [COLOR red][B]%s[/B][/COLOR]" % su if not su == '' else 'Saved:[/COLOR] [COLOR red][B]None[/B][/COLOR]', yeslabel="[B][COLOR springgreen]Save Data[/COLOR][/B]", nolabel="[B][COLOR red]No Cancel[/COLOR][/B]"):
 					traktIt('update', who)
 			else: traktIt('update', who)
 
@@ -330,7 +306,7 @@ def importlist(who):
 			m  = re.compile('<trakt><id>%s</id><value>(.+?)</value></trakt>' % d).findall(g)
 			if len(m) > 0:
 				if not m[0] == su:
-					if DIALOG.yesno(ADDONTITLE, "[COLOR %s]Would you like to import the [COLOR %s]Trakt[/COLOR] data for [COLOR %s]%s[/COLOR]?" % (COLOR2, COLOR1, COLOR1, n), "File: [COLOR green][B]%s[/B][/COLOR]" % m[0], "Saved:[/COLOR] [COLOR red][B]%s[/B][/COLOR]" % su if not su == '' else 'Saved:[/COLOR] [COLOR red][B]None[/B][/COLOR]', yeslabel="[B]Save Data[/B]", nolabel="[B]No Cancel[/B]"):
+					if DIALOG.yesno(ADDONTITLE, "[COLOR %s]Would you like to import the [COLOR %s]Trakt Data[/COLOR] for [COLOR %s]%s[/COLOR]?" % (COLOR2, COLOR1, COLOR1, n), "File: [COLOR springgreen][B]%s[/B][/COLOR]" % m[0], "Saved:[/COLOR] [COLOR red][B]%s[/B][/COLOR]" % su if not su == '' else 'Saved:[/COLOR] [COLOR red][B]None[/B][/COLOR]', yeslabel="[B]Save Data[/B]", nolabel="[B]No Cancel[/B]"):
 						wiz.setS(sa, m[0])
 						wiz.log('[Import Data] %s: %s' % (who, str(m)), xbmc.LOGNOTICE)
 					else: wiz.log('[Import Data] Declined Import(%s): %s' % (who, str(m)), xbmc.LOGNOTICE)
@@ -339,13 +315,13 @@ def importlist(who):
 
 def activateTrakt(who):
 	if TRAKTID[who]:
-		if os.path.exists(TRAKTID[who]['path']): 
+		if os.path.exists(TRAKTID[who]['path']):
 			act     = TRAKTID[who]['activate']
 			addonid = wiz.addonId(TRAKTID[who]['plugin'])
 			if act == '': addonid.openSettings()
 			else: url = xbmc.executebuiltin(TRAKTID[who]['activate'])
 		else: DIALOG.ok(ADDONTITLE, '%s is not currently installed.' % TRAKTID[who]['name'])
-	else: 
+	else:
 		wiz.refresh()
 		return
 	check = 0

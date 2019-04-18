@@ -1,7 +1,8 @@
 #!/usr/bin/env python
+from __future__ import absolute_import
 import binascii
 import struct
-import rsa
+from rsa import PublicKey, PrivateKey
 from Crypto.Math.Numbers import Integer
 
 
@@ -61,14 +62,14 @@ def import_key(extern_key, passphrase=None):
             keystring = keystring[4 + l:]
         e = Integer.from_bytes(keyparts[1])
         n = Integer.from_bytes(keyparts[2])
-        return rsa.PublicKey(n._value, e._value)
+        return PublicKey(n._value, e._value)
 
     for fmt in ("PEM", "DER"):
         try:
-            return rsa.PrivateKey.load_pkcs1(extern_key, fmt)
+            return PrivateKey.load_pkcs1(extern_key, fmt)
         except:
             try:
-                return rsa.PublicKey.load_pkcs1(extern_key, fmt)
+                return PublicKey.load_pkcs1(extern_key, fmt)
             except:
                 pass
 

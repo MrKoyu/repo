@@ -5,6 +5,7 @@ Kodi Team      :  Kodi Log Uploader(Added support for forks and email log url)
 Sean Poyser    :  YouTube module
 EchoCoder      :  Help with Addons27.db
 Surfacingx     :  Creator of the Wizard
+MetalKettle/Original Dev of speed test
 
 Special Thanks to the NaN Team for giving me a home when i was first starting out coding python and helping me out along the way.
 This wizard wouldn't be no where near as good as it is today if it wasnt for them.

@@ -1,3 +1,42 @@
+v0.1.8-Beta 3
+-Added Bob to Real Debrid and Elysium to Trakt
+-Added Extract a ZipFile to maint menu(extract any zip to any location)
+-Added Install Apk to apk menu
+-Mod   Switched Zen to Elysium
+-Mod   Import/Export Save Data now includes superfavs, xml files.
+-Fixed Free/Used Space in System Info
+
+v0.1.8-Beta 2
+-Added Skin type to addon installer that extracts to special://home/
+-Fixed SkinSwap issue in addon installer
+-Fixed Install Method Issue
+-Fixed Meta/forks issue with build installs
+
+-todo
+ add  sections to builds menu
+ add  minor updates
+
+v0.1.8
+-Added 'Packs' to addon installer and back up options
+-Added Back up Addon Packs
+-Added 'Roms' to APK Menu
+-Added Enable unknown sources in maint menu
+-Added Clear /Archive_Cache/ to maint menu
+-Added Speed test window
+-Added Zen to video cache
+-Added Alluc section to Save Data Menu
+-Added Mr Know URL Resolver to debrid
+-Added Open Subtitles to Login
+-Added Info into build text files and create info file with backup zip
+-Added Text File Caching
+-Rem   Real Debrid from Exodus
+-Mod   Theme backup includes dependencies for addons if they are added
+-Mod   Improved speed of enable all addons.
+-Fixed Bug in clear cache for video addons
+-Fixed Bug in backup build and guifix
+-Fixed Bug in kodi 17 for addon installer
+-Fixed Bug in theme install where addons didnt enable
+
 v0.1.7a
 -Mod   tweaked code to prevent 2nd startup
 -Fixed bug where started with second char in notifications
