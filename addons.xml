@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="plugin.program.CellarDoorTVwizard" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Wizard LEIA[/COLOR]" version="4.0" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]">
+<addon id="plugin.program.CellarDoorTVwizard" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Wizard KRYPTON[/COLOR]" version="4.1" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -9,7 +9,7 @@
   </extension>
   <extension point="xbmc.service" library="startup.py" start="startup" />
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">[COLOR lime]CellarDoorTV Wizard Krypton[/COLOR]</summary>
+    <summary lang="en">[COLOR dodgerblue]CellarDoorTV Wizard Krypton[/COLOR]</summary>
     <description lang="en">The official home of [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Wizard KRYPTON[/COLOR] with maintenance features, selective add-on data saving, and automated build installs.</description>
     <platform>all</platform>
   </extension>
@@ -109,7 +109,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="7.4" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="7.5" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -152,32 +152,6 @@
   </extension>
 </addon>
       
-<addon id="plugin.program.advancedsettings"
-       name="[COLOR yellowgreen]E.A.S 4Krypton[/COLOR]"
-       version="0.8.9"
-       provider-name="kinkin">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource"
-               	library="default.py">
-        <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <summary>Create, view, edit and delete your advancedsettings.xml file in a user-friendly gui</summary>
-        <description>All settings follow the xbmc.org wiki[CR][CR]With this tool you can create your advanced settings directly from XBMC[CR][CR]If you don't know what a setting does, don't enable it!</description>
-        <platform>all</platform>
-        <language>en</language>
-        <license>GNU GENERAL PUBLIC LICENSE</license>
-        <forum></forum>
-        <website></website>
-        <source></source>
-        <email></email>
-    </extension>
-	
-</addon>
-
 <addon id="plugin.program.aptoide" version="2018.01.08" name="[COLOR darkorange]Aptoide[/COLOR] for Kodi" provider-name="aenemapy">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
@@ -719,25 +693,6 @@ provider-name="Team IVUE">
     <summary lang="en">CDTV UI Sounds</summary>
     <description lang="en">CDTV UI Sounds - Intro - HELLO THERE, LET'S GET IT STARTED - followed by the sound design multimedia start up.</description>
     <platform>all</platform>
-  </extension>
-</addon>
-
-
-<addon id="script.cdtv.easytopair"
-  name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]EASY TO PAIR[/COLOR]"
-  version="1.0" 
-  provider-name="CDTV Builds">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.script" library="addon.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary lang="en">CDTV Easy to Pair Menu System</summary>
-    <description lang="en">Small Simple Script for CDTV Menu System</description>
-	<disclaimer>.</disclaimer>
   </extension>
 </addon>
 
