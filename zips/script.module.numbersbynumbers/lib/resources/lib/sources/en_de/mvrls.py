@@ -16,11 +16,10 @@
 '''
 
 import re
-import traceback
 import urllib
 import urlparse
 
-from resources.lib.modules import cleantitle, client, debrid, log_utils, source_utils
+from resources.lib.modules import cleantitle, client, debrid, source_utils
 
 
 class source:
@@ -36,9 +35,7 @@ class source:
             url = {'imdb': imdb, 'title': title, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except Exception:
-            failure = traceback.format_exc()
-            log_utils.log('MVRLS - Exception: \n' + str(failure))
+        except:
             return
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
@@ -46,9 +43,7 @@ class source:
             url = {'imdb': imdb, 'tvdb': tvdb, 'tvshowtitle': tvshowtitle, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except Exception:
-            failure = traceback.format_exc()
-            log_utils.log('MVRLS - Exception: \n' + str(failure))
+        except:
             return
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
@@ -61,17 +56,15 @@ class source:
             url['title'], url['premiered'], url['season'], url['episode'] = title, premiered, season, episode
             url = urllib.urlencode(url)
             return url
-        except Exception:
-            failure = traceback.format_exc()
-            log_utils.log('MVRLS - Exception: \n' + str(failure))
+        except:
             return
 
     def sources(self, url, hostDict, hostprDict):
         try:
             sources = []
 
-            if url is None:
-                return sources
+            if url is None: return sources
+            if debrid.status() == False: raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
@@ -80,12 +73,8 @@ class source:
 
             hdlr = 'S%02dE%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
-            query = '%s S%02dE%02d' % (
-                data['tvshowtitle'],
-                int(data['season']),
-                int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (
-                data['title'],
-                data['year'])
+            query = '%s S%02dE%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (
+                data['title'], data['year'])
             query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
 
             url = self.search_link % urllib.quote_plus(query)
@@ -105,21 +94,19 @@ class source:
                     s = re.search('((?:\d+\.\d+|\d+\,\d+|\d+)\s*(?:GB|GiB|MB|MiB))', post)
                     s = s.groups()[0] if s else '0'
                     items += [(t, i, s) for i in u]
-                except Exception:
+                except:
                     pass
 
             for item in items:
                 try:
 
                     url = item[1]
-                    if any(x in url for x in ['.rar', '.zip', '.iso', '.part']):
-                        raise Exception()
+                    if any(x in url for x in ['.rar', '.zip', '.iso', '.part']): raise Exception()
                     url = client.replaceHTMLCodes(url)
                     url = url.encode('utf-8')
 
                     valid, host = source_utils.is_host_valid(url, hostDict)
-                    if not valid:
-                        raise Exception()
+                    if not valid: raise Exception()
 
                     host = client.replaceHTMLCodes(host)
                     host = host.encode('utf-8')
@@ -134,8 +121,7 @@ class source:
 
                     y = re.findall('[\.|\(|\[|\s](\d{4}|S\d*E\d*|S\d*)[\.|\)|\]|\s]', name)[-1].upper()
 
-                    if not y == hdlr:
-                        raise Exception()
+                    if not y == hdlr: raise Exception()
 
                     quality, info = source_utils.get_release_quality(name, url)
 
@@ -145,14 +131,14 @@ class source:
                         size = float(re.sub('[^0-9|/.|/,]', '', size)) / div
                         size = '%.2f GB' % size
                         info.append(size)
-                    except Exception:
+                    except:
                         pass
 
                     info = ' | '.join(info)
 
                     sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'info': info,
-                                    'direct': False, 'debridonly': debrid.status()})
-                except Exception:
+                                    'direct': False, 'debridonly': True})
+                except:
                     pass
 
             check = [i for i in sources if not i['quality'] == 'CAM']
@@ -160,9 +146,7 @@ class source:
                 sources = check
 
             return sources
-        except Exception:
-            failure = traceback.format_exc()
-            log_utils.log('MVRLS - Exception: \n' + str(failure))
+        except:
             return sources
 
     def resolve(self, url):

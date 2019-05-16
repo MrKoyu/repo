@@ -2,16 +2,18 @@
 
 [B][COLOR lime]• [/COLOR][/B] [COLOR deepskyblue]CURRENT STATUS:[/COLOR] Outstanding!
 
- [COLOR deepskyblue]********************************************************************************************[/COLOR]
+ 
+[COLOR deepskyblue]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.1.7[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.1.6[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Module update
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
 
 [B][COLOR limegreen]V2.0.1.5[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed cf scrape
-[B][COLOR deepskyblue]• [/COLOR][/B] Removed broken Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.1.4[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Debrid only
@@ -25,17 +27,17 @@
 
 [B][COLOR limegreen]V2.0.1.3[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed resume on playback for Kodi 18
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.1.2[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed library integration 
 
 [B][COLOR limegreen]V2.0.1.1[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.1.0[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Trailers crashing on Kodi 18
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.0.9[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Networks category
@@ -45,16 +47,16 @@
 [B][COLOR limegreen]V2.0.0.8[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Torrent support
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed the scrape issue with cf scrape
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers 
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update 
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed NuMbErS search function to add db search
 [B][COLOR deepskyblue]• [/COLOR][/B] Made NuMbErS fully compatible with Kodi 18
 
 [B][COLOR limegreen]V2.0.0.7[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed In Theaters category
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.0.6[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.0.5[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Boxsets category
@@ -62,7 +64,7 @@
 
 [B][COLOR limegreen]V2.0.0.4[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] New Trakt API
-[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Scrapers
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.0.3[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed import missing in addon.xml

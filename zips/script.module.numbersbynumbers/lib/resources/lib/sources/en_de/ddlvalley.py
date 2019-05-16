@@ -15,13 +15,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+import re,urllib,urlparse
 
-import re
-import traceback
-import urllib
-import urlparse
-
-from resources.lib.modules import cfscrape, cleantitle, client, debrid, dom_parser2, log_utils
+from resources.lib.modules import cleantitle
+from resources.lib.modules import client
+from resources.lib.modules import debrid
+from resources.lib.modules import cfscrape
+from resources.lib.modules import dom_parser2
 
 
 class source:
@@ -30,18 +30,17 @@ class source:
         self.language = ['en']
         self.domains = ['ddlvalley.me']
         self.base_link = 'http://www.ddlvalley.me'
-        self.search_link = 'search/%s/'
+        self.search_link = '/search/%s/'
         self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
-            clean_title = cleantitle.geturl(title).replace('-', '+').replace(': ', '+')
+            clean_title = cleantitle.geturl(title).replace('-','+').replace(': ', '+')
             url = urlparse.urljoin(self.base_link, self.search_link % clean_title).lower()
             url = {'url': url, 'title': title, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except Exception:
-           
+        except:
             return
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
@@ -49,8 +48,7 @@ class source:
             url = {'imdb': imdb, 'tvdb': tvdb, 'tvshowtitle': tvshowtitle, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except Exception:
-
+        except:
             return
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
@@ -63,8 +61,7 @@ class source:
             url['title'], url['premiered'], url['season'], url['episode'] = title, premiered, season, episode
             url = urllib.urlencode(url)
             return url
-        except Exception:
-
+        except:
             return
 
     def sources(self, url, hostDict, hostprDict):
@@ -73,6 +70,9 @@ class source:
 
             if url is None:
                 return sources
+
+            if debrid.status() is False:
+                raise Exception()
 
             data = urlparse.parse_qs(url)
 
@@ -84,33 +84,22 @@ class source:
 
             query = '%s S%02dE%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode'])) if\
                 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
-            query_alt = '%s %s S%02dE%02d' % (data['tvshowtitle'], data['year'], int(data['season']), int(data['episode'])) if\
-                'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
+            querys = '%s S%02dE%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode'])) if\
+                'tvshowtitle' in data else '%s' % data['title']
 
-            url = self.search_link % urllib.quote_plus(query).lower()
-            url = urlparse.urljoin(self.base_link, url)
-            url_alt = self.search_link % urllib.quote_plus(query_alt).lower()
-            url_alt = urlparse.urljoin(self.base_link, url_alt)
+            headers = {'Referer':  url}
+            url = self.base_link + self.search_link % query
+            url2 = self.base_link + self.search_link % querys
 
-            headers = {
-                'Referer': 'www.ddlvalley.me/?s=',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-                'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'en-US,en;q=0.9',
-                'User-Agent':
-                'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
-            r = self.scraper.get(url, headers=headers).content
+            r = self.scraper.get(url, headers=headers)
+            if not r.ok:
+                r = self.scraper.get(url2, headers=headers)
+            if not r.ok:
+                return
 
+            r = r.content
             items = dom_parser2.parse_dom(r, 'h2')
-            if items is None and 'tvshowtitle' in data:
-                r = self.scraper.get(url, headers=headers).content
-                items = dom_parser2.parse_dom(r, 'h2')
-                if items is None:
-                    return sources
-
-            log_utils.log('DDL - Passed')
-            log_utils.log('DDL - items' + str(items))
-
-            items = [dom_parser2.parse_dom(i.content, 'a', req=['href', 'rel', 'data-wpel-link']) for i in items]
+            items = [dom_parser2.parse_dom(i.content, 'a', req=['href','rel','data-wpel-link']) for i in items]
             items = [(i[0].content, i[0].attrs['href']) for i in items]
 
             hostDict = hostprDict + hostDict
@@ -120,18 +109,13 @@ class source:
                     name = item[0]
                     name = client.replaceHTMLCodes(name)
                     query = query.lower().replace(' ', '-')
-                    if query not in item[1]:
+                    if not query in item[1]:
                         continue
                     url = item[1]
-                    headers = {
-                        'Referer': 'www.ddlvalley.me/search/',
-                        'Accept':
-                        'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-                        'Accept-Encoding': 'gzip, deflate', 'Accept-Language': 'en-US,en;q=0.9',
-                        'User-Agent':
-                        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+                    
+                    headers = {'Referer':  url}
                     r = self.scraper.get(url, headers=headers).content
-                    links = dom_parser2.parse_dom(r, 'a', req=['href', 'rel', 'data-wpel-link'])
+                    links = dom_parser2.parse_dom(r, 'a', req=['href','rel','data-wpel-link'])
                     links = [i.attrs['href'] for i in links]
                     for url in links:
                         try:
@@ -140,28 +124,19 @@ class source:
                                 fmt = re.split('\.|\(|\)|\[|\]|\s|\-', fmt)
                                 fmt = [i.lower() for i in fmt]
 
-                                if any(i.endswith(('subs', 'sub', 'dubbed', 'dub')) for i in fmt):
-                                    raise Exception()
-                                if any(i in ['extras'] for i in fmt):
-                                    raise Exception()
+                                if any(i.endswith(('subs', 'sub', 'dubbed', 'dub')) for i in fmt): raise Exception()
+                                if any(i in ['extras'] for i in fmt): raise Exception()
 
-                                if '2160p' in fmt:
-                                    quality = '4K'
-                                elif '1080p' in fmt:
-                                    quality = '1080p'
-                                elif '720p' in fmt:
-                                    quality = '720p'
-                                else:
-                                    quality = 'SD'
-                                if any(i in ['dvdscr', 'r5', 'r6'] for i in fmt):
-                                    quality = 'SCR'
-                                elif any(i in ['camrip', 'tsrip', 'hdcam', 'hdts', 'dvdcam', 'dvdts', 'cam', 'telesync', 'ts'] for i in fmt):
-                                    quality = 'CAM'
+                                if '2160p' in fmt: quality = '4K'
+                                elif '1080p' in fmt: quality = '1080p'
+                                elif '720p' in fmt: quality = '720p'
+                                else: quality = 'SD'
+                                if any(i in ['dvdscr', 'r5', 'r6'] for i in fmt): quality = 'SCR'
+                                elif any(i in ['camrip', 'tsrip', 'hdcam', 'hdts', 'dvdcam', 'dvdts', 'cam', 'telesync', 'ts'] for i in fmt): quality = 'CAM'
 
                                 info = []
 
-                                if '3d' in fmt:
-                                    info.append('3D')
+                                if '3d' in fmt: info.append('3D')
 
                                 try:
                                     size = re.findall('((?:\d+\.\d+|\d+\,\d+|\d+) (?:GB|GiB|MB|MiB))', name[2])[-1]
@@ -169,11 +144,10 @@ class source:
                                     size = float(re.sub('[^0-9|/.|/,]', '', size))/div
                                     size = '%.2f GB' % size
                                     info.append(size)
-                                except Exception:
+                                except:
                                     pass
 
-                                if any(i in ['hevc', 'h265', 'x265'] for i in fmt):
-                                    info.append('HEVC')
+                                if any(i in ['hevc', 'h265', 'x265'] for i in fmt): info.append('HEVC')
 
                                 info = ' | '.join(info)
 
@@ -181,26 +155,22 @@ class source:
                                     url = client.replaceHTMLCodes(url)
                                     url = url.encode('utf-8')
 
-                                    host = re.findall('([\w]+[.][\w]+)$',
-                                                      urlparse.urlparse(url.strip().lower()).netloc)[0]
-                                    if host in hostDict:
+                                    host = re.findall('([\w]+[.][\w]+)$', urlparse.urlparse(url.strip().lower()).netloc)[0]
+                                    if host in hostDict: 
                                         host = client.replaceHTMLCodes(host)
                                         host = host.encode('utf-8')
 
-                                        sources.append(
-                                            {'source': host, 'quality': quality, 'language': 'en', 'url': url,
-                                             'info': info, 'direct': False, 'debridonly': debrid.status()})
-                        except Exception:
+                                        sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'info': info, 'direct': False, 'debridonly': True})
+                        except:
                             pass
-                except Exception:
+                except:
                     pass
             check = [i for i in sources if not i['quality'] == 'CAM']
-            if check:
-                sources = check
+            if check: sources = check
 
             return sources
-        except Exception:
-            return
+        except:
+            return sources
 
     def resolve(self, url):
         return url

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -13,7 +13,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
+'''
 
 import re,urllib,urlparse
 
@@ -26,9 +26,9 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['www.ddlspot.com']
-        self.base_link = 'http://www.ddlspot.com/'
-        self.search_link = 'search/?q=%s&m=1&x=0&y=0'
+        self.domains = ['www.mkvcage.ws']
+        self.base_link = 'https://www.mkvcage.cc/'
+        self.search_link = '?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -48,8 +48,7 @@ class source:
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
-            if url == None: return
-
+            if url is None: return
             url = urlparse.parse_qs(url)
             url = dict([(i, url[i][0]) if url[i] else (i, '') for i in url])
             url['title'], url['premiered'], url['season'], url['episode'] = title, premiered, season, episode
@@ -59,79 +58,52 @@ class source:
             return
 
     def sources(self, url, hostDict, hostprDict):
+        sources = []
         try:
-            sources = []
-
-            if url == None: return sources
-
-            if debrid.status() == False: raise Exception()
+            if url is None: return sources
+            if debrid.status() is False: raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
+
             title = data['tvshowtitle'] if 'tvshowtitle' in data else data['title']
+
             hdlr = 'S%02dE%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
-            query = '%s S%02dE%02d' % (
-                data['tvshowtitle'], int(data['season']), int(data['episode'])) \
-                if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
+            query = '%s s%02de%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode']))if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
+            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
 
             url = self.search_link % urllib.quote_plus(query)
-            url = urlparse.urljoin(self.base_link, url).replace('-', '+')
+            url = urlparse.urljoin(self.base_link, url)
 
             r = client.request(url)
-            if r == None and 'tvshowtitle' in data:
-                season = re.search('S(.*?)E', hdlr)
-                season = season.group(1)
-                url = title
 
-                r = client.request(url)
-
-            for loopCount in range(0,2):
-                if loopCount == 1 or (r == None and 'tvshowtitle' in data):
-
-                    r = client.request(url)
-
-                posts = client.parseDOM(r, "table", attrs={"class": "download"})
-                hostDict = hostprDict + hostDict
-                items = []
+            try:
+                posts = client.parseDOM(r, 'h2', attrs={'class': 'entry-title'})
                 for post in posts:
-                    try:
-                        u = client.parseDOM(post, 'a', ret='href')
-                        for i in u:
+                    data = client.parseDOM(post, 'a', ret='href')
+                    for u in data:
+                        r = client.request(u)
+                        r = client.parseDOM(r, 'div', attrs={'class': 'clearfix entry-content'})
+                        for t in r:
+                            link = re.findall('a class="buttn magnet" href="(.+?)"', t)[0]
+                            quality, info = source_utils.get_release_quality(u)
                             try:
-                                name = str(i)
-                                items.append(name)
+                                size = re.findall('((?:\d+\.\d+|\d+\,\d+|\d+)\s*(?:gb|gib|mb|mib))', str(data))[-1]
+                                div = 1 if size.endswith(('gb')) else 1024
+                                size = float(re.sub('[^0-9|/.|/,]', '', size)) / div
+                                size = '%.2f gb' % size
+                                info.append(size)
                             except:
                                 pass
-                    except:
-                        pass
-
-                if len(items) > 0: break
-
-            for item in items:
-                try:
-                    info = []
-
-                    i = str(item)
-                    i = self.base_link + i
-                    r = client.request(i)
-                    u = client.parseDOM(r, "div", attrs={"class": "dl-links"})
-                    for t in u:
-                        r = re.compile('a href=".+?" rel=".+?">(.+?)<').findall(t)
-                        for url in r:
-                            if any(x in url for x in ['.rar', '.zip', '.iso']): raise Exception()
-                            quality, info = source_utils.get_release_quality(url)
-                            valid, host = source_utils.is_host_valid(url, hostDict)
-                            sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'info': info, 'direct': False, 'debridonly': True})
-
-                except:
-                    pass
-            check = [i for i in sources if not i['quality'] == 'CAM']
-            if check: sources = check
-
+                            info = ' | '.join(info)
+                            sources.append({'source': 'Torrent', 'quality': quality, 'language': 'en', 'url': link, 'info': info, 'direct': False, 'debridonly': True})
+            except:
+                return
             return sources
-        except:
-            return
+        except :
+            return sources
 
     def resolve(self, url):
         return url
+

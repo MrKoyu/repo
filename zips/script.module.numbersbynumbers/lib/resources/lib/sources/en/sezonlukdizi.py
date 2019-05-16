@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -13,7 +13,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+"""
 
 import re
 import urlparse
@@ -30,8 +30,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['sezonlukdizi.org/']
-        self.base_link = 'https://sezonlukdizi.org/'
+        self.domains = ['sezonlukdizi.net', 'sezonlukdizi.com']
+        self.base_link = 'https://sezonlukdizi.org'
         self.search_link = '/js/series1.js'
         self.video_link = '/ajax/dataEmbed.asp'
 
@@ -40,10 +40,9 @@ class source:
             t = [tvshowtitle] + source_utils.aliases_to_array(aliases)
             t = [cleantitle.get(i) for i in set(t) if i]
 
-            url = [i[0] for i in cache.get(self.sezonlukdizi_tvcache, 120) if cleantitle.get(i[1]) in t][0]
-
+            url = [i[0] for i in self.sezonlukdizi_tvcache() if cleantitle.get(i[1]) in t][0]
             return source_utils.strip_domain(url)
-        except:
+        except BaseException:
             return
 
     def sezonlukdizi_tvcache(self):
@@ -65,7 +64,7 @@ class source:
             result = [(i[0][0] + '/', cleantitle.query(self.lat2asc(i[1]))) for i in result if len(i[0]) > 0]
 
             return result
-        except:
+        except BaseException:
             return []
 
     def lat2asc(self, title):
@@ -79,7 +78,7 @@ class source:
 
             url = '%s%01d-sezon-%01d-bolum.html' % (url.replace('.html', ''), int(season), int(episode))
             return source_utils.strip_domain(url)
-        except:
+        except BaseException:
             return []
 
     def sources(self, url, hostDict, hostprDict):
@@ -110,7 +109,16 @@ class source:
                     if url.startswith('/'): url = urlparse.urljoin(self.base_link, url)
 
                     valid, host = source_utils.is_host_valid(url, hostDict)
-                    if valid: sources.append({'source': host, 'quality': 'HD', 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
+                    if valid:
+                        if 'ok.ru' in host:
+                            okinfo = directstream.odnoklassniki(url)
+                            for x in okinfo:
+                                sources.append(
+                                    {'source': host, 'quality': x['quality'], 'language': 'en', 'url': x['url'],
+                                     'direct': True, 'debridonly': False})
+
+                        else:
+                            sources.append({'source': host, 'quality': 'HD', 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
 
                     if '.asp' not in url: continue
 
@@ -123,9 +131,11 @@ class source:
                         if valid:
                             if host == 'gvideo':
                                 ginfo = directstream.google(url)
-                                for g in ginfo: sources.append({'source': host, 'quality': g['quality'], 'language': 'en', 'url': g['url'], 'direct': True, 'debridonly': False})
-                            else: sources.append({'source': host, 'quality': 'HD', 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
-                    except: pass
+                                for g in ginfo:
+                                    sources.append({'source': host, 'quality': g['quality'], 'language': 'en', 'url': g['url'], 'direct': True, 'debridonly': False})
+                            else:
+                                sources.append({'source': host, 'quality': 'HD', 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
+                    except BaseException: pass
 
                     captions = re.search('''["']?kind["']?\s*:\s*(?:\'|\")captions(?:\'|\")''', result)
                     if not captions: continue
@@ -137,11 +147,11 @@ class source:
                     result = [(i[0], i[1]) for i in result if not i[1].endswith('.vtt')]
 
                     for quality, url in result: sources.append({'source': 'gvideo', 'quality': quality, 'language': 'en', 'url': url, 'direct': True, 'debridonly': False})
-                except:
+                except BaseException:
                     pass
 
             return sources
-        except:
+        except BaseException:
             return sources
 
     def resolve(self, url):
@@ -149,5 +159,5 @@ class source:
             if url.startswith('//'): url = 'http:' + url
             if url.startswith('/'): url = urlparse.urljoin(self.base_link, url)
             return url
-        except:
+        except BaseException:
             pass

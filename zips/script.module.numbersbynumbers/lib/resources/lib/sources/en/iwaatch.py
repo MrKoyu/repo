@@ -15,11 +15,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re,urllib,urlparse,json,base64,time,logging
+import re, urllib, urlparse
 
 from resources.lib.modules import cleantitle
-from resources.lib.modules import dom_parser2
+from resources.lib.modules import dom_parser2 as dom
 from resources.lib.modules import client
+from resources.lib.modules import source_utils
 
 class source:
     def __init__(self):
@@ -27,60 +28,54 @@ class source:
         self.language = ['en']
         self.domains = ['iwaatch.com']
         self.base_link = 'https://iwaatch.com/'
-        self.search_link = 'https://iwaatch.com/?q=%s'
-        self.sources2=[]
+        self.search_link = 'api/api.php?page=moviesearch&q={0}'
+
     def movie(self, imdb, title, localtitle, aliases, year):
-        if 1:#try:
-            clean_title = cleantitle.geturl(title).replace('-','%20')
-            url = urlparse.urljoin(self.base_link, (self.search_link %(clean_title)))+'$$$$$'+title+'$$$$$'+year+'$$$$$'+'movie'
+        try:
+            url = {'imdb': imdb, 'title': title, 'year': year}
+            url = urllib.urlencode(url)
             return url
-        #except:
-        #    return
+        except BaseException:
+            return
 
-    
     def sources(self, url, hostDict, hostprDict):
-            import requests
-            self.sources2 = []
-            if url == None: return self.sources2
-            logging.warning('trying to work2')
-            data=url.split('$$$$$')
-            
-            logging.warning(data)
-            url=data[0]
-            title=data[1]
-            year=data[2]
-            type=data[3]
-            logging.warning(url)
+        sources = []
 
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0',
-                'Accept': 'text/html, */*; q=0.01',
-                'Accept-Language': 'en-US,en;q=0.5',
-              
-                'X-Requested-With': 'XMLHttpRequest',
-                'Connection': 'keep-alive',
-                'Pragma': 'no-cache',
-                'Cache-Control': 'no-cache',
-                'TE': 'Trailers',
-            }
+        try:
+            if not url: return sources
 
-        
-            response = requests.get(url, headers=headers).content
-            regex='<div class="col-xs-.+?a href="(.+?)".+?div class="post-title">(.+?)<'
-            match2=re.compile(regex,re.DOTALL).findall(response)
-            
-            for link_in,title_in in match2:
-               if title in title_in:
-                x=requests.get(link_in.replace('movie','view'), headers=headers).content
-                regex="file: '(.+?)'.+?label: '(.+?)'"
-                match3=re.compile(regex,re.DOTALL).findall(x)
-                
-                for url,q in match3:
-                        
-                    self.sources2.append({'source': 'Direct', 'quality': q, 'language': 'en', 'url': url, 'direct': True, 'debridonly': False})
-      
-            return self.sources2
+            data = urlparse.parse_qs(url)
+            data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
+            title = data['title']
+            year = data['year']
+            t = title + year
+
+            query = '%s' % data['title']
+            query = re.sub(r'(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
+
+            url = self.search_link.format(urllib.quote_plus(query))
+            url = urlparse.urljoin(self.base_link, url)
+
+            r = client.request(url)
+            items = client.parseDOM(r, 'li')
+            items = [(dom.parse_dom(i, 'a', req='href')[0]) for i in items if year in i]
+            items = [(i.attrs['href'], re.sub('<.+?>|\n', '', i.content).strip()) for i in items]
+            item = [i[0].replace('movie', 'view') for i in items if cleantitle.get(t) == cleantitle.get(i[1])][0]
+
+            html = client.request(item)
+            streams = re.findall('sources\:\s*\[(.+?)\]\,', html, re.DOTALL)[0]
+            streams = re.findall('file:\s*[\'"](.+?)[\'"].+?label:\s*[\'"](.+?)[\'"]', streams, re.DOTALL)
+
+            for link, label in streams:
+                quality = source_utils.get_release_quality(label, label)[0]
+                link += '|User-Agent=%s&Referer=%s' % (urllib.quote(client.agent()), item)
+                sources.append({'source': 'Direct', 'quality': quality, 'language': 'en', 'url': link,
+                                'direct': True, 'debridonly': False})
+
+            return sources
+        except BaseException:
+            return sources
+
     def resolve(self, url):
         return url
 
-  

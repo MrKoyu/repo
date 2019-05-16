@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Eggman Add-on
+ ███▄    █  █    ██  ███▄ ▄███▓ ▄▄▄▄   ▓█████  ██▀███    ██████ 
+ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒▓█████▄ ▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
+▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▒██▒ ▄██▒███   ▓██ ░▄█ ▒░ ▓██▄   
+▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▒██░█▀  ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
+▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒░▓█  ▀█▓░▒████▒░██▓ ▒██▒▒██████▒▒
+░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░▒▓███▀▒░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
+░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░▒░▒   ░  ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
+   ░   ░ ░  ░░░ ░ ░ ░      ░    ░    ░    ░     ░░   ░ ░  ░  ░  
+         ░    ░            ░    ░         ░  ░   ░           ░  
+                                     ░                          
+
+    NuMbErS Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,7 +36,6 @@ import sys
 import time
 import urllib
 import urlparse
-
 
 from resources.lib.modules import (cleantitle, client, control, debrid,
                                    log_utils, source_utils, trakt, tvmaze,
@@ -439,7 +449,7 @@ class sources:
 
         for i in range(0, 4 * timeout):
             if str(pre_emp) == 'true':
-                if quality in ['0','1']:
+                if quality in ['0']:
                     if (source_4k + d_source_4k) >= int(pre_emp_limit): break
                 elif quality in ['1']:
                     if (source_1080 + d_source_1080) >= int(pre_emp_limit): break
@@ -950,10 +960,9 @@ class sources:
         debrid_only = control.setting('debrid.only')
         if debrid_only == '': 
             debrid_only = 'false'
-
-        sortthemup = control.setting('torrent.sort.them.up')
-        if sortthemup == '':
-            sortthemup = 'false'
+        sort = control.setting('torrent.sort')
+        if sort == '':
+            sort = 'false'
 
         quality = control.setting('hosts.quality')
         if quality == '':
@@ -991,11 +1000,12 @@ class sources:
         for d in debrid.debrid_resolvers:
             valid_hoster = set([i['source'] for i in self.sources])
             valid_hoster = [i for i in valid_hoster if d.valid_url('', i)]
-            if sortthemup == 'true':
-                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if 'magnet:' in i['url']]
-                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster and 'magnet:' not in i['url']]
+            if sort == 'true':
+                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if str(i['url']).startswith('magnet:')]
+                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster and 'magnet:' not in str(i['url'])]
             else:
-                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster or 'magnet:' in i['url']]
+                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster or str(i['url']).startswith('magnet:')]
+ 
 
         if debrid_only == 'false' or  debrid.status() == False:
             filter += [i for i in self.sources if not i['source'].lower() in self.hostprDict and i['debridonly'] is False]
@@ -1069,7 +1079,7 @@ class sources:
 
         torr_identify = control.setting('torrent.identify')
         if torr_identify == '':
-            torr_identify = ''
+            torr_identify = 'magenta'
         torr_identify = self.getPremColor(torr_identify)
 
         for i in range(len(self.sources)):
@@ -1103,7 +1113,7 @@ class sources:
 
             if d.lower() == 'real-debrid':
                 d = 'RD'
-            if d.lower() == 'premiumize.me':
+            elif d.lower() == 'premiumize.me':
                 d = 'PM'
 
             if not d == '':
@@ -1170,7 +1180,8 @@ class sources:
             provider = item['provider']
             call = [i[1] for i in self.sourceDict if i[0] == provider][0]
             u = url = call.resolve(url)
-            if url == None or not '://' in url and not local and not 'magnet:' in url: raise Exception()
+            if url is None or ('://' not in str(url) and not local and 'magnet:' not in str(url)):
+                raise Exception()
 
             if not local:
                 url = url[8:] if url.startswith('stack:') else url
@@ -1449,9 +1460,9 @@ class sources:
         return title
 
     def getConstants(self):
-        self.itemProperty = 'plugin.video.overeasy.container.items'
+        self.itemProperty = 'plugin.video.numbersbynumbers.container.items'
 
-        self.metaProperty = 'plugin.video.overeasy.container.meta'
+        self.metaProperty = 'plugin.video.numbersbynumbers.container.meta'
 
         from resources.lib.sources import sources
 
