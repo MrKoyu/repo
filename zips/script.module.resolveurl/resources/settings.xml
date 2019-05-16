@@ -500,6 +500,10 @@
 		<setting id="VeohResolver_priority" type="number" label="Priority" default="100"/>
 		<setting id="VeohResolver_enabled" type="bool" label="Enabled" default="true"/>
 		<setting id="VeohResolver_login" type="bool" label="login" default="true" visible="false"/>
+		<setting label="verystream" type="lsep"/>
+		<setting id="VeryStreamResolver_priority" type="number" label="Priority" default="100"/>
+		<setting id="VeryStreamResolver_enabled" type="bool" label="Enabled" default="true"/>
+		<setting id="VeryStreamResolver_login" type="bool" label="login" default="true" visible="false"/>
 		<setting label="vevio" type="lsep"/>
 		<setting id="VevIoResolver_priority" type="number" label="Priority" default="100"/>
 		<setting id="VevIoResolver_enabled" type="bool" label="Enabled" default="true"/>
@@ -556,12 +560,12 @@
 		<setting id="VidorgResolver_priority" type="number" label="Priority" default="100"/>
 		<setting id="VidorgResolver_enabled" type="bool" label="Enabled" default="true"/>
 		<setting id="VidorgResolver_login" type="bool" label="login" default="true" visible="false"/>
+	</category>
+	<category label="Resolvers 7">
 		<setting label="vidoza" type="lsep"/>
 		<setting id="VidozaResolver_priority" type="number" label="Priority" default="100"/>
 		<setting id="VidozaResolver_enabled" type="bool" label="Enabled" default="true"/>
 		<setting id="VidozaResolver_login" type="bool" label="login" default="true" visible="false"/>
-	</category>
-	<category label="Resolvers 7">
 		<setting label="vidstore" type="lsep"/>
 		<setting id="VidstoreResolver_priority" type="number" label="Priority" default="100"/>
 		<setting id="VidstoreResolver_enabled" type="bool" label="Enabled" default="true"/>
@@ -574,10 +578,6 @@
 		<setting id="VidtoResolver_priority" type="number" label="Priority" default="100"/>
 		<setting id="VidtoResolver_enabled" type="bool" label="Enabled" default="true"/>
 		<setting id="VidtoResolver_login" type="bool" label="login" default="true" visible="false"/>
-		<setting label="Vidtodo" type="lsep"/>
-		<setting id="VidToDoResolver_priority" type="number" label="Priority" default="100"/>
-		<setting id="VidToDoResolver_enabled" type="bool" label="Enabled" default="true"/>
-		<setting id="VidToDoResolver_login" type="bool" label="login" default="true" visible="false"/>
 		<setting label="vidup.me" type="lsep"/>
 		<setting id="VidUpMeResolver_priority" type="number" label="Priority" default="100"/>
 		<setting id="VidUpMeResolver_enabled" type="bool" label="Enabled" default="true"/>

@@ -1,3 +1,8 @@
+[B]Version 5.1[/B]
+- Removed empty categories
+- Added categories information
+- Changed default views for when using Estuary skin
+
 [B]Version 5.0[/B]
 - Fixed advanced settings
 - Fixed constantly buffering and kodi to crash on some devices

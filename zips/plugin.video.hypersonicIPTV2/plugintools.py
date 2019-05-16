@@ -43,7 +43,8 @@ module_log_enabled=False; http_debug_log_enabled=False; LIST="list"; THUMBNAIL="
 ALL_VIEW_CODES={
     'list': {
         'skin.confluence': 50, # List
-        'skin.durexonfluence': 50, # List
+        'skin.estuary': 50, # List
+        'skin.xonfluence.mod': 50, # List
         'skin.aeon.nox': 50, # List
         'skin.droid': 50, # List
         'skin.quartz': 50, # List
@@ -51,7 +52,8 @@ ALL_VIEW_CODES={
     },
     'thumbnail': {
         'skin.confluence': 500, # Thumbnail
-        'skin.durexonfluence': 500, # Thumbnail
+        'skin.estuary': 50, # List
+        'skin.xonfluence.mod': 50, # List
         'skin.aeon.nox': 500, # Wall
         'skin.droid': 51, # Big icons
         'skin.quartz': 51, # Big icons
@@ -59,7 +61,7 @@ ALL_VIEW_CODES={
     },
     'movies': {
         'skin.confluence': 500, # Thumbnail 515, # Media Info 3
-        'skin.durexonfluence': 500, # Thumbnail 515, # Media Info 3
+        'skin.estuary': 50, # List
         'skin.aeon.nox': 500, # Wall
         'skin.droid': 51, # Big icons
         'skin.quartz': 52, # Media info
@@ -67,7 +69,7 @@ ALL_VIEW_CODES={
     },
     'tvshows': {
         'skin.confluence': 500, # Thumbnail 515, # Media Info 3
-        'skin.durexonfluence': 500, # Thumbnail 515, # Media Info 3
+        'skin.estuary': 50, # List
         'skin.aeon.nox': 500, # Wall
         'skin.droid': 51, # Big icons
         'skin.quartz': 52, # Media info
@@ -75,7 +77,7 @@ ALL_VIEW_CODES={
     },
     'seasons': {
         'skin.confluence': 50, # List
-        'skin.durexonfluence': 50, # List
+        'skin.estuary': 50, # List
         'skin.aeon.nox': 50, # List
         'skin.droid': 50, # List
         'skin.quartz': 52, # Media info
@@ -83,7 +85,7 @@ ALL_VIEW_CODES={
     },
     'episodes': {
         'skin.confluence': 504, # Media Info
-        'skin.durexonfluence': 504, # Media Info
+        'skin.estuary': 50, # List
         'skin.aeon.nox': 518, # Infopanel
         'skin.droid': 50, # List
         'skin.quartz': 52, # Media info
