@@ -44,9 +44,6 @@ item_info_from=hlsuri+'|Referer='+ref+'&User-Agent=Mozilla/5.0 (iPhone; CPU iPho
 item_info_convert=quote(%s)
 item_info_build=hls://%s
 
-#item_info_name=ls_url
-#item_info_from=http://127.1.2.3:45678/streamlink/?url='+url4+'
-#item_info_build=%s
 
 item_info_name=url
 item_info_from=url4

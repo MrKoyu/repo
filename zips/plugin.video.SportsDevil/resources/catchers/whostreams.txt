@@ -22,7 +22,8 @@ item_info_build=%s
 #item_info_build=slproxy
 
 item_info_name=url
-item_info_from=hls://'+encurl
+#item_info_from=hls://'+encurl
+item_info_from=encurl
 item_info_build=%s
 
 

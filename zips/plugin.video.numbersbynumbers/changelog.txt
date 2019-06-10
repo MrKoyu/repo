@@ -2,8 +2,11 @@
 
 [B][COLOR lime]• [/COLOR][/B] [COLOR deepskyblue]CURRENT STATUS:[/COLOR] Outstanding!
 
- 
 [COLOR deepskyblue]********************************************************************************************[/COLOR]
+
+[B][COLOR limegreen]V2.0.1.8[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
 
 [B][COLOR limegreen]V2.0.1.7[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Module Update

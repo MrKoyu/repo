@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -13,7 +13,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
+'''
 
 import re,urllib,urlparse
 
@@ -48,7 +48,7 @@ class source:
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
-            if url == None: return
+            if url is None: return
 
             url = urlparse.parse_qs(url)
             url = dict([(i, url[i][0]) if url[i] else (i, '') for i in url])
@@ -62,9 +62,9 @@ class source:
         try:
             sources = []
 
-            if url == None: return sources
+            if url is None: return sources
 
-            if debrid.status() == False: raise Exception()
+            if debrid.status() is False: raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
@@ -79,7 +79,7 @@ class source:
             url = urlparse.urljoin(self.base_link, url).replace('-', '+')
 
             r = client.request(url)
-            if r == None and 'tvshowtitle' in data:
+            if r is None and 'tvshowtitle' in data:
                 season = re.search('S(.*?)E', hdlr)
                 season = season.group(1)
                 url = title
@@ -87,7 +87,7 @@ class source:
                 r = client.request(url)
 
             for loopCount in range(0,2):
-                if loopCount == 1 or (r == None and 'tvshowtitle' in data):
+                if loopCount == 1 or (r is None and 'tvshowtitle' in data):
 
                     r = client.request(url)
 
@@ -106,7 +106,8 @@ class source:
                     except:
                         pass
 
-                if len(items) > 0: break
+                if len(items) > 0:
+                    break
 
             for item in items:
                 try:
@@ -119,7 +120,8 @@ class source:
                     for t in u:
                         r = re.compile('a href=".+?" rel=".+?">(.+?)<').findall(t)
                         for url in r:
-                            if any(x in url for x in ['.rar', '.zip', '.iso']): raise Exception()
+                            if any(x in url for x in ['.rar', '.zip', '.iso']):
+                                raise Exception()
                             quality, info = source_utils.get_release_quality(url)
                             valid, host = source_utils.is_host_valid(url, hostDict)
                             sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'info': info, 'direct': False, 'debridonly': True})

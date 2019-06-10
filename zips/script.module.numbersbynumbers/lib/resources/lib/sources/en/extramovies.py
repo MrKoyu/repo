@@ -15,17 +15,28 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-
-
-
 import base64
 import re
 import traceback
 import urllib
 import urlparse
-import requests
 
-from resources.lib.modules import cfscrape, cleantitle, log_utils
+from resources.lib.modules import cfscrape
+from resources.lib.modules import cleantitle
+from resources.lib.modules import log_utils
+from resources.lib.modules import source_utils
+
+
+def clean_search(title):
+    if title is None:
+        return
+    title = title.lower()
+    title = re.sub('&#(\d+);', '', title)
+    title = re.sub('(&#[0-9]+)([^;^0-9]+)', '\\1;\\2', title)
+    title = title.replace('&quot;', '\"').replace('&amp;', '&')
+    title = re.sub('\\\|/|\(|\)|\[|\]|\{|\}|-|:|;|\*|\?|"|\'|<|>|\_|\.|\?', ' ', title).lower()
+    title = ' '.join(title.split())
+    return title
 
 
 class source:
@@ -33,9 +44,9 @@ class source:
         self.priority = 0
         self.language = ['en']
         self.domains = ['extramovies.trade', 'extramovies.host']
-        self.base_link = 'http://extramovies.host'
+        self.base_link = 'http://extramovies.guru'
         self.search_link = '/?s=%s'
-        self.User_Agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+        self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -89,11 +100,9 @@ class source:
             title = data['tvshowtitle'] if 'tvshowtitle' in data else data['title']
 
             url = urlparse.urljoin(self.base_link, self.search_link % urllib.quote_plus(cleantitle.query(title)))
-            headers = {'User-Agent': self.User_Agent}
 
             if 'tvshowtitle' in data:
-                scraper = cfscrape.create_scraper()
-                html = scraper.get(url, headers=headers).content
+                html = self.scraper.get(url).content
 
                 match = re.compile('class="post-item.+?href="(.+?)" title="(.+?)"', re.DOTALL).findall(html)
                 for url, item_name in match:
@@ -102,38 +111,24 @@ class source:
                         episode_url = '%02d' % int(data['episode'])
                         sea_epi = 'S%sE%s' % (season_url, episode_url)
 
-                        result = scraper.get(url, headers=headers, timeout=5).content
-                        Regex = re.compile('href="(.+?)"', re.DOTALL).findall(result)
-                        for ep_url in Regex:
+                        result = self.scraper.get(url).content
+                        regex = re.compile('href="(.+?)"', re.DOTALL).findall(result)
+                        for ep_url in regex:
                             if sea_epi in ep_url:
-                                if '1080p' in ep_url:
-                                    qual = '1080p'
-                                elif '720p' in ep_url:
-                                    qual = '720p'
-                                elif '480p' in ep_url:
-                                    qual = '480p'
-                                else:
-                                    qual = 'SD'
-
-                                sources.append({'source': 'CDN', 'quality': qual, 'language': 'en',
+                                quality, info = source_utils.get_release_quality(url)
+                                sources.append({'source': 'CDN', 'quality': quality, 'language': 'en',
                                                 'url': ep_url, 'direct': False, 'debridonly': False})
             else:
-                html = requests.get(url, headers=headers).content
+                html = self.scraper.get(url).content
                 match = re.compile('<div class="thumbnail".+?href="(.+?)" title="(.+?)"', re.DOTALL).findall(html)
 
                 for url, item_name in match:
                     if cleantitle.getsearch(title).lower() in cleantitle.getsearch(item_name).lower():
-                        if '1080' in url:
-                            quality = '1080p'
-                        elif '720' in url:
-                            quality = '720p'
-                        else:
-                            quality = 'SD'
+                        quality, info = source_utils.get_release_quality(url)
+                        result = self.scraper.get(url).content
+                        regex = re.compile('href="/download.php.+?link=(.+?)"', re.DOTALL).findall(result)
 
-                        result = requests.get(url, headers=headers, timeout=10).content
-                        Regex = re.compile('href="/download.php.+?link=(.+?)"', re.DOTALL).findall(result)
-
-                        for link in Regex:
+                        for link in regex:
                             if 'server=' not in link:
                                 try:
                                     link = base64.b64decode(link)

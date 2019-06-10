@@ -16,7 +16,6 @@ item_info_build=%s
 
 item_info_name=p0_
 item_info_from=z1+z2
-#item_info_convert=debug
 item_info_build=%s
 
 item_info_name=p0.tmp
@@ -27,6 +26,7 @@ item_info_build=%s
 item_info_name=p0
 item_info_from=http://www.sawlive.tv/embed/stream/'+v1+'/'+v2
 item_info_convert=ifEmpty('@v1@','','%s')
+item_info_convert=debug
 item_info_build=%s
 
 item_info_name=p0.tmp_
@@ -71,7 +71,6 @@ item_info_from=p0_||@PARAM1@
 item_info_convert=getInfo('%s','.*iframe.*?src="([^"\'\+]+)','@REFERER@')
 item_info_convert=isEqual('%s','http://www.sawliv','','%s')
 item_info_convert=isEqual('%s','http://www.','','%s')
-item_info_convert=debug
 item_info_build=%s
 
 item_info_name=p3.tmp

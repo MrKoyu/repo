@@ -286,6 +286,7 @@ def unFuckFirst(data):
     except:
         return data
 
+
 def decryptMarioCS(strurl, key):
     #lib.common.log("JairoDemyst: " + strurl)
     #if re.search(r".*clappr\(MarioCSdecrypt.dec\(.*", data):        
@@ -371,29 +372,38 @@ def doDemystify(data):
             #r2 = re.compile('(?:eval\(decodeURIComponent\(|window\.)atob\([\'"]([^\'"]+)[\'"]\)+')
             #for base64_data in r2.findall(g):
                 #data = data.replace(g, urllib.unquote(base64_data.decode('base-64')))
-                
-    #jairox: ustreamix -- Obfuscator HTML : https://github.com/BlueEyesHF/Obfuscator-HTML
-    r = re.compile(r"var\s*(\w+)\s*=\s*\[([A-Za-z0-9+=\/\",\s]+)\];\s*\1\.forEach.*-\s*(\d+)")
-    if r.findall(data):
-        try:
-            matches = re.compile(r"var\s*(\w+)\s*=\s*\[([A-Za-z0-9+=\/\",\s]+)\];\s*\1\.forEach.*-\s*(\d+)").findall(data)
-            chunks = matches[0][1].split(',')
-            op = int(matches[0][2])
-            dec_data = r""
-            for chunk in chunks:
-                try:
-                    tmp = chunk.replace('"','')
-                    tmp = str(b64decode(tmp))
-                    dig = int(re.sub('[\D\s\n]','',tmp))
-                    dig = dig - op
-                    dec_data += chr(dig)
-                except:
-                    pass
-            data = re.sub(r"(?s)<script>\s*var\s*\w+\s*=.*?var\s*(\w+)\s*=\s*\[.*<\/script>[\"']?", dec_data, data)
 
-        except:
-            pass
-    
+
+    #jairox: ustreamix/liveonlinetv247 -- Obfuscator HTML : https://github.com/BlueEyesHF/Obfuscator-HTML
+    r = re.compile(r'var\s*(\w+)\s*=\s*\[([A-Za-z0-9+=\/\",\s]+)\];\s*\1\.forEach.*?parseInt\(value\)([^\)]+)')
+    if r.findall(data, re.DOTALL):
+        matches = re.findall(r'var\s*(\w+)\s*=\s*\[([A-Za-z0-9+=\/\",\s]+)\];\s*\1\.forEach.*?parseInt\(value\)([^\)]+)', data, re.DOTALL)
+        chunks = matches[0][1].split(',')
+        op = matches[0][2]
+        if 'liveonlinetv247' in data:       
+            try:
+                vals = [v.strip() for v in chunks]
+                vals = [chr(int(eval(v + op))) for v in vals]
+                dec_data = "".join(vals)
+                data = re.sub(r'(?s)<script>\s+var\s+\w+.*?var\s+\w+\s*=\s*\[.*?<\/script>', dec_data.decode('utf-8'), data)                            
+            except:
+                pass
+        else:
+            try:
+                dec_data = r""
+                for chunk in chunks:
+                    try:
+                        tmp = chunk.replace('"','')
+                        tmp = str(b64decode(tmp))
+                        dig = int(re.sub('[\D\s\n]','',tmp))
+                        dig = dig - op
+                        dec_data += chr(dig)
+                    except:
+                        raise Exception
+                data = re.sub(r"(?s)<script>\s*var\s*\w+\s*=.*?var\s*(\w+)\s*=\s*\[.*<\/script>[\"']?", dec_data, data)
+            except:
+                pass
+
     r = re.compile('(<script.*?str=\'@.*?str.replace)')
     while r.findall(data):
         for g in r.findall(data):

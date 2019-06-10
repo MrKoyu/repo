@@ -14,7 +14,6 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-
 import re, urllib, urlparse
 
 from resources.lib.modules import cleantitle
@@ -30,7 +29,7 @@ class source:
         self.language = ['en']
         self.domains = ['scene-rls.com', 'scene-rls.net']
         self.base_link = 'http://scene-rls.net'
-        self.search_link = '/?s=%s&submit=Find'
+        self.search_link = '/search/%s'
         self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -76,9 +75,9 @@ class source:
 
             title = data['tvshowtitle'] if 'tvshowtitle' in data else data['title']
 
-            hdlr = '%sS%02dE%02d' % (data['year'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
+            hdlr = 's%02de%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
-            query = '%s %s S%02dE%02d' % (data['tvshowtitle'], data['year'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
+            query = '%s s%02de%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
             query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
 
             try:
@@ -93,26 +92,9 @@ class source:
 
                 for post in posts:
                     try:
-                        t = client.parseDOM(post, 'a')[0]
-                        t = re.sub('<.+?>|</.+?>', '', t)
-
-                        x = re.sub('(\.|\(|\[|\s)(\d{4}|S\d*E\d*|S\d*|3D)(\.|\)|\]|\s|)(.+|)', '', t)
-                        if not cleantitle.get(title) in cleantitle.get(x): raise Exception()
-                        y = re.findall('[\.|\(|\[|\s](\d{4}|S\d*E\d*|S\d*)[\.|\)|\]|\s]', t)[-1].upper()
-                        if not y == hdlr: raise Exception()
-
-                        fmt = re.sub('(.+)(\.|\(|\[|\s)(\d{4}|S\d*E\d*|S\d*)(\.|\)|\]|\s)', '', t.upper())
-                        fmt = re.split('\.|\(|\)|\[|\]|\s|\-', fmt)
-                        fmt = [i.lower() for i in fmt]
-                        #if not any(i in ['1080p', '720p'] for i in fmt): raise Exception()
-
-                        if len(dupes) > 2: raise Exception()
-                        dupes += [x]
-
-                        u = client.parseDOM(post, 'a', ret='href')[0]
-
-                        r = self.scraper.get(u).content
-                        u = client.parseDOM(r, 'a', ret='href')
+                        u = client.parseDOM(post, "div", attrs={"class": "postContent"})
+                        u = client.parseDOM(u, "h2")
+                        u = client.parseDOM(u, 'a', ret='href')
                         u = [(i.strip('/').split('/')[-1], i) for i in u]
                         items += u
                     except:
@@ -127,11 +109,7 @@ class source:
 
                     t = re.sub('(\.|\(|\[|\s)(\d{4}|S\d*E\d*|S\d*|3D)(\.|\)|\]|\s|)(.+|)', '', name)
 
-                    if not cleantitle.get(t) == cleantitle.get(title): raise Exception()
-
-                    y = re.findall('[\.|\(|\[|\s](\d{4}|S\d*E\d*|S\d*)[\.|\)|\]|\s]', name)[-1].upper()
-
-                    if not y == hdlr: raise Exception()
+                    if not cleantitle.get(t) == cleantitle.get(title): continue
 
                     quality, info = source_utils.get_release_quality(name, item[1])
 
@@ -152,7 +130,7 @@ class source:
 
             return sources
         except:
-            return
+            return sources
 
     def resolve(self, url):
         return url

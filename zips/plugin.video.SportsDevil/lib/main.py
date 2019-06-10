@@ -24,6 +24,8 @@ from downloader import Downloader
 from favouritesManager import FavouritesManager
 
 import entities.CListItem as ListItem
+from entities.CList import CList
+
 
 from utils import xbmcUtils
 
@@ -204,12 +206,13 @@ class Main:
                 lItem['url'] =  lItem['url'] % (urllib.quote_plus(search_phrase))
 
         url = lItem['url']
-
+        
         if url == common.Paths.customModulesFile: 
             self.customModulesManager.getCustomModules()
 
         tmpList = None
         result = self.parser.parse(lItem)
+        
         if result.code == ParsingResult.Code.SUCCESS:
             tmpList = result.list
         elif result.code == ParsingResult.Code.CFGFILE_NOT_FOUND:
@@ -233,7 +236,7 @@ class Main:
             tmp = ListItem.create()
             tmp['title'] = 'Favourites'
             tmp['type'] = 'rss'
-            tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark.png')
+            tmp['icon'] = os.path.join(common.Paths.imgDir, 'icons/favourites.png')
             tmp['url'] = str(common.Paths.favouritesFile)
             tmpList.items.insert(0, tmp)
             
@@ -246,10 +249,11 @@ class Main:
             tmp = ListItem.create()
             tmp['title'] = 'Add item...'
             tmp['type'] = 'command'
-            tmp['icon'] = os.path.join(common.Paths.imgDir, 'bookmark_add.png')
-            action = 'RunPlugin(%s)' % (self.base + '?mode=' + str(Mode.ADDITEM) + '&url=' + url)
+            tmp['icon'] = os.path.join(common.Paths.imgDir, 'icons/add_favourites.png')
+            action = 'RunPlugin(%s)' % (self.base + '?mode=' + str(Mode.ADDITEM) + '&item=url=' + url)
             tmp['url'] = action
-            tmpList.items.append(tmp)
+            tmpList.items.append(tmp)                   
+            
         
         # Create menu or play, if it's a single video and autoplay is enabled
         count = len(tmpList.items)
@@ -273,6 +277,7 @@ class Main:
         return tmpList
 
     def createXBMCListItem(self, item):        
+        
         title = item['title']
         m_type = item['type']
         icon = item['icon']    
@@ -420,6 +425,7 @@ class Main:
 
 
     def addListItem(self, lItem, totalItems):
+
         def createContextMenuItem(label, mode, codedItem):
             action = 'XBMC.RunPlugin(%s)' % (self.addon.build_plugin_url({'mode': str(mode), 'item': codedItem}))
             return (label, action)
@@ -431,7 +437,7 @@ class Main:
                     v = v.encode('utf8')
                 elif isinstance(v, str):
                     # Must be encoded in UTF-8
-                    v.decode('utf8')
+                    v.decode('utf8')                    
                 out_dict[k] = v
             return urllib.urlencode(out_dict)
         
@@ -439,7 +445,7 @@ class Main:
         definedIn = lItem['definedIn']
 
         codedItem = urllib.quote(encoded_dict(lItem.infos))
-
+        
         if definedIn:
             # Queue
             #contextMenuItem = createContextMenuItem('Queue', Mode.QUEUE, codedItem)
@@ -493,6 +499,11 @@ class Main:
         elif m_type.find('command') > -1:
             u = self.base + '?mode=' + str(Mode.EXECUTE) + '&item=' + codedItem
             isFolder = False
+        elif m_type == 'virtualdir': #open external addon dir
+            u = lItem['url']
+            isFolder = True
+            liz.setProperty('IsPlayable','false')
+            
         else:
             u = self.base + '?mode=' + str(Mode.VIEW) + '&item=' + codedItem
             isFolder = True
@@ -600,7 +611,6 @@ class Main:
                 
             else:
                 [mode, item] = self._parseParameters()
-
                 # switch(mode)
                 if mode == Mode.VIEW:
                     tmpList = self.parseView(item)
@@ -618,10 +628,12 @@ class Main:
 
 
                 elif mode == Mode.ADDITEM:
+                    
                     tmp = os.path.normpath(paramstring.split('url=')[1])
                     if tmp:
                         suffix = tmp.split(os.path.sep)[-1]
                         tmp = tmp.replace(suffix,'') + urllib.quote_plus(suffix)
+                        
                     if self.favouritesManager.add(tmp):
                         xbmc.executebuiltin('Container.Refresh()')
 

@@ -14,7 +14,7 @@ item_info_build=%s
 
 item_info_name=zmhost
 item_info_from=zm
-item_info_convert=ifEmpty('%s','http://www.livecamtv.me/hdembed','http://%s/hdembed')
+item_info_convert=ifEmpty('%s','http://www.livecamtv.me/hdembed','https://%s/hdembed')
 item_info_build=%s
 
 item_info_name=postData
@@ -58,18 +58,19 @@ item_info_build=%s
 item_info_name=tmp_
 item_info_from=pageUrl
 #item_info_convert=getInfo('%s','.*iscache\s*=\s*"(\w+)".*?function\s+(\w+)\((\w+).*function\s+\w+\(\3.*\w+\s*=\s*"(http.*m3u8).*\2','@REFERER@','iscache|junk|junk2|file')
-item_info_convert=getInfo('%s','.*?[^']iscache\s*=\s*"([a-f0-9]+)".*(http.*m3u8.*?)"','@REFERER@','iscache|file')
+#item_info_convert=getInfo('%s','.*?[^']iscache\s*=\s*"([a-f0-9]+)".*(http.*m3u8.*?)"','@REFERER@','iscache|file')
+item_info_convert=getInfo('%s','.*btoa\('vw=(\w+).*?\w+\s*=\s*"(http.*?m3u8)','@REFERER@','iscache|file')
 item_info_build=%s
 
 item_info_name=ref
-item_info_from=pageUrl2+'&vw='+iscache+'&s=
+item_info_from=pageUrl2+'&vw='+iscache+'&kl=
 item_info_convert=quote(%s)
 item_info_convert=quote(%s)
 item_info_build=%s
 
 item_info_name=url4
 #item_info_from=hls://'+file+'|Referer='+ref+'&User-Agent=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F61.0.3163.100%20Safari%2F537.36&Cookie='+cookies
-item_info_from=file+'|Referer='+ref+'&User-Agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1&Cookie='+cookies
+item_info_from=file+'|Referer='+ref+'&User-Agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1
 #item_info_convert=debug
 item_info_convert=quote(%s)
 #item_info_convert=encodeBase64

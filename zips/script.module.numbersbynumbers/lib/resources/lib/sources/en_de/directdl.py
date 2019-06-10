@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -13,7 +13,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
+'''
+
 import re,urllib,urlparse,json,random,base64
 
 from resources.lib.modules import cleantitle
@@ -57,7 +58,7 @@ class source:
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
-            if url == None: return
+            if url is None: return
 
             url = urlparse.parse_qs(url)
             url = dict([(i, url[i][0]) if url[i] else (i, '') for i in url])
@@ -71,8 +72,8 @@ class source:
     def request(self, url, post=None, cookie=None, referer=None, output='', close=True):
         try:
             headers = {'Accept': '*/*'}
-            if not cookie == None: headers['Cookie'] = cookie
-            if not referer == None: headers['Referer'] = referer
+            if not cookie is None: headers['Cookie'] = cookie
+            if not referer is None: headers['Referer'] = referer
             result = client.request(url, post=post, headers=headers, output=output, close=close)
             print(result)
             result = result.decode('iso-8859-1').encode('utf-8')
@@ -98,9 +99,9 @@ class source:
         try:
             sources = []
 
-            if url == None: return sources
+            if url is None: return sources
 
-            if debrid.status() == False: raise Exception()
+            if debrid.status() is False: raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])

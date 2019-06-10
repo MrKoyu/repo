@@ -53,7 +53,7 @@ class Parser(object):
         ext = getFileExtension(url)
 
         successfullyScraped = True
-
+        
         tmpList = None
         if lItem['catcher']:
             catcher = lItem['catcher']
@@ -63,7 +63,7 @@ class Parser(object):
                 successfullyScraped = self.__loadRemote(tmpList, lItem)
         else:
             if ext == 'cfg':
-                tmpList = self.__loadLocal(url, lItem)
+                tmpList = self.__loadLocal(url, lItem)                
                 if tmpList and tmpList.start != '' and len(tmpList.rules) > 0:
                     lItem['url'] = tmpList.start
                     successfullyScraped = self.__loadRemote(tmpList, lItem)
@@ -71,6 +71,7 @@ class Parser(object):
                 tmpList = self.__loadLocal(cfg, lItem)
                 if tmpList and len(tmpList.rules) > 0:
                     successfullyScraped = self.__loadRemote(tmpList, lItem)
+            
 
         # autoselect
         if tmpList and tmpList.skill.find('autoselect') != -1 and len(tmpList.items) == 1:
@@ -81,6 +82,7 @@ class Parser(object):
                 common.log('Autoselect - ' + m['title'])
                 lItem = m
                 tmpList = self.parse(lItem).list
+
 
         if not tmpList:
             return ParsingResult(ParsingResult.Code.CFGSYNTAX_INVALID, None)
@@ -139,7 +141,7 @@ class Parser(object):
                                 return None
 
         #load file and apply parameters
-        data = getFileContent(cfg)
+        data = getFileContent(cfg)        
         data = cr.CustomReplacements().replace(os.path.dirname(cfg), data, lItem, params)
 
         #log
@@ -157,9 +159,7 @@ class Parser(object):
      scrape items according to rules and add them to the list
     """
     def __loadRemote(self, inputList, lItem):
-
-        try:
-            
+        try:            
             form_data = None
             postData = ''
             if re.compile(r'\|[\w&=]+').findall(lItem['url']): #jairox: added for post in menu cfgs
@@ -169,6 +169,7 @@ class Parser(object):
                 if len(parts) > 1:
                     postData = parts[1]
                     form_data = urlparse.parse_qsl(postData)
+                    
             inputList.curr_url = lItem['url']
             count = 0
             i = 1
@@ -219,7 +220,7 @@ class Parser(object):
                     count = len(items)
                     common.log('    -> ' + str(count) + ' item(s) found')
                     # for item in items:
-                    #     common.log("JairoXparserPY: " + str(items[0]))
+                    #     common.log("JairoXparserPY: " + item['url'])
                     
                     
                     
@@ -433,6 +434,7 @@ class Parser(object):
                             tmp['videoTitle'] = value 
                     elif key == 'url':
                         tmp['url'] = value
+                        
                         if lItem:
                             tmp.merge(lItem)
                             
@@ -442,6 +444,8 @@ class Parser(object):
                                 tmp['catcher'] = tmpList.catcher
                             
                         tmp['definedIn'] = cfgFile
+                        if 'plugin://' in tmp['url']:
+                            tmp['type'] = 'virtualdir'
                         items.append(tmp)
                         tmp = None
                     elif tmp != None:
@@ -673,6 +677,9 @@ class Parser(object):
 
             elif command == 'ifEmpty':
                 src = cc.ifEmpty(item, params, src)
+
+            elif command == 'ifContains':
+                src = cc.ifContains(item, params, src)
 
             elif command == 'isEqual':
                 src = cc.isEqual(item, params, src)
