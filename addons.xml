@@ -992,7 +992,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="script.module.numbersbynumbers" name="NuMb3r5 Module" version="1.00.071" provider-name="Brackets">
+<addon id="script.module.numbersbynumbers" name="NuMb3r5 Module" version="1.00.072" provider-name="Brackets">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>
