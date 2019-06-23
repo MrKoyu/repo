@@ -86,7 +86,8 @@ def query(title):
 def get_query(title):
     if title is None: return
     title = title.replace(' ', '.').replace(':', '').replace('.-.', '.').replace('\'', '')
-    return title					 
+    return title
+
 def normalize(title):
 
     try:

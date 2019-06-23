@@ -1094,3 +1094,11 @@ msgstr ""
 msgctxt "#32711"
 msgid "[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Collections[/COLOR]"
 msgstr ""
+
+msgctxt "#90004"
+msgid "Real-Debrid Providers"
+msgstr ""
+
+msgctxt "#90005"
+msgid "Torrent Providers"
+msgstr ""

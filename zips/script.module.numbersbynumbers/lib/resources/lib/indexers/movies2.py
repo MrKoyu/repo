@@ -28,6 +28,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+
 import os,sys,re,json,urllib,urlparse,base64,datetime
 import unicodedata
 try: action = dict(urlparse.parse_qsl(sys.argv[2].replace('?','')))['action']
@@ -1571,8 +1572,8 @@ class movies:
                 if isEstuary == True:
                     try: del meta['cast']
                     except: pass
-                if "tt" in imdb: sysmetalliq = "plugin.video.metalliq-forqed/movies/add_to_library_parsed/imdb/%s/direct.numbersbynumbers.cdtv" % imdb
-                elif not tmdb == "0" or tmdb == None: sysmetalliq = "plugin.video.metalliq-forqed/movies/add_to_library_parsed/tmdb/%s/direct.numbersbynumbers.cdtv" % tmdb
+                if "tt" in imdb: sysmetalliq = "plugin://plugin.video.metalliq-forqed/movies/add_to_library_parsed/imdb/%s/direct.numbersbynumbers.cdtv" % imdb
+                elif not tmdb == "0" or tmdb == None: sysmetalliq = "plugin://plugin.video.metalliq-forqed/movies/add_to_library_parsed/tmdb/%s/direct.numbersbynumbers.cdtv" % tmdb
                 else: sysmetalliq = "0"
                 sysmeta = urllib.quote_plus(json.dumps(meta))
                 

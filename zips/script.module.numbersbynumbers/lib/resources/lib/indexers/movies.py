@@ -230,7 +230,6 @@ class movies:
         k = control.keyboard('', t)
         k.doModal()
         q = k.getText() if k.isConfirmed() else None
-						
 
         if (q is None or q == ''):
             return
@@ -248,19 +247,16 @@ class movies:
         url = self.search_link + urllib.quote_plus(q)
         self.get(url)
 
-			
     def search_term(self, name):
         url = self.search_link + urllib.quote_plus(name)
         self.get(url)
 
-		
     def person(self):
         try:
             t = control.lang(32010).encode('utf-8')
             k = control.keyboard('', t)
             k.doModal()
             q = k.getText() if k.isConfirmed() else None
-						
 
             if (q is None or q == ''):
                 return

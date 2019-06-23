@@ -51,7 +51,7 @@ queueMenu = control.lang(32065).encode('utf-8')
 
 class navigator:
     def root(self):
-        self.addDirectoryItem('[B][COLOR gold]• [/COLOR][/B][B][COLOR white]NuMbErS NeWs[/COLOR][/B][B][COLOR gold] •[/COLOR][/B]',  'ShowChangelog',  'icon.gif',  'DefaultFolder.png')
+        self.addDirectoryItem('[B][COLOR gold]• [/COLOR][/B][B][COLOR white]NuMb3r5 NeWs[/COLOR][/B][B][COLOR gold] •[/COLOR][/B]',  'ShowChangelog',  'icon.gif',  'DefaultFolder.png')
         self.addDirectoryItem(32001, 'movieNavigator', 'movies.png', 'DefaultMovies.png')
         self.addDirectoryItem(32002, 'tvNavigator', 'tvshows.png', 'DefaultTVShows.png')
         if not control.setting('lists.widget') == '0':
@@ -81,7 +81,7 @@ class navigator:
         self.addDirectoryItem(32012, 'movieYears', 'years.png', 'DefaultMovies.png')
         self.addDirectoryItem(32013, 'moviePersons', 'people.png', 'DefaultMovies.png')
         self.addDirectoryItem(32014, 'movieLanguages', 'international.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32015, 'movieCertificates', 'certificates.png', 'DefaultMovies.png')
+        #self.addDirectoryItem(32015, 'movieCertificates', 'certificates.png', 'DefaultMovies.png')
         self.addDirectoryItem(32017, 'movies&url=trending', 'people-watching.png', 'DefaultRecentlyAddedMovies.png')
         self.addDirectoryItem(32018, 'movies&url=popular', 'most-popular.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Romantic Comedy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'movies&url=romance', 'romance.png', 'DefaultMovies.png')  
@@ -145,7 +145,7 @@ class navigator:
         self.addDirectoryItem(32701, 'tvGenres', 'genres2.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32708, 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32702, 'tvLanguages', 'international2.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32703, 'tvCertificates', 'certificates2.png', 'DefaultTVShows.png')
+        #self.addDirectoryItem(32703, 'tvCertificates', 'certificates2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32704, 'tvshows&url=trending', 'people-watching2.png', 'DefaultRecentlyAddedEpisodes.png')
         self.addDirectoryItem(32705, 'tvshows&url=popular', 'most-popular2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32710, 'tvshows&url=marveltv', 'marvel_tv.png', 'DefaultMovies.png')

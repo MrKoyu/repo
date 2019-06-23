@@ -1,8 +1,15 @@
-[B][COLOR deepskyblue]• [/COLOR][/B][B][COLOR white] WELCOME TO NuMbErS LATEST UPDATES [/COLOR][/B][B][COLOR deepskyblue] •[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B][B][COLOR white] WELCOME TO NuMb3r5 LATEST UPDATES [/COLOR][/B][B][COLOR deepskyblue] •[/COLOR][/B]
 
 [B][COLOR lime]• [/COLOR][/B] [COLOR deepskyblue]CURRENT STATUS:[/COLOR] Outstanding!
 
 [COLOR deepskyblue]********************************************************************************************[/COLOR]
+
+[B][COLOR limegreen]V2.0.1.9[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Enable/disable providers in settings fixed
+[B][COLOR deepskyblue]• [/COLOR][/B] Update providers service on startup
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Documentaries category crashing issues
 
 [B][COLOR limegreen]V2.0.1.8[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Module Update

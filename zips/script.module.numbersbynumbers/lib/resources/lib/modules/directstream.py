@@ -32,8 +32,24 @@ import re, os, urllib, urlparse, json, binascii
 from resources.lib.modules import client
 
 
-def google(url):
+def google(url, ref=None):
     try:
+        if 'lh3.googleusercontent' in url or 'bp.blogspot' in url:
+            newheaders = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
+                           'Accept': '*/*',
+                           'Host': 'lh3.googleusercontent.com',
+                           'Accept-Language': 'en-US,en;q=0.8,de;q=0.6,es;q=0.4',
+                           'Accept-Encoding': 'identity;q=1, *;q=0',
+                           'Referer': ref,
+                           'Connection': 'Keep-Alive',
+                           'X-Client-Data': 'CJK2yQEIo7bJAQjEtskBCPqcygEIqZ3KAQjSncoBCKijygE=',
+                           'Range': 'bytes=0-'
+                           }
+            resp = client.request(url, headers=newheaders, redirect=False, output='extended', timeout='10')
+            loc = resp[2]['Location']
+            c = resp[2]['Set-Cookie'].split(';')[0]
+            url = '%s|Cookie=%s' % (loc, c)
+            return url
         if any(x in url for x in ['youtube.', 'docid=']): url = 'https://drive.google.com/file/d/%s/view' % re.compile('docid=([\w-]+)').findall(url)[0]
 
         netloc = urlparse.urlparse(url.strip().lower()).netloc
@@ -103,7 +119,7 @@ def google(url):
         result = sorted(result, key=lambda i: i.get('height', 0), reverse=True)
 
         url = []
-        for q in ['4K', '1440p', '1080p', 'HD', 'SD']:
+        for q in ['4K', '1440p', '1080p', '720p', 'SD']:
             try:
                 url += [[i for i in result if i.get('quality') == q][0]]
             except:
@@ -130,24 +146,24 @@ def googletag(url, append_height=False):
     itag_map = {'151': {'quality': 'SD', 'height': 72}, '212': {'quality': 'SD', 'height': 480}, '313': {'quality': '4K', 'height': 2160},
                 '242': {'quality': 'SD', 'height': 240}, '315': {'quality': '4K', 'height': 2160}, '219': {'quality': 'SD', 'height': 480},
                 '133': {'quality': 'SD', 'height': 240}, '271': {'quality': '1440p', 'height': 1440}, '272': {'quality': '4K', 'height': 2160},
-                '137': {'quality': '1080p', 'height': 1080}, '136': {'quality': 'HD', 'height': 720}, '135': {'quality': 'SD', 'height': 480},
+                '137': {'quality': '1080p', 'height': 1080}, '136': {'quality': '720p', 'height': 720}, '135': {'quality': 'SD', 'height': 480},
                 '134': {'quality': 'SD', 'height': 360}, '82': {'quality': 'SD', 'height': 360}, '83': {'quality': 'SD', 'height': 480},
-                '218': {'quality': 'SD', 'height': 480}, '93': {'quality': 'SD', 'height': 360}, '84': {'quality': 'HD', 'height': 720},
-                '170': {'quality': '1080p', 'height': 1080}, '167': {'quality': 'SD', 'height': 360}, '22': {'quality': 'HD', 'height': 720},
+                '218': {'quality': 'SD', 'height': 480}, '93': {'quality': 'SD', 'height': 360}, '84': {'quality': '720p', 'height': 720},
+                '170': {'quality': '1080p', 'height': 1080}, '167': {'quality': 'SD', 'height': 360}, '22': {'quality': '720p', 'height': 720},
                 '46': {'quality': '1080p', 'height': 1080}, '160': {'quality': 'SD', 'height': 144}, '44': {'quality': 'SD', 'height': 480},
-                '45': {'quality': 'HD', 'height': 720}, '43': {'quality': 'SD', 'height': 360}, '94': {'quality': 'SD', 'height': 480},
+                '45': {'quality': '720p', 'height': 720}, '43': {'quality': 'SD', 'height': 360}, '94': {'quality': 'SD', 'height': 480},
                 '5': {'quality': 'SD', 'height': 240}, '6': {'quality': 'SD', 'height': 270}, '92': {'quality': 'SD', 'height': 240},
                 '85': {'quality': '1080p', 'height': 1080}, '308': {'quality': '1440p', 'height': 1440}, '278': {'quality': 'SD', 'height': 144},
-                '78': {'quality': 'SD', 'height': 480}, '302': {'quality': 'HD', 'height': 720}, '303': {'quality': '1080p', 'height': 1080},
-                '245': {'quality': 'SD', 'height': 480}, '244': {'quality': 'SD', 'height': 480}, '247': {'quality': 'HD', 'height': 720},
+                '78': {'quality': 'SD', 'height': 480}, '302': {'quality': '720p', 'height': 720}, '303': {'quality': '1080p', 'height': 1080},
+                '245': {'quality': 'SD', 'height': 480}, '244': {'quality': 'SD', 'height': 480}, '247': {'quality': '720p', 'height': 720},
                 '246': {'quality': 'SD', 'height': 480}, '168': {'quality': 'SD', 'height': 480}, '266': {'quality': '4K', 'height': 2160},
-                '243': {'quality': 'SD', 'height': 360}, '264': {'quality': '1440p', 'height': 1440}, '102': {'quality': 'HD', 'height': 720},
-                '100': {'quality': 'SD', 'height': 360}, '101': {'quality': 'SD', 'height': 480}, '95': {'quality': 'HD', 'height': 720},
+                '243': {'quality': 'SD', 'height': 360}, '264': {'quality': '1440p', 'height': 1440}, '102': {'quality': '720p', 'height': 720},
+                '100': {'quality': 'SD', 'height': 360}, '101': {'quality': 'SD', 'height': 480}, '95': {'quality': '720p', 'height': 720},
                 '248': {'quality': '1080p', 'height': 1080}, '96': {'quality': '1080p', 'height': 1080}, '91': {'quality': 'SD', 'height': 144},
                 '38': {'quality': '4K', 'height': 3072}, '59': {'quality': 'SD', 'height': 480}, '17': {'quality': 'SD', 'height': 144},
                 '132': {'quality': 'SD', 'height': 240}, '18': {'quality': 'SD', 'height': 360}, '37': {'quality': '1080p', 'height': 1080},
-                '35': {'quality': 'SD', 'height': 480}, '34': {'quality': 'SD', 'height': 360}, '298': {'quality': 'HD', 'height': 720},
-                '299': {'quality': '1080p', 'height': 1080}, '169': {'quality': 'HD', 'height': 720}}
+                '35': {'quality': 'SD', 'height': 480}, '34': {'quality': 'SD', 'height': 360}, '298': {'quality': '720p', 'height': 720},
+                '299': {'quality': '1080p', 'height': 1080}, '169': {'quality': '720p', 'height': 720}}
 
     if quality in itag_map:
         quality = itag_map[quality]
@@ -199,7 +215,7 @@ def vk(url):
 
         url = []
         try:
-            url += [{'quality': 'HD', 'url': sources['720']}]
+            url += [{'quality': '720p', 'url': sources['720']}]
         except:
             pass
         try:
@@ -234,7 +250,7 @@ def odnoklassniki(url):
         result = json.loads(result).get('videos', [])
 
         hd = []
-        for name, quali in {'ultra': '4K', 'quad': '1440p', 'full': '1080p', 'hd': 'HD'}.items():
+        for name, quali in {'ultra': '4K', 'quad': '1440p', 'full': '1080p', 'hd': '720p'}.items():
             hd += [{'quality': quali, 'url': i.get('url')} for i in result if i.get('name').lower() == name]
 
         sd = []
@@ -289,5 +305,3 @@ def yandex(url):
         return url
     except:
         return
-
-

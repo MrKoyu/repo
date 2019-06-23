@@ -75,6 +75,16 @@ def get(function, duration, *args):
         return None
 
 
+def remove(function, *args):
+    try:
+        key = _hash_function(function, args)
+        cursor = _get_connection_cursor()
+        cursor.execute("DELETE FROM %s WHERE key = ?" % cache_table, [key])
+        cursor.connection.commit()
+    except Exception:
+        pass
+
+
 def timeout(function, *args):
     try:
         key = _hash_function(function, args)
@@ -272,7 +282,7 @@ def _find_cache_version():
             f.close()
     except Exception:
         import xbmc
-        print 'NuMbErS Addon Data Path Does not Exist. Creating Folder....'
+        print 'NuMb3r5 Addon Data Path Does not Exist. Creating Folder....'
         ad_folder = xbmc.translatePath('special://home/userdata/addon_data/plugin.video.numbersbynumbers')
         os.makedirs(ad_folder)
 

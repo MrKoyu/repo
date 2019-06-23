@@ -15,6 +15,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+
 import re,urllib,urlparse
 
 from resources.lib.modules import client
@@ -27,7 +28,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['www.mkvcage.ws']
-        self.base_link = 'https://www.mkvcage.cc/'
+        self.base_link = 'https://www.mkvcage.fun/'
         self.search_link = '?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):

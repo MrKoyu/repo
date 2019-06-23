@@ -29,8 +29,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['torrentdownloads.me']
-        self.base_link = 'https://www.torrentdownloads.info'
-        self.search = 'https://www.torrentdownloads.info/rss.xml?new=1&type=search&cid={0}&search={1}'
+        self.base_link = 'https://www.torrentdownloads.me'
+        self.search = 'https://www.torrentdownloads.me/rss.xml?new=1&type=search&cid={0}&search={1}'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

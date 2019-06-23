@@ -48,6 +48,78 @@ def is_anime(content, type, type_id):
         return False
 
 
+def streaminfo(item, meta, type):
+    info = {}
+    try:
+        if type == 'video':
+            if item['quality'] == '4K':
+                width = 3840
+                height = 2160
+
+            elif item['quality'] == '1080p':
+                width = 1920
+                height = 1080
+
+            elif item['quality'] == '720p':
+                width = 1280
+                height = 720
+
+            else:
+                width = 720; height = 480
+
+            try:
+                codec = 'hevc' if 'hevc' in item['info'].lower() else 'h264'
+            except:
+                codec = 'h264'
+
+            info = {'codec': codec, 'height': height, 'width': width, 'duration': meta['duration']}
+            return info
+        elif type == 'audio':
+            if '5.1' in item['url'].lower() and any(x in item['url'].lower() for x in ['.dd.', 'dolby.digital', 'ac3']):
+                codec = 'ac3'
+                channels = 6
+
+            elif '7.1' in item['url'].lower() and 'dtshd' in item['url'].lower():
+                codec = 'dtshd'
+                channels = 8
+            elif '7.1' in item['url'].lower() and 'dolby' in item['url'].lower():
+                codec = 'truehd'
+                channels = 8
+
+            else:
+                codec = 'aac'; channels = 2
+
+            if channels == 2:
+                if '5.1' in item['url'].lower():
+                    channels = 6
+                elif '7.1' in item['url'].lower():
+                    channels = 8
+
+            if codec == 'aac':
+                if '.dd' in item['url'].lower():
+                    codec = 'dolbydigital'
+                elif 'dolby' in item['url'].lower() and 'digital' in item['url'].lower():
+                    codec = 'dolbydigital'
+                elif '.ac3' in item['url'].lower():
+                    codec = 'ac3'
+                elif '.dts.' in item['url'].lower():
+                    codec = 'dts'
+                elif '.dtshd.' in item['url'].lower():
+                    codec = 'dts'
+                elif '.truehd.' in item['url'].lower():
+                    codec = 'truehd'
+
+            try:
+                language = item['language']
+            except:
+                language = 'en'
+
+            info = {'codec': codec, 'channels': channels, 'language': language}
+            return info
+    except:
+        return info
+
+
 def get_release_quality(release_name, release_link=None):
 
     if release_name is None: return
@@ -57,16 +129,19 @@ def get_release_quality(release_name, release_link=None):
 
     try:
         quality = None
-        
-        release_name = release_name.upper()
 
-        fmt = re.sub('(.+)(\.|\(|\[|\s)(\d{4}|S\d*E\d*|S\d*)(\.|\)|\]|\s)', '', release_name)
-        fmt = re.split('\.|\(|\)|\[|\]|\s|-', fmt)
+        fmt = re.sub('(.+)(\.|\(|\[|\s)(\d{4}|S\d+E\d+|S\d+)(\.|\)|\]|\s)', '', release_name)
+        fmt = re.split('\.|\(|\)|\[|\]|\s|-|_', fmt)
         fmt = [i.lower() for i in fmt]
-        if '2160p' in fmt: quality = '4K'
-        elif '1080p' in fmt: quality = '1080p'
-        elif '720p' in fmt: quality = '720p'
+
+        p_qual = re.search("(?:\s|%20|\.|\_|\-|\(|\{|\/|\[|^)(\d{3,4})(?:p|$)(?:$|\s|\.|\_|\-|\)|\}|\/|\]|%20)", release_name.lower())
+        if p_qual: quality = label_to_quality(p_qual.groups()[0])
+        elif '.4k.' in fmt: quality = '4K'
+        elif '.uhd' in fmt: quality = '4K'
         elif 'brrip' in fmt: quality = '720p'
+        elif 'hdrip' in fmt: quality = '720p'
+        elif 'hdtv' in fmt: quality = '720p'
+        elif 'cam' in fmt: quality = 'CAM'
         elif any(i in ['dvdscr', 'r5', 'r6'] for i in fmt): quality = 'SCR'
         elif any(i in ['camrip', 'tsrip', 'hdcam', 'hdts', 'dvdcam', 'dvdts', 'cam', 'telesync', 'ts'] for i in fmt): quality = 'CAM'
 
@@ -75,10 +150,14 @@ def get_release_quality(release_name, release_link=None):
                 release_link = release_link.lower()
                 try: release_link = release_link.encode('utf-8')
                 except: pass
-                if '2160' in release_link: quality = '4K'
-                elif '1080' in release_link: quality = '1080p'
-                elif '720' in release_link: quality = '720p'
+                p_qual = re.search("(?:\s|%20|\.|\_|\-|\(|\{|\/|\[|^)(\d{3,4})(?:p|$)(?:$|\s|\.|\_|\-|\)|\}|\/|\]|%20)", release_link)
+                if p_qual: quality = label_to_quality(p_qual.groups()[0])
+                elif '.4k.' in release_link: quality = '4K'
+                elif '.uhd' in release_link: quality = '4K'
                 elif '.hd' in release_link: quality = 'SD'
+                elif 'hdrip' in release_link: quality = '720p'
+                elif 'hdtv' in release_link: quality = '720p'
+                elif 'cam' in release_link: quality = 'CAM'
                 else: 
                     if any(i in ['dvdscr', 'r5', 'r6'] for i in release_link): quality = 'SCR'
                     elif any(i in ['camrip', 'tsrip', 'hdcam', 'hdts', 'dvdcam', 'dvdts', 'cam', 'telesync', 'ts'] for i in release_link): quality = 'CAM'
@@ -90,55 +169,48 @@ def get_release_quality(release_name, release_link=None):
 
         return quality, info
     except:
-        return 'SD', []
+        return 'SD', ''
 
 
 def getFileType(url):
-
-    try: url = url.lower()
-    except: url = str(url)
+    try:
+        url = url.lower()
+    except:
+        url = str(url)
     type = ''
-    
-    if 'bluray' in url: type += ' BLURAY /'
-    if '.web-dl' in url: type += ' WEB-DL /'
-    if '.web.' in url: type += ' WEB-DL /'
-    if 'hdrip' in url: type += ' HDRip /'
-    if 'bd-r' in url: type += ' BD-R /'
-    if 'bd-rip' in url: type += ' BD-RIP /'
-    if 'bd.r' in url: type += ' BD-R /'
-    if 'bd.rip' in url: type += ' BD-RIP /'
-    if 'bdr' in url: type += ' BD-R /'
-    if 'bdrip' in url: type += ' BD-RIP /'
-    if 'atmos' in url: type += ' ATMOS /'
-    if 'truehd' in url: type += ' TRUEHD /'
-    if '.dd' in url: type += ' DolbyDigital /'
-    if '5.1' in url: type += ' 5.1 /'
-    if '.xvid' in url: type += ' XVID /'
-    if '.mp4' in url: type += ' MP4 /'
-    if '.avi' in url: type += ' AVI /'
-    if 'ac3' in url: type += ' AC3 /'
-    if 'h.264' in url: type += ' H.264 /'
-    if '.x264' in url: type += ' x264 /'
-    if '.x265' in url: type += ' x265 /'
-    if 'subs' in url: 
-        if type != '': type += ' - WITH SUBS'
-        else: type = 'SUBS'
-    type = type.rstrip('/')
-    return type
+    comp = {'bluray': 'BLURAY', '.web-dl': 'WEB-DL',
+            '.web.': 'WEB-DL', 'hdrip': 'HDRIP',
+            'bd-r': 'BD-R', 'bd-rip': 'BD-RIP',
+            'bdr': 'BD-R', 'bdrip': 'BD-RIP',
+            'atmos': 'ATMOS', 'truehd': 'TRUEHD',
+            '.dd': 'DOLBYDIGITAL', '5.1': '5.1',
+            '.xvid': 'XVID', '.mp4': 'MP4',
+            'avi': 'AVI', '.ac3': 'AC3',
+            'h.264': 'H.264', '.x264': 'X264',
+            'x265': 'X265', '.mkv': 'MKV'}
+
+    type = ' / '.join([comp[i] for i in comp if i in url])
+    return type.rstrip(' /')
 
 
 def check_sd_url(release_link):
 
     try:
         release_link = release_link.lower()
-        if '2160' in release_link: quality = '4K'
-        elif '1080' in release_link: quality = '1080p'
-        elif '720' in release_link: quality = '720p'
-        elif '.hd.' in release_link: quality = '720p'
-        elif 'hdtv' in release_link: quality = '720p'
-        elif any(i in ['dvdscr', 'r5', 'r6'] for i in release_link): quality = 'SCR'
-        elif any(i in ['camrip', 'tsrip', 'hdcam', 'hdts', 'dvdcam', 'dvdts', 'cam', 'telesync', 'ts'] for i in release_link): quality = 'CAM'
+        if '2160' in release_link:
+            quality = '4K'
+        elif '1080' in release_link:
+            quality = '1080p'
+        elif '720' in release_link:
+            quality = '720p'
+        elif '.hd.' in release_link:
+            quality = '720p'
+        elif any(i in ['dvdscr', 'r5', 'r6'] for i in release_link):
+            quality = 'SCR'
+        elif any(i in ['camrip', 'tsrip', 'hdcam', 'hdts', 'dvdcam', 'dvdts', 'cam', 'telesync', 'ts'] for i in release_link):
+            quality = 'CAM'
         else: quality = 'SD'
+
         return quality
     except:
         return 'SD'
@@ -152,7 +224,7 @@ def label_to_quality(label):
         if label >= 2160:
             return '4K'
         elif label >= 1440:
-            return '1440p'
+            return '1080p'
         elif label >= 1080:
             return '1080p'
         elif 720 <= label < 1080:
@@ -161,6 +233,7 @@ def label_to_quality(label):
             return 'SD'
     except:
         return 'SD'
+
 
 def strip_domain(url):
     try:
@@ -175,6 +248,11 @@ def strip_domain(url):
 
 def is_host_valid(url, domains):
     try:
+        if any(x in url.lower() for x in ['.rar.', '.zip.', '.iso.']) or any(
+                url.lower().endswith(x) for x in ['.rar', '.zip', '.iso']): raise Exception()
+
+        if any(x in url.lower() for x in ['youtube', 'sample', 'trailer', 'zippyshare', 'facebook']): raise Exception()
+
         host = __top_domain(url)
         hosts = [domain.lower() for domain in domains if host and host in domain.lower()]
 

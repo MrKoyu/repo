@@ -37,6 +37,7 @@ import time
 import urllib
 import urlparse
 
+
 from resources.lib.modules import (cleantitle, client, control, debrid,
                                    log_utils, source_utils, trakt, tvmaze,
                                    workers)
@@ -174,7 +175,9 @@ class sources:
 
         for i in range(len(items)):
             try:
-                label = items[i]['label']
+                label = str(items[i]['label'])
+                if control.setting('sourcelist.multiline') == 'true':
+                    label = str(items[i]['multiline_label'])
 
                 syssource = urllib.quote_plus(json.dumps([items[i]]))
 
@@ -449,7 +452,7 @@ class sources:
 
         for i in range(0, 4 * timeout):
             if str(pre_emp) == 'true':
-                if quality in ['0']:
+                if quality in ['0','1']:
                     if (source_4k + d_source_4k) >= int(pre_emp_limit): break
                 elif quality in ['1']:
                     if (source_1080 + d_source_1080) >= int(pre_emp_limit): break
@@ -960,9 +963,10 @@ class sources:
         debrid_only = control.setting('debrid.only')
         if debrid_only == '': 
             debrid_only = 'false'
-        sort = control.setting('torrent.sort')
-        if sort == '':
-            sort = 'false'
+
+        sortthemup = control.setting('torrent.sort.them.up')
+        if sortthemup == '':
+            sortthemup = 'false'
 
         quality = control.setting('hosts.quality')
         if quality == '':
@@ -1000,12 +1004,11 @@ class sources:
         for d in debrid.debrid_resolvers:
             valid_hoster = set([i['source'] for i in self.sources])
             valid_hoster = [i for i in valid_hoster if d.valid_url('', i)]
-            if sort == 'true':
-                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if str(i['url']).startswith('magnet:')]
-                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster and 'magnet:' not in str(i['url'])]
+            if sortthemup == 'true':
+                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if 'magnet:' in i['url']]
+                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster and 'magnet:' not in i['url']]
             else:
-                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster or str(i['url']).startswith('magnet:')]
- 
+                filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster or 'magnet:' in i['url']]
 
         if debrid_only == 'false' or  debrid.status() == False:
             filter += [i for i in self.sources if not i['source'].lower() in self.hostprDict and i['debridonly'] is False]
@@ -1079,7 +1082,7 @@ class sources:
 
         torr_identify = control.setting('torrent.identify')
         if torr_identify == '':
-            torr_identify = 'magenta'
+            torr_identify = ''
         torr_identify = self.getPremColor(torr_identify)
 
         for i in range(len(self.sources)):
@@ -1113,31 +1116,33 @@ class sources:
 
             if d.lower() == 'real-debrid':
                 d = 'RD'
-            elif d.lower() == 'premiumize.me':
+            if d.lower() == 'premiumize.me':
                 d = 'PM'
 
             if not d == '':
-                label = '%02d | [B]%s | %s[/B] | ' % (int(i+1), d, p)
+                label = '%02d | %s | %s | %s | ' % (int(i+1), d, p, q)
             else:
-                label = '%02d | [B]%s[/B] | ' % (int(i+1), p)
+                label = '%02d | %s | %s | ' % (int(i+1), p, q)
 
             if multi is True and not l == 'en':
-                label += '[B]%s[/B] | ' % l
+                label += '%s | ' % l
 
-            if t:
-                if q in ['4K', '1440p', '1080p', '720p']:
-                    label += '%s | [B][I]%s [/I][/B] | [I]%s[/I] | %s' % (s, q, t, f)
-                elif q == 'SD':
-                    label += '%s | %s | [I]%s[/I]' % (s, f, t)
+            multiline_label = label
+
+            if not t is None:
+                if not f is None:
+                    multiline_label += '%s \n       %s | %s' % (s, f, t)
+                    label += '%s | %s | %s' % (s, f, t)
                 else:
-                    label += '%s | %s | [I]%s [/I] | [I]%s[/I]' % (s, f, q, t)
+                    multiline_label += '%s \n       %s' % (s, t)
+                    label += '%s | %s' % (s, t)
             else:
-                if q in ['4K', '1440p', '1080p', '720p']:
-                    label += '%s | [B][I]%s [/I][/B] | %s' % (s, q, f)
-                elif q == 'SD':
+                if not f == None:
+                    multiline_label += '%s \n       %s' % (s, f)
                     label += '%s | %s' % (s, f)
                 else:
-                    label += '%s | %s | [I]%s [/I]' % (s, f, q)
+                    multiline_label += '%s' % s
+                    label += '%s' % s
             label = label.replace('| 0 |', '|').replace(' | [I]0 [/I]', '')
             label = re.sub('\[I\]\s+\[/I\]', ' ', label)
             label = re.sub('\|\s+\|', '|', label)
@@ -1146,20 +1151,25 @@ class sources:
             if d:
                 if 'torrent' in s.lower():
                     if not torr_identify == 'nocolor':
+                        self.sources[i]['multiline_label'] = ('[COLOR %s]' % (torr_identify)) + multiline_label.upper() + '[/COLOR]'
                         self.sources[i]['label'] = ('[COLOR %s]' % (torr_identify)) + label.upper() + '[/COLOR]'
                     else:
+                        self.sources[i]['multiline_label'] = multiline_label.upper()
                         self.sources[i]['label'] = label.upper()
                 else:
                     if not prem_identify == 'nocolor':
+                        self.sources[i]['multiline_label'] = ('[COLOR %s]' % (prem_identify)) + multiline_label.upper() + '[/COLOR]'
                         self.sources[i]['label'] = ('[COLOR %s]' % (prem_identify)) + label.upper() + '[/COLOR]'
                     else:
+                        self.sources[i]['multiline_label'] = multiline_label.upper()
                         self.sources[i]['label'] = label.upper()
             else:
+                self.sources[i]['multiline_label'] = multiline_label.upper()
                 self.sources[i]['label'] = label.upper()
 
         try:
             if not HEVC == 'true':
-                self.sources = [i for i in self.sources if 'HEVC' not in i['label']]
+                self.sources = [i for i in self.sources if 'label' or 'multiline_label' in i['label']]
         except Exception:
             pass
 
@@ -1180,8 +1190,7 @@ class sources:
             provider = item['provider']
             call = [i[1] for i in self.sourceDict if i[0] == provider][0]
             u = url = call.resolve(url)
-            if url is None or ('://' not in str(url) and not local and 'magnet:' not in str(url)):
-                raise Exception()
+            if url == None or not '://' in url and not local and not 'magnet:' in url: raise Exception()
 
             if not local:
                 url = url[8:] if url.startswith('stack:') else url
@@ -1460,9 +1469,9 @@ class sources:
         return title
 
     def getConstants(self):
-        self.itemProperty = 'plugin.video.numbersbynumbers.container.items'
+        self.itemProperty = 'plugin.video.overeasy.container.items'
 
-        self.metaProperty = 'plugin.video.numbersbynumbers.container.meta'
+        self.metaProperty = 'plugin.video.overeasy.container.meta'
 
         from resources.lib.sources import sources
 

@@ -42,11 +42,13 @@ from resources.lib.modules import views
 from resources.lib.modules import utils
 from resources.lib.indexers import navigator
 
-import os,sys,re,json,urllib,urlparse,datetime
+import os, sys, re, json, urllib, urlparse, datetime
 
-params = dict(urlparse.parse_qsl(sys.argv[2].replace('?',''))) if len(sys.argv) > 1 else dict()
+params = dict(urlparse.parse_qsl(sys.argv[2].replace('?', ''))) if len(sys.argv) > 1 else dict()
 
 action = params.get('action')
+
+
 
 
 
@@ -59,8 +61,8 @@ class tvshows:
         self.trakt_link = 'http://api.trakt.tv'
         self.tvmaze_link = 'http://www.tvmaze.com'
         self.logo_link = 'https://i.imgur.com/'
-        self.tvdb_key = 'M0MzNUI2OTNBRjE3NjVEMg=='
-        self.datetime = (datetime.datetime.utcnow() - datetime.timedelta(hours = 5))
+        self.tvdb_key = 'MUQ2MkYyRjkwMDMwQzQ0NA=='
+        self.datetime = (datetime.datetime.utcnow() - datetime.timedelta(hours=5))
         self.trakt_user = control.setting('trakt.user').strip()
         self.imdb_user = control.setting('imdb.user').replace('ur', '')
         self.fanart_tv_user = control.setting('fanart.tv.user')
@@ -69,7 +71,8 @@ class tvshows:
 
         self.search_link = 'http://api.trakt.tv/search/show?limit=20&page=1&query='
         self.tvmaze_info_link = 'http://api.tvmaze.com/shows/%s'
-        self.tvdb_info_link = 'http://thetvdb.com/api/%s/series/%s/%s.xml' % (self.tvdb_key.decode('base64'), '%s', self.lang)
+        self.tvdb_info_link = 'http://thetvdb.com/api/%s/series/%s/%s.xml' % (
+        self.tvdb_key.decode('base64'), '%s', self.lang)
         self.fanart_tv_art_link = 'http://webservice.fanart.tv/v3/tv/%s'
         self.fanart_tv_level_link = 'http://webservice.fanart.tv/v3/level'
         self.tvdb_by_imdb = 'http://thetvdb.com/api/GetSeriesByRemoteID.php?imdbid=%s'
@@ -81,7 +84,7 @@ class tvshows:
         self.popular_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&release_date=,date[0]&sort=moviemeter,asc&count=40&start=1'
         self.airing_link = 'http://www.imdb.com/search/title?title_type=tv_episode&release_date=date[1],date[0]&sort=moviemeter,asc&count=40&start=1'
         self.active_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=10,&production_status=active&sort=moviemeter,asc&count=40&start=1'
-        #self.premiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&languages=en&num_votes=10,&release_date=date[60],date[0]&sort=moviemeter,asc&count=40&start=1'
+        # self.premiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&languages=en&num_votes=10,&release_date=date[60],date[0]&sort=moviemeter,asc&count=40&start=1'
         self.premiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&languages=en&num_votes=10,&release_date=date[60],date[0]&sort=release_date,desc&count=40&start=1'
         self.rating_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=5000,&release_date=,date[0]&sort=user_rating,desc&count=40&start=1'
         self.views_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&release_date=,date[0]&sort=num_votes,desc&count=40&start=1'
@@ -91,8 +94,7 @@ class tvshows:
         self.language_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&production_status=released&primary_language=%s&sort=moviemeter,asc&count=40&start=1'
         self.certification_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&certificates=us:%s&sort=moviemeter,asc&count=40&start=1'
         self.trending_link = 'http://api.trakt.tv/shows/trending?limit=40&page=1'
-        self.marveltv_link  = 'https://www.imdb.com/list/ls026566277/?view=detail&sort=alpha,asc&title_type=tvSeries,miniSeries&start=1'        
-        
+        self.marveltv_link  = 'https://www.imdb.com/list/ls026566277/?view=detail&sort=alpha,asc&title_type=tvSeries,miniSeries&start=1'
 
         self.traktlists_link = 'http://api.trakt.tv/users/me/lists'
         self.traktlikedlists_link = 'http://api.trakt.tv/users/likes/lists?limit=1000000'
@@ -101,20 +103,25 @@ class tvshows:
         self.traktwatchlist_link = 'http://api.trakt.tv/users/me/watchlist/shows'
         self.traktfeatured_link = 'http://api.trakt.tv/recommendations/shows?limit=40'
         self.imdblists_link = 'http://www.imdb.com/user/ur%s/lists?tab=all&sort=mdfd&order=desc&filter=titles' % self.imdb_user
-        self.imdblist_link = 'http://www.imdb.com/list/%s/?view=detail&sort=alpha,asc&title_type=tvSeries,miniSeries&start=1'
-        self.imdblist2_link = 'http://www.imdb.com/list/%s/?view=detail&sort=date_added,desc&title_type=tvSeries,miniSeries&start=1'
+        self.imdblist_link = 'http://www.imdb.com/list/%s/?view=detail&sort=alpha,asc&title_type=tvSeries,tvMiniSeries&start=1'
+        self.imdblist2_link = 'http://www.imdb.com/list/%s/?view=detail&sort=date_added,desc&title_type=tvSeries,tvMiniSeries&start=1'
         self.imdbwatchlist_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=alpha,asc' % self.imdb_user
         self.imdbwatchlist2_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=date_added,desc' % self.imdb_user
 
 
     def get(self, url, idx=True, create_directory=True):
         try:
-            try: url = getattr(self, url + '_link')
-            except: pass
+            try:
+                url = getattr(self, url + '_link')
+            except:
+                pass
+														  
+						
 
-            try: u = urlparse.urlparse(url).netloc.lower()
-            except: pass
-
+            try:
+                u = urlparse.urlparse(url).netloc.lower()
+            except:
+                pass
 
             if u in self.trakt_link and '/users/' in url:
                 try:
@@ -160,8 +167,10 @@ class tvshows:
     def search(self):
 
         navigator.navigator().addDirectoryItem(32603, 'tvSearchnew', 'search.png', 'DefaultTVShows.png')
-        try: from sqlite3 import dbapi2 as database
-        except: from pysqlite2 import dbapi2 as database
+        try:
+            from sqlite3 import dbapi2 as database
+        except:
+            from pysqlite2 import dbapi2 as database
 
         dbcon = database.connect(control.searchFile)
         dbcur = dbcon.cursor()
@@ -176,10 +185,11 @@ class tvshows:
         lst = []
 
         delete_option = False
-        for (id,term) in dbcur.fetchall():
+        for (id, term) in dbcur.fetchall():
             if term not in str(lst):
                 delete_option = True
-                navigator.navigator().addDirectoryItem(term, 'tvSearchterm&name=%s' % term, 'search.png', 'DefaultTVShows.png')
+                navigator.navigator().addDirectoryItem(term, 'tvSearchterm&name=%s' % term, 'search.png',
+                                                       'DefaultTVShows.png')
                 lst += [(term)]
         dbcur.close()
 
@@ -398,6 +408,16 @@ class tvshows:
 
     def certifications(self):
         certificates = ['[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-G[/COLOR]', '[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-PG[/COLOR]', '[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-14[/COLOR]', '[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV-MA[/COLOR]']
+
+        for i in certificates: self.list.append(
+            {'name': str(i), 'url': self.certification_link % str(i).replace('-', '_').lower(),
+             'image': 'certificates2.png', 'action': 'tvshows'})
+        self.addDirectory(self.list)
+        return self.list
+
+
+    def certifications(self):
+        certificates = ['TV-G', 'TV-PG', 'TV-14', 'TV-MA']
 
         for i in certificates: self.list.append(
             {'name': str(i), 'url': self.certification_link % str(i).replace('-', '_').lower(),
@@ -1159,43 +1179,99 @@ class tvshows:
 
             try:
                 poster2 = art['tvposter']
-                poster2 = [x for x in poster2 if x.get('lang') == self.lang][::-1] + [x for x in poster2 if x.get('lang') == 'en'][::-1] + [x for x in poster2 if x.get('lang') in ['00', '']][::-1]
+                poster2 = [x for x in poster2 if x.get('lang') == self.lang][::-1] + [x for x in poster2 if
+                                                                                      x.get('lang') == 'en'][::-1] + [x
+                                                                                                                      for
+                                                                                                                      x
+                                                                                                                      in
+                                                                                                                      poster2
+                                                                                                                      if
+                                                                                                                      x.get(
+                                                                                                                          'lang') in [
+                                                                                                                          '00',
+                                                                                                                          '']][
+                                                                                                                     ::-1]
                 poster2 = poster2[0]['url'].encode('utf-8')
             except:
                 poster2 = '0'
 
             try:
                 fanart2 = art['showbackground']
-                fanart2 = [x for x in fanart2 if x.get('lang') == self.lang][::-1] + [x for x in fanart2 if x.get('lang') == 'en'][::-1] + [x for x in fanart2 if x.get('lang') in ['00', '']][::-1]
+                fanart2 = [x for x in fanart2 if x.get('lang') == self.lang][::-1] + [x for x in fanart2 if
+                                                                                      x.get('lang') == 'en'][::-1] + [x
+                                                                                                                      for
+                                                                                                                      x
+                                                                                                                      in
+                                                                                                                      fanart2
+                                                                                                                      if
+                                                                                                                      x.get(
+                                                                                                                          'lang') in [
+                                                                                                                          '00',
+                                                                                                                          '']][
+                                                                                                                     ::-1]
                 fanart2 = fanart2[0]['url'].encode('utf-8')
             except:
                 fanart2 = '0'
 
             try:
                 banner2 = art['tvbanner']
-                banner2 = [x for x in banner2 if x.get('lang') == self.lang][::-1] + [x for x in banner2 if x.get('lang') == 'en'][::-1] + [x for x in banner2 if x.get('lang') in ['00', '']][::-1]
+                banner2 = [x for x in banner2 if x.get('lang') == self.lang][::-1] + [x for x in banner2 if
+                                                                                      x.get('lang') == 'en'][::-1] + [x
+                                                                                                                      for
+                                                                                                                      x
+                                                                                                                      in
+                                                                                                                      banner2
+                                                                                                                      if
+                                                                                                                      x.get(
+                                                                                                                          'lang') in [
+                                                                                                                          '00',
+                                                                                                                          '']][
+                                                                                                                     ::-1]
                 banner2 = banner2[0]['url'].encode('utf-8')
             except:
                 banner2 = '0'
 
             try:
-                if 'hdtvlogo' in art: clearlogo = art['hdtvlogo']
-                else: clearlogo = art['clearlogo']
-                clearlogo = [x for x in clearlogo if x.get('lang') == self.lang][::-1] + [x for x in clearlogo if x.get('lang') == 'en'][::-1] + [x for x in clearlogo if x.get('lang') in ['00', '']][::-1]
+                if 'hdtvlogo' in art:
+                    clearlogo = art['hdtvlogo']
+                else:
+                    clearlogo = art['clearlogo']
+                clearlogo = [x for x in clearlogo if x.get('lang') == self.lang][::-1] + [x for x in clearlogo if
+                                                                                          x.get('lang') == 'en'][
+                                                                                         ::-1] + [x for x in clearlogo
+                                                                                                  if x.get('lang') in [
+                                                                                                      '00', '']][::-1]
                 clearlogo = clearlogo[0]['url'].encode('utf-8')
             except:
                 clearlogo = '0'
 
             try:
-                if 'hdclearart' in art: clearart = art['hdclearart']
-                else: clearart = art['clearart']
-                clearart = [x for x in clearart if x.get('lang') == self.lang][::-1] + [x for x in clearart if x.get('lang') == 'en'][::-1] + [x for x in clearart if x.get('lang') in ['00', '']][::-1]
+                if 'hdclearart' in art:
+                    clearart = art['hdclearart']
+                else:
+                    clearart = art['clearart']
+                clearart = [x for x in clearart if x.get('lang') == self.lang][::-1] + [x for x in clearart if
+                                                                                        x.get('lang') == 'en'][::-1] + [
+                                                                                                                           x
+                                                                                                                           for
+                                                                                                                           x
+                                                                                                                           in
+                                                                                                                           clearart
+                                                                                                                           if
+                                                                                                                           x.get(
+                                                                                                                               'lang') in [
+                                                                                                                               '00',
+                                                                                                                               '']][
+                                                                                                                       ::-1]
                 clearart = clearart[0]['url'].encode('utf-8')
             except:
                 clearart = '0'
 
-            item = {'title': title, 'year': year, 'imdb': imdb, 'tvdb': tvdb, 'poster': poster, 'poster2': poster2, 'banner': banner, 'banner2': banner2, 'fanart': fanart, 'fanart2': fanart2, 'clearlogo': clearlogo, 'clearart': clearart, 'premiered': premiered, 'studio': studio, 'genre': genre, 'duration': duration, 'rating': rating, 'votes': votes, 'mpaa': mpaa, 'cast': cast, 'plot': plot}
-            item = dict((k,v) for k, v in item.iteritems() if not v == '0')
+            item = {'title': title, 'year': year, 'imdb': imdb, 'tvdb': tvdb, 'poster': poster, 'poster2': poster2,
+                    'banner': banner, 'banner2': banner2, 'fanart': fanart, 'fanart2': fanart2, 'clearlogo': clearlogo,
+                    'clearart': clearart, 'premiered': premiered, 'studio': studio, 'genre': genre,
+                    'duration': duration, 'rating': rating, 'votes': votes, 'mpaa': mpaa, 'cast': cast, 'plot': plot}
+            item = dict((k, v) for k, v in item.iteritems() if not v == '0')
             self.list[i].update(item)
 
             if artmeta == False: raise Exception()
