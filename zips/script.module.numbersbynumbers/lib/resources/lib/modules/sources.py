@@ -964,9 +964,9 @@ class sources:
         if debrid_only == '': 
             debrid_only = 'false'
 
-        sortthemup = control.setting('torrent.sort.them.up')
-        if sortthemup == '':
-            sortthemup = 'false'
+        sort = control.setting('torrent.sort')
+        if sort == '':
+            sort = 'false'
 
         quality = control.setting('hosts.quality')
         if quality == '':
@@ -1004,7 +1004,7 @@ class sources:
         for d in debrid.debrid_resolvers:
             valid_hoster = set([i['source'] for i in self.sources])
             valid_hoster = [i for i in valid_hoster if d.valid_url('', i)]
-            if sortthemup == 'true':
+            if sort == 'true':
                 filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if 'magnet:' in i['url']]
                 filter += [dict(i.items() + [('debrid', d.name)]) for i in self.sources if i['source'] in valid_hoster and 'magnet:' not in i['url']]
             else:
