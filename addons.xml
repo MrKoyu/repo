@@ -109,7 +109,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="8.1" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="8.2" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -194,85 +194,6 @@
     <description lang="en">[COLOR dodgerblue]Hypersonic[/COLOR] [COLOR white]IPTV[/COLOR] Official Addon - The Future of Great Quality and Stable Streams - for more info go to [COLOR lime]https://gethypersonic.mytvpro.org[/COLOR]. Regards, Hypersonic Team.</description>
      <platform>all</platform>
   </extension>
-</addon>
-
-<addon id="plugin.video.metalliq-forqed" name="[COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed" version="7.0.17krypton" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR]">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0"/>
-		<import addon="repository.cdrepo" version="4.6"/>
-		<import addon="script.module.requests" version="2.9.1"/>
-		<import addon="script.module.futures" version="2.2.0"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>video audio</provides>
-	</extension>
-	<extension point="xbmc.service" library="service.py" start="[login|startup]">
-	</extension>
-	<extension point="kodi.context.item">
-		<menu id="kodi.core.main">
-			<menu>
-				<label>[COLOR lime]M[/COLOR]etalli[COLOR lime]Q[/COLOR] For[COLOR lime]Q[/COLOR]ed</label>
-				<item library="context_toggle.py">
-					<label>Preferred toggle</label>
-					<visible>!System.HasAddon(context.metalliq-forqed) + !Skin.HasSetting(Toggling)</visible>
-				</item>
-				<item library="context_movie.py">
-					<label>$ADDON[plugin.video.metalliq-forqed 30602]</label>
-					<visible>StringCompare(ListItem.dbtype,movie) + SubString(ListItem.Path, plugin.video.metalliq-forqed)</visible>
-				</item>
-				<item library="context_tvshow.py">
-					<label>$ADDON[plugin.video.metalliq-forqed 30602]</label>
-					<visible>StringCompare(ListItem.dbtype,tvshow) + SubString(ListItem.Path, plugin.video.metalliq-forqed)</visible>
-				</item>
-				<item library="context_live.py">
-					<label>$ADDON[plugin.video.metalliq-forqed 30602]</label>
-					<visible>[SubString(ListItem.FileNameAndPath, plugin.video.metalliq-forqed\\Live) | SubString(ListItem.FileNameAndPath, plugin.video.metalliq-forqed\\Live)]</visible>
-				</item>
-				<item library="context_playable.py">
-					<label>$ADDON[plugin.video.metalliq-forqed 30622]</label>
-					<visible>!System.HasAddon(context.metalliq-forqed) + !Skin.HasSetting(Contexting)</visible>
-				</item>
-			</menu>
-		</menu>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<language></language>
-		<summary lang="en">TMDb, TVDb, Trakt, AudioDb, LastFM Browser</summary>
-		<description lang="en">[COLOR lime]I don’t take any credits for this add-on. Without the original developers this add-on would never exist. Thanks for all they have brought to the community.[/COLOR][CR]Browse The MovieDb, The TVDb, Trakt, The AudioDb and LastFM and pass info along to library or an addon to try and play it. Needs player-files and the appropriate addon to actually play.</description>
-		<summary lang="nl">Blader door TMDb, TVDb, Trakt, AudioDb en LastFM</summary>
-		<description lang="nl">Blader door The MovieDb, The TVDb, Trakt, The AudioDb en LastFM en geef info door aan de bibliotheek of een addon om te proberen het af te spelen. Vereist player-bestanden en de bijbehorende addon om daadwerkelijk af te kunnen spelen.</description>
-		<supportedcontent>
-			<content>movies</content>
-			<content>tvshows</content>
-			<content>episodes</content>
-			<content>musicvideos</content>
-			<content>music</content>
-			<content>livetv</content>
-		</supportedcontent>
-		<genre>movies,tv,music,livetv</genre>
-		<!--<video_guide>yt-id</video_guide>
-		<video_preview>yt-id</video_preview>-->
-		<forum></forum>
-		<source></source>
-		<email></email>
-		<news>Fixed duration error on non-default version of kodi</news>
-                <website></website>
-
-		<source></source>
-
-		<assets>
-
-			<icon>icon.gif</icon>
-
-			<fanart>fanart.jpg</fanart>
-
-		</assets>
-
-		<news></news>
-
-	</extension>
-
 </addon>
 
 <addon id="plugin.video.numbersbynumbers" version="2.0.2.0" name="[COLOR white][B]NuMb3r5[/B][/COLOR]" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
@@ -658,43 +579,6 @@ provider-name="Team IVUE">
     <summary lang="en">CDTV UI Sounds</summary>
     <description lang="en">CDTV UI Sounds - Intro - HELLO THERE, LET'S GET IT STARTED - followed by the sound design multimedia start up.</description>
     <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="script.extendedinfo" name="[COLOR limegreen]EIM[/COLOR]4[COLOR limegreen]Q[/COLOR]ed" version="100.3.17krypton" provider-name="[COLOR lime][B]Serious Fork[/B][/COLOR], original by phil65">
-  <requires>
-    <import addon="xbmc.python"                     version="2.19.0"/>
-    <import addon="plugin.program.super.favourites"/>
-    <import addon="plugin.video.metalliq-forqed"/>
-    <import addon="plugin.video.youtube"            version="5.3.10"/>
-    <import addon="repository.cdrepo"/>
-    <import addon="script.module.pil"               version="1.1.7"/>
-    <import addon="script.module.requests"          version="1.1.0"/>
-    <import addon="script.module.simplejson"        version="2.0.10"/>
-    <import addon="script.module.urlresolver"/>
-    <import addon="script.module.youtube.dl"        version="14.519.1"/>
-  </requires>
-  <extension point="xbmc.python.script"             library="default.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.python.library"            library="default.py" />
-  <extension point="xbmc.python.pluginsource"       library="plugin.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <language/>
-    <summary lang="en">Modded for [COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed</summary>
-    <description lang="en">This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Used services are themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com and a lot more. Needs skin implementation for lot of functions. Uses [COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed for playback and library functions.</description>
-    <summary lang="nl">[COLOR ff0084ff]E[/COLOR]xtended [COLOR ff0084ff]I[/COLOR]nfo [COLOR ff0084ff]M[/COLOR]od</summary>
-    <description lang="nl">Dit script biedt meerdere mogelijkheden om online content weer te geven in skins en bevat ook een complete MovieDB browser inclusief info dialogen voor verscheidene media types. Gebruikte diensten zijn themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com en nog veel meer. Vereist skin implementatie voor de meeste functies. Gebruikt [COLOR limegreen]M[/COLOR]etalli[COLOR limegreen]Q[/COLOR] 4[COLOR limegreen]Q[/COLOR]ed voor afspeel en bibliotheek functies.</description>
-    <platform>all</platform>
-    <genre>movies,tv,trailers</genre>
-    <video_guide>3nlzITuJizg</video_guide>
-    <video_preview>OIp3Ry7qml8</video_preview>
-    <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
-    <forum></forum>
-    <source></source>
-    <email></email>
   </extension>
 </addon>
 
