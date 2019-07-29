@@ -5,10 +5,12 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
+
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
@@ -18,7 +20,13 @@ import urllib
 import urlparse
 import requests
 
-from resources.lib.modules import cleantitle, client, debrid, dom_parser2, log_utils, source_utils, workers
+from resources.lib.modules import cleantitle
+from resources.lib.modules import workers
+from resources.lib.modules import source_utils
+from resources.lib.modules import log_utils
+from resources.lib.modules import dom_parser2
+from resources.lib.modules import debrid
+from resources.lib.modules import client
 
 
 class source:
@@ -76,15 +84,17 @@ class source:
 
             query = cleantitle.geturl(query)
             url = urlparse.urljoin(self.base_link, query)
+
+
             shell = requests.Session()
 
             headers = {
                 'Referer': url,
                 'User-Agent':
                 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'}
-            r = scraper.get(url, headers=headers)
+            r = shell.get(url, headers=headers)
             r = r.headers['Location']
-            r = scraper.get(r).content
+            r = shell.get(r).content
             posts = dom_parser2.parse_dom(r, 'li', {'class': re.compile('.+?'), 'id': re.compile('comment-.+?')})
             self.hostDict = hostDict + hostprDict
             threads = []
@@ -113,6 +123,7 @@ class source:
                 pass
             info = ' | '.join(info)
             for url in links:
+
                 if 'youtube' in url:
                     continue
                 if any(x in url for x in ['.rar.', '.zip.', '.iso.']) or any(

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.fuzzybritches" name="Fuzzy Britches Module" version="999.999.999" provider-name="The Papaw">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Fuzzy Britches</summary>
+        <assets>
+	      <icon>icon.png</icon>
+		  <fanart>fanart.jpg</fanart>
+		</assets>		
+	</extension>
+</addon>

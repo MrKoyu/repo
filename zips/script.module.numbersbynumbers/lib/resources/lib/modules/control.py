@@ -145,7 +145,7 @@ iv = "p2s5v8y/B?E(H+Mb"
 
 def addonIcon():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'icon.gif')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'icon.png')
     return addonInfo('icon')
 
 
@@ -176,7 +176,7 @@ def addonFanart():
 
 def addonNext():
     theme = appearance() ; art = artPath()
-    if not (art == None and theme in ['-', '']): return os.path.join(art, 'icon.gif')
+    if not (art == None and theme in ['-', '']): return os.path.join(art, 'next.png')
     return 'DefaultVideo.png'
 
 

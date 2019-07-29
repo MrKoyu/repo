@@ -12,7 +12,7 @@
          ░    ░            ░    ░         ░  ░   ░           ░  
                                      ░                          
 
-    NuMbErS Add-on
+    NuMb3r5 Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ queueMenu = control.lang(32065).encode('utf-8')
 
 class navigator:
     def root(self):
-        self.addDirectoryItem('[B][COLOR gold]• [/COLOR][/B][B][COLOR white]NuMb3r5 NeWs[/COLOR][/B][B][COLOR gold] •[/COLOR][/B]',  'ShowChangelog',  'icon.gif',  'DefaultFolder.png')
+        self.addDirectoryItem('[B][COLOR white]• [/COLOR][/B][B][COLOR white]NuMb3r5[/COLOR][/B][B][COLOR white] •[/COLOR][/B]',  'ShowChangelog',  'icon.png',  'DefaultFolder.png')
         self.addDirectoryItem(32001, 'movieNavigator', 'movies.png', 'DefaultMovies.png')
         self.addDirectoryItem(32002, 'tvNavigator', 'tvshows.png', 'DefaultTVShows.png')
         if not control.setting('lists.widget') == '0':

@@ -48,7 +48,7 @@ class source:
             url = {'imdb': imdb, 'tvdb': tvdb, 'tvshowtitle': tvshowtitle, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except BaseException:
+        except Exception:
             return
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
@@ -66,7 +66,8 @@ class source:
     def search(self, title, year):
         try:
             url = urlparse.urljoin(self.base_link, self.search_link % (urllib.quote_plus(title)))
-            r = self.scraper.get(url).content
+            headers = {'User-Agent': client.agent()}
+            r = self.scraper.get(url, headers=headers).content
             r = dom_parser2.parse_dom(r, 'div', {'class': 'list_items'})[0]
             r = dom_parser2.parse_dom(r.content, 'li')
             r = [(dom_parser2.parse_dom(i, 'a', {'class': 'title'})) for i in r]
@@ -98,7 +99,8 @@ class source:
             imdb = data['imdb']
 
             url = self.search(title, hdlr)
-            r = self.scraper.get(url).content
+            headers = {'User-Agent': client.agent()}
+            r = self.scraper.get(url, headers=headers).content
             if hdlr2 == '':
                 r = dom_parser2.parse_dom(r, 'ul', {'id': 'releases'})[0]
             else:
@@ -125,7 +127,8 @@ class source:
           
     def _get_sources(self, name, url):
         try:
-            r = self.scraper.get(url).content
+            headers = {'User-Agent': client.agent()}
+            r = self.scraper.get(url, headers=headers).content
             name = client.replaceHTMLCodes(name)
             l = dom_parser2.parse_dom(r, 'div', {'class': 'ppu2h'})
             s = ''

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.numbersbynumbers.metadata" version="1.0.6" name="Numbers By Numbers Metadata" provider-name="Brackets">
+<addon id="script.numbersbynumbers.metadata" version="1.0.7" name="NuMb3r5 Metadata" provider-name="Brackets">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>
 	<extension point="xbmc.python.module" library="lib" />
 	<extension point="xbmc.addon.metadata">
-		<summary>Metadata for NuMbErS Addon</summary>
-		<description>Metadata for NuMbErS are maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<summary>NuMb3r5 Metadata</summary>
+		<description>Metadata for NuMb3r5 are maintained separately to make distribution of the the addon itself easier/faster.</description>
 		<platform>all</platform>
         <assets>
 	      <icon>icon.png</icon>

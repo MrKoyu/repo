@@ -12,6 +12,8 @@ from resources.lib.modules import control
 from xbmc import (LOGDEBUG, LOGERROR, LOGFATAL, LOGINFO,
                   LOGNONE, LOGNOTICE, LOGSEVERE, LOGWARNING)
 
+control.execute('RunPlugin(plugin://%s)' % control.get_plugin_url({'action': 'service'}))
+
 addon_name = 'NuMb3r5'
 addon_icon = xbmcaddon.Addon().getAddonInfo('icon')
 addon_path = xbmc.translatePath(('special://home/addons/plugin.video.numbersbynumbers')).decode('utf-8')

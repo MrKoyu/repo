@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Covenant Add-on
-    Copyright (C) 2017 Covenant
+    Genesis Add-on
+    Copyright (C) 2015 lambda
+
+    -Mofidied by The Crew
+    -Copyright (C) 2019 lambda
+
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -44,3 +48,22 @@ def sources():
         return []
 
 
+def getAllHosters():
+    def _sources(sourceFolder, appendList):
+        sourceFolderLocation = os.path.join(os.path.dirname(__file__), sourceFolder)
+        sourceSubFolders = [x[1] for x in os.walk(sourceFolderLocation)][0]
+        for i in sourceSubFolders:
+            for loader, module_name, is_pkg in pkgutil.walk_packages([os.path.join(sourceFolderLocation, i)]):
+                if is_pkg:
+                    continue
+                try:
+                    mn = str(module_name).split('_')[0]
+                except:
+                    mn = str(module_name)
+                appendList.append(mn)
+    sourceSubFolders = [x[1] for x in os.walk(os.path.dirname(__file__))][0]
+    appendList = []
+    for item in sourceSubFolders:
+        if item != 'modules':
+            _sources(item, appendList)
+    return list(set(appendList))

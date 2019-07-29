@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.numbersbynumbers.artwork" version="1.0.5" name="NuMbErS Artwork" provider-name="Brackets">
+<addon id="script.numbersbynumbers.artwork" version="1.0.6" name="NuMb3r5 Artwork" provider-name="NuMb3r5">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>
 	<extension point="xbmc.python.module" library="lib" />
 	<extension point="xbmc.addon.metadata">
-		<summary>Themes for the NuMbErS Addon</summary>
+		<summary>NuMb3r5 Artwork</summary>
 		<description>Themes for NuMbErS are maintained separately to make distribution of the the addon itself easier/faster.</description>
 		<platform>all</platform>
         <assets>

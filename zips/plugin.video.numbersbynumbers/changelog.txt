@@ -4,6 +4,13 @@
 
 [COLOR deepskyblue]********************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.2.1[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed Trakt
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed adding to library
+[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Artwork Script update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+
 [B][COLOR limegreen]V2.0.2.0[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Torrent/Premium sorting
 [B][COLOR deepskyblue]• [/COLOR][/B] Module Update

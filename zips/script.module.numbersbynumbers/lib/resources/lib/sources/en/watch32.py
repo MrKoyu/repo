@@ -36,7 +36,7 @@ class source:
             url = {'imdb': imdb, 'title': title, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except BaseException:
+        except :
             return
 
     def sources(self, url, hostDict, hostprDict):
@@ -75,55 +75,50 @@ class source:
 
                     items += [(link, qual)]
 
-                except BaseException:
+                except :
                     pass
             for item in items:
                 try:
                     r = client.request(item[0]) if item[0].startswith('http') else client.request(urlparse.urljoin(self.base_link, item[0]))
 
-                    qual = client.parseDOM(r, 'h1')[0]
-                    quality = source_utils.get_release_quality(item[1], qual)[0]
-
-                    url = re.findall('''frame_url\s*=\s*["']([^']+)['"]\;''', r, re.DOTALL)[0]
+                    url = re.findall('''frame_url\s*=\s*["']([^']+)['"];''', r, re.DOTALL)[0]
                     url = url if url.startswith('http') else urlparse.urljoin('https://', url)
 
-                    sources.append({'source': 'GVIDEO', 'quality': quality, 'language': 'en', 'url': url,
-                                    'direct': False, 'debridonly': False})
+                    if 'vidlink' in url:
+                        ua = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1'}
+                        html = client.request(url, headers=ua)
+                        postID = re.findall("postID\s*=\s*'([^']+)", html)[0]
+                        data = {'postID': postID}
 
-                except BaseException:
+                        rid = client.request('https://vidlink.org/embed/update_views', post=data, headers=ua,
+                                             referer=url)
+                        from resources.lib.modules import jsunpack
+                        rid = jsunpack.unpack(rid)
+                        playlist = re.findall('''file1=['"](.+?)['"];''', rid)[0]
+                        links = client.request(playlist, headers=ua, referer=url)
+
+                        try:
+                            sub = re.findall('''URI="/sub/vtt/(\d+)/sub.m3u8",LANGUAGE="el"''', links)[0]
+                        except IndexError:
+                            sub = re.findall('''URI="/sub/vtt/(\d+)/sub.m3u8",LANGUAGE="en"''', links)[0]
+                        sub = 'https://opensubtitles.co/sub/{0}.vtt'.format(sub)
+
+                        pattern = 'RESOLUTION=\d+x(\d{3,4}),SUBTITLES="subs"\s*(/drive.+?.m3u8)'
+                        links = re.findall(pattern, links)
+                        for quality, link in links:
+                            quality = source_utils.get_release_quality(quality, quality)[0]
+                            link = 'https://p2p.vidlink.org/' + link.replace('/drive//hls/', 'drive/hls/')
+                            sources.append({'source': 'GVIDEO', 'quality': quality, 'language': 'en', 'url': link,
+                                            'sub': sub, 'direct': True, 'debridonly': False})
+
+                except :
                     pass
 
             return sources
-        except BaseException:
+        except :
             return sources
 
     def resolve(self, url):
-        try:
-            if 'vidlink' in url:
-                ua = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1'}
-                html = client.request(url, headers=ua)
-                postID = re.findall("postID\s*=\s*'([^']+)", html)[0]
-
-                rid = client.request('https://vidlink.org/embed/update_views', post=None, headers=ua, referer=url)
-                id_view = re.findall('''id_view['"]\s*:\s*['"]([^'"]+)['"]''', rid)[0]
-
-                plink = 'https://vidlink.org/streamdrive/info'
-                data = {'browserName': 'Firefox',
-                        'platform': 'Win32',
-                        'postID': postID,
-                        'id_view': id_view}
-                headers = ua
-                headers['X-Requested-With'] = 'XMLHttpRequest'
-                headers['Referer'] = url
-                ihtml = client.request(plink, post=data, headers=headers)
-                linkcode = jsunpack.unpack(ihtml).replace('\\', '')
-                sources = json.loads(re.findall('window\.srcs\s*=\s*([^;]+)', linkcode, re.DOTALL)[0])
-                for src in sources:
-                    link = src['url']
-                    return link
-            else:
-                return url
-        except BaseException:
-            return url
+        return url
 
 
