@@ -29,7 +29,7 @@ class source:
         self.language = ['en']
         self.domains = ['myvideolinks.net', 'iwantmyshow.tk']
         self.base_link = 'http://myvideolinks.net'
-        self.search_link = 'mv1/?s=%s'
+        self.search_link = 'download/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

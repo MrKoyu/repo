@@ -33,7 +33,8 @@ class source:
         self.domains = ['300mbmoviesdl.com', 'moviesleak.net/', 'hevcbluray.net']
         self.base_link = 'https://hevcbluray.net/'
         self.search_link = '?s=%s'
-
+        self.s = cfscrape.create_scraper()
+        
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
             url = {'imdb': imdb, 'title': title, 'year': year}

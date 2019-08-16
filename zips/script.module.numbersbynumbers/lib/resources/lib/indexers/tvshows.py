@@ -82,12 +82,14 @@ class tvshows:
         self.persons_link = 'http://www.imdb.com/search/name?count=100&name='
         self.personlist_link = 'http://www.imdb.com/search/name?count=100&gender=male,female'
         self.popular_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&release_date=,date[0]&sort=moviemeter,asc&count=40&start=1'
+        self.popularcartoons_link = 'https://www.imdb.com/search/title?title_type=tv_series,mini_series&genres=animation&num_votes=100,&release_date=,date[0]&genres=animation&sort=moviemeter,asc&count=40&start=1'
         self.airing_link = 'http://www.imdb.com/search/title?title_type=tv_episode&release_date=date[1],date[0]&sort=moviemeter,asc&count=40&start=1'
         self.active_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=10,&production_status=active&sort=moviemeter,asc&count=40&start=1'
         # self.premiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&languages=en&num_votes=10,&release_date=date[60],date[0]&sort=moviemeter,asc&count=40&start=1'
         self.premiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&languages=en&num_votes=10,&release_date=date[60],date[0]&sort=release_date,desc&count=40&start=1'
         self.rating_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=5000,&release_date=,date[0]&sort=user_rating,desc&count=40&start=1'
         self.views_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&release_date=,date[0]&sort=num_votes,desc&count=40&start=1'
+        self.viewsfamily_link = 'https://www.imdb.com/search/title?title_type=tv_series&release_date=2016-01-01,&genres=family'
         self.person_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&role=%s&sort=year,desc&count=40&start=1'
         self.genre_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&genres=%s&sort=moviemeter,asc&count=40&start=1'
         self.keyword_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&keywords=%s&sort=moviemeter,asc&count=40&start=1'
@@ -95,6 +97,7 @@ class tvshows:
         self.certification_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&certificates=us:%s&sort=moviemeter,asc&count=40&start=1'
         self.trending_link = 'http://api.trakt.tv/shows/trending?limit=40&page=1'
         self.marveltv_link  = 'https://www.imdb.com/list/ls026566277/?view=detail&sort=alpha,asc&title_type=tvSeries,miniSeries&start=1'
+        self.high_link = 'https://www.imdb.com/search/title?title_type=tv_series&num_votes=15000,&genres=family&sort=user_rating,desc&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=186d3818-4564-4c2a-a20e-9054a8648eca&pf_rd_r=0JBMXKVJDMSKNGJKAZTV&pf_rd_s=center-22&pf_rd_t=60601&pf_rd_i=family-entertainment-guide&ref_=fea_fam_fam_ats_rank_fam_tv_sm'
 
         self.traktlists_link = 'http://api.trakt.tv/users/me/lists'
         self.traktlikedlists_link = 'http://api.trakt.tv/users/likes/lists?limit=1000000'
@@ -107,6 +110,38 @@ class tvshows:
         self.imdblist2_link = 'http://www.imdb.com/list/%s/?view=detail&sort=date_added,desc&title_type=tvSeries,tvMiniSeries&start=1'
         self.imdbwatchlist_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=alpha,asc' % self.imdb_user
         self.imdbwatchlist2_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=date_added,desc' % self.imdb_user
+
+        self.animepop_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=QG2EX199YPFDV4NNP6WW&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=tvSeries&ref_=adv_explore_rhs'
+        self.animepeoplewatching_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=QG2EX199YPFDV4NNP6WW&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=tvSeries&sort=num_votes,desc&ref_=adv_explore_rhs'
+        self.animetrending_link = 'https://www.imdb.com/list/ls041266139/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.animepremiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,tv_special,tv_miniseries&keywords=anime&languages=en&num_votes=10,&release_date=date[60],date[0]sort=alpha,asc'
+        self.animecertification_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&keywords=anime&num_votes=100,&production_status=released&certificates=us:%s&sort=moviemeter,asc&count=40&start=1'
+        self.animegenre_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&genres=%s&keywords=anime&sort=moviemeter,asc&count=40&start=1&sort=alpha,asc'
+        self.animeyear_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&production_status=released&keywords=anime&year=%s,%s&sort=moviemeter,asc&count=40&start=1'
+        self.animehighlyrated_link = 'https://www.imdb.com/list/ls021457150/?sort=date_added,desc&st_dt=&mode=detail&page=1'
+        self.animetopseries_link = 'https://www.imdb.com/list/ls058654847/?sort=num_votes,desc&st_dt=&mode=detail&page=1'
+        
+        self.lego_link = 'https://www.imdb.com/list/ls022553703/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.robots_link = 'https://www.imdb.com/list/ls022798407/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.retrotv_link = 'https://www.imdb.com/search/title?title_type=tv_series,tv_episode,tv_miniseries&release_date=1980-01-01,2000-12-31&genres=comedy,family&countries=us'
+        
+        self.toddler_link = 'https://www.imdb.com/list/ls021175534/?sort=release_date&mode=detail&page=1'
+        self.nickjr_link = 'https://www.imdb.com/list/ls022146406/?ref_=otl_5&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.disneyjr_link = 'https://www.imdb.com/list/ls022142605/?ref_=otl_1&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.netflixkid_link = 'https://www.imdb.com/list/ls022184975/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        
+        self.teennick_link = 'https://www.imdb.com/list/ls022142754/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.disneychannel_link = 'https://www.imdb.com/list/ls022142348/?ref_=otl_3&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.teentv_link = 'https://www.imdb.com/search/title?certificates=US%3ATV-14&sort=moviemeter,asc'
+        self.freeform_link = 'https://www.imdb.com/list/ls022351285/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        
+        self.nick_link = 'https://www.imdb.com/list/ls022146632/?ref_=otl_4&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.cartoonnetwork_link = 'https://www.imdb.com/list/ls022148428/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.nicktoons_link = 'https://www.imdb.com/list/ls022146204/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.disneyxd_link = 'https://www.imdb.com/list/ls022142309/?ref_=otl_2&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+
+        self.top250tv_link = 'https://www.imdb.com/list/ls008957859/?sort=num_votes,desc&st_dt=&mode=detail&page=1'
+        
 
 
     def get(self, url, idx=True, create_directory=True):
@@ -164,9 +199,99 @@ class tvshows:
         except:
             pass
 
+    def animecertifications(self):
+        certificates = ['TV-G', 'TV-PG', 'TV-14', 'TV-MA']
+
+        for i in certificates: self.list.append({'name': str(i), 'url': self.animecertification_link % str(i).replace('-', '_').lower(), 'image': 'certificates.png', 'action': 'tvshows'})
+        self.addDirectory(self.list)
+        return self.list
+
+    def animeyears(self):
+        year = (self.datetime.strftime('%Y'))
+
+        for i in range(int(year)-0, 1950, -1): self.list.append({'name': str(i), 'url': self.animeyear_link % (str(i), str(i)), 'image': 'years.png', 'action': 'tvshows'})
+        self.addDirectory(self.list)
+        return self.list
+        
+    def animegenres(self):
+        genres = [
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Action[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'action', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Adventure[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'adventure', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Biography[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'biography', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Comedy[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'comedy', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Crime[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'crime', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Drama[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'drama', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Family[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'family', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Fantasy[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'fantasy', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Game-Show[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'game_show', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime History[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'history', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Music[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'music', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Mystery[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'mystery', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Reality-TV[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'reality_tv', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Romance[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'romance', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Science Fiction[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'sci_fi', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Talk-Show[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'talk_show', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Thriller[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'thriller', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime War[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'war', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime Western[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'western', True)
+
+        ]
+
+        for i in genres: self.list.append(
+            {
+                'name': cleangenre.lang(i[0], self.lang),
+                'url': self.animegenre_link % i[1] if i[2] else self.keyword_link % i[1],
+                'image': 'kids_anime2.png',
+                'action': 'tvshows'
+            })
+
+        self.addDirectory(self.list)
+        return self.list
+
+    def boxsetgenres(self):
+        genres = [
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Action[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'action', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Adventure[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'adventure', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Animation[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'animation', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Anime[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'anime', False),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Biography[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'biography', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Comedy[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'comedy', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Crime[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'crime', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Drama[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'drama', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Family[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'family', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Fantasy[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'fantasy', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Game-Show[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'game_show', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV History[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'history', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Horror[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'horror', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Music[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'music', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Musical[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'musical', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Mystery[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'mystery', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV News[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'news', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Reality-TV[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'reality_tv', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Romance[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'romance', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Science Fiction[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'sci_fi', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Sport[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'sport', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Talk-Show[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'talk_show', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Thriller[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'thriller', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV War[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'war', True),
+            ('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]TV Western[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'western', True)
+        ]
+
+        for i in genres: self.list.append(
+            {
+                'name': cleangenre.lang(i[0], self.lang),
+                'url': self.genre_link % i[1] if i[2] else self.keyword_link % i[1],
+                'image': 'boxsets1.png',
+                'action': 'tvshows'
+            })
+
+        self.addDirectory(self.list)
+        return self.list    
+      
+
     def search(self):
 
-        navigator.navigator().addDirectoryItem(32603, 'tvSearchnew', 'search.png', 'DefaultTVShows.png')
+        navigator.navigator().addDirectoryItem(32603, 'tvSearchnew', 'search5.png', 'DefaultTVShows.png')
         try:
             from sqlite3 import dbapi2 as database
         except:
@@ -188,13 +313,13 @@ class tvshows:
         for (id, term) in dbcur.fetchall():
             if term not in str(lst):
                 delete_option = True
-                navigator.navigator().addDirectoryItem(term, 'tvSearchterm&name=%s' % term, 'search.png',
+                navigator.navigator().addDirectoryItem(term, 'tvSearchterm&name=%s' % term, 'search5.png',
                                                        'DefaultTVShows.png')
                 lst += [(term)]
         dbcur.close()
 
         if delete_option:
-            navigator.navigator().addDirectoryItem(32605, 'clearCacheSearch', 'tools.png', 'DefaultAddonProgram.png')
+            navigator.navigator().addDirectoryItem(32605, 'clearCacheSearch', 'trash.png', 'DefaultAddonProgram.png')
 
         navigator.navigator().endDirectory()
 

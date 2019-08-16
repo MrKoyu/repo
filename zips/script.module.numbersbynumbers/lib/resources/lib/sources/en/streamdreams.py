@@ -15,65 +15,68 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re
-from resources.lib.modules import cleantitle, source_utils, cfscrape
+from resources.lib.modules import cleantitle
+from resources.lib.modules import source_utils
+from resources.lib.modules import client
+from resources.lib.modules import cfscrape
 
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['1putlocker.io']
-        self.base_link = 'https://www13.1putlocker.io'
+        self.domains = ['streamdreams.org']
+        self.base_link = 'https://streamdreams.org'
+        self.search_movie = '/movies/!!-%s/'
+        self.search_tv = '/shows/!!-%s/'
         self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
             title = cleantitle.geturl(title)
-            url = self.base_link + '/%s/' % title
+            url = self.base_link + self.search_movie % title
             return url
         except:
             return
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
-            url = cleantitle.geturl(tvshowtitle)
+            tvtitle = cleantitle.geturl(tvshowtitle)
+            url = self.base_link + self.search_tv % tvtitle
             return url
         except:
             return
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
-            if url is None:
+            if not url:
                 return
-            tvshowtitle = url
-            url = self.base_link + '/episode/%s-season-%s-episode-%s/' % (tvshowtitle, season, episode)
+            url = url + '?session=%s&episode=%s' % (season, episode)
             return url
         except:
             return
 
     def sources(self, url, hostDict, hostprDict):
+        sources = []
         try:
-            sources = []
             if url is None:
                 return sources
-            r = self.scraper.get(url).content
-            try:
-                match = re.compile('<iframe src="(.+?)"').findall(r)
+            hostDict = hostprDict + hostDict
+            headers = {'Referer': url}
+            r = self.scraper.get(url, headers=headers).content
+            u = client.parseDOM(r, "span", attrs={"class": "movie_version_link"})
+            for t in u:
+                match = client.parseDOM(t, 'a', ret='data-href')
                 for url in match:
                     if url in str(sources):
                         continue
-                    quality = source_utils.check_url(url)
+                    quality, info = source_utils.get_release_quality(url, url)
                     valid, host = source_utils.is_host_valid(url, hostDict)
-                    if host in str(sources):
-                        continue
                     if valid:
-                        sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
-            except:
-                return
-        except Exception:
-            return
-        return sources
+                        sources.append({'source': host, 'quality': quality, 'language': 'en', 'info': info, 'url': url, 'direct': False, 'debridonly': False})
+            return sources
+        except:
+            return sources
 
     def resolve(self, url):
         return url

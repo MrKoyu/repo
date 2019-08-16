@@ -1,40 +1,53 @@
 [B][COLOR deepskyblue]• [/COLOR][/B][B][COLOR white] WELCOME TO NuMb3r5 LATEST UPDATES [/COLOR][/B][B][COLOR deepskyblue] •[/COLOR][/B]
-
 [B][COLOR lime]• [/COLOR][/B] [COLOR deepskyblue]CURRENT STATUS:[/COLOR] Outstanding!
 
-[COLOR deepskyblue]********************************************************************************************[/COLOR]
+[B][COLOR lime]• [/COLOR][/B] [COLOR lime]Make sure to clear cache and providers under System/tools after every update for better results[/COLOR]
+
+[COLOR deepskyblue]*****************************************************************************************[/COLOR]
+
+[B][COLOR limegreen]V2.0.2.2[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Kidzone category with everything you ever wanted for kids 
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Boxset Kings Reborn to Boxsets category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added 24/7 Movies, Shows and Cable channels category
+[B][COLOR deepskyblue]• [/COLOR][/B] Redone Collections category with Trakt lists and more
+[B][COLOR deepskyblue]• [/COLOR][/B] Redone settings/system category making it user friendly
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed strmFile issues
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed cf scrape
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
+[B][COLOR deepskyblue]• [/COLOR][/B] artwork update
 
 [B][COLOR limegreen]V2.0.2.1[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Trakt
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed adding to library
-[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
 [B][COLOR deepskyblue]• [/COLOR][/B] Artwork Script update
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.2.0[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Torrent/Premium sorting
-[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
 
 [B][COLOR limegreen]V2.0.1.9[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Enable/disable providers in settings fixed
-[B][COLOR deepskyblue]• [/COLOR][/B] Update providers service on startup
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
-[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] update providers service on startup
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Documentaries category crashing issues
 
 [B][COLOR limegreen]V2.0.1.8[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.1.7[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.1.6[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Module Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update
 
 [B][COLOR limegreen]V2.0.1.5[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.1.4[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Debrid only
@@ -48,17 +61,17 @@
 
 [B][COLOR limegreen]V2.0.1.3[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed resume on playback for Kodi 18
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.1.2[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed library integration 
 
 [B][COLOR limegreen]V2.0.1.1[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.1.0[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Trailers crashing on Kodi 18
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.0.9[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Networks category
@@ -68,16 +81,16 @@
 [B][COLOR limegreen]V2.0.0.8[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Torrent support
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed the scrape issue with cf scrape
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update 
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update 
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed NuMbErS search function to add db search
 [B][COLOR deepskyblue]• [/COLOR][/B] Made NuMbErS fully compatible with Kodi 18
 
 [B][COLOR limegreen]V2.0.0.7[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed In Theaters category
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.0.6[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.0.5[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Boxsets category
@@ -85,7 +98,7 @@
 
 [B][COLOR limegreen]V2.0.0.4[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] New Trakt API
-[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers Update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update
 
 [B][COLOR limegreen]V2.0.0.3[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed import missing in addon.xml

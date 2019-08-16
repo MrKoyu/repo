@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 '''
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,17 +18,15 @@
 import re, urllib, urlparse
 from resources.lib.modules import cleantitle, debrid, source_utils
 from resources.lib.modules import client
-from resources.lib.modules import control
 
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['www.skytorrents.lol']
-        self.base_link = 'https://www.skytorrents.lol/'
-        self.search_link = '?query=%s'
-        self.min_seeders = int(control.setting('torrent.min.seeders'))
+        self.domains = ['btscene.today']
+        self.base_link = 'http://btscene.today/'
+        self.search_link = 'search?q=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -64,7 +63,6 @@ class source:
                 return sources
             if debrid.status() is False:
                 raise Exception()
-
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
 
@@ -82,10 +80,9 @@ class source:
 
             try:
                 r = client.request(url)
-                posts = client.parseDOM(r, 'tbody')[0]
-                posts = client.parseDOM(posts, 'tr')
+                posts = client.parseDOM(r, 'tr')
                 for post in posts:
-                    link = re.findall('a href="(magnet:.+?)" title="(.+?)"', post, re.DOTALL)
+                    link = re.findall('a title="Download Torrent Magnet" href="(magnet:.+?)"', post, re.DOTALL)
                     try:
                         size = re.findall('((?:\d+\,\d+\.\d+|\d+\.\d+|\d+\,\d+|\d+)\s*(?:GiB|MiB|GB|MB))', post)[0]
                         div = 1 if size.endswith('GB') else 1024
@@ -93,11 +90,11 @@ class source:
                         size = '%.2f GB' % size
                     except BaseException:
                         size = '0'
-                    for url, data in link:
-                        if hdlr not in data:
+                    for url in link:
+                        if hdlr not in url:
                             continue
                         url = url.split('&tr')[0]
-                        quality, info = source_utils.get_release_quality(data)
+                        quality, info = source_utils.get_release_quality(url)
                         if any(x in url for x in ['FRENCH', 'Ita', 'italian', 'TRUEFRENCH', '-lat-', 'Dublado']):
                             continue
                         info.append(size)

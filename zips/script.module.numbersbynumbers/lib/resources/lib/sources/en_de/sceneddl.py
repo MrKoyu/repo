@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 '''
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,20 +15,22 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re, urllib, urlparse
-from resources.lib.modules import cleantitle, debrid, source_utils
+import re
+import urllib
+import urlparse
+
 from resources.lib.modules import client
-from resources.lib.modules import control
+from resources.lib.modules import debrid
+from resources.lib.modules import source_utils
 
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['www.skytorrents.lol']
-        self.base_link = 'https://www.skytorrents.lol/'
-        self.search_link = '?query=%s'
-        self.min_seeders = int(control.setting('torrent.min.seeders'))
+        self.domains = ['sceneddl.online']
+        self.base_link = 'http://www.sceneddl.me'
+        self.search_link = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -49,6 +52,7 @@ class source:
         try:
             if url is None:
                 return
+
             url = urlparse.parse_qs(url)
             url = dict([(i, url[i][0]) if url[i] else (i, '') for i in url])
             url['title'], url['premiered'], url['season'], url['episode'] = title, premiered, season, episode
@@ -58,55 +62,69 @@ class source:
             return
 
     def sources(self, url, hostDict, hostprDict):
-        sources = []
         try:
+            sources = []
+
             if url is None:
                 return sources
+
             if debrid.status() is False:
                 raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
-
             title = data['tvshowtitle'] if 'tvshowtitle' in data else data['title']
-
             hdlr = 'S%02dE%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
-            query = '%s s%02de%02d' % (
-            data['tvshowtitle'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (
-            data['title'], data['year'])
-            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
+            query = '%s S%02dE%02d' % (
+                data['tvshowtitle'], int(data['season']), int(data['episode'])) \
+                if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
 
             url = self.search_link % urllib.quote_plus(query)
-            url = urlparse.urljoin(self.base_link, url)
+            url = urlparse.urljoin(self.base_link, url).replace('-', '+')
 
-            try:
+            r = client.request(url)
+            if r is None and 'tvshowtitle' in data:
+                season = re.search('S(.*?)E', hdlr)
+                season = season.group(1)
+                url = title
+
                 r = client.request(url)
-                posts = client.parseDOM(r, 'tbody')[0]
-                posts = client.parseDOM(posts, 'tr')
+
+            for loopCount in range(0, 2):
+                if loopCount == 1 or (r is None and 'tvshowtitle' in data):
+
+                    r = client.request(url)
+
+                posts = client.parseDOM(r, "h2", attrs={"class": "entry-title"})
+                hostDict = hostprDict + hostDict
+                items = []
                 for post in posts:
-                    link = re.findall('a href="(magnet:.+?)" title="(.+?)"', post, re.DOTALL)
                     try:
-                        size = re.findall('((?:\d+\,\d+\.\d+|\d+\.\d+|\d+\,\d+|\d+)\s*(?:GiB|MiB|GB|MB))', post)[0]
-                        div = 1 if size.endswith('GB') else 1024
-                        size = float(re.sub('[^0-9|/.|/,]', '', size.replace(',', '.'))) / div
-                        size = '%.2f GB' % size
-                    except BaseException:
-                        size = '0'
-                    for url, data in link:
-                        if hdlr not in data:
-                            continue
-                        url = url.split('&tr')[0]
-                        quality, info = source_utils.get_release_quality(data)
-                        if any(x in url for x in ['FRENCH', 'Ita', 'italian', 'TRUEFRENCH', '-lat-', 'Dublado']):
-                            continue
-                        info.append(size)
-                        info = ' | '.join(info)
-                        sources.append(
-                            {'source': 'Torrent', 'quality': quality, 'language': 'en', 'url': url, 'info': info,
-                             'direct': False, 'debridonly': True})
-            except:
-                return
+                        u = client.parseDOM(post, 'a', ret='href')
+                        for i in u:
+                            name = str(i)
+                            items.append(name)
+                    except:
+                        pass
+
+                if len(items) > 0: break
+
+            for item in items:
+                try:
+                    i = str(item)
+                    r = client.request(i)
+                    u = client.parseDOM(r, "div", attrs={"class": "entry-content"})
+                    for t in u:
+                        r = client.parseDOM(t, 'a', ret='href')
+                        for url in r:
+                            if '.rar' in url:
+                                continue
+                            quality, info = source_utils.get_release_quality(url)
+                            valid, host = source_utils.is_host_valid(url, hostDict)
+                            sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'info': info, 'direct': False, 'debridonly': True})
+                except:
+                    pass
             return sources
         except:
             return sources

@@ -12,7 +12,7 @@
          ░    ░            ░    ░         ░  ░   ░           ░  
                                      ░                          
 
-    NuMbErS Add-on
+    NuMb3r5 Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -197,6 +197,10 @@ elif action == 'westernliteNavigator':
     from resources.lib.indexers import bxsets
     bxsets.navigator().western(lite=True)
 
+elif action == 'boxsetKingsNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().boxsetKings()    
+
 elif action == 'collectionsNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().collections()
@@ -213,13 +217,21 @@ elif action == 'collectionBoxsetKids':
     from resources.lib.indexers import navigator
     navigator.navigator().collectionBoxsetKids()
 
-elif action == 'collectionKids':
+elif action == 'collectionBest':
     from resources.lib.indexers import navigator
-    navigator.navigator().collectionKids()
+    navigator.navigator().collectionBest()
 
-elif action == 'collectionSuperhero':
+elif action == 'collectionHolidays':
     from resources.lib.indexers import navigator
-    navigator.navigator().collectionSuperhero()
+    navigator.navigator().collectionHolidays()
+
+elif action == 'collectionLifetime':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collectionLifetime()
+
+elif action == 'collectionTrakt':
+    from resources.lib.indexers import navigator
+    navigator.navigator().collectionTrakt()        
 
 elif action == 'collections':
     from resources.lib.indexers import collections
@@ -228,6 +240,10 @@ elif action == 'collections':
 elif action == 'movies2':
     from resources.lib.indexers import movies2
     movies2.movies().get(url)
+
+elif action == 'boxsetgenres':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().boxsetgenres()        
 
 elif action == 'movieFavourites':
     from resources.lib.indexers import movies
@@ -277,6 +293,178 @@ elif action == 'mytvNavigator':
 elif action == 'mytvliteNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().mytvshows(lite=True)
+
+elif action == 'kidzoneNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().kidzone()
+    
+elif action == 'kidsboxsetsNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().kidsboxsets()
+
+elif action == 'kidsboxsets':
+    from resources.lib.indexers import kidsboxsets
+    kidsboxsets.boxsets().get(url)
+    
+elif action == 'waltdisneyNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().waltdisney()
+    
+elif action == 'kidsmoviesNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().kidsmovies()
+
+elif action == 'movieNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().movies()
+
+elif action == 'movieliteNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().movies(lite=True)
+
+elif action == 'mymovieNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mymovies()
+
+elif action == 'mymovieliteNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mymovies(lite=True)
+
+elif action == 'randomNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().random()
+    
+elif action == 'superheroNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().superhero()
+
+elif action == 'animemovieNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().animemovies()
+
+elif action == 'animemovyears':
+    from resources.lib.indexers import movies
+    movies.movies().animeyears()
+
+elif action == 'movieanimecertifications':
+    from resources.lib.indexers import movies
+    movies.movies().animecertifications()
+
+elif action == 'animegenres':
+    from resources.lib.indexers import movies
+    movies.movies().animegenres()
+
+elif action == 'animetvNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().animetvshows()
+    
+elif action == 'animetv':
+    from resources.lib.indexers import animetv
+    animetv.animetv().get(url)
+    
+elif action == 'animetvyears':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().animeyears()
+
+elif action == 'animeGenres':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().animegenres()
+    
+elif action == 'tvanimecertifications':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().animecertifications()
+
+elif action == 'kidstvNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().kidstvshows()
+
+elif action == 'kidNetworks':
+    from resources.lib.indexers import navigator
+    navigator.navigator().kidnetworks()
+
+elif action == 'mytvNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mytvshows()
+
+elif action == 'mytvliteNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().mytvshows(lite=True)
+    
+elif action == 'teentvNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().teentv()
+    
+elif action == 'toddlerNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().toddlertv()   
+    
+elif action == 'tvNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().tvshows()
+
+elif action == 'tvliteNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().tvshows(lite=True)
+
+elif action == 'requestsNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().requests()
+
+elif action == 'systemNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().system()
+
+elif action == 'allsettingsNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().allsettings()
+
+elif action == 'alltoolsNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().alltools()
+
+elif action == 'twentyfoursevenNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().TwentyFourSeven()        
+
+if action == '247movies':
+    from resources.lib.indexers import lists
+    lists.indexer().root_247movies()
+
+if action == '247shows':
+    from resources.lib.indexers import lists
+    lists.indexer().root_247shows()
+
+if action == '247channels':
+    from resources.lib.indexers import lists
+    lists.indexer().root_247channels()        
+
+if action == 'learningtv':
+    from resources.lib.indexers import lists
+    lists.indexer().root_learningtv()
+
+if action == 'eimportalmovies':
+    from resources.lib.indexers import lists
+    lists.indexer().root_eimportalmovies()
+
+if action == 'eimportalshows':
+    from resources.lib.indexers import lists
+    lists.indexer().root_eimportalshows()
+
+if action == 'accountsrd':
+    from resources.lib.indexers import lists
+    lists.indexer().root_accountsrd()
+
+if action == 'speedtest':
+    from resources.lib.indexers import lists
+    lists.indexer().root_speedtest()            
+
+elif 'youtube' in str(action):
+    from resources.lib.indexers import lists
+    lists.indexer().youtube(url, action)
+
+elif action == 'browser':
+    from resources.lib.indexers import lists
+    sports.resolver().browser(url)                                
 
 elif action == 'downloadNavigator':
     from resources.lib.indexers import navigator
@@ -492,11 +680,7 @@ elif action == 'urlResolver':
         pass
     resolveurl.display_settings()
 
-elif action == 'urlResolverRDTorrent':
-    from resources.lib.modules import control
-    control.openSettings(query, "script.module.resolveurl")
-
-elif action == 'urlResolverRDAuthorize':
+elif action == 'ResolveurlRDTorrent':
     from resources.lib.modules import control
     control.openSettings(query, "script.module.resolveurl")    
 
@@ -517,8 +701,20 @@ elif action == 'docuHeaven':
         docu.documentary().root()    
 
 elif action == 'play':
-    from resources.lib.modules import sources
-    sources.sources().play(title, year, imdb, tvdb, season, episode, tvshowtitle, premiered, meta, select)
+    from resources.lib.indexers import lists
+    if not content == None:
+        lists.player().play(url, content)
+    else:
+        from resources.lib.modules import sources
+        sources.sources().play(title, year, imdb, tvdb, season, episode, tvshowtitle, premiered, meta, select)
+
+elif action == 'play1':
+    from resources.lib.indexers import lists
+    if not content == None:
+        lists.player().play(url, content)
+    else:
+        from resources.lib.modules import sources
+        sources.sources().play(title, year, imdb, tvdb, season, episode, tvshowtitle, premiered, meta, select)
 
 elif action == 'addItem':
     from resources.lib.modules import sources
