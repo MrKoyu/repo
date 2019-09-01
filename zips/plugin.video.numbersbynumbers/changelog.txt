@@ -5,8 +5,20 @@
 
 [COLOR deepskyblue]*****************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.2.3[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Kidzone category with everything you ever wanted for kids (Inspired by Zim addon) 
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Extended Info Portal to Movies category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Extended Info Portal to TV Shows category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Netflix to TV Shows category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Top 10.000 to Kidzone Movies category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Kids Horror to Kidzone Movies category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Randomly Play Movies by genres to Movies category
+[B][COLOR deepskyblue]• [/COLOR][/B] Modern Horror 2019-2000 list updated in Movies category
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed missing artwork in Actors Collection category
+[B][COLOR deepskyblue]• [/COLOR][/B] artwork update
+[B][COLOR deepskyblue]• [/COLOR][/B] Modules update
+
 [B][COLOR limegreen]V2.0.2.2[/COLOR][/B]
-[B][COLOR deepskyblue]• [/COLOR][/B] Added Kidzone category with everything you ever wanted for kids 
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Boxset Kings Reborn to Boxsets category
 [B][COLOR deepskyblue]• [/COLOR][/B] Added 24/7 Movies, Shows and Cable channels category
 [B][COLOR deepskyblue]• [/COLOR][/B] Redone Collections category with Trakt lists and more

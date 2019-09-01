@@ -12,7 +12,7 @@
          ░    ░            ░    ░         ░  ░   ░           ░  
                                      ░                          
 
-    NuMbErS Add-on
+    NuMb3r5 Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -101,24 +101,54 @@ class movies:
             self.language_link = 'http://www.imdb.com/search/title?title_type=feature,tv_movie&num_votes=100,&production_status=released&primary_language=%s&sort=moviemeter,asc&count=40&start=1'
             self.certification_link = 'http://www.imdb.com/search/title?title_type=feature,tv_movie&num_votes=100,&production_status=released&certificates=us:%s&sort=moviemeter,asc&count=40&start=1'
             self.boxoffice_link = 'http://www.imdb.com/search/title?title_type=feature,tv_movie&production_status=released&sort=boxoffice_gross_us,desc&count=40&start=1'
-            self.top_link = 'https://www.imdb.com/search/title?title_type=feature&num_votes=10000,&genres=animation&certificates=US%3AG,US%3APG,US%3APG-13&sort=user_rating,desc'
-            self.disneycollection_link = 'https://www.imdb.com/list/ls026899036/?sort=alpha,asc&st_dt=&mode=detail&page=1'
-            self.disneypixar_link = 'https://www.imdb.com/search/title?title_type=feature&locations=Pixar+Animation+Studios+-+1200+Park+Avenue,+Emeryville,+California,+USA'
-            self.disneyliveaction_link = 'https://www.imdb.com/list/ls056913461/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.disneynature_link = 'https://www.imdb.com/search/title?companies=co0236496'
-            self.dreamworks_link = 'https://www.imdb.com/list/ls068935612/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.superpop_link = 'https://www.imdb.com/search/keyword?keywords=superhero&title_type=movie&mode=detail&page=1&release_date=2019%2C2020&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=b7efced4-240f-4274-888d-8fced3b52ad6&pf_rd_r=88ANDB7KJH35ZD2GGD5P&pf_rd_s=center-6&pf_rd_t=60601&pf_rd_i=superheroes&ref_=kw_ref_yr&sort=moviemeter,asc'
-            self.marvelmovies_link = 'https://www.imdb.com/list/ls000024621/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.dcmovies_link = 'https://www.imdb.com/list/ls000024643/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.superheromovies_link = 'https://www.imdb.com/list/ls065237713/?sort=alpha,asc&st_dt=&mode=detail&page=1'
-            self.dcanimate_link  = 'https://www.imdb.com/list/ls068125936/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.marvelanimate_link = 'https://www.imdb.com/list/ls025759115/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.lego_link = 'https://www.imdb.com/search/title?title=lego&title_type=feature,tv_movie'
-            self.timburton_link = 'https://www.imdb.com/list/ls026843008/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.randommov_link = 'https://www.imdb.com/search/title?title_type=feature&genres=animation,family'
-            self.ultimate_link = 'https://www.imdb.com/search/title?title_type=feature&genres=animation,family&sort=moviemeter,asc&page=1&ref_=adv_prv'
-            self.gamers_link = 'https://www.imdb.com/search/keyword/?keywords=based-on-video-game&sort=moviemeter,asc&mode=detail&page=1'
-            self.gamers2_link = 'https://www.imdb.com/list/ls063096359/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchkidshorror_link = 'https://www.imdb.com/list/ls052297683/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchanimation_link = 'https://www.imdb.com/search/title?title_type=feature&num_votes=10000,&genres=animation&certificates=US%3AG,US%3APG,US%3APG-13&sort=user_rating,desc'
+            self.advancedsearchtrending_link = 'https://www.imdb.com/search/title?title_type=feature&genres=animation,family&sort=moviemeter,asc&page=1&ref_=adv_prv'
+            self.advancedsearchdreamworks_link = 'https://www.imdb.com/list/ls068935612/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchdisneyland_link = 'https://www.imdb.com/list/ls052303324/?sort=release_date,desc&st_dt=&mode=detail&page=1'
+            self.advancedsearchdisneymovietv_link = 'https://www.imdb.com/search/keyword/?keywords=disney-channel-original-movie&ref_=kw_ref_typ&sort=moviemeter,asc&mode=detail&page=1&title_type=tvMovie'
+            self.advancedsearchpixar_link = 'https://www.imdb.com/search/title?title_type=feature&locations=Pixar+Animation+Studios+-+1200+Park+Avenue,+Emeryville,+California,+USA'
+            self.advancedsearchchronological_link = 'https://www.imdb.com/list/ls070880401/?sort=list_order,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchliveaction_link = 'https://www.imdb.com/list/ls056913461/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchnature_link = 'https://www.imdb.com/search/title?companies=co0236496'
+            self.advancedsearchmarvelstudios_link = 'https://www.imdb.com/list/ls000024621/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchdcuniverse_link = 'https://www.imdb.com/list/ls000024643/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchdcvsmarvel_link = 'https://www.imdb.com/list/ls065237713/?sort=alpha,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchdcanimation_link  = 'https://www.imdb.com/list/ls068125936/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchmarvelanimation_link = 'https://www.imdb.com/list/ls025759115/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.advancedsearchtop10000_link = 'https://www.imdb.com/search/title/?count=1000&genres=family&production_status=released&title_type=feature&view=simple'
+            self.advancedsearchjustlego_link = 'https://www.imdb.com/search/title?title=lego&title_type=feature,tv_movie'
+            self.advancedsearchgamers_link = 'https://www.imdb.com/search/keyword/?keywords=based-on-video-game&sort=moviemeter,asc&mode=detail&page=1'
+
+            self.advancedsearchanimegrownup_link = 'https://www.imdb.com/search/keyword/?keywords=anime%2Cfemale-nudity&sort=num_votes,desc&mode=detail&page=1&ref_=kw_ref_key'
+            self.advancedsearchanimemostviewed_link = 'https://www.imdb.com/list/ls004037854/?sort=release_date,desc&st_dt=&mode=detail&page=1'
+            self.advancedsearchanimehighlyrated_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=XP4M7Q29XXN28VM9Z00Q&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=movie&sort=num_votes,desc&ref_=adv_explore_rhs'
+            self.advancedsearchanimetrending_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=4TSXV0JKMKVBW4YXCN93&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&sort=year,desc&title_type=movie&ref_=adv_explore_rhs'
+
+            self.advancedsearchrandomflixaction_link = 'https://www.imdb.com/search/title/?genres=action&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_1'
+            self.advancedsearchrandomflixadventure_link = 'https://www.imdb.com/search/title/?title_type=feature&num_votes=10000,&genres=action&genres=Adventure&languages=en&explore=genres&ref_=adv_explore_rhs'
+            self.advancedsearchrandomflixanimation_link = 'https://www.imdb.com/search/title/?genres=animation&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_3'
+            self.advancedsearchrandomflixbiography_link = 'https://www.imdb.com/search/title/?genres=biography&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_4'
+            self.advancedsearchrandomflixcomedy_link = 'https://www.imdb.com/search/title/?genres=comedy&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_5'
+            self.advancedsearchrandomflixcrime_link = 'https://www.imdb.com/search/title/?genres=crime&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_6'
+            self.advancedsearchrandomflixdocumentary_link = 'https://www.imdb.com/search/title/?languages=en&sort=user_rating,desc&title_type=documentary&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_7'
+            self.advancedsearchrandomflixdrama_link = 'https://www.imdb.com/search/title/?genres=drama&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_8'
+            self.advancedsearchrandomflixfamily_link = 'https://www.imdb.com/search/title/?genres=family&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_9'
+            self.advancedsearchrandomflixfantasy_link = 'https://www.imdb.com/search/title/?genres=fantasy&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_10'
+            self.advancedsearchrandomflixfilmnoir_link = 'https://www.imdb.com/search/title/?genres=film-noir&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_11'
+            self.advancedsearchrandomflixhistory_link = 'https://www.imdb.com/search/title/?genres=history&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_12'
+            self.advancedsearchrandomflixhorror_link = 'https://www.imdb.com/search/title/?genres=horror&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_13'
+            self.advancedsearchrandomflixmusic_link = 'https://www.imdb.com/search/title/?genres=music&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_14'
+            self.advancedsearchrandomflixmusical_link = 'https://www.imdb.com/search/title/?genres=musical&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_15'
+            self.advancedsearchrandomflixmystery_link = 'https://www.imdb.com/search/title/?genres=mystery&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_16'
+            self.advancedsearchrandomflixromance_link = 'https://www.imdb.com/search/title/?genres=romance&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_17'
+            self.advancedsearchrandomflixscifi_link = 'https://www.imdb.com/search/title/?genres=sci-fi&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_18'
+            self.advancedsearchrandomflixshort_link = 'https://www.imdb.com/search/title/?languages=en&sort=user_rating,desc&title_type=short&num_votes=3000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_19'
+            self.advancedsearchrandomflixsport_link = 'https://www.imdb.com/search/title/?genres=sport&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_20'
+            self.advancedsearchrandomflixsuperhero_link = 'https://www.imdb.com/search/title/?keywords=superhero&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_21'
+            self.advancedsearchrandomflixthriller_link = 'https://www.imdb.com/search/title/?genres=thriller&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_22'
+            self.advancedsearchrandomflixwar_link = 'https://www.imdb.com/search/title/?genres=war&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_23'
+            self.advancedsearchrandomflixwestern_link = 'https://www.imdb.com/search/title/?genres=western&languages=en&sort=user_rating,desc&title_type=feature&num_votes=10000,&explore=genres&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=d0addcab-e8f0-45ef-9965-515319b79038&pf_rd_r=H2CRPQZEDQJVHB6GNDK5&pf_rd_s=right-4&pf_rd_t=15051&pf_rd_i=genre&ref_=ft_gnr_mvtre_24'
 
             self.collectionsforeign_link = 'https://www.imdb.com/list/ls079108574/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
             self.collectionstruestory_link = 'https://www.imdb.com/list/ls076521870/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
@@ -167,13 +197,6 @@ class movies:
             self.collectionszombie_link = 'https://www.imdb.com/list/ls066165115/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
             self.collectionsactionhero_link = 'https://www.imdb.com/search/keyword/?keywords=action-hero&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=7846868c-8414-4178-8f43-9ad6b2ef0baf&pf_rd_r=N2RAG179F05MS9C7TEF4&pf_rd_s=center-1&pf_rd_t=15051&pf_rd_i=moka&ref_=kw_1&sort=num_votes,desc&mode=detail&page=1'
             self.collectionshackers_link = 'https://www.imdb.com/list/ls000393956/?sort=user_rating,desc&st_dt=&mode=detail&page=1'
-
-            self.collectionstop1000a_link = 'https://www.imdb.com/search/title/?count=100&groups=top_1000&sort=user_rating'
-            self.collectionstop1000c_link = 'https://www.imdb.com/list/ls006266261/?sort=release_date,desc&st_dt=&mode=detail&page=1'
-            self.collectionswallmark_link = 'https://www.imdb.com/list/ls069761801/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-            self.collectionslifetime_link = 'https://www.imdb.com/list/ls073816184/?st_dt=&mode=detail&page=1&sort=user_rating,desc'
-            self.collectionslifetimeb_link = 'https://www.imdb.com/list/ls062591941/?st_dt=&mode=detail&page=1&sort=user_rating,desc'
-
             self.collectionsbestforeign_link = 'https://www.imdb.com/list/ls052393071/?sort=release_date,desc&st_dt=&mode=detail&page=1'
             self.collectionsinterforeign_link = 'https://www.imdb.com/list/ls009876733/?sort=user_rating,desc&st_dt=&mode=detail&page=1'
             self.collectionsinterbrazilian_link = 'https://www.imdb.com/list/ls066191890/?sort=user_rating,desc&st_dt=&mode=detail&page=1'
@@ -184,6 +207,11 @@ class movies:
             self.collectionsinterfrench_link = 'https://www.imdb.com/list/ls009250657/?sort=user_rating,desc&st_dt=&mode=detail&page=1'
             self.collectionsintergerman_link = 'https://www.imdb.com/list/ls054028609/?ref_=otl_1&sort=user_rating,desc&st_dt=&mode=detail&page=1'
 
+            self.collectionstop1000a_link = 'https://www.imdb.com/search/title/?count=100&groups=top_1000&sort=user_rating'
+            self.collectionstop1000c_link = 'https://www.imdb.com/list/ls006266261/?sort=release_date,desc&st_dt=&mode=detail&page=1'
+            self.collectionswallmark_link = 'https://www.imdb.com/list/ls069761801/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+            self.collectionslifetime_link = 'https://www.imdb.com/list/ls073816184/?st_dt=&mode=detail&page=1&sort=user_rating,desc'
+            self.collectionslifetimeb_link = 'https://www.imdb.com/list/ls062591941/?st_dt=&mode=detail&page=1&sort=user_rating,desc'
 
             self.holidayschristmas_link = 'https://www.imdb.com/list/ls000096828/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
             self.holidaysthanksgiven_link = 'https://www.imdb.com/search/keyword/?keywords=thanksgiving&sort=num_votes,desc&mode=detail&page=1'
@@ -200,7 +228,7 @@ class movies:
         self.marvel_link  = 'https://www.imdb.com/list/ls026566277/?view=detail&sort=alpha,asc&title_type=video,movie,tvMovie&start=1'
         self.dcmovies_link  = 'https://www.imdb.com/list/ls026562887/?view=detail&sort=alpha,asc&title_type=video,movie,tvMovie&start=1'    
         self.dcanimate_link  = 'https://www.imdb.com/list/ls026564052/?view=detail&sort=alpha,asc&title_type=video,movie,tvMovie,&start=1'
-        self.tophorr_link  = 'https://www.imdb.com/list/ls026580005/?view=detail&sort=release_date,desc&title_type=video,movie,tvMovie,&start=1'
+        self.tophorr_link  = 'https://www.imdb.com/list/ls027380456/?sort=release_date,desc&st_dt=&mode=detail&page=1'
         self.horror_link  = 'https://www.imdb.com/list/ls026598996/?view=detail&sort=release_date,desc&title_type=video,movie,tvMovie,&start=1'
         self.standup_link  = 'https://www.imdb.com/list/ls026316432/?view=detail&sort=alpha,asc&title_&start=1'
         self.traktlists_link = 'http://api.trakt.tv/users/me/lists'
@@ -216,11 +244,6 @@ class movies:
         self.imdbwatchlist_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=alpha,asc' % self.imdb_user
         self.imdbwatchlist2_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=date_added,desc' % self.imdb_user
 
-        self.animegrownup_link = 'https://www.imdb.com/search/keyword/?keywords=anime%2Cfemale-nudity&sort=num_votes,desc&mode=detail&page=1&ref_=kw_ref_key'
-        self.animetopmovies_link = 'https://www.imdb.com/list/ls004037854/?sort=release_date,desc&st_dt=&mode=detail&page=1'
-        self.animetvmovie_link = 'https://www.imdb.com/search/keyword/?keywords=anime&sort=user_rating,desc&mode=detail&page=1&title_type=tvMovie&ref_=kw_ref_typ'
-        self.animehighlyrated_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=XP4M7Q29XXN28VM9Z00Q&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=movie&sort=num_votes,desc&ref_=adv_explore_rhs'
-        self.animetrending_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=4TSXV0JKMKVBW4YXCN93&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&sort=year,desc&title_type=movie&ref_=adv_explore_rhs'
 
 
     def get(self, url, idx=True, create_directory=True):
@@ -399,41 +422,6 @@ class movies:
             })
 
         self.addDirectory(self.list)
-        return self.list
-
-    def animegenres(self):
-        genres = [
-            ('Anime Action', 'action', True),
-            ('Anime Adventure', 'adventure', True),
-            ('Anime Biography', 'biography', True),
-            ('Anime Comedy', 'comedy', True),
-            ('Anime Crime', 'crime', True),
-            ('Anime Documentary', 'documentary', True),
-            ('Anime Drama', 'drama', True),
-            ('Anime Family', 'family', True),
-            ('Anime Fantasy', 'fantasy', True),
-            ('Anime History', 'history', True),
-            ('Anime Music ', 'music', True),
-            ('Anime Musical', 'musical', True),
-            ('Anime Mystery', 'mystery', True),
-            ('Anime Romance', 'romance', True),
-            ('Anime Science Fiction', 'sci_fi', True),
-            ('Anime Sport', 'sport', True),
-            ('Anime Thriller', 'thriller', True),
-            ('Anime War', 'war', True),
-            ('Anime Western', 'western', True),
-
-        ]
-
-        for i in genres: self.list.append(
-            {
-                'name': cleangenre.lang(i[0], self.lang),
-                'url': self.animegenre_link % i[1] if i[2] else self.keyword_link % i[1],
-                'image': 'genres.png',
-                'action': 'movies'
-            })
-
-        self.addDirectory(self.list)
         return self.list    
 
 
@@ -475,20 +463,6 @@ class movies:
 
         for i in languages: self.list.append(
             {'name': str(i[0]), 'url': self.language_link % i[1], 'image': 'languages.png', 'action': 'movies'})
-        self.addDirectory(self.list)
-        return self.list
-
-    def animeyears(self):
-        year = (self.datetime.strftime('%Y'))
-
-        for i in range(int(year)-0, 1959, -1): self.list.append({'name': str(i), 'url': self.animeyear_link % (str(i), str(i)), 'image': 'years.png', 'action': 'movies'})
-        self.addDirectory(self.list)
-        return self.list
-        
-    def animecertifications(self):
-        certificates = ['G', 'PG', 'PG-13', 'R']
-
-        for i in certificates: self.list.append({'name': str(i), 'url': self.animecertification_link % str(i).replace('-', '_').lower(), 'image': 'certificates.png', 'action': 'movies'})
         self.addDirectory(self.list)
         return self.list    
 

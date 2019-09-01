@@ -320,72 +320,139 @@ class collections:
         self.zorro_link = 'https://api.themoviedb.org/3/list/33413?api_key=%s' % (self.tmdb_key)
 
 # Boxset Collection Kids
-        self.onehundredonedalmations_link = 'https://api.themoviedb.org/3/list/33182?api_key=%s' % (self.tmdb_key)
-        self.addamsfamily_link = 'https://api.themoviedb.org/3/list/33183?api_key=%s' % (self.tmdb_key)
-        self.aladdin_link = 'https://api.themoviedb.org/3/list/33184?api_key=%s' % (self.tmdb_key)
-        self.alvinandthechipmunks_link = 'https://api.themoviedb.org/3/list/33185?api_key=%s' % (self.tmdb_key)
-        self.atlantis_link = 'https://api.themoviedb.org/3/list/33186?api_key=%s' % (self.tmdb_key)
-        self.babe_link = 'https://api.themoviedb.org/3/list/33187?api_key=%s' % (self.tmdb_key)
-        self.balto_link = 'https://api.themoviedb.org/3/list/33188?api_key=%s' % (self.tmdb_key)
-        self.bambi_link = 'https://api.themoviedb.org/3/list/33189?api_key=%s' % (self.tmdb_key)
-        self.beautyandthebeast_link = 'https://api.themoviedb.org/3/list/33190?api_key=%s' % (self.tmdb_key)
-        self.beethoven_link = 'https://api.themoviedb.org/3/list/33191?api_key=%s' % (self.tmdb_key)
-        self.brotherbear_link = 'https://api.themoviedb.org/3/list/33192?api_key=%s' % (self.tmdb_key)
-        self.cars_link = 'https://api.themoviedb.org/3/list/33193?api_key=%s' % (self.tmdb_key)
-        self.cinderella_link = 'https://api.themoviedb.org/3/list/33194?api_key=%s' % (self.tmdb_key)
-        self.cloudywithachanceofmeatballs_link = 'https://api.themoviedb.org/3/list/33195?api_key=%s' % (self.tmdb_key)
-        self.despicableme_link = 'https://api.themoviedb.org/3/list/33197?api_key=%s' % (self.tmdb_key)
-        self.findingnemo_link = 'https://api.themoviedb.org/3/list/33198?api_key=%s' % (self.tmdb_key)
-        self.foxandthehound_link = 'https://api.themoviedb.org/3/list/33199?api_key=%s' % (self.tmdb_key)
-        self.freewilly_link = 'https://api.themoviedb.org/3/list/33200?api_key=%s' % (self.tmdb_key)
-        self.ghostbusters_link = 'https://api.themoviedb.org/3/list/33201?api_key=%s' % (self.tmdb_key)
-        self.gremlins_link = 'https://api.themoviedb.org/3/list/33202?api_key=%s' % (self.tmdb_key)
-        self.happyfeet_link = 'https://api.themoviedb.org/3/list/33204?api_key=%s' % (self.tmdb_key)
-        self.harrypotter_link = 'https://api.themoviedb.org/3/list/33205?api_key=%s' % (self.tmdb_key)
-        self.homealone_link = 'https://api.themoviedb.org/3/list/33206?api_key=%s' % (self.tmdb_key)
-        self.homewardbound_link = 'https://api.themoviedb.org/3/list/33207?api_key=%s' % (self.tmdb_key)
-        self.honeyishrunkthekids_link = 'https://api.themoviedb.org/3/list/33208?api_key=%s' % (self.tmdb_key)
-        self.hoteltransylvania_link = 'https://api.themoviedb.org/3/list/33209?api_key=%s' % (self.tmdb_key)
-        self.howtotrainyourdragon_link = 'https://api.themoviedb.org/3/list/33210?api_key=%s' % (self.tmdb_key)
-        self.hunchbackofnotredame_link = 'https://api.themoviedb.org/3/list/33211?api_key=%s' % (self.tmdb_key)
-        self.iceage_link = 'https://api.themoviedb.org/3/list/33212?api_key=%s' % (self.tmdb_key)
-        self.jurassicpark_link = 'https://api.themoviedb.org/3/list/33217?api_key=%s' % (self.tmdb_key)
-        self.kungfupanda_link = 'https://api.themoviedb.org/3/list/33218?api_key=%s' % (self.tmdb_key)
-        self.ladyandthetramp_link = 'https://api.themoviedb.org/3/list/33219?api_key=%s' % (self.tmdb_key)
-        self.liloandstitch_link = 'https://api.themoviedb.org/3/list/33220?api_key=%s' % (self.tmdb_key)
-        self.madagascar_link = 'https://api.themoviedb.org/3/list/33221?api_key=%s' % (self.tmdb_key)
-        self.monstersinc_link = 'https://api.themoviedb.org/3/list/33222?api_key=%s' % (self.tmdb_key)
-        self.mulan_link = 'https://api.themoviedb.org/3/list/33223?api_key=%s' % (self.tmdb_key)
-        self.narnia_link = 'https://api.themoviedb.org/3/list/33224?api_key=%s' % (self.tmdb_key)
-        self.newgroove_link = 'https://api.themoviedb.org/3/list/33225?api_key=%s' % (self.tmdb_key)
-        self.openseason_link = 'https://api.themoviedb.org/3/list/33226?api_key=%s' % (self.tmdb_key)
-        self.planes_link = 'https://api.themoviedb.org/3/list/33227?api_key=%s' % (self.tmdb_key)
-        self.pocahontas_link = 'https://api.themoviedb.org/3/list/33228?api_key=%s' % (self.tmdb_key)
-        self.problemchild_link = 'https://api.themoviedb.org/3/list/33229?api_key=%s' % (self.tmdb_key)
-        self.rio_link = 'https://api.themoviedb.org/3/list/33230?api_key=%s' % (self.tmdb_key)
-        self.sammysadventures_link = 'https://api.themoviedb.org/3/list/33231?api_key=%s' % (self.tmdb_key)
-        self.scoobydoo_link = 'https://api.themoviedb.org/3/list/33232?api_key=%s' % (self.tmdb_key)
-        self.shortcircuit_link = 'https://api.themoviedb.org/3/list/33233?api_key=%s' % (self.tmdb_key)
-        self.shrek_link = 'https://api.themoviedb.org/3/list/33234?api_key=%s' % (self.tmdb_key)
-        self.spongebobsquarepants_link = 'https://api.themoviedb.org/3/list/33235?api_key=%s' % (self.tmdb_key)
-        self.spykids_link = 'https://api.themoviedb.org/3/list/33236?api_key=%s' % (self.tmdb_key)
-        self.starwars_link = 'https://api.themoviedb.org/3/list/33237?api_key=%s' % (self.tmdb_key)
-        self.stuartlittle_link = 'https://api.themoviedb.org/3/list/33238?api_key=%s' % (self.tmdb_key)
-        self.tarzan_link = 'https://api.themoviedb.org/3/list/33239?api_key=%s' % (self.tmdb_key)
-        self.teenagemutantninjaturtles_link = 'https://api.themoviedb.org/3/list/33240?api_key=%s' % (self.tmdb_key)
-        self.thejunglebook_link = 'https://api.themoviedb.org/3/list/33216?api_key=%s' % (self.tmdb_key)
-        self.thekaratekid_link = 'https://api.themoviedb.org/3/list/33241?api_key=%s' % (self.tmdb_key)
-        self.thelionking_link = 'https://api.themoviedb.org/3/list/33242?api_key=%s' % (self.tmdb_key)
-        self.thelittlemermaid_link = 'https://api.themoviedb.org/3/list/33243?api_key=%s' % (self.tmdb_key)
-        self.theneverendingstory_link = 'https://api.themoviedb.org/3/list/33248?api_key=%s' % (self.tmdb_key)
-        self.thesmurfs_link = 'https://api.themoviedb.org/3/list/33249?api_key=%s' % (self.tmdb_key)
-        self.toothfairy_link = 'https://api.themoviedb.org/3/list/33251?api_key=%s' % (self.tmdb_key)
-        self.tinkerbell_link = 'https://api.themoviedb.org/3/list/33252?api_key=%s' % (self.tmdb_key)
-        self.tomandjerry_link = 'https://api.themoviedb.org/3/list/33253?api_key=%s' % (self.tmdb_key)
-        self.toystory_link = 'https://api.themoviedb.org/3/list/33254?api_key=%s' % (self.tmdb_key)
-        self.veggietales_link = 'https://api.themoviedb.org/3/list/33255?api_key=%s' % (self.tmdb_key)
-        self.winniethepooh_link = 'https://api.themoviedb.org/3/list/33257?api_key=%s' % (self.tmdb_key)
-        self.wizardofoz_link = 'https://api.themoviedb.org/3/list/33258?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchonehundredonedalmations_link = 'https://api.themoviedb.org/3/list/33182?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchaddamsfamily_link = 'https://api.themoviedb.org/3/list/33183?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchaladdin_link = 'https://api.themoviedb.org/3/list/33184?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchalvinandthechipmunks_link = 'https://api.themoviedb.org/3/list/33185?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchatlantis_link = 'https://api.themoviedb.org/3/list/33186?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchbabe_link = 'https://api.themoviedb.org/3/list/33187?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchbalto_link = 'https://api.themoviedb.org/3/list/33188?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchbambi_link = 'https://api.themoviedb.org/3/list/33189?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchbeautyandthebeast_link = 'https://api.themoviedb.org/3/list/33190?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchbeethoven_link = 'https://api.themoviedb.org/3/list/33191?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchbrotherbear_link = 'https://api.themoviedb.org/3/list/33192?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchcars_link = 'https://api.themoviedb.org/3/list/33193?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchcinderella_link = 'https://api.themoviedb.org/3/list/33194?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchcloudywithachanceofmeatballs_link = 'https://api.themoviedb.org/3/list/33195?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchdespicableme_link = 'https://api.themoviedb.org/3/list/33197?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchfindingnemo_link = 'https://api.themoviedb.org/3/list/33198?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchfoxandthehound_link = 'https://api.themoviedb.org/3/list/33199?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchfreewilly_link = 'https://api.themoviedb.org/3/list/33200?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchghostbusters_link = 'https://api.themoviedb.org/3/list/33201?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchgremlins_link = 'https://api.themoviedb.org/3/list/33202?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchhappyfeet_link = 'https://api.themoviedb.org/3/list/33204?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchharrypotter_link = 'https://api.themoviedb.org/3/list/33205?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchhomealone_link = 'https://api.themoviedb.org/3/list/33206?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchhomewardbound_link = 'https://api.themoviedb.org/3/list/33207?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchhoneyishrunkthekids_link = 'https://api.themoviedb.org/3/list/33208?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchhoteltransylvania_link = 'https://api.themoviedb.org/3/list/33209?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchhowtotrainyourdragon_link = 'https://api.themoviedb.org/3/list/33210?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchhunchbackofnotredame_link = 'https://api.themoviedb.org/3/list/33211?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchiceage_link = 'https://api.themoviedb.org/3/list/33212?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchjurassicpark_link = 'https://api.themoviedb.org/3/list/33217?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchkungfupanda_link = 'https://api.themoviedb.org/3/list/33218?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchladyandthetramp_link = 'https://api.themoviedb.org/3/list/33219?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchliloandstitch_link = 'https://api.themoviedb.org/3/list/33220?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchmadagascar_link = 'https://api.themoviedb.org/3/list/33221?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchmonstersinc_link = 'https://api.themoviedb.org/3/list/33222?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchmulan_link = 'https://api.themoviedb.org/3/list/33223?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchnarnia_link = 'https://api.themoviedb.org/3/list/33224?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchnewgroove_link = 'https://api.themoviedb.org/3/list/33225?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchopenseason_link = 'https://api.themoviedb.org/3/list/33226?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchplanes_link = 'https://api.themoviedb.org/3/list/33227?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchpocahontas_link = 'https://api.themoviedb.org/3/list/33228?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchproblemchild_link = 'https://api.themoviedb.org/3/list/33229?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchrio_link = 'https://api.themoviedb.org/3/list/33230?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchsammysadventures_link = 'https://api.themoviedb.org/3/list/33231?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchscoobydoo_link = 'https://api.themoviedb.org/3/list/33232?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchshortcircuit_link = 'https://api.themoviedb.org/3/list/33233?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchshrek_link = 'https://api.themoviedb.org/3/list/33234?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchspongebobsquarepants_link = 'https://api.themoviedb.org/3/list/33235?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchspykids_link = 'https://api.themoviedb.org/3/list/33236?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchstarwars_link = 'https://api.themoviedb.org/3/list/33237?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchstuartlittle_link = 'https://api.themoviedb.org/3/list/33238?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchtarzan_link = 'https://api.themoviedb.org/3/list/33239?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchteenagemutantninjaturtles_link = 'https://api.themoviedb.org/3/list/33240?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchthejunglebook_link = 'https://api.themoviedb.org/3/list/33216?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchthekaratekid_link = 'https://api.themoviedb.org/3/list/33241?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchthelionking_link = 'https://api.themoviedb.org/3/list/33242?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchthelittlemermaid_link = 'https://api.themoviedb.org/3/list/33243?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchtheneverendingstory_link = 'https://api.themoviedb.org/3/list/33248?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchthesmurfs_link = 'https://api.themoviedb.org/3/list/33249?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchtoothfairy_link = 'https://api.themoviedb.org/3/list/33251?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchtinkerbell_link = 'https://api.themoviedb.org/3/list/33252?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchtomandjerry_link = 'https://api.themoviedb.org/3/list/33253?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchtoystory_link = 'https://api.themoviedb.org/3/list/33254?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchveggietales_link = 'https://api.themoviedb.org/3/list/33255?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchwinniethepooh_link = 'https://api.themoviedb.org/3/list/33257?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchwizardofoz_link = 'https://api.themoviedb.org/3/list/33258?api_key=%s' % (self.tmdb_key)
+        self.advancedsearchnut_link = 'https://www.imdb.com/search/title?title=nut%20job&title_type=feature&genres=adventure,animation,comedy&sort=year,asc'
+        self.advancedsearchshrek_link = 'https://www.imdb.com/search/title?title=shrek&title_type=feature&genres=animation&role=nm0000139&sort=year,asc'
+        self.advancedsearchice_link = 'https://www.imdb.com/search/title?title=ice%20age&title_type=feature&genres=animation&sort=year,asc'
+        self.advancedsearchpanda_link = 'https://www.imdb.com/search/title?title=kung%20fu%20panda&title_type=feature&genres=animation&sort=year,asc'
+        self.advancedsearchemperor_link = 'https://www.imdb.com/search/title/?title_type=feature,video&genres=animation&plot=kronk&sort=year,asc'
+        self.advancedsearchtinker_link = 'https://www.imdb.com/search/title/?title=tinker%20bell%2B&title_type=feature,video&sort=year,asc'
+        self.advancedsearchninja_link = 'https://www.imdb.com/search/title/?title=3%2Bninjas%2B&title_type=feature,video&certificates=US%3APG&sort=release_date,asc'
+        self.advancedsearchstarwars_link = 'https://www.imdb.com/search/title/?title=Star%2Bwars%2B&title_type=feature&num_votes=100000,&sort=release_date,asc'
+        self.advancedsearchmad_link = 'https://www.imdb.com/search/title?title=madagascar&title_type=feature&genres=animation&sort=year,asc'
+        self.advancedsearchdespicable_link = 'https://www.imdb.com/search/title?title=despicable%20me&title_type=feature&genres=animation&sort=year,asc'
+        self.advancedsearchminions_link = 'https://www.imdb.com/search/title?title=minions&title_type=feature&genres=animation&sort=year,asc'
+        self.advancedsearchtmnt_link = 'https://www.imdb.com/search/title?title=ninja%2Bturtles%2B&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchnarnia_link = 'https://www.imdb.com/search/title?title=narnia&title_type=feature&sort=year,asc'
+        self.advancedsearchpercy_link = 'https://www.imdb.com/search/title?title=percy%20jackson&title_type=feature&genres=family&sort=year,asc'
+        self.advancedsearchpadd_link = 'https://www.imdb.com/search/title?title=paddington&title_type=feature&genres=family&sort=year,asc'
+        self.advancedsearchtarzan_link = 'https://www.imdb.com/search/title?title=tarzan%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&certificates=US%3AG'
+        self.advancedsearchatlantis_link = 'https://www.imdb.com/search/title?title=atlantis%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&plot=milo&sort=year,asc'
+        self.advancedsearchbear_link = 'https://www.imdb.com/search/title?title=brother%2Bbear%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&sort=year,asc'
+        self.advancedsearchking_link = 'https://www.imdb.com/search/title?title=the%2Blion%2Bking%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&sort=year,asc'
+        self.advancedsearchopen_link = 'https://www.imdb.com/search/title?title=open%2Bseason&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchmuseum_link = 'https://www.imdb.com/search/title?title=night%2Bat%2Bthe%2Bmuseum%2B&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchgoosebumps_link = 'https://www.imdb.com/search/title?title=goosebumps%2B&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchalvin_link = 'https://www.imdb.com/search/title?title=chipmunks%2B&title_type=feature,video&num_votes=1000,&plot=alvin&sort=year,asc'
+        self.advancedsearchpirates_link = 'https://www.imdb.com/search/title?title=pirates%2Bof%2Bthe%2Bcaribbean%2B&title_type=feature&num_votes=1000,&sort=year,asc'
+        self.advancedsearchsurf_link = 'https://www.imdb.com/search/title?title=surf%27s%2Bup%2B&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchsmurf_link = 'https://www.imdb.com/search/title?title=smurfs%2B&title_type=feature,video&num_votes=2000,&sort=year,asc'
+        self.advancedsearchgnomes_link = 'https://www.imdb.com/search/title?title_type=feature,video&num_votes=2000,&plot=gnomeo&sort=year,asc'
+        self.advancedsearchnanny_link = 'https://www.imdb.com/search/title?title=nanny%20mcphee&title_type=feature&genres=family&sort=year,asc'
+        self.advancedsearchcars_link = 'https://www.imdb.com/search/title?title=cars&title_type=feature&genres=family&role=nm0005562&sort=year,asc'
+        self.advancedsearchfeet_link = 'https://www.imdb.com/search/title?title=happy%2Bfeet%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&sort=year,asc'
+        self.advancedsearchrio_link = 'https://www.imdb.com/search/title?title=rio%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&certificates=US%3AG&sort=year,asc'
+        self.advancedsearchtransylvania_link = 'https://www.imdb.com/search/title?title=hotel%2Btransylvania%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&sort=year,asc'
+        self.advancedsearchmonsters_link = 'https://www.imdb.com/search/title?title=monsters%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&role=nm0000345&sort=year,asc'
+        self.advancedsearchcloudy_link = 'https://www.imdb.com/search/title?title=cloudy%2Bwith%2Ba%2Bchance%2Bof%2Bmeatballs%2B&title_type=feature,video&num_votes=1000,&genres=animation&sort=year,asc'
+        self.advancedsearchshrunk_link = 'https://www.imdb.com/search/title?title=honey,%2B&title_type=feature,video&num_votes=1000,&plot=wayne&sort=year,asc'
+        self.advancedsearchducks_link = 'https://www.imdb.com/search/title?title=the%2Bmighty%2Bducks&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchharry_link = 'https://www.imdb.com/search/title?title=harry%20potter&title_type=feature&genres=family&role=nm0705356&sort=year,asc'
+        self.advancedsearchplanes_link = 'https://www.imdb.com/search/title?title=planes&title_type=feature&genres=animation&role=nm0176981&sort=year,asc'
+        self.advancedsearchbeasts_link = 'https://www.imdb.com/search/title?title=fantastic%20beasts&title_type=feature&role=nm1519666&sort=year,asc'
+        self.advancedsearchdragon_link = 'https://www.imdb.com/search/title?title=How%2Bto%2Btrain%2Byour%2Bdragon&title_type=feature&genres=animation&sort=year,asc'
+        self.advancedsearchcinderella_link = 'https://www.imdb.com/search/title?title=cinderella%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation,family,fantasy&certificates=US%3AG&sort=alpha,asc'
+        self.advancedsearchlady_link = 'https://www.imdb.com/search/title?title=lady%2Band%2Bthe%2Btramp%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&sort=year,asc'
+        self.advancedsearchland_link = 'https://www.imdb.com/search/title?title=land%2Bbefore%2Btime%2B&title_type=feature,tv_movie,video&num_votes=1000,&genres=animation&sort=year,asc'
+        self.advancedsearchjurassic_link = 'https://www.imdb.com/search/title?title=jurassic%2B&title_type=feature,video&num_votes=100000,&sort=year,asc'
+        self.advancedsearchlilo_link = 'https://www.imdb.com/search/title?title=lilo%2B&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchmummy_link = 'https://www.imdb.com/search/title?title=the%2Bmummy%2B&title_type=feature&num_votes=100000,&sort=year,asc'
+        self.advancedsearchpokemon_link = 'https://www.imdb.com/search/title?title=pokemon%2B&title_type=feature&num_votes=1000,&sort=year,asc'
+        self.advancedsearchmib_link = 'https://www.imdb.com/search/title?title=men%2Bin%2Bblack&title_type=feature&release_date=1997-01-01,2019-12-31&companies=sony&sort=year,asc'
+        self.advancedsearchflint_link = 'https://www.imdb.com/search/title?title=the%2Bflintstones&title_type=feature,video&num_votes=10000,'
+        self.advancedsearchaddams_link = 'https://www.imdb.com/search/title?title=addams%2Bfamily&title_type=feature&release_date=,1995-12-31&sort=year,asc'
+        self.advancedsearchwimpy_link = 'https://www.imdb.com/search/title?title=diary%2Bwimpy%2Bkid&title_type=feature&sort=year,asc'
+        self.advancedsearchhoodwinked_link = 'https://www.imdb.com/search/title?title=hoodwinked%2B&title_type=feature&num_votes=1000,&sort=year,asc'          
+        self.advancedsearchgoofy_link = 'https://www.imdb.com/search/title?title=%2Bgoofy%2Bmovie&title_type=feature,video&sort=year,asc'
+        self.advancedsearchpets_link = 'https://www.imdb.com/search/title?title=%2Bsecret%2Blife%2Bof%2Bpets%2B&title_type=feature&sort=year,asc'
+        self.advancedsearchtransformers_link = 'https://www.imdb.com/search/title/?title=transformers&title_type=feature&plot=autobots&sort=release_date,asc'
+        self.advancedsearchtoystory_link = 'https://www.imdb.com/search/title?title=toy%20story&title_type=feature&genres=animation,family&sort=year,asc'
+        self.advancedsearchincredibles_link = 'https://www.imdb.com/search/title?title=incredibles&title_type=feature&genres=action,adventure,animation&sort=year,asc'
+        self.advancedsearchnemo_link = 'https://www.imdb.com/search/title?title_type=feature&genres=adventure,animation,comedy&role=nm0001122'
+        self.advancedsearchfrozen_link = 'https://www.imdb.com/search/title?title=frozen&title_type=feature&genres=adventure,animation,comedy'
+        self.advancedsearchralph_link = 'https://www.imdb.com/search/title?title=ralph&title_type=feature&genres=adventure,animation,comedy&sort=year,asc'
+        self.advancedsearchlego_link = 'https://www.imdb.com/search/title?title=lego&title_type=feature&genres=adventure,animation,comedy&role=nm0695435&sort=year,asc'
+        self.advancedsearchbirds_link = 'https://www.imdb.com/search/title/?title=%2Bangry%2Bbirds%2B&title_type=feature&sort=boxoffice_gross_us,asc'
+        self.advancedsearchsheep_link = 'https://www.imdb.com/search/title?title=shaun%20the%20sheep&title_type=feature&genres=adventure,animation,comedy&sort=year,asc'
+        self.advancedsearchghostbusters_link = 'https://www.imdb.com/search/title?title=ghostbusters%2B&title_type=feature,video&num_votes=1000,&sort=year,asc'
+        self.advancedsearchgijoe_link = 'https://www.imdb.com/search/title?title=g.i.%20Joe%2B&title_type=feature,video&num_votes=10000,&sort=year,asc'         
+        self.advancedsearchfuture_link = 'https://www.imdb.com/search/title/?title=back%2Bto%2Bthe%2Bfuture%2B&title_type=feature,video&num_votes=100000,&sort=year,asc'
+             
 
 # Superhero Collection
         self.avengers_link = 'https://api.themoviedb.org/3/list/33128?api_key=%s' % (self.tmdb_key)

@@ -1112,7 +1112,7 @@ msgid "[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]DC Animated[/COLOR][B][C
 msgstr ""
 
 msgctxt "#32720"
-msgid "[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Horror 2018-2000[/COLOR][B][COLOR blue] •[/COLOR][/B]"
+msgid "[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Horror 2019-2000[/COLOR][B][COLOR blue] •[/COLOR][/B]"
 msgstr ""
 
 msgctxt "#32721"
@@ -1129,6 +1129,14 @@ msgstr ""
 
 msgctxt "#32724"
 msgid "[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]IMDb top 250[/COLOR][B][COLOR firebrick] •[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#32725"
+msgid "[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Netflix[/COLOR][B][COLOR firebrick] •[/COLOR][/B]"
+msgstr ""
+
+msgctxt "#32726"
+msgid "[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Randomly Plays[/COLOR][B][COLOR blue] •[/COLOR][/B]"
 msgstr ""
 
 msgctxt "#70001"

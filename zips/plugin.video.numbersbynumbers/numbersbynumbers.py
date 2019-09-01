@@ -301,10 +301,6 @@ elif action == 'kidzoneNavigator':
 elif action == 'kidsboxsetsNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().kidsboxsets()
-
-elif action == 'kidsboxsets':
-    from resources.lib.indexers import kidsboxsets
-    kidsboxsets.boxsets().get(url)
     
 elif action == 'waltdisneyNavigator':
     from resources.lib.indexers import navigator
@@ -333,6 +329,14 @@ elif action == 'mymovieliteNavigator':
 elif action == 'randomNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().random()
+
+elif action == 'randomMoviesNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().randomflix()
+
+elif action == 'justLegoNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().justlego()        
     
 elif action == 'superheroNavigator':
     from resources.lib.indexers import navigator
@@ -342,45 +346,17 @@ elif action == 'animemovieNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().animemovies()
 
-elif action == 'animemovyears':
-    from resources.lib.indexers import movies
-    movies.movies().animeyears()
-
-elif action == 'movieanimecertifications':
-    from resources.lib.indexers import movies
-    movies.movies().animecertifications()
-
-elif action == 'animegenres':
-    from resources.lib.indexers import movies
-    movies.movies().animegenres()
-
 elif action == 'animetvNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().animetvshows()
-    
-elif action == 'animetv':
-    from resources.lib.indexers import animetv
-    animetv.animetv().get(url)
-    
-elif action == 'animetvyears':
-    from resources.lib.indexers import tvshows
-    tvshows.tvshows().animeyears()
 
 elif action == 'animeGenres':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().animegenres()
-    
-elif action == 'tvanimecertifications':
-    from resources.lib.indexers import tvshows
-    tvshows.tvshows().animecertifications()
 
 elif action == 'kidstvNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().kidstvshows()
-
-elif action == 'kidNetworks':
-    from resources.lib.indexers import navigator
-    navigator.navigator().kidnetworks()
 
 elif action == 'mytvNavigator':
     from resources.lib.indexers import navigator
@@ -588,6 +564,14 @@ elif action == 'tvGenres':
 elif action == 'tvNetworks':
     from resources.lib.indexers import tvshows
     tvshows.tvshows().networks()
+
+elif action == 'tvNetworksKids':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().networkskids()
+
+elif action == 'tvNetworksPremium':
+    from resources.lib.indexers import tvshows
+    tvshows.tvshows().networkspremium()            
 
 elif action == 'tvLanguages':
     from resources.lib.indexers import tvshows

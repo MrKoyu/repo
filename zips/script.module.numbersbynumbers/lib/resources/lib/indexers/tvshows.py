@@ -12,7 +12,7 @@
          ░    ░            ░    ░         ░  ░   ░           ░  
                                      ░                          
 
-    NuMbErS Add-on
+    NuMb3r5 Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -82,22 +82,39 @@ class tvshows:
         self.persons_link = 'http://www.imdb.com/search/name?count=100&name='
         self.personlist_link = 'http://www.imdb.com/search/name?count=100&gender=male,female'
         self.popular_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&release_date=,date[0]&sort=moviemeter,asc&count=40&start=1'
-        self.popularcartoons_link = 'https://www.imdb.com/search/title?title_type=tv_series,mini_series&genres=animation&num_votes=100,&release_date=,date[0]&genres=animation&sort=moviemeter,asc&count=40&start=1'
         self.airing_link = 'http://www.imdb.com/search/title?title_type=tv_episode&release_date=date[1],date[0]&sort=moviemeter,asc&count=40&start=1'
         self.active_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=10,&production_status=active&sort=moviemeter,asc&count=40&start=1'
-        # self.premiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&languages=en&num_votes=10,&release_date=date[60],date[0]&sort=moviemeter,asc&count=40&start=1'
         self.premiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&languages=en&num_votes=10,&release_date=date[60],date[0]&sort=release_date,desc&count=40&start=1'
         self.rating_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=5000,&release_date=,date[0]&sort=user_rating,desc&count=40&start=1'
         self.views_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&release_date=,date[0]&sort=num_votes,desc&count=40&start=1'
-        self.viewsfamily_link = 'https://www.imdb.com/search/title?title_type=tv_series&release_date=2016-01-01,&genres=family'
         self.person_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&role=%s&sort=year,desc&count=40&start=1'
         self.genre_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&genres=%s&sort=moviemeter,asc&count=40&start=1'
         self.keyword_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&keywords=%s&sort=moviemeter,asc&count=40&start=1'
         self.language_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&num_votes=100,&production_status=released&primary_language=%s&sort=moviemeter,asc&count=40&start=1'
         self.certification_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&certificates=us:%s&sort=moviemeter,asc&count=40&start=1'
         self.trending_link = 'http://api.trakt.tv/shows/trending?limit=40&page=1'
-        self.marveltv_link  = 'https://www.imdb.com/list/ls026566277/?view=detail&sort=alpha,asc&title_type=tvSeries,miniSeries&start=1'
-        self.high_link = 'https://www.imdb.com/search/title?title_type=tv_series&num_votes=15000,&genres=family&sort=user_rating,desc&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=186d3818-4564-4c2a-a20e-9054a8648eca&pf_rd_r=0JBMXKVJDMSKNGJKAZTV&pf_rd_s=center-22&pf_rd_t=60601&pf_rd_i=family-entertainment-guide&ref_=fea_fam_fam_ats_rank_fam_tv_sm'
+        self.advancedsearchfamily_link = 'https://www.imdb.com/search/title?title_type=tv_series&release_date=2016-01-01,&genres=family'
+        self.advancedsearchcartoons_link = 'https://www.imdb.com/search/title?title_type=tv_series,mini_series&genres=animation&num_votes=100,&release_date=,date[0]&genres=animation&sort=moviemeter,asc&count=40&start=1'
+        self.advancedsearchmarveltv_link  = 'https://www.imdb.com/list/ls026566277/?view=detail&sort=alpha,asc&title_type=tvSeries,miniSeries&start=1'
+        self.advancedsearchhighly_link = 'https://www.imdb.com/search/title?title_type=tv_series&num_votes=15000,&genres=family&sort=user_rating,desc&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=186d3818-4564-4c2a-a20e-9054a8648eca&pf_rd_r=0JBMXKVJDMSKNGJKAZTV&pf_rd_s=center-22&pf_rd_t=60601&pf_rd_i=family-entertainment-guide&ref_=fea_fam_fam_ats_rank_fam_tv_sm'
+        self.advancedsearchlegotv_link = 'https://www.imdb.com/search/title/?title=lego&title_type=tv_series&count=100'
+        self.advancedsearchtransformers_link = 'https://www.imdb.com/search/title/?title=transformers&title_type=tv_series&count=100'
+        self.advancedsearchretro_link = 'https://www.imdb.com/search/title?title_type=tv_series,tv_episode,tv_miniseries&release_date=1980-01-01,2000-12-31&genres=comedy,family&countries=us'
+        self.advancedsearchteentv_link = 'https://www.imdb.com/search/title?certificates=US%3ATV-14&sort=moviemeter,asc'
+        self.advancedsearchfreeformtv_link = 'https://www.imdb.com/list/ls063177895/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+
+        self.advancedsearchanimepopular_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=QG2EX199YPFDV4NNP6WW&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=tvSeries&ref_=adv_explore_rhs'
+        self.advancedsearchanimepeoplewatching_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=QG2EX199YPFDV4NNP6WW&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=tvSeries&sort=num_votes,desc&ref_=adv_explore_rhs'
+        self.advancedsearchanimetrending_link = 'https://www.imdb.com/list/ls041266139/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.advancedsearchanimehighlyrated_link = 'https://www.imdb.com/list/ls021457150/?sort=date_added,desc&st_dt=&mode=detail&page=1'
+        self.advancedsearchanimetopseries_link = 'https://www.imdb.com/list/ls058654847/?sort=num_votes,desc&st_dt=&mode=detail&page=1'
+        self.animegenre_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&genres=%s&keywords=anime&sort=moviemeter,asc&count=40&start=1&sort=alpha,asc'
+        
+        self.advancedsearchtoddler_link = 'https://www.imdb.com/list/ls021175534/?sort=release_date&mode=detail&page=1'
+        self.advancedsearchnickjr_link = 'https://www.imdb.com/list/ls060197516/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.advancedsearchdisneyjr_link = 'https://www.imdb.com/list/ls024059608/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.advancedsearchnetflixkids_link = 'https://www.imdb.com/list/ls006497912/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
+        self.advancedsearchnetflixshows_link = 'https://www.imdb.com/list/ls050522997/?sort=user_rating,desc&st_dt=&mode=detail&page=1'
 
         self.traktlists_link = 'http://api.trakt.tv/users/me/lists'
         self.traktlikedlists_link = 'http://api.trakt.tv/users/likes/lists?limit=1000000'
@@ -110,36 +127,6 @@ class tvshows:
         self.imdblist2_link = 'http://www.imdb.com/list/%s/?view=detail&sort=date_added,desc&title_type=tvSeries,tvMiniSeries&start=1'
         self.imdbwatchlist_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=alpha,asc' % self.imdb_user
         self.imdbwatchlist2_link = 'http://www.imdb.com/user/ur%s/watchlist?sort=date_added,desc' % self.imdb_user
-
-        self.animepop_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=QG2EX199YPFDV4NNP6WW&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=tvSeries&ref_=adv_explore_rhs'
-        self.animepeoplewatching_link = 'https://www.imdb.com/search/title?count=100&keywords=anime&num_votes=2000,&explore=title_type&pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3999419c-1229-4fa7-9240-55e83e21cecb&pf_rd_r=QG2EX199YPFDV4NNP6WW&pf_rd_s=right-1&pf_rd_t=15051&pf_rd_i=genre&title_type=tvSeries&sort=num_votes,desc&ref_=adv_explore_rhs'
-        self.animetrending_link = 'https://www.imdb.com/list/ls041266139/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.animepremiere_link = 'http://www.imdb.com/search/title?title_type=tv_series,tv_special,tv_miniseries&keywords=anime&languages=en&num_votes=10,&release_date=date[60],date[0]sort=alpha,asc'
-        self.animecertification_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&keywords=anime&num_votes=100,&production_status=released&certificates=us:%s&sort=moviemeter,asc&count=40&start=1'
-        self.animegenre_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&release_date=,date[0]&genres=%s&keywords=anime&sort=moviemeter,asc&count=40&start=1&sort=alpha,asc'
-        self.animeyear_link = 'http://www.imdb.com/search/title?title_type=tv_series,mini_series&production_status=released&keywords=anime&year=%s,%s&sort=moviemeter,asc&count=40&start=1'
-        self.animehighlyrated_link = 'https://www.imdb.com/list/ls021457150/?sort=date_added,desc&st_dt=&mode=detail&page=1'
-        self.animetopseries_link = 'https://www.imdb.com/list/ls058654847/?sort=num_votes,desc&st_dt=&mode=detail&page=1'
-        
-        self.lego_link = 'https://www.imdb.com/list/ls022553703/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.robots_link = 'https://www.imdb.com/list/ls022798407/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.retrotv_link = 'https://www.imdb.com/search/title?title_type=tv_series,tv_episode,tv_miniseries&release_date=1980-01-01,2000-12-31&genres=comedy,family&countries=us'
-        
-        self.toddler_link = 'https://www.imdb.com/list/ls021175534/?sort=release_date&mode=detail&page=1'
-        self.nickjr_link = 'https://www.imdb.com/list/ls022146406/?ref_=otl_5&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.disneyjr_link = 'https://www.imdb.com/list/ls022142605/?ref_=otl_1&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.netflixkid_link = 'https://www.imdb.com/list/ls022184975/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        
-        self.teennick_link = 'https://www.imdb.com/list/ls022142754/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.disneychannel_link = 'https://www.imdb.com/list/ls022142348/?ref_=otl_3&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.teentv_link = 'https://www.imdb.com/search/title?certificates=US%3ATV-14&sort=moviemeter,asc'
-        self.freeform_link = 'https://www.imdb.com/list/ls022351285/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        
-        self.nick_link = 'https://www.imdb.com/list/ls022146632/?ref_=otl_4&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.cartoonnetwork_link = 'https://www.imdb.com/list/ls022148428/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.nicktoons_link = 'https://www.imdb.com/list/ls022146204/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-        self.disneyxd_link = 'https://www.imdb.com/list/ls022142309/?ref_=otl_2&sort=moviemeter,asc&st_dt=&mode=detail&page=1'
-
         self.top250tv_link = 'https://www.imdb.com/list/ls008957859/?sort=num_votes,desc&st_dt=&mode=detail&page=1'
         
 
@@ -199,19 +186,6 @@ class tvshows:
         except:
             pass
 
-    def animecertifications(self):
-        certificates = ['TV-G', 'TV-PG', 'TV-14', 'TV-MA']
-
-        for i in certificates: self.list.append({'name': str(i), 'url': self.animecertification_link % str(i).replace('-', '_').lower(), 'image': 'certificates.png', 'action': 'tvshows'})
-        self.addDirectory(self.list)
-        return self.list
-
-    def animeyears(self):
-        year = (self.datetime.strftime('%Y'))
-
-        for i in range(int(year)-0, 1950, -1): self.list.append({'name': str(i), 'url': self.animeyear_link % (str(i), str(i)), 'image': 'years.png', 'action': 'tvshows'})
-        self.addDirectory(self.list)
-        return self.list
         
     def animegenres(self):
         genres = [
@@ -489,6 +463,52 @@ class tvshows:
             {'name': i[0], 'url': self.tvmaze_link + i[1], 'image': i[2], 'action': 'tvshows'})
         self.addDirectory(self.list)
         return self.list
+
+    def networkskids(self):
+        networks = [
+            ('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Cartoon Network[/COLOR]', '/networks/11/cartoon-network', 'https://i.imgur.com/zmOLbbI.png'),
+            ('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Disney Channel[/COLOR]', '/networks/78/disney-channel', 'https://i.imgur.com/ZCgEkp6.png'),
+            ('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Disney XD[/COLOR]', '/networks/25/disney-xd', 'https://i.imgur.com/PAJJoqQ.png'),
+            ('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Nickelodeon[/COLOR]', '/networks/27/nickelodeon', 'https://i.imgur.com/OUVoqYc.png'),
+        ]
+
+        for i in networks: self.list.append(
+            {'name': i[0], 'url': self.tvmaze_link + i[1], 'image': i[2], 'action': 'tvshows'})
+        self.addDirectory(self.list)
+        return self.list
+        
+    def networkspremium(self):
+        networks = [
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]AMC[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/20/amc', 'https://i.imgur.com/ndorJxi.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Amazon[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/webchannels/3/amazon', 'https://i.imgur.com/ru9DDlL.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Animal Planet[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/92/animal-planet', 'https://i.imgur.com/olKc4RP.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]BBC America[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/15/bbc-america', 'https://i.imgur.com/TUHDjfl.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Bravo[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/52/bravo', 'https://i.imgur.com/TmEO3Tn.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Channel 4[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/45/channel-4', 'https://i.imgur.com/6ZA9UHR.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Channel 5[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/135/channel-5', 'https://i.imgur.com/5ubnvOh.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Cinemax[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/19/cinemax', 'https://i.imgur.com/zWypFNI.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Comedy Central[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/23/comedy-central', 'https://i.imgur.com/ko6XN77.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]FOX[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/4/fox', 'https://i.imgur.com/6vc0Iov.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]FX[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/13/fx', 'https://i.imgur.com/aQc1AIZ.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]HBO[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/8/hbo', 'https://i.imgur.com/Hyu8ZGq.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Hulu[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/webchannels/2/hulu', 'https://i.imgur.com/uSD2Cdw.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]ITV[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/35/itv', 'https://i.imgur.com/5Hxp5eA.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Lifetime[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/18/lifetime', 'https://i.imgur.com/tvYbhen.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]MTV[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/22/mtv', 'https://i.imgur.com/QM6DpNW.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]NBC[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/1/nbc', 'https://i.imgur.com/yPRirQZ.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]National Geographic[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/42/national-geographic-channel', 'https://i.imgur.com/XCGNKVQ.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Netflix[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/webchannels/1/netflix', 'https://i.imgur.com/jI5c3bw.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Showtime[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/9/showtime', 'https://i.imgur.com/SawAYkO.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Sky1[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/63/sky-1', 'https://i.imgur.com/xbgzhPU.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Starz[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/17/starz', 'https://i.imgur.com/Z0ep2Ru.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]Youtube Red[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/webchannels/43/youtube-premium', 'https://i.imgur.com/ZfewP1Y.png'),
+            ('[B][COLOR blueviolet]• [/COLOR][/B][COLOR ghostwhite]USA[/COLOR][B][COLOR blueviolet] •[/COLOR][/B]', '/networks/30/usa-network', 'https://i.imgur.com/Doccw9E.png'),
+        ]
+
+        for i in networks: self.list.append(
+            {'name': i[0], 'url': self.tvmaze_link + i[1], 'image': i[2], 'action': 'tvshows'})
+        self.addDirectory(self.list)
+        return self.list        
 
 
     def languages(self):

@@ -109,7 +109,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="8.7" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="8.8" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -196,7 +196,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.numbersbynumbers" version="2.0.2.2" name="[COLOR white][B]NuMb3r5[/B][/COLOR]" provider-name="[COLOR lime][B]NuMb3r5[/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.2.3" name="[COLOR white][B]NuMb3r5[/B][/COLOR]" provider-name="[COLOR lime][B]NuMb3r5[/B][/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
@@ -224,7 +224,7 @@
       <screenshot>resources/media/screenshot-02.jpg</screenshot>
       <screenshot>resources/media/screenshot-03.jpg</screenshot>
     </assets>
-    <news>V2.0.2.2
+    <news>V2.0.2.3
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</news>
     <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -325,7 +325,7 @@ provider-name="Team IVUE">
 
 <addon
   id="plugin.video.SportsDevil"
-  version="2019.05.24"
+  version="2019.05.25"
   name="SportsDevil"
   provider-name="SportsDevil">
   <requires>
@@ -333,11 +333,11 @@ provider-name="Team IVUE">
    <import addon="script.module.dateutil" />
    <import addon="script.module.simplejson" />
    <import addon="script.module.six" />
-   <import addon="script.module.requests" />
+   <import addon="script.module.requests" />   
    <import addon="plugin.video.f4mTester" />
    <import addon="script.module.slproxy" />
   </requires>
-  <extension
+  <extension 
     point="xbmc.python.pluginsource"
     library="default.py">
    <provides>video</provides>
@@ -906,7 +906,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="script.module.numbersbynumbers" name="NuMb3r5 Module" version="1.00.082" provider-name="NuMb3r5">
+<addon id="script.module.numbersbynumbers" name="NuMb3r5 Module" version="1.00.083" provider-name="NuMb3r5">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>
@@ -921,7 +921,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="script.numbersbynumbers.artwork" version="1.0.7" name="NuMb3r5 Artwork" provider-name="NuMb3r5">
+<addon id="script.numbersbynumbers.artwork" version="1.0.8" name="NuMb3r5 Artwork" provider-name="NuMb3r5">
   <requires>
     <import addon="xbmc.python" version="2.19.0"/>
   </requires>
