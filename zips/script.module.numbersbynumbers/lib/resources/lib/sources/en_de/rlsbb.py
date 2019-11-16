@@ -90,10 +90,10 @@ class source:
             url = self.search_link % urllib.quote_plus(query)
             url = urlparse.urljoin(self.base_link, url)
 
-            url = "http://rlsbb.ru/" + query                                
-            if 'tvshowtitle' not in data: url = url + "-1080p"				 
+            url = "http://rlsbb.ru/" + query
+            if 'tvshowtitle' not in data: url = url + "-1080p"
 
-            r = scraper.get(url).content                                         
+            r = scraper.get(url).content
             
             if r == None and 'tvshowtitle' in data:
                 season = re.search('S(.*?)E', hdlr)
@@ -109,16 +109,16 @@ class source:
 
             
             for loopCount in range(0,2):
-                if loopCount == 1 or (r == None and 'tvshowtitle' in data):                     
+                if loopCount == 1 or (r == None and 'tvshowtitle' in data):
                     
                     
-                    premDate = re.sub('[ \.]','-',data['premiered'])                            
-                    query = re.sub('[\\\\:;*?"<>|/\-\']', '', data['tvshowtitle'])              
-                    query = query.replace("&", " and ").replace("  ", " ").replace(" ", "-")    
-                    query = query + "-" + premDate                      
+                    premDate = re.sub('[ \.]','-',data['premiered'])
+                    query = re.sub('[\\\\:;*?"<>|/\-\']', '', data['tvshowtitle'])
+                    query = query.replace("&", " and ").replace("  ", " ").replace(" ", "-")
+                    query = query + "-" + premDate
                     
-                    url = "http://rlsbb.to/" + query            
-                    url = url.replace('The-Late-Show-with-Stephen-Colbert','Stephen-Colbert')   
+                    url = "http://rlsbb.ru/" + query
+                    url = url.replace('The-Late-Show-with-Stephen-Colbert','Stephen-Colbert')
                     
 
                     r = scraper.get(url).content
@@ -133,7 +133,7 @@ class source:
                             try:
                                 name = str(i)
                                 if hdlr in name.upper(): items.append(name)
-                                elif len(premDate) > 0 and premDate in name.replace(".","-"): items.append(name)      
+                                elif len(premDate) > 0 and premDate in name.replace(".","-"): items.append(name)
                                 
                             except:
                                 pass

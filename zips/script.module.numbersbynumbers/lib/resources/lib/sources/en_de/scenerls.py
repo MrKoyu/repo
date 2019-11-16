@@ -29,7 +29,7 @@ class source:
         self.language = ['en']
         self.domains = ['scene-rls.com', 'scene-rls.net']
         self.base_link = 'http://scene-rls.net'
-        self.search_link = '/search/%s'
+        self.search_link = '/?s=%s&submit=Find'
         self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):

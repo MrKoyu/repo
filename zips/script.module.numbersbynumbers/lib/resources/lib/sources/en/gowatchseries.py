@@ -15,7 +15,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re,urllib,urlparse,time,json
+import re,urllib,urlparse,json
 
 from resources.lib.modules import control
 from resources.lib.modules import cleantitle
@@ -28,7 +28,7 @@ class source:
         self.language = ['en']
         self.direct = 1
         self.domains = ['gowatchseries.io','gowatchseries.co']
-        self.base_link = 'https://www1.gowatchseries.tv'
+        self.base_link = 'https://gowatchseries.tv'
         self.search_link = '/ajax-search.html?keyword=%s&id=-1'
         self.search_link2 = '/search.html?keyword=%s'
 

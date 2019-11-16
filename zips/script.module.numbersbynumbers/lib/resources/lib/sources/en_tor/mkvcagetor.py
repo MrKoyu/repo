@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 '''
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,9 +15,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re, urllib, urlparse
+import re
+import urllib
+import urlparse
+
 from resources.lib.modules import client
-from resources.lib.modules import control
 from resources.lib.modules import debrid
 from resources.lib.modules import source_utils
 
@@ -25,10 +28,9 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['www.skytorrents.lol']
-        self.base_link = 'https://www.skytorrents.lol/'
-        self.search_link = '?query=%s'
-        self.min_seeders = int(control.setting('torrent.min.seeders'))
+        self.domains = ['mkvcage.site', 'www.mkvcage.ws', 'mkvcage.fun']
+        self.base_link = 'https://www.mkvcage.site'
+        self.search_link = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -60,8 +62,9 @@ class source:
     def sources(self, url, hostDict, hostprDict):
         sources = []
         try:
-            if url == None: return sources
-            if debrid.status() == False: raise Exception()
+            if url is None: return sources
+            if debrid.status() is False: raise Exception()
+
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
 
@@ -69,7 +72,10 @@ class source:
 
             hdlr = 'S%02dE%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
-            query = '%s s%02de%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode']))if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
+            query = '%s s%02de%02d' % (
+                data['tvshowtitle'], int(data['season']),
+                int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (
+                data['title'], data['year'])
             query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
 
             url = self.search_link % urllib.quote_plus(query)
@@ -78,21 +84,31 @@ class source:
             r = client.request(url)
 
             try:
-                posts = client.parseDOM(r, 'tbody', attrs={'id': 'results'})
+                posts = client.parseDOM(r, 'h2', attrs={'class': 'entry-title'})
                 for post in posts:
-                    link = re.findall('a href="(magnet:.+?)" title="(.+?)"', post, re.DOTALL)
-                    for url, data in link:
-                        if not hdlr in data: continue
-                        url = url.split('&tr')[0]
-                        url = url.encode('ascii', 'ignore')
-                        quality, info = source_utils.get_release_quality(data)
-                        if any(x in url for x in ['FRENCH', 'Ita', 'italian', 'TRUEFRENCH', '-lat-','Dublado']): continue
-                        info = ' | '.join(info)
-                        sources.append({'source': 'Torrent', 'quality': quality, 'language': 'en', 'url': url, 'info': info, 'direct': False, 'debridonly': True})
+                    data = client.parseDOM(post, 'a', ret='href')
+                    for u in data:
+                        r = client.request(u)
+                        r = client.parseDOM(r, 'div', attrs={'class': 'clearfix entry-content'})
+                        for t in r:
+                            link = re.findall('a class="buttn magnet" href="(.+?)"', t)[0]
+                            quality, info = source_utils.get_release_quality(u)
+                            try:
+                                size = re.findall('((?:\d+\.\d+|\d+\,\d+|\d+)\s*(?:gb|gib|mb|mib))', str(data))[-1]
+                                div = 1 if size.endswith(('gb')) else 1024
+                                size = float(re.sub('[^0-9|/.|/,]', '', size)) / div
+                                size = '%.2f gb' % size
+                                info.append(size)
+                            except:
+                                pass
+                            info = ' | '.join(info)
+                            sources.append(
+                                {'source': 'Torrent', 'quality': quality, 'language': 'en', 'url': link, 'info': info,
+                                 'direct': False, 'debridonly': True})
             except:
                 return
             return sources
-        except :
+        except:
             return sources
 
     def resolve(self, url):

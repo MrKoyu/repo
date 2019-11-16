@@ -15,20 +15,20 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import urllib, urlparse, re, json, requests
+import urllib, urlparse, re
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import source_utils
-from resources.lib.modules import dom_parser2
-from resources.lib.modules import jsunpack
+from resources.lib.modules import cfscrape
+from resources.lib.modules import directstream
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['watch32hd.co']
-        self.base_link = 'https://watch32hd.co/'
+        self.domains = ['watchhdmovie.net']
+        self.base_link = 'https://watch32hd.org/'
         self.search_link = 'results?q=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -36,7 +36,7 @@ class source:
             url = {'imdb': imdb, 'title': title, 'year': year}
             url = urllib.urlencode(url)
             return url
-        except :
+        except:
             return
 
     def sources(self, url, hostDict, hostprDict):
@@ -49,39 +49,33 @@ class source:
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
 
             title = data['title']
-
             hdlr = data['year']
+            query = '%s %s' % (title, hdlr)
+            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
 
-            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', title)
-
-            url = self.search_link % urllib.quote_plus(query)
-            url = urlparse.urljoin(self.base_link, url)
+            url = urlparse.urljoin(self.base_link, self.search_link % urllib.quote_plus(query))
             r = client.request(url)
+            items = client.parseDOM(r, 'div', attrs={'class': 'cell_container'})
 
-            posts = client.parseDOM(r, 'div', attrs={'class': 'video_title'})
-
-            items = []
-
-            for post in posts:
-                try:
-                    data = dom_parser2.parse_dom(post, 'a', req=['href', 'title'])[0]
-                    t = data.content
-                    y = re.findall('\((\d{4})\)', data.attrs['title'])[0]
-                    qual = data.attrs['title'].split('-')[1]
-                    link = data.attrs['href']
-
-                    if not cleantitle.get(t) == cleantitle.get(title): raise Exception()
-                    if not y == hdlr: raise Exception()
-
-                    items += [(link, qual)]
-
-                except :
-                    pass
             for item in items:
                 try:
-                    r = client.request(item[0]) if item[0].startswith('http') else client.request(urlparse.urljoin(self.base_link, item[0]))
+                    name = client.parseDOM(item, 'a', ret='title')[0]
+                    name = client.replaceHTMLCodes(name)
+                    t = re.sub('(\.|\(|\[|\s)(\d{4}|S\d+E\d+|S\d+|3D)(\.|\)|\]|\s|)(.+|)', '', name)
+                    if not cleantitle.get(t) == cleantitle.get(title):
+                        raise Exception()
 
-                    url = re.findall('''frame_url\s*=\s*["']([^']+)['"];''', r, re.DOTALL)[0]
+                    y = re.findall('[\.|\(|\[|\s](\d{4})[\.|\)|\]|\s]', name)[-1]
+                    if not y == hdlr:
+                        raise Exception()
+
+                    link = client.parseDOM(item, 'a', ret='href')[0]
+                    link = urlparse.urljoin(self.base_link, link) if link.startswith('/') else link
+                except:
+                    return sources
+                try:
+                    r = client.request(link)
+                    url = re.findall('''frame_url\s*=\s*['"](.+?)['"]\;''', r, re.DOTALL)[0]
                     url = url if url.startswith('http') else urlparse.urljoin('https://', url)
 
                     if 'vidlink' in url:
@@ -111,14 +105,12 @@ class source:
                             sources.append({'source': 'GVIDEO', 'quality': quality, 'language': 'en', 'url': link,
                                             'sub': sub, 'direct': True, 'debridonly': False})
 
-                except :
+                except:
                     pass
 
             return sources
-        except :
+        except:
             return sources
 
     def resolve(self, url):
         return url
-
-
