@@ -906,7 +906,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="script.module.numbersbynumbers" name="NuMb3r5 Module" version="1.00.084" provider-name="NuMb3r5">
+<addon id="script.module.numbersbynumbers" name="NuMb3r5 Module" version="1.00.087" provider-name="NuMb3r5">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
   </requires>
