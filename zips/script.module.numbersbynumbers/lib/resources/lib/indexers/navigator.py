@@ -59,8 +59,13 @@ class navigator:
             self.addDirectoryItem(32711, 'collectionsNavigator', 'home_collections.png', 'DefaultMovies.png')
             self.addDirectoryItem(32708, 'tvNetworks', 'home_networks.png', 'DefaultTVShows.png')
             self.addDirectoryItem(32709, 'boxsetKingsNavigator', 'home_boxsets.png', 'DefaultMovies.png')
-            self.addDirectoryItem(32700, 'docuHeaven', 'home_documentaries.png', 'DefaultMovies.png')
+            self.addDirectoryItem(32700, 'docuMainNavigator', 'home_documentaries.png', 'DefaultMovies.png')
             self.addDirectoryItem(32713, 'twentyfoursevenNavigator', 'home_247.png', 'DefaultMovies.png')
+            self.addDirectoryItem(32727, 'musicMainNavigator', 'home_music.png', 'DefaultMovies.png')
+            self.addDirectoryItem(32728, 'athleanx', 'home_fitness.png', 'DefaultMovies.png')
+            self.addDirectoryItem(32729, 'screensaver', 'home_screensaver.png', 'DefaultMovies.png')
+            self.addDirectoryItem(32730, 'knowledge', 'home_learning.png', 'DefaultMovies.png')
+            self.addDirectoryItem(32731, 'ufc', 'home_sports.png', 'DefaultMovies.png')
             self.addDirectoryItem(32008, 'systemNavigator', 'tools.png', 'DefaultTVShows.png')
 
         #self.addDirectoryItem(32008, 'toolNavigator', 'tools.png', 'DefaultAddonProgram.png')
@@ -77,6 +82,7 @@ class navigator:
     def movies(self, lite=False):
         self.addDirectoryItem(32714, 'eimportalmovies', 'portal_movie.png', 'DefaultMovies.png')
         self.addDirectoryItem(32726, 'randomMoviesNavigator', 'random_movies.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32732, 'eyecandy', 'eyecandy.png', 'DefaultMovies.png')
         self.addDirectoryItem(32022, 'movies&url=theaters', 'in-theaters.png', 'DefaultRecentlyAddedMovies.png')
         self.addDirectoryItem(32017, 'movies&url=trending', 'people-watching.png', 'DefaultRecentlyAddedMovies.png')
         self.addDirectoryItem(32011, 'movieGenres', 'genres.png', 'DefaultMovies.png')
@@ -89,7 +95,6 @@ class navigator:
         self.addDirectoryItem(32716, 'movies&url=romance', 'romance.png', 'DefaultMovies.png')  
         self.addDirectoryItem(32717, 'movies&url=marvel', 'marvel_studios.png', 'DefaultMovies.png') 
         self.addDirectoryItem(32718, 'movies&url=dcmovies', 'dc2.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32719, 'movies&url=dcanimate', 'dc.png', 'DefaultMovies.png')
         self.addDirectoryItem(32720, 'movies&url=tophorr', 'horror.png', 'DefaultMovies.png')
         self.addDirectoryItem(32721, 'movies&url=horror', 'horror2.png', 'DefaultMovies.png')
         self.addDirectoryItem(32722, 'movies&url=standup', 'standup.png', 'DefaultMovies.png')       
@@ -147,12 +152,12 @@ class navigator:
         self.addDirectoryItem(32723, 'eimportalshows', 'portal_tv.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32724, 'tvshows&url=top250tv', 'imdb250.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32725, 'tvshows&url=advancedsearchnetflixshows', 'netflix.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32733, 'tvshows&url=https://api.trakt.tv/users/mediashare2000/lists/apple-tv/items', 'apple.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32701, 'tvGenres', 'genres2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32702, 'tvLanguages', 'international2.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32703, 'tvCertificates', 'certificates2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32704, 'tvshows&url=trending', 'people-watching2.png', 'DefaultRecentlyAddedEpisodes.png')
         self.addDirectoryItem(32705, 'tvshows&url=popular', 'most-popular2.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32710, 'tvshows&url=marveltv', 'marvel_tv.png', 'DefaultMovies.png')
         self.addDirectoryItem(32023, 'tvshows&url=rating', 'highly-rated.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32706, 'tvshows&url=views', 'most-voted2.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32024, 'tvshows&url=airing', 'airing-today.png', 'DefaultTVShows.png')
@@ -373,7 +378,7 @@ class navigator:
         self.addDirectoryItem('[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Holidays Collection[/COLOR][B][COLOR darkorange] •[/COLOR][/B]', 'collectionHolidays', 'collections_christmas.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Foreign Collection[/COLOR][B][COLOR darkorange] •[/COLOR][/B]', 'movies&url=collectionsbestforeign', 'collections_languages.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Lifetime Collection[/COLOR][B][COLOR darkorange] •[/COLOR][/B]', 'collectionLifetime', 'collections_lifetime.png', 'DefaultMovies.png')
-        self.addDirectoryItem('[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Wallmark Collection[/COLOR][B][COLOR darkorange] •[/COLOR][/B]', 'movies&url=collectionswallmark', 'collections_wallmart.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Hallmark Collection[/COLOR][B][COLOR darkorange] •[/COLOR][/B]', 'movies&url=collectionswallmark', 'collections_wallmart.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]Trakt Collections[/COLOR][B][COLOR darkorange] •[/COLOR][/B]', 'collectionTrakt', 'collections_trakt.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR darkorange]• [/COLOR][/B][COLOR ghostwhite]IMDb Top 1000[/COLOR][B][COLOR darkorange] •[/COLOR][/B]', 'movies&url=collectionstop1000a', 'collections_imdb.png', 'DefaultMovies.png')
         
@@ -533,6 +538,50 @@ class navigator:
         self.addDirectoryItem('[B][COLOR yellow]• [/COLOR][/B][COLOR ghostwhite]Search[/COLOR][B][COLOR yellow] •[/COLOR][/B]', 'movieSearch', 'boxsets_search.png', 'boxsets_search.png')
         
         self.endDirectory()
+
+    def documain(self, lite=False):
+        self.addDirectoryItem('[B][COLOR limegreen]• [/COLOR][/B][COLOR ghostwhite]Randomly Play[/COLOR][B][COLOR limegreen] •[/COLOR][/B]', 'random&rtype=movie&url=advancedsearchrandomflixdocumentary', 'doc_random.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR limegreen]• [/COLOR][/B][COLOR ghostwhite]DocuHeaven[/COLOR][B][COLOR limegreen] •[/COLOR][/B]', 'docuHeaven', 'doc_heaven.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR limegreen]• [/COLOR][/B][COLOR ghostwhite]Russell Brand[/COLOR][B][COLOR limegreen] •[/COLOR][/B]', 'russell', 'doc_russell.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR limegreen]• [/COLOR][/B][COLOR ghostwhite]DocuTube[/COLOR][B][COLOR limegreen] •[/COLOR][/B]', 'docutube', 'doc_utube.png', 'DefaultRecentlyAddedMovies.png')
+        
+        self.endDirectory()
+
+    def musicmain(self, lite=False):
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Radio[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'musicradioMainNavigator2', 'music_radio.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Meditative[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'meditativemind', 'music_meditative.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Techno Head[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'technohead', 'music_technohead.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Music Choice[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'musicchoice', 'music_mc.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Music Channels[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'musicchannels', 'music_channels.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Music Videos[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'musicvideos', 'music_videos.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Now Music[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'nowmusic', 'music_nowmusic2.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Randomly Play[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'musicRandomMainNavigator', 'music_random.png', 'DefaultMovies.png')
+        
+        self.endDirectory()
+
+    def musicradiomain(self, lite=False):
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]World Radio[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'worldradio', 'music_radio.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]The UK Radio[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'ukradio', 'music_radio.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ffdaff4d]• [/COLOR][/B][COLOR ghostwhite]Music Choice Audio[/COLOR][B][COLOR ffdaff4d] •[/COLOR][/B]', 'mcaudio', 'music_radio.png', 'DefaultMovies.png')
+        
+        self.endDirectory()
+
+    def musicrandommain(self, lite=False):
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Music[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmusic', 'music_random.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Musical[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmusical', 'music_random.png', 'DefaultRecentlyAddedMovies.png')
+        
+        self.endDirectory()                                
+
+    def sportsmain(self, lite=False):
+        self.addDirectoryItem('[B][COLOR crimson]• [/COLOR][/B][COLOR ghostwhite]UFC Replays[/COLOR][B][COLOR crimson] •[/COLOR][/B]', 'ufc', 'home_sports.png', 'DefaultMovies.png')
+        
+        self.endDirectory()
+
+    def fitnessmain(self, lite=False):
+        self.addDirectoryItem('[B][COLOR ff9f00ff]• [/COLOR][/B][COLOR ghostwhite]ATHLEAN-X™[/COLOR][B][COLOR ff9f00ff] •[/COLOR][/B]', 'athleanx', 'home_fitness.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR ff9f00ff]• [/COLOR][/B][COLOR ghostwhite]Motivational[/COLOR][B][COLOR ff9f00ff] •[/COLOR][/B]', 'motivational', 'home_fitness.png', 'DefaultMovies.png')
+        
+        self.endDirectory()                
 
     def TwentyFourSeven(self, lite=False):
         self.addDirectoryItem('[B][COLOR hotpink]• [/COLOR][/B][COLOR ghostwhite]24/7 Movies[/COLOR][B][COLOR hotpink] •[/COLOR][/B]', '247movies', '247.png', 'DefaultMovies.png')
@@ -727,7 +776,7 @@ class navigator:
         self.endDirectory()
 
     def kidsmovies(self, lite=False):       
-        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Randomly Plays[/COLOR]', 'randomNavigator', 'kids_random.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Randomly Play[/COLOR]', 'randomNavigator', 'kids_random.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Kids Trending[/COLOR]', 'movies&url=advancedsearchtrending', 'kids_trending.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Animated Movies[/COLOR]', 'movies&url=advancedsearchanimation', 'kids_animated.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Kids Boxsets[/COLOR]', 'kidsboxsetsNavigator', 'kids_boxsets.png', 'DefaultMovies.png')
@@ -735,9 +784,9 @@ class navigator:
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Walt Disney[/COLOR]', 'waltdisneyNavigator', 'kids_disney.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Dreamworks[/COLOR]', 'movies&url=advancedsearchdreamworks', 'kids_dreamworks.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Kids Horror[/COLOR]', 'movies&url=advancedsearchkidshorror', 'kids_horror.png', 'DefaultMovies.png')
-        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Just Lego[/COLOR]', 'movies&url=advancedsearchjustlego', 'kids_lego.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Just Lego[/COLOR]', 'justLegoNavigator', 'kids_lego.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Teen Movies[/COLOR]', 'movies&url=https://api.trakt.tv/users/acerider/lists/movies-teen/items', 'kids_teen.png', 'DefaultMovies.png')
-        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Gamers[/COLOR]', 'movies&url=advancedsearchgamers', 'kids_gamers.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Gamers[/COLOR]', 'gamersNavigator', 'kids_gamers.png', 'DefaultMovies.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Superhero Movies[/COLOR]', 'superheroNavigator', 'kids_superhero.png', 'DefaultMovies.png')
                         
         self.endDirectory()
@@ -753,32 +802,49 @@ class navigator:
         self.endDirectory()
 
     def randomflix(self, lite=False):
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Action[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixaction', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Adventure[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixadventure', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Animation[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixanimation', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Biography[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixbiography', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Comedy[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixcomedy', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Crime[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixcrime', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Documentary[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixdocumentary', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Drama[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixdrama', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Family[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixfamily', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Fantasy[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixfantasy', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Film Noir[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixfilmnoir', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random History[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixhistory', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Horror[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixhorror', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Music[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmusic', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Musical[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmusical', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Mystery[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmystery', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Romance[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixromance', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random SciFi[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixscifi', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Short[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixshort', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Sport[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixsport', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Superhero[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixsuperhero', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Thriller[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixthriller', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random War[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixwar', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Random Western[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixwestern', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Action[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixaction', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Adventure[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixadventure', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Animation[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixanimation', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Biography[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixbiography', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Comedy[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixcomedy', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Crime[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixcrime', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Documentary[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixdocumentary', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Drama[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixdrama', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Family[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixfamily', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Fantasy[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixfantasy', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Film Noir[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixfilmnoir', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random History[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixhistory', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Horror[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixhorror', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Music[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmusic', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Musical[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmusical', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Mystery[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixmystery', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Romance[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixromance', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random SciFi[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixscifi', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Short[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixshort', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Sport[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixsport', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Superhero[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixsuperhero', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Thriller[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixthriller', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random War[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixwar', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Western[/COLOR]', 'random&rtype=movie&url=advancedsearchrandomflixwestern', 'random_movies.png', 'DefaultRecentlyAddedMovies.png')
                 
-        self.endDirectory()    
+        self.endDirectory()
+
+    def justlego(self, lite=False):
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Lego Movies[/COLOR]', 'movies&url=advancedsearchjustlego', 'kids_lego.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Brickfilms[/COLOR]', 'justlegobrickfilms', 'kids_lego3.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Football[/COLOR]', 'justlegofootball', 'kids_lego3.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Gamers[/COLOR]', 'justlegogamers', 'kids_lego3.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Little Toys[/COLOR]', 'justlegolittletoys', 'kids_lego3.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Parody[/COLOR]', 'justlegoparody', 'kids_lego3.png', 'DefaultRecentlyAddedMovies.png')
+                
+        self.endDirectory()
+
+    def gamers(self, lite=False):
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Gamers Movies[/COLOR]', 'movies&url=advancedsearchgamers', 'kids_gamers.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Gamers Library[/COLOR]', 'gamerslibrary', 'kids_gamers.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Gamers Playground[/COLOR]', 'gamersplayground', 'kids_gamers.png', 'DefaultRecentlyAddedMovies.png')
+                
+        self.endDirectory()            
         
     def kidsboxsets(self, lite=False):
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]3 Ninjas[/COLOR] [COLOR deepskyblue] (1992-1998)[/COLOR]', 'collections&url=advancedsearchninja', 'kids_boxsets.png', 'DefaultRecentlyAddedMovies.png')
@@ -902,6 +968,7 @@ class navigator:
 
     def kidstvshows(self, lite=False):
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Popular Cartoons[/COLOR]', 'tvshows&url=advancedsearchcartoons', 'kids_cartoons.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Classic Cartoons[/COLOR]', 'tvshows&url=advancedsearchclassiccartoons', 'kids_classic.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Trending Shows[/COLOR]', 'tvshows&url=advancedsearchfamily', 'kids_trending.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Retro TV Series[/COLOR]', 'tvshows&url=advancedsearchretro', 'kids_retro.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[B][COLOR deepskyblue]• [/COLOR][/B][COLOR ghostwhite]Family TV Series[/COLOR]', 'tvshows&url=advancedsearchhighly', 'kids_family.png', 'DefaultTVShows.png')

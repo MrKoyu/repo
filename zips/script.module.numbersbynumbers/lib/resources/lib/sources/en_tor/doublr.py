@@ -18,6 +18,7 @@
 import re, urllib, urlparse
 from resources.lib.modules import cleantitle, debrid, source_utils
 from resources.lib.modules import client
+from resources.lib.modules import cfscrape
 
 
 class source:
@@ -27,6 +28,7 @@ class source:
         self.domains = ['www.doublr.org']
         self.base_link = 'https://www.doublr.org'
         self.search_link = '/search?q=%s'
+        self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -79,13 +81,13 @@ class source:
             url = urlparse.urljoin(self.base_link, url)
 
             try:
-                r = client.request(url)
+                r = self.scraper.get(url).content
                 posts = client.parseDOM(r, 'tr')
                 for post in posts:
                     links = re.findall('<a href="(/torrent/.+?)">(.+?)<', post, re.DOTALL)
                     for link, data in links:
                         link = urlparse.urljoin(self.base_link, link)
-                        link = client.request(link)
+                        link = self.scraper.get(link).content
                         link = re.findall('a class=".+?" rel=".+?" href="(magnet:.+?)"', link, re.DOTALL)
                         try:
                             size = re.findall('((?:\d+\,\d+\.\d+|\d+\.\d+|\d+\,\d+|\d+)\s*(?:GiB|MiB|GB|MB))', post)[0]

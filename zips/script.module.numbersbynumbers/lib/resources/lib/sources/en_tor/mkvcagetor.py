@@ -22,6 +22,7 @@ import urlparse
 from resources.lib.modules import client
 from resources.lib.modules import debrid
 from resources.lib.modules import source_utils
+from resources.lib.modules import cfscrape
 
 
 class source:
@@ -31,6 +32,7 @@ class source:
         self.domains = ['mkvcage.site', 'www.mkvcage.ws', 'mkvcage.fun']
         self.base_link = 'https://www.mkvcage.site'
         self.search_link = '/?s=%s'
+        self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -81,14 +83,14 @@ class source:
             url = self.search_link % urllib.quote_plus(query)
             url = urlparse.urljoin(self.base_link, url)
 
-            r = client.request(url)
+            r = self.scraper.get(url).content
 
             try:
                 posts = client.parseDOM(r, 'h2', attrs={'class': 'entry-title'})
                 for post in posts:
                     data = client.parseDOM(post, 'a', ret='href')
                     for u in data:
-                        r = client.request(u)
+                        r = self.scraper.get(u).content
                         r = client.parseDOM(r, 'div', attrs={'class': 'clearfix entry-content'})
                         for t in r:
                             link = re.findall('a class="buttn magnet" href="(.+?)"', t)[0]

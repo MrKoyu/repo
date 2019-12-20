@@ -24,23 +24,23 @@ from urlresolver.resolver import UrlResolver, ResolverError
 
 class VeryStreamResolver(UrlResolver):
     name = "verystream"
-    domains = ["verystream.com"]
-    pattern = '(?://|\.)(verystream\.com)/(?:stream|e)/([a-zA-Z0-9]+)'
+    domains = ["verystream.com", "verystream.xyz", "woof.tube"]
+    pattern = r'(?://|\.)((?:verystream|woof)\.(?:com|xyz|tube))/(?:stream|e|source)/([a-zA-Z0-9]+)'
 
     def __init__(self):
         self.net = common.Net()
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
-        headers = {'User-Agent': common.FF_USER_AGENT}
+        headers = {'User-Agent': common.FF_USER_AGENT, 'Referer': 'https://verystream.com/'}
         response = self.net.http_GET(web_url, headers=headers)
         html = response.content
 
         if html:
-            regex = '(%s~[~.a-zA-Z0-9]+)' % media_id
+            regex = '(%s~[~.:a-zA-Z0-9]+)' % media_id
             videolink = re.search(regex, html)
             if videolink:
-                source = 'https://verystream.com/gettoken/%s?mime=true' % videolink.group(1)
+                source = 'https://verystream.com/gettoken/{0}?mime=true'.format(videolink.group(1))
                 headers.update({'Referer': web_url})
                 return source + helpers.append_headers(headers)
 

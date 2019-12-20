@@ -5,6 +5,25 @@
 
 [COLOR deepskyblue]*****************************************************************************************[/COLOR]
 
+[B][COLOR limegreen]V2.0.2.5[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Brand New Eye Candy with 4K UHD to Movies Category - Debrid and fast internet needed. Many thanks to @HazMat1
+[B][COLOR deepskyblue]• [/COLOR][/B] Brand New UFC Replays category with all the latest Fight Night available. Many thanks to @pavlarasfrank
+[B][COLOR deepskyblue]• [/COLOR][/B] Brand New Fitness category with lots of decent content 
+[B][COLOR deepskyblue]• [/COLOR][/B] Brand New Screensavers category
+[B][COLOR deepskyblue]• [/COLOR][/B] Brand New Learning category with popular Programming Courses, Image Editor Tutorials and Dating tips
+[B][COLOR deepskyblue]• [/COLOR][/B] Brand New Music category with Radio, Binaural Beats, Techno, Music Choice, Music Channels, Music Videos & Now Music
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Apple TV+ Shows to TV Shows category
+[B][COLOR deepskyblue]• [/COLOR][/B] Added New content to Documentaries category including Russell Brand and DocuTube
+[B][COLOR deepskyblue]• [/COLOR][/B] Added New content to Kidzone Just Lego with Brickfilms, Football, Gamers, Little Toys and Parody categories
+[B][COLOR deepskyblue]• [/COLOR][/B] Added New content to Kidzone Gamers with game movies
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed module zipping error for build backups 
+[B][COLOR deepskyblue]• [/COLOR][/B] Artwork update
+[B][COLOR deepskyblue]• [/COLOR][/B] Modules update
+[B][COLOR deepskyblue]• [/COLOR][/B] Scrapers update 
+
+[B][COLOR limegreen]V2.0.2.4[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Module update 100.0.87 TVDB fixed
+
 [B][COLOR limegreen]V2.0.2.3[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Kidzone category with everything you ever wanted for kids (Inspired by Zim addon) 
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Extended Info Portal to Movies category
@@ -15,7 +34,7 @@
 [B][COLOR deepskyblue]• [/COLOR][/B] Added Randomly Play Movies by genres to Movies category
 [B][COLOR deepskyblue]• [/COLOR][/B] Modern Horror 2019-2000 list updated in Movies category
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed missing artwork in Actors Collection category
-[B][COLOR deepskyblue]• [/COLOR][/B] artwork update
+[B][COLOR deepskyblue]• [/COLOR][/B] Artwork update
 [B][COLOR deepskyblue]• [/COLOR][/B] Modules update
 
 [B][COLOR limegreen]V2.0.2.2[/COLOR][/B]

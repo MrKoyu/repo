@@ -28,16 +28,12 @@
 		<setting label="30111" type="bool" id="itunesShowSubGenres" default="true"/>
 		<setting label="30112" type="bool" id="itunesForceCountry" default="false"/>
 		<setting label="30113" type="text" id="itunesCountry" enable="eq(-1,true)" default=""/>
-		<setting type="sep"/>
-		<setting label="30269" type="lsep"/>
-		<setting label="30114" type="bool" id="spotifyForceCountry" default="false"/>
-		<setting label="30115" type="text" id="spotifyCountry" enable="eq(-1,true)" default=""/>
 	</category>
 	<category label="30003">
-		<setting label="30270" type="lsep"/>
-		<setting label="30116" type="bool" id="forceView" default="false"/>
-		<setting label="30117" type="number" id="viewIDGenres" enable="eq(-1,true)" default="500"/>
-		<setting label="30118" type="number" id="viewIDPlaylists" enable="eq(-2,true)" default="500"/>
-		<setting label="30119" type="number" id="viewIDVideos" enable="eq(-3,true)" default="500"/>
+		<setting label="30269" type="lsep"/>
+		<setting label="30114" type="bool" id="forceView" default="false"/>
+		<setting label="30115" type="number" id="viewIDGenres" enable="eq(-1,true)" default="500"/>
+		<setting label="30116" type="number" id="viewIDPlaylists" enable="eq(-2,true)" default="500"/>
+		<setting label="30117" type="number" id="viewIDVideos" enable="eq(-3,true)" default="500"/>
 	</category>
 </settings>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="NuMb3r5 Module" version="1.00.087" provider-name="NuMb3r5">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0" />
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="en">NuMb3r5 Module</summary>
-		<assets>
-	      <icon>icon.png</icon>
-		</assets>
-	<reuselanguageinvoker>false</reuselanguageinvoker>
-	</extension>
+<addon id="script.module.numbersbynumbers" name="[COLOR white]NuMb3r5 Module[/COLOR]" version="1.00.090" provider-name="NuMb3r5">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="script.module.beautifulsoup4"/>
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">NuMb3r5 Module</summary>
+        <assets>
+          <icon>icon.png</icon>
+        </assets>
+    </extension>
 </addon>

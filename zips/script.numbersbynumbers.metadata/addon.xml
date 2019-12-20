@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.numbersbynumbers.metadata" version="1.0.7" name="NuMb3r5 Metadata" provider-name="Brackets">
+<addon id="script.numbersbynumbers.metadata" version="1.0.10" name="[COLOR white]NuMb3r5 Metadata[/COLOR]" provider-name="NuMb3r5">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>

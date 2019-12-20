@@ -28,7 +28,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['yifyddl.movie']
-        self.base_link = 'https://yifyddl.movie/'
+        self.base_link = 'https://yts.ws'
         self.search_link = '/movie/%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -50,7 +50,7 @@ class source:
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
             query = '%s %s' % (data['title'], data['year'])
             url = self.search_link % urllib.quote(query)
-            url = urlparse.urljoin(self.base_link, url).replace('%20', '-')
+            url = urlparse.urljoin(self.base_link, url).replace('%20', '-').replace('%3A-','-')
             html = client.request(url)
             try:
                 results = client.parseDOM(html, 'div', attrs={'class': 'ava1'})

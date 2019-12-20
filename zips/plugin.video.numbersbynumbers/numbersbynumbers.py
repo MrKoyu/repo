@@ -199,7 +199,23 @@ elif action == 'westernliteNavigator':
 
 elif action == 'boxsetKingsNavigator':
     from resources.lib.indexers import navigator
-    navigator.navigator().boxsetKings()    
+    navigator.navigator().boxsetKings()
+
+elif action == 'docuMainNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().documain()    
+
+elif action == 'musicMainNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().musicmain()
+
+elif action == 'musicradioMainNavigator2':
+    from resources.lib.indexers import navigator
+    navigator.navigator().musicradiomain()
+           
+elif action == 'sportsMainNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().sportsmain()                   
 
 elif action == 'collectionsNavigator':
     from resources.lib.indexers import navigator
@@ -336,7 +352,23 @@ elif action == 'randomMoviesNavigator':
 
 elif action == 'justLegoNavigator':
     from resources.lib.indexers import navigator
-    navigator.navigator().justlego()        
+    navigator.navigator().justlego()
+
+elif action == 'gamersNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().gamers()    
+
+elif action == 'fitnessMainNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().fitnessmain()
+
+elif action == 'musicRandomMainNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().musicrandommain()        
+
+elif action == 'docMainNavigator':
+    from resources.lib.indexers import navigator
+    navigator.navigator().docmain()            
     
 elif action == 'superheroNavigator':
     from resources.lib.indexers import navigator
@@ -400,39 +432,155 @@ elif action == 'alltoolsNavigator':
 
 elif action == 'twentyfoursevenNavigator':
     from resources.lib.indexers import navigator
-    navigator.navigator().TwentyFourSeven()        
+    navigator.navigator().TwentyFourSeven()
 
-if action == '247movies':
+elif action == 'meditativemind':
+    from resources.lib.indexers import lists
+    lists.indexer().root_meditativemind()    
+
+elif action == 'technohead':
+    from resources.lib.indexers import lists
+    lists.indexer().root_technohead()
+
+elif action == 'musicchoice':
+    from resources.lib.indexers import lists
+    lists.indexer().root_musicchoice() 
+
+elif action == 'musicchannels':
+    from resources.lib.indexers import lists
+    lists.indexer().root_musicchannels()       
+
+elif action == 'musicvideos':
+    from resources.lib.indexers import lists
+    lists.indexer().root_musicvideos()    
+
+elif action == 'nowmusic':
+    from resources.lib.indexers import lists
+    lists.indexer().root_nowmusic()
+
+elif action == 'worldradio':
+    from resources.lib.indexers import lists
+    lists.indexer().root_worldradio()
+
+elif action == 'ukradio':
+    from resources.lib.indexers import lists
+    lists.indexer().root_ukradio()
+
+elif action == 'mcaudio':
+    from resources.lib.indexers import lists
+    lists.indexer().root_mcaudio()                    
+
+elif action == 'screensaver':
+    from resources.lib.indexers import lists
+    lists.indexer().root_screensaver()                
+
+elif action == '247movies':
     from resources.lib.indexers import lists
     lists.indexer().root_247movies()
 
-if action == '247shows':
+elif action == '247shows':
     from resources.lib.indexers import lists
     lists.indexer().root_247shows()
 
-if action == '247channels':
+elif action == '247channels':
     from resources.lib.indexers import lists
     lists.indexer().root_247channels()        
 
-if action == 'learningtv':
+elif action == 'learningtv':
     from resources.lib.indexers import lists
     lists.indexer().root_learningtv()
 
-if action == 'eimportalmovies':
+elif action == 'knowledge':
+    from resources.lib.indexers import lists
+    lists.indexer().root_knowledge()
+
+elif action == 'gamersplayground':
+    from resources.lib.indexers import lists
+    lists.indexer().root_gamersplayground()
+
+elif action == 'gamerslibrary':
+    from resources.lib.indexers import lists
+    lists.indexer().root_gamerslibrary()        
+
+elif action == 'justlegobrickfilms':
+    from resources.lib.indexers import lists
+    lists.indexer().root_justlegobrickfilms()
+
+elif action == 'justlegofootball':
+    from resources.lib.indexers import lists
+    lists.indexer().root_justlegofootball()
+
+elif action == 'justlegogamers':
+    from resources.lib.indexers import lists
+    lists.indexer().root_justlegogamers()
+
+elif action == 'justlegolittletoys':
+    from resources.lib.indexers import lists
+    lists.indexer().root_justlegolittletoys()
+
+elif action == 'justlegoparody':
+    from resources.lib.indexers import lists
+    lists.indexer().root_justlegoparody()                    
+
+elif action == 'documentaries':
+    from resources.lib.indexers import lists
+    lists.indexer().root_documentaries() 
+
+elif action == 'russell':
+    from resources.lib.indexers import lists
+    lists.indexer().root_russell()
+
+elif action == 'docutube':
+    from resources.lib.indexers import lists
+    lists.indexer().root_docutube()    
+
+elif action == 'athleanx':
+    from resources.lib.indexers import lists
+    lists.indexer().root_athleanx()    
+
+elif action == 'eyecandy':
+    from resources.lib.indexers import lists
+    lists.indexer().root_eyecandy()    
+
+elif action == 'ufc':
+    from resources.lib.indexers import lists
+    lists.indexer().root_ufc()        
+
+elif action == 'radio':
+    from resources.lib.indexers import lists
+    lists.indexer().root_radio()           
+
+elif action == 'eimportalmovies':
     from resources.lib.indexers import lists
     lists.indexer().root_eimportalmovies()
 
-if action == 'eimportalshows':
+elif action == 'eimportalshows':
     from resources.lib.indexers import lists
     lists.indexer().root_eimportalshows()
 
-if action == 'accountsrd':
+elif action == 'accountsrd':
     from resources.lib.indexers import lists
     lists.indexer().root_accountsrd()
 
-if action == 'speedtest':
+elif action == 'speedtest':
     from resources.lib.indexers import lists
-    lists.indexer().root_speedtest()            
+    lists.indexer().root_speedtest()
+
+elif action == 'directory':
+    from resources.lib.indexers import lists
+    lists.indexer().get(url)
+
+elif action == 'qdirectory':
+    from resources.lib.indexers import lists
+    lists.indexer().getq(url)
+
+elif action == 'xdirectory':
+    from resources.lib.indexers import lists
+    lists.indexer().getx(url)
+
+elif action == 'developer':
+    from resources.lib.indexers import lists
+    lists.indexer().developer()                
 
 elif 'youtube' in str(action):
     from resources.lib.indexers import lists
@@ -440,7 +588,7 @@ elif 'youtube' in str(action):
 
 elif action == 'browser':
     from resources.lib.indexers import lists
-    sports.resolver().browser(url)                                
+    sports.resolver().browser(url)                                   
 
 elif action == 'downloadNavigator':
     from resources.lib.indexers import navigator

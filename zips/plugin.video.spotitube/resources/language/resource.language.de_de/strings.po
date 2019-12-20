@@ -1,20 +1,19 @@
 ﻿# Kodi Media Center language file
 # Addon Name: Youtube Music
 # Addon id: plugin.video.spotitube
-# Addon version: 2.1.2
 # Addon Provider: realvito
 msgid ""
 msgstr ""
 "Project-Id-Version: KODI-Addons\n"
-"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"Report-Msgid-Bugs-To: alanwww1@kodi.org\n"
 "POT-Creation-Date: 2018-08-04 11:15+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2019-06-04 16:00+0000\n"
+"Last-Translator: realvito\n"
 "Language-Team: LANGUAGE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgctxt "Addon Summary"
@@ -100,30 +99,22 @@ msgid "     Region ('us' for example)"
 msgstr "     Region ('us' zum Beispiel)"
 
 msgctxt "#30114"
-msgid "     Spotify force Region"
-msgstr "     Spotify Region festlegen"
-
-msgctxt "#30115"
-msgid "     Region ('us' for example)"
-msgstr "     Region ('us' zum Beispiel)"
-
-msgctxt "#30116"
 msgid "     Force View"
 msgstr "     Darstellungsansicht forcieren"
 
-msgctxt "#30117"
+msgctxt "#30115"
 msgid "     ViewID (Genres)"
 msgstr "     DarstellungsID (Genres)"
 
-msgctxt "#30118"
+msgctxt "#30116"
 msgid "     ViewID (Playlists)"
 msgstr "     DarstellungsID (Abspiellisten)"
 
-msgctxt "#30119"
+msgctxt "#30117"
 msgid "     ViewID (Videos)"
 msgstr "     DarstellungsID (Videos)"
 
-#empty strings from id 30120 to 30139
+#empty strings from id 30118 to 30139
 
 msgctxt "#30140"
 msgid "     Displayed results per Page (Section e.g. Artist)"
@@ -169,14 +160,10 @@ msgid "[B][COLOR ff0099ff]iTUNES[/COLOR][/B]"
 msgstr "[B][COLOR ff0099ff]iTUNES[/COLOR][/B]"
 
 msgctxt "#30269"
-msgid "[B][COLOR ff0099ff]SPOTIFY - REGIONAL[/COLOR][/B]"
-msgstr "[B][COLOR ff0099ff]SPOTIFY - REGIONAL[/COLOR][/B]"
-
-msgctxt "#30270"
 msgid "[B][COLOR ff0099ff]VIEWS[/COLOR][/B]"
 msgstr "[B][COLOR ff0099ff]ANSICHT[/COLOR][/B]"
 
-#empty strings from id 30271 to 30349
+#empty strings from id 30270 to 30349
 # SETTINGS-DESCRIPTIONS
 
 #empty strings from id 30349 to 30500
@@ -187,6 +174,7 @@ msgstr "[B][COLOR ff0099ff]ANSICHT[/COLOR][/B]"
 
 #empty strings from id 30520 to 30600
 # PLUGIN-MAIN and SIDEMENU
+# START - FOLDER
 
 msgctxt "#30601"
 msgid "Beatport"
@@ -216,205 +204,169 @@ msgctxt "#30607"
 msgid "Spotify"
 msgstr "Spotify"
 
-msgctxt "#30608"
+#empty strings from id 30608 to 30619
+# BEATPORT - FOLDER
+
+msgctxt "#30620"
+msgid "[COLOR chartreuse]* All Genres *[/COLOR]"
+msgstr "[COLOR chartreuse]* Alle Genres *[/COLOR]"
+
+#empty strings from id 30621 to 30629
+# BILLBOARD - FOLDER
+
+msgctxt "#30630"
 msgid "Hot 100"
 msgstr "Hot 100"
 
-msgctxt "#30609"
+msgctxt "#30631"
 msgid "Billboard 200"
 msgstr "Billboard 200"
 
-msgctxt "#30610"
+msgctxt "#30632"
 msgid "Billboard ARCHIVE"
 msgstr "Billboard ARCHIVE"
 
-msgctxt "#30611"
+msgctxt "#30633"
 msgid "Genres"
 msgstr "Genres"
 
-msgctxt "#30612"
+msgctxt "#30634"
 msgid "Countries"
 msgstr "Länder"
 
-msgctxt "#30613"
+msgctxt "#30635"
 msgid "More Choices"
 msgstr "Weitere Auswahl"
 
-msgctxt "#30614"
-msgid "Latin"
-msgstr "Lateinamerikanisch"
+#empty strings from id 30636 to 30639
+# DEUTSCHE-DJ-PLAYLIST - FOLDER
 
-msgctxt "#30615"
-msgid "Smooth Jazz"
-msgstr "Jazz"
-
-msgctxt "#30616"
-msgid "Tropical"
-msgstr "Tropisch"
-
-msgctxt "#30617"
-msgid "Soundtracks"
-msgstr "Filmmusik"
-
-msgctxt "#30618"
-msgid "Canada Hot-100"
-msgstr "Kanadas Hot-100"
-
-msgctxt "#30619"
-msgid "Japan Hot-100"
-msgstr "Japans Hot-100"
-
-msgctxt "#30620"
-msgid "Germany Songs"
-msgstr "Deutschland Songs"
-
-msgctxt "#30621"
-msgid "France Songs"
-msgstr "Frankreich Songs"
-
-msgctxt "#30622"
-msgid "U.K. Charts"
-msgstr "Grossbritannien Charts"
-
-msgctxt "#30623"
-msgid "Radio"
-msgstr "Aktuell im Radio"
-
-msgctxt "#30624"
-msgid "Streaming"
-msgstr "Direkt-Stream"
-
-msgctxt "#30625"
-msgid "On-Demand"
-msgstr "Besonders beliebt"
-
-msgctxt "#30626"
+msgctxt "#30640"
 msgid "GERMAN-DJ-PLAYLIST - International"
 msgstr "DEUTSCHE-DJ-PLAYLIST - International"
 
-msgctxt "#30627"
+msgctxt "#30641"
 msgid "GERMAN-DJ-PLAYLIST - Schlager"
 msgstr "DEUTSCHE-DJ-PLAYLIST - Schlager"
 
-#empty strings from id 30628 to 30634
+#empty strings from id 30642 to 30649
+# HYPEM - FOLDER
 
-msgctxt "#30635"
-msgid "* All Genres *"
-msgstr "* Alle Genres *"
-
-msgctxt "#30636"
+msgctxt "#30650"
 msgid "Popular: Now"
 msgstr "Beliebt: Zurzeit"
 
-msgctxt "#30637"
+msgctxt "#30651"
 msgid "Popular: Last Week"
 msgstr "Beliebt: Vergangene Woche"
 
-msgctxt "#30638"
+msgctxt "#30652"
 msgid "Time Machine"
 msgstr "Zeit - Maschine"
 
-msgctxt "#30639"
-msgid "Offiicial Top-100"
-msgstr "Offizielle Top-100"
-
-msgctxt "#30640"
-msgid "UK Top-40"
-msgstr "UK Top-40"
-
-msgctxt "#30641"
-msgid "Asian Top-40"
-msgstr "Asien Top-40"
-
-msgctxt "#30642"
-msgid "Updated"
-msgstr "vor kurzem Neu"
-
-msgctxt "#30643"
-msgid "Most Downloaded"
-msgstr "Meiste Downloads"
-
-msgctxt "#30644"
-msgid "Most Sales"
-msgstr "Meiste Verkäufe"
-
-msgctxt "#30645"
-msgid "Streaming"
-msgstr "Oft gestreamt"
-
-msgctxt "#30646"
-msgid "Vinyl"
-msgstr "Vinyl"
-
-msgctxt "#30647"
-msgid "Scottish Charts"
-msgstr "Schottische Charts"
-
-msgctxt "#30648"
-msgid "Physical"
-msgstr "Zum Träumen"
-
-msgctxt "#30649"
-msgid "End of the Year Charts"
-msgstr "Ende des Jahres-Charts"
-
-msgctxt "#30650"
-msgid "Classical"
-msgstr "Klassik"
-
-msgctxt "#30651"
-msgid "Dance"
-msgstr "Dance"
-
-msgctxt "#30652"
-msgid "Rock & Metal"
-msgstr "Rock & Heavy Metal"
-
 msgctxt "#30653"
-msgid "     VIRAL top 50 - daily"
-msgstr "     VIRAL top 50 - täglich"
-
-msgctxt "#30654"
-msgid "     VIRAL top 50 - weekly"
-msgstr "     VIRAL top 50 - wöchentlich"
-
-msgctxt "#30655"
-msgid "     TOP Streams - daily"
-msgstr "     TOP Streams - täglich"
-
-msgctxt "#30656"
-msgid "     TOP Streams - weekly"
-msgstr "     TOP Streams - wöchentlich"
-
-msgctxt "#30657"
-msgid "     Toplists"
-msgstr "     Toplisten"
-
-msgctxt "#30658"
-msgid "     Daily Topics"
-msgstr "     Tägliche Themen"
-
-msgctxt "#30659"
-msgid "     Genres"
-msgstr "     Genres"
-
-msgctxt "#30660"
 msgid "Mar"
 msgstr "Mär"
 
-msgctxt "#30661"
+msgctxt "#30654"
 msgid "May"
 msgstr "Mai"
 
-msgctxt "#30662"
+msgctxt "#30655"
 msgid "Oct"
 msgstr "Okt"
 
-msgctxt "#30663"
+msgctxt "#30656"
 msgid "Dec"
 msgstr "Dez"
 
-#empty strings from id 30664 to 30800
+#empty strings from id 30657 to 30659
+# iTUNES - FOLDER
+
+msgctxt "#30660"
+msgid "[COLOR chartreuse]* All Genres *[/COLOR]"
+msgstr "[COLOR chartreuse]* Alle Genres *[/COLOR]"
+
+#empty strings from id 30661 to 30669
+# OFFICIAL CHARTS COMPANY - FOLDER
+
+msgctxt "#30670"
+msgid "Official Top-100"
+msgstr "Offizielle Top-100"
+
+msgctxt "#30671"
+msgid "UK Top-40"
+msgstr "UK Top-40"
+
+msgctxt "#30672"
+msgid "Updated"
+msgstr "Vor kurzem NEU"
+
+msgctxt "#30673"
+msgid "Most Downloaded"
+msgstr "Meiste Downloads"
+
+msgctxt "#30674"
+msgid "Most Sales"
+msgstr "Meiste Verkäufe"
+
+msgctxt "#30675"
+msgid "Streaming"
+msgstr "Oft gestreamt"
+
+msgctxt "#30676"
+msgid "Dance"
+msgstr "Dance"
+
+msgctxt "#30677"
+msgid "Classical"
+msgstr "Klassik"
+
+msgctxt "#30678"
+msgid "R&B"
+msgstr "R&B"
+
+msgctxt "#30679"
+msgid "Rock & Metal"
+msgstr "Rock & Heavy Metal"
+
+msgctxt "#30680"
+msgid "Irish Charts"
+msgstr "Irische Charts"
+
+msgctxt "#30681"
+msgid "Scottish Charts"
+msgstr "Schottische Charts"
+
+msgctxt "#30682"
+msgid "End of the Year Charts"
+msgstr "Ende des Jahres-Charts"
+
+msgctxt "#30683"
+msgid "Physical"
+msgstr "Zum Träumen"
+
+#empty strings from id 30684 to 30689
+# SPOTIFY - FOLDER
+
+msgctxt "#30690"
+msgid "VIRAL top 50 - daily"
+msgstr "VIRAL top 50 - täglich"
+
+msgctxt "#30691"
+msgid "VIRAL top 50 - weekly"
+msgstr "VIRAL top 50 - wöchentlich"
+
+msgctxt "#30692"
+msgid "TOP Streams - daily"
+msgstr "TOP Streams - täglich"
+
+msgctxt "#30693"
+msgid "TOP Streams - weekly"
+msgstr "TOP Streams - wöchentlich"
+
+#empty strings from id 30694 to 30800
+# for REST OF ALL
 
 msgctxt "#30801"
 msgid "YOUTUBE-MUSIC Settings"
@@ -445,6 +397,7 @@ msgid "[B][COLOR yellow]Add to YTM-Queue[/COLOR][/B]"
 msgstr "[B][COLOR yellow]In YTM-Abspielliste einreihen[/COLOR][/B]"
 
 #empty strings from id 30808 to 30830
+# AUTOPLAY - LISTS
 
 msgctxt "#30831"
 msgid "[B][COLOR chartreuse]+ Play All +[/COLOR][/B]"

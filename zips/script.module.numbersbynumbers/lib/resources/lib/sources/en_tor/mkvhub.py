@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -32,6 +33,7 @@ class source:
         self.language = ['en']
         self.domains = ['www.mkvhub.com']
         self.base_link = 'https://www.mkvhub.com'
+        # self.search_link = '/search/%s/feed/rss2/'
         self.search_link = '/?s=%s'
 
 

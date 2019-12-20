@@ -28,7 +28,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['0dayddl.com']
-        self.base_link = 'https://0dayreleases.com'
+        self.base_link = 'https://0dayddl.biz/'
         self.search_link = '?s=%s'
         self.scraper = cfscrape.create_scraper()
 

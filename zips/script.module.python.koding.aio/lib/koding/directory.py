@@ -176,9 +176,9 @@ Add_Dir(name='TEST ITEM', url='', mode='test_item', folder=False, context_items=
 
 # Set default Fanart if not already sent through via set_property
     try:
-        set_property["Fanart_Image"]
-    except:
         set_property["Fanart_Image"] = fanart
+    except:
+        set_property["Fanart_Image"]
 
 # Set the main listitem properties
     liz = xbmcgui.ListItem(label=str(name), iconImage=str(icon), thumbnailImage=str(icon))

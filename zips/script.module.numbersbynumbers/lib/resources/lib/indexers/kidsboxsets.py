@@ -1084,10 +1084,10 @@ class boxsets:
 
                 sysmeta = urllib.quote_plus(json.dumps(meta))
 
-                url = '%s?action=play&title=%s&year=%s&imdb=%s&meta=%s&t=%s' % (sysaddon, systitle, year, imdb, sysmeta, self.systime)
+                url = '%s?action=play1&title=%s&year=%s&imdb=%s&meta=%s&t=%s' % (sysaddon, systitle, year, imdb, sysmeta, self.systime)
                 sysurl = urllib.quote_plus(url)
 
-                path = '%s?action=play&title=%s&year=%s&imdb=%s' % (sysaddon, systitle, year, imdb)
+                path = '%s?action=play1&title=%s&year=%s&imdb=%s' % (sysaddon, systitle, year, imdb)
 
 
                 cm = []

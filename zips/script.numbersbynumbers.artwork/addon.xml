@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.numbersbynumbers.artwork" version="1.0.8" name="NuMb3r5 Artwork" provider-name="NuMb3r5">
+<addon id="script.numbersbynumbers.artwork" version="1.0.9" name="[COLOR white]NuMb3r5 Artwork[/COLOR]" provider-name="NuMb3r5">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>

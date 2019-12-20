@@ -117,7 +117,7 @@ class movies:
             self.advancedsearchdcanimation_link  = 'https://www.imdb.com/list/ls068125936/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
             self.advancedsearchmarvelanimation_link = 'https://www.imdb.com/list/ls025759115/?sort=moviemeter,asc&st_dt=&mode=detail&page=1'
             self.advancedsearchtop10000_link = 'https://www.imdb.com/search/title/?count=1000&genres=family&production_status=released&title_type=feature&view=simple'
-            self.advancedsearchjustlego_link = 'https://www.imdb.com/search/title?title=lego&title_type=feature,tv_movie'
+            self.advancedsearchjustlego_link = 'https://www.imdb.com/list/ls040509959/?sort=release_date,desc&st_dt=&mode=detail&page=1'
             self.advancedsearchgamers_link = 'https://www.imdb.com/search/keyword/?keywords=based-on-video-game&sort=moviemeter,asc&mode=detail&page=1'
 
             self.advancedsearchanimegrownup_link = 'https://www.imdb.com/search/keyword/?keywords=anime%2Cfemale-nudity&sort=num_votes,desc&mode=detail&page=1&ref_=kw_ref_key'
@@ -1254,11 +1254,11 @@ class movies:
 
                 sysmeta = urllib.quote_plus(json.dumps(meta))
 
-                url = '%s?action=play&title=%s&year=%s&imdb=%s&meta=%s&t=%s' % (
+                url = '%s?action=play1&title=%s&year=%s&imdb=%s&meta=%s&t=%s' % (
                 sysaddon, systitle, year, imdb, sysmeta, self.systime)
                 sysurl = urllib.quote_plus(url)
 
-                path = '%s?action=play&title=%s&year=%s&imdb=%s' % (sysaddon, systitle, year, imdb)
+                path = '%s?action=play1&title=%s&year=%s&imdb=%s' % (sysaddon, systitle, year, imdb)
 
 
                 cm = []
