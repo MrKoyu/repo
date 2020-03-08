@@ -955,6 +955,21 @@ class sources:
         except Exception:
             pass
 
+    def uniqueSourcesGen(self, sources):# remove duplicate links code by doko-desuka
+        uniqueURLs = set()
+        for source in sources:
+            url = json.dumps(source['url'])
+            if 'magnet:' in url:
+                url = url.lower()[:60]
+            if isinstance(url, basestring):
+                if url not in uniqueURLs:
+                    uniqueURLs.add(url)
+                    yield source # Yield the unique source.
+                else:
+                    pass # Ignore duped sources.
+            else:
+                yield source # Always yield non-string url sources.
+
     def sourcesFilter(self):
         provider = control.setting('hosts.sort.provider')
         if provider == '':
@@ -998,6 +1013,22 @@ class sources:
         filter += [i for i in self.sources if i['direct'] is True]
         filter += [i for i in self.sources if i['direct'] is False]
         self.sources = filter
+        ''' Filter-out duplicate links'''
+        try:
+            if control.setting('remove.dups') == 'true':
+                stotal = len(self.sources)
+                self.sources = list(self.uniqueSourcesGen(self.sources))
+                dupes = int(stotal - len(self.sources))
+                control.infoDialog(control.lang(32089).encode('utf-8').format(dupes), icon='INFO')
+            else:
+                self.sources
+        except:
+            import traceback
+            failure = traceback.format_exc()
+            log_utils.log('DUP - Exception: ' + str(failure))
+            control.infoDialog('Dupes filter failed', icon='INFO')
+            self.sources
+        '''END'''
 
         filter = []
 

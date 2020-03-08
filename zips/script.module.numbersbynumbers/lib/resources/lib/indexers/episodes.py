@@ -58,7 +58,7 @@ class seasons:
         self.unairedcolor = self.getUnairedColor(self.unairedcolor)
         self.datetime = (datetime.datetime.utcnow() - datetime.timedelta(hours=5))
         self.today_date = (self.datetime).strftime('%Y-%m-%d')
-        self.tvdb_key = 'MTc5QzY1NjhFNzM4OUE3RQ=='
+        self.tvdb_key = 'ZTcyNzBlMjE3ZmI0MjNmNzU5ZTRkMzk1ZTZkNDExMjQ='
 
         self.tvdb_info_link = 'http://thetvdb.com/api/%s/series/%s/all/%s.zip' % (
             self.tvdb_key.decode('base64'), '%s', '%s')
@@ -410,6 +410,7 @@ class seasons:
                      'status': status, 'studio': studio, 'genre': genre, 'duration': duration, 'rating': rating,
                      'votes': votes, 'mpaa': mpaa, 'cast': cast, 'plot': plot, 'imdb': imdb, 'tvdb': tvdb,
                      'poster': poster, 'banner': banner, 'fanart': fanart, 'thumb': thumb, 'unaired': unaired})
+                self.list = sorted(self.list, key=lambda k: int(k['season']))
             except :
                 pass
 
@@ -525,6 +526,7 @@ class seasons:
                                   'votes': votes, 'mpaa': mpaa, 'director': director, 'writer': writer, 'cast': cast,
                                   'plot': episodeplot, 'imdb': imdb, 'tvdb': tvdb, 'poster': poster, 'banner': banner,
                                   'fanart': fanart, 'thumb': thumb, 'unaired': unaired})
+                self.list = sorted(self.list, key=lambda k: (int(k['season']), int(k['episode'])))
             except :
                 pass
 
@@ -697,7 +699,9 @@ class episodes:
 
         self.trakt_link = 'http://api.trakt.tv'
         self.tvmaze_link = 'http://api.tvmaze.com'
-        self.tvdb_key = 'MTc5QzY1NjhFNzM4OUE3RQ=='
+        self.tvdb_key = control.setting('tvdb.user')
+        if self.tvdb_key == '' or self.tvdb_key == None:
+            self.tvdb_key = 'ZTcyNzBlMjE3ZmI0MjNmNzU5ZTRkMzk1ZTZkNDExMjQ='
         self.datetime = (datetime.datetime.utcnow() - datetime.timedelta(hours=5))
         self.systime = (self.datetime).strftime('%Y%m%d%H%M%S%f')
         self.today_date = (self.datetime).strftime('%Y-%m-%d')

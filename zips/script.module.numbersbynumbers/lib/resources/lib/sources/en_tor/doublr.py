@@ -30,6 +30,7 @@ class source:
         self.search_link = '/search?q=%s'
         self.scraper = cfscrape.create_scraper()
 
+
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
             url = {'imdb': imdb, 'title': title, 'year': year}
@@ -38,6 +39,7 @@ class source:
         except:
             return
 
+
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
             url = {'imdb': imdb, 'tvdb': tvdb, 'tvshowtitle': tvshowtitle, 'year': year}
@@ -45,6 +47,7 @@ class source:
             return url
         except:
             return
+
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
@@ -58,61 +61,97 @@ class source:
         except:
             return
 
+
     def sources(self, url, hostDict, hostprDict):
-        sources = []
         try:
+            sources = []
+
             if url is None:
                 return sources
+
             if debrid.status() is False:
-                raise Exception()
+                return sources
+
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
 
             title = data['tvshowtitle'] if 'tvshowtitle' in data else data['title']
+            title = title.replace('&', 'and').replace('Special Victims Unit', 'SVU')
 
             hdlr = 'S%02dE%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
-            query = '%s s%02de%02d' % (
-            data['tvshowtitle'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (
-            data['title'], data['year'])
-            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
+            query = '%s %s' % (title, hdlr)
+            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', '', query)
 
             url = self.search_link % urllib.quote_plus(query)
             url = urlparse.urljoin(self.base_link, url)
+            # log_utils.log('url = %s' % url, log_utils.LOGDEBUG)
 
             try:
+                # r = client.request(url)
                 r = self.scraper.get(url).content
                 posts = client.parseDOM(r, 'tr')
+
                 for post in posts:
                     links = re.findall('<a href="(/torrent/.+?)">(.+?)<', post, re.DOTALL)
-                    for link, data in links:
+
+                    try:
+                        size = re.findall('((?:\d+\,\d+\.\d+|\d+\.\d+|\d+\,\d+|\d+)\s*(?:GiB|MiB|GB|MB))', post)[0]
+                        div = 1 if size.endswith('GB') else 1024
+                        size = float(re.sub('[^0-9|/.|/,]', '', size.replace(',', '.'))) / div
+                        size = '%.2f GB' % size
+                    except:
+                        size = '0'
+
+                    for link, ref in links:
                         link = urlparse.urljoin(self.base_link, link)
+                        # link = client.request(link)
                         link = self.scraper.get(link).content
                         link = re.findall('a class=".+?" rel=".+?" href="(magnet:.+?)"', link, re.DOTALL)
-                        try:
-                            size = re.findall('((?:\d+\,\d+\.\d+|\d+\.\d+|\d+\,\d+|\d+)\s*(?:GiB|MiB|GB|MB))', post)[0]
-                            div = 1 if size.endswith('GB') else 1024
-                            size = float(re.sub('[^0-9|/.|/,]', '', size.replace(',', '.'))) / div
-                            size = '%.2f GB' % size
-                        except BaseException:
-                            size = '0'
+
                         for url in link:
-                            if hdlr not in url:
-                                continue
                             url = url.split('&tr')[0]
-                            quality, info = source_utils.get_release_quality(data)
-                            if any(x in url for x in ['Tamil', 'FRENCH', 'Ita', 'italian', 'TRUEFRENCH', '-lat-', 'Dublado']):
+
+                            if any(x in url.lower() for x in ['french', 'italian', 'spanish', 'truefrench', 'dublado', 'dubbed']):
                                 continue
+
+                            if url in str(sources):
+                                continue
+
+                            name = url.split('&dn=')[1]
+                            name = urllib.unquote_plus(urllib.unquote_plus(name))
+
+                            if name.startswith('www.'):
+                                try:
+                                    name = name.split(' - ')[1].lstrip()
+                                except:
+                                    name = re.sub(r'\www..+? ', '', name)
+
+                            t = name.split(hdlr)[0].replace(data['year'], '').replace('(', '').replace(')', '').replace('&', 'and')
+                            if cleantitle.get(t) != cleantitle.get(title):
+                                continue
+
+                            if hdlr not in name:
+                                continue
+
+                            quality, info = source_utils.get_release_quality(name, url)
+
                             info.append(size)
                             info = ' | '.join(info)
-                            sources.append(
-                                {'source': 'Torrent', 'quality': quality, 'language': 'en', 'url': url, 'info': info,
-                                 'direct': False, 'debridonly': True})
+
+                            sources.append({'source': 'torrent', 'quality': quality, 'language': 'en', 'url': url,
+                                                        'info': info, 'direct': False, 'debridonly': True})
+
+                return sources
+
             except:
-                return
-            return sources
+                source_utils.scraper_error('DOUBLR')
+                return sources
+
         except:
+            source_utils.scraper_error('DOUBLR')
             return sources
+
 
     def resolve(self, url):
         return url

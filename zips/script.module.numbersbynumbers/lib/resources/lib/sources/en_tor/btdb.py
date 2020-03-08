@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 '''
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -82,17 +81,25 @@ class source:
 
             try:
                 r = self.scraper.get(url).content
-                posts = client.parseDOM(r, 'li class="search-ret-item"')
+                posts = client.parseDOM(r, 'li')
                 for post in posts:
-                    link = re.findall('<h2 class="item-title"><a href=".+?" title=".+?">(.+?)</span></a></h2>.+?a title="Download using magnet" href="(magnet:.+?)".+?Size: <span class="item-meta-info-value">(.+?)</span>', post, re.DOTALL)
-                    for name, url, size in link:
+                    link = re.findall('a title="Download using magnet" href="(magnet:.+?)"', post, re.DOTALL)
+                    try:
+                        size = re.findall('((?:\d+\,\d+\.\d+|\d+\.\d+|\d+\,\d+|\d+)\s*(?:GiB|MiB|GB|MB))', post)[0]
+                        div = 1 if size.endswith('GB') else 1024
+                        size = float(re.sub('[^0-9|/.|/,]', '', size.replace(',', '.'))) / div
+                        size = '%.2f GB' % size
+                    except BaseException:
+                        size = '0'
+                    for url in link:
                         if hdlr not in url:
                             continue
-                        quality = source_utils.check_direct_url(name)
                         url = url.split('&tr')[0]
-                        if any(x in url for x in ['trailer', 'extras', 'sample', '.jpg', '.rar', '.zip']):
+                        quality, info = source_utils.get_release_quality(url)
+                        if any(x in url for x in ['FRENCH', 'Ita', 'italian', 'TRUEFRENCH', '-lat-', 'Dublado']):
                             continue
-                        info = size
+                        info.append(size)
+                        info = ' | '.join(info)
                         sources.append(
                             {'source': 'Torrent', 'quality': quality, 'language': 'en', 'url': url, 'info': info,
                              'direct': False, 'debridonly': True})

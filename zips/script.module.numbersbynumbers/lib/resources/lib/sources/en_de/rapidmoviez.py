@@ -31,7 +31,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['rmz.cr']
-        self.base_link = 'http://rmz.cr/'
+        self.base_link = 'http://rapidmoviez.cr/'
         self.search_link = 'search/%s'
         self.scraper = cfscrape.create_scraper()
 

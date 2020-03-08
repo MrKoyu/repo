@@ -430,9 +430,9 @@ elif action == 'alltoolsNavigator':
     from resources.lib.indexers import navigator
     navigator.navigator().alltools()
 
-elif action == 'twentyfoursevenNavigator':
+elif action == 'jenNavigator':
     from resources.lib.indexers import navigator
-    navigator.navigator().TwentyFourSeven()
+    navigator.navigator().jenaddons()
 
 elif action == 'meditativemind':
     from resources.lib.indexers import lists
@@ -474,17 +474,21 @@ elif action == 'screensaver':
     from resources.lib.indexers import lists
     lists.indexer().root_screensaver()                
 
-elif action == '247movies':
+elif action == '247':
     from resources.lib.indexers import lists
-    lists.indexer().root_247movies()
+    lists.indexer().root_247()
 
-elif action == '247shows':
+elif action == 'jentools':
     from resources.lib.indexers import lists
-    lists.indexer().root_247shows()
+    lists.indexer().root_jentools()
 
-elif action == '247channels':
+elif action == 'builds':
     from resources.lib.indexers import lists
-    lists.indexer().root_247channels()        
+    lists.indexer().root_builds()
+
+elif action == 'jenlist1':
+    from resources.lib.indexers import lists
+    lists.indexer().root_personal()                            
 
 elif action == 'learningtv':
     from resources.lib.indexers import lists
@@ -544,7 +548,11 @@ elif action == 'eyecandy':
 
 elif action == 'ufc':
     from resources.lib.indexers import lists
-    lists.indexer().root_ufc()        
+    lists.indexer().root_ufc()
+
+elif action == 'jens':
+    from resources.lib.indexers import lists
+    lists.indexer().root_jens()            
 
 elif action == 'radio':
     from resources.lib.indexers import lists
@@ -812,7 +820,7 @@ elif action == 'urlResolver':
         pass
     resolveurl.display_settings()
 
-elif action == 'ResolveurlRDTorrent':
+elif action == 'ResolveUrlTorrent':
     from resources.lib.modules import control
     control.openSettings(query, "script.module.resolveurl")    
 

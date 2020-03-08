@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.numbersbynumbers" name="[COLOR white]NuMb3r5 Module[/COLOR]" version="1.00.090" provider-name="NuMb3r5">
+<addon id="script.module.numbersbynumbers" name="[COLOR white][B]NuMb3r5 Module[/B][/COLOR]" version="1.00.091" provider-name="NuMb3r5">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.beautifulsoup4"/>

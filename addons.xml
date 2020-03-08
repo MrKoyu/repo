@@ -109,7 +109,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="8.9" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="9.0" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -191,12 +191,15 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.numbersbynumbers" version="2.0.2.5" name="[COLOR white][B]NuMb3r5[/B][/COLOR]" provider-name="[COLOR lime][B]NuMb3r5[/B][/COLOR]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.2.6" name="[COLOR white][B]NuMb3r5[/B][/COLOR]" provider-name="[COLOR lime][B]NuMb3r5[/B][/COLOR]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
     <import addon="script.numbersbynumbers.artwork" />
     <import addon="script.numbersbynumbers.metadata" />
+    <import addon="script.numbers.jen" />
+    <import addon="script.speedtestnet" />
+    <import addon="script.module.unidecode" />
     <import addon="script.module.resolveurl" />
     <import addon="script.module.requests" />
     <import addon="script.module.metahandler" />
@@ -219,7 +222,7 @@
       <screenshot>resources/media/screenshot-02.jpg</screenshot>
       <screenshot>resources/media/screenshot-03.jpg</screenshot>
     </assets>
-    <news>V2.0.2.5
+    <news>V2.0.2.6
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</news>
     <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -243,45 +246,6 @@ provider-name="Team IVUE">
   <description lang="en">Now includes a fully functioning back up and restore feature</description>
   <disclaimer lang="en">Modified by TeamJDM from the original code from "Primeaval" </disclaimer>
 </extension>
-</addon>
-
-<addon id="plugin.video.kiddo" name="[B][COLORdarkgoldenrod]Kid[/COLOR][COLORburlywood]do[/COLOR][/B]" version="4.0.1.2" provider-name="[COLOR gold][B][Brackets][/B][/COLOR]">
-    <requires>
-        <import addon="xbmc.python" version="2.19.0" />
-        <import addon="script.module.universalscrapers" version="1.0.0" />
-        <import addon="script.module.python.koding.aio" version="0.9.6.6" />
-        <import addon="script.module.beautifulsoup" version="3.2.1" />
-        <import addon="script.speedtestnet" version="1.0.0" />
-        <import addon="script.module.feedparser" version="5.1.3"/>
-        <import addon="script.module.requests" version="2.9.1" />
-        <import addon="script.module.addon.common" version="2.0.0" />
-        <import addon="script.module.xmltodict" version="0.9.0" />
-        <import addon="script.module.dateutil" />
-        <!--<import addon="script.module.web-pdb" version="1.0"/>-->
-        <import addon="script.module.resolveurl" />
-        <!--<import addon="script.module.urlresolver" />-->
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>audio video</provides>
-    </extension>
-    <extension point="xbmc.arrakis" library="service.py" start="[login|startup]" />
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Special thanks to [COLORgold]NuMbErS[/COLOR]</summary>
-        <description lang="en">[COLORgold]PG - Parental Guidance Suggested - Some Mild Rude Humor. Some Material may not Be Suitable for Children.[/COLOR][CR]The author is not responsible for the use of this addon and does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]The Search process is the same as a search engine with no data actual hosted by the developer.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</description>
-        <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
-        <platform>all</platform>
-        <website/>
-        <news>[COLORcrimson]====[/COLOR][COLORgold]PG - Parental Guidance Suggested - Some Mild Rude Humor. Some Material may not Be Suitable for Children.[/COLOR][COLORcrimson]====[/COLOR]</news>
-        <assets>
-        <icon>icon.png</icon>
-        <icon>search.gif</icon>
-        <fanart>fanart.gif</fanart>
-        <screenshot>resources/media/screenshot-01.png</screenshot>
-        <screenshot>resources/media/screenshot-02.png</screenshot>
-        <screenshot>resources/media/screenshot-03.png</screenshot>
-        </assets>
-        <reuselanguageinvoker>false</reuselanguageinvoker>
-    </extension>
 </addon>
 
 <addon
@@ -348,7 +312,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="plugin.video.youtube" name="YouTube" version="6.5.2" provider-name="anxdpanic, bromix">
+<addon id="plugin.video.youtube" name="YouTube" version="6.7.0~beta1" provider-name="anxdpanic, bromix">
     <requires>
         <import addon="xbmc.python" version="2.20.0"/>
         <import addon="script.module.six" version="1.11.0"/>
@@ -362,15 +326,16 @@ provider-name="Team IVUE">
     <extension point="xbmc.python.module" library="resources/lib/"/>
     <extension point="xbmc.addon.metadata">
         <news>
-6.5.2
-[fix] playback (No streams found)
-[fix] missing metadata
-[fix] ended live streams not using mpeg-dash when enabled
-[fix] subscriptions not showing latest videos
-[upd] simplify youtube_resolver regex |contrib: Twilight0|
-[lang] de_de strings |contrib: TehTux|
+[add] send PlaybackInit, PlaybackStarted, PlaybackStopped notifications containing video id, channel id, and the status of the playing video
+[fix] allow playback regardless of API status
+    - fixes playback for strm, playlists, other add-ons, and sharing videos from devices
+[fix] fix possible loop due to invalid keys and login information
+[fix] fix playback of mpeg-dash streams if HTTP Server - Listen on IP is blank
+[upd] use a dialog to notify users of API key requirements with link to wiki
+    - https://ytaddon.page.link/keys
+[rem] remove provided api keys
 [lang] pl_pl strings |contrib: drrak|
-[lang] nl_nl strings |contrib: Markman-B|
+[lang] de_de strings |contrib: tweimer|
         </news>
         <assets>
             <icon>icon.png</icon>
@@ -411,10 +376,16 @@ provider-name="Team IVUE">
         <description lang="nb_NO">YouTube er en av verdens største nettsider for videodeling.</description>
         <summary lang="ko_KR">유튜브 플러그인</summary>
         <description lang="ko_KR">유튜브는 세상에서 가장 큰 동영상 공유 사이트 중의 하나입니다.</description>
+        <summary lang="cs_CZ">Plugin pro YouTube</summary>
+        <description lang="cs_CZ">YouTube je jedna z největších webových stránek světa sdílející video.</description>
+        <disclaimer lang="cs_CZ">Tento plugin není schválen společností Google</disclaimer>
+        <summary lang="tr_TR">YouTube için eklenti</summary>
+        <description lang="tr_TR">YouTube, dünya üzerindeki en büyük video paylaşma platformlarından birisidir</description>
+        <disclaimer lang="tr_TR">Bu eklenti Google tarafından üretilmemiştir</disclaimer>
         <language></language>
         <platform>all</platform>
         <license>GPL-2.0-only</license>
-        <forum>https://forum.kodi.tv/showthread.php?tid=325740</forum>
+        <forum>https://forum.kodi.tv/showthread.php?tid=348464</forum>
         <website>https://www.youtube.com</website>
         <email>ytplugin at datanet dot ws</email>
         <source>https://github.com/jdf76/plugin.video.youtube</source>
@@ -422,11 +393,11 @@ provider-name="Team IVUE">
     </extension>
 </addon>
 
-<addon id="plugin.audio.mp3streams" name="MP3 Streams" version="2018.08.28" provider-name="Bugatsinho">
+<addon id="plugin.audio.mp3streams" name="MP3 Streams" version="2019.09.30" provider-name="Bugatsinho">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.t0mm0.common" version="1.1.0"/>
-        <import addon="script.module.mutagen"/>
+        <import addon="script.module.mutagen" version="1.41.1"/>
         <import addon="script.module.requests" version="1.1.0"/>
     </requires>
     <extension point="xbmc.python.pluginsource" library="default.py">
@@ -904,7 +875,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="script.module.numbersbynumbers" name="[COLOR white]NuMb3r5 Module[/COLOR]" version="1.00.090" provider-name="NuMb3r5">
+<addon id="script.module.numbersbynumbers" name="[COLOR white][B]NuMb3r5 Module[/B][/COLOR]" version="1.00.091" provider-name="NuMb3r5">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.beautifulsoup4"/>
@@ -919,7 +890,7 @@ provider-name="Team IVUE">
     </extension>
 </addon>
 
-<addon id="script.numbersbynumbers.artwork" version="1.0.9" name="[COLOR white]NuMb3r5 Artwork[/COLOR]" provider-name="NuMb3r5">
+<addon id="script.numbersbynumbers.artwork" version="1.0.10" name="[COLOR white][B]NuMb3r5 Artwork[/B][/COLOR]" provider-name="NuMb3r5">
   <requires>
     <import addon="xbmc.python" version="2.19.0"/>
   </requires>
@@ -934,7 +905,7 @@ provider-name="Team IVUE">
   </extension>
 </addon>
 
-<addon id="script.numbersbynumbers.metadata" version="1.0.10" name="[COLOR white]NuMb3r5 Metadata[/COLOR]" provider-name="NuMb3r5">
+<addon id="script.numbersbynumbers.metadata" version="1.0.11" name="[COLOR white][B]NuMb3r5 Metadata[/B][/COLOR]" provider-name="NuMb3r5">
   <requires>
     <import addon="xbmc.python" version="2.19.0"/>
   </requires>
@@ -946,6 +917,52 @@ provider-name="Team IVUE">
         <assets>
         <icon>icon.png</icon>
     </assets>   
+  </extension>
+</addon>
+
+<addon id="script.numbers.jen" name="[COLOR white][B]NuMb3r5[/B][/COLOR]" version="2.0.2" provider-name="Community">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0" />
+        <import addon="script.module.universalscrapers" version="1.0.0" />
+        <import addon="script.module.python.koding.aio" version="0.9.6.6" />
+        <import addon="script.module.beautifulsoup" version="3.2.1" />
+        <import addon="script.module.requests" version="2.9.1" />
+        <import addon="script.module.addon.common" version="2.0.0" />
+        <import addon="script.module.xmltodict" version="0.9.0" />
+        <import addon="script.module.dateutil" />
+    <import addon="script.module.feedparser" version="5.1.3"/>
+        <import addon="script.module.resolveurl" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>all</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="[login|startup]" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">NuMb3r5 Jen Script</summary>
+        <description lang="en">[COLORgold]PG - Parental Guidance Suggested - Some Mild Rude Humor. Some Material may not Be Suitable for Children.[/COLOR][CR]The author is not responsible for the use of this addon and does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]The Search process is the same as a search engine with no data actual hosted by the developer.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</description>
+        <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+        <platform>all</platform>
+        <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+        </assets>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+    </extension>
+</addon>
+
+<addon id="script.module.unidecode" name="unidecode" version="1.1.1" provider-name="Tomaz Solc (Tomaz.solc@tablix.org)">
+  <requires>
+    <import addon="xbmc.python" version="2.14.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">ASCII transliterations of Unicode text by Sean M. Burke and Tomaz Solc</summary>
+    <description lang="en">ASCII transliterations of Unicode text by Sean M. Burke and Tomaz Solc</description>
+    <disclaimer lang="en">Code taken from https://pypi.org/project/Unidecode</disclaimer>
+    <license>GPL-2.0-or-later</license>
+    <website>https://pypi.org/project/Unidecode</website>
+    <source>https://pypi.org/project/Unidecode</source>
   </extension>
 </addon>
 

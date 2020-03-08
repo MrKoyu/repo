@@ -46,8 +46,6 @@ class source:
                 return sources
             if debrid.status() is False:
                 raise Exception()
-            if debrid.torrent_enabled() is False:
-                raise Exception()
             html = client.request(url)
             link = re.findall('href="(magnet:.+?)"', html, re.DOTALL)
             for link in link:
