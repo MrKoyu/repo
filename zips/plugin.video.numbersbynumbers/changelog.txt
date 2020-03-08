@@ -2,6 +2,10 @@
 [B][COLOR lime]• [/COLOR][/B] [COLOR palegreen][B]CURRENT STATUS:[/B][/COLOR] Outstanding!
 
 [COLOR deepskyblue]*****************************************************************************************[/COLOR]
+[B][COLOR limegreen]V2.0.2.7[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Added missing dependency
+[B][COLOR deepskyblue]• [/COLOR][/B] Modules update
+[COLOR deepskyblue]*****************************************************************************************[/COLOR]
 [B][COLOR limegreen]V2.0.2.6[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed 24/7 Movies, Shows and Networks
 [B][COLOR deepskyblue]• [/COLOR][/B] Fixed Navigation enable/disable categories
