@@ -26,6 +26,8 @@
         <setting label="90006" type="lsep" />
         <setting id="navi.personal.list" type="bool" label="90007" default="false" />
         <setting id="personal.list" type="text" label="90008" enable="!eq(-1,false)" default="https://" />
+        <setting type="lsep" label="90013" />
+        <setting id="adult_pw" type="text" label="90014" default="Enter Password Here!" />
         <setting type="lsep" label="32622" />
         <setting id="navi.movies" type="bool" label="32001" default="true" />
         <setting id="navi.tvshows" type="bool" label="32002" default="true" />
@@ -178,7 +180,7 @@
     </category>
     <category label="32346">
         <setting type="lsep" label="32583" />
-        <setting id="" type="bool" label="Thanks for obtaining your own API key" default="true" />
+        <setting id="" type="bool" label="90015" default="true" />
         <setting type="lsep" label="[COLORpalegreen]TMDb[/COLOR]" />
         <setting id="tm.user" type="text" option="hidden" label="32309" default="459d337fdca80b499d2f010604ced709" />
         <setting type="sep" />
@@ -206,6 +208,7 @@
         <setting id="library.update" type="bool" label="32547" default="true" />
         <setting id="library.check" type="bool" label="32548" default="true" />
         <setting type="sep" />
+		<setting id="library.importdelay" type="bool" label="24HR delay before import" default="true" />		
         <setting id="library.check_movie" type="bool" label="32549" default="false" />
         <setting id="library.check_episode" type="bool" label="32550" default="false" />
         <setting id="library.include_unknown" type="bool" label="32565" default="true" />

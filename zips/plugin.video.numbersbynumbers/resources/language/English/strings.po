@@ -1238,3 +1238,19 @@ msgstr ""
 msgctxt "#90011"
 msgid "[COLORpalegreen]TV Shows[/COLOR]"
 msgstr ""
+
+msgctxt "#90012"
+msgid "[B][COLOR palegreen]• [/COLOR][/B][COLOR ghostwhite][B]iPunheta[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90013"
+msgid "[COLORdeeppink]iPunheta[/COLOR]"
+msgstr ""
+
+msgctxt "#90014"
+msgid "[B][COLOR hotpink]• [/COLOR][/B][COLORhotpink][I]Get the tissues at the ready[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#90015"
+msgid "Thanks for obtaining your own API key"
+msgstr ""

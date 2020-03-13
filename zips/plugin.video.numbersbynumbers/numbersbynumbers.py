@@ -574,6 +574,10 @@ elif action == 'speedtest':
     from resources.lib.indexers import lists
     lists.indexer().root_speedtest()
 
+elif action == 'xxx':
+    from resources.lib.indexers import lists
+    lists.indexer().root_iPunheta()    
+
 elif action == 'directory':
     from resources.lib.indexers import lists
     lists.indexer().get(url)

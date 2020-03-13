@@ -2,6 +2,12 @@
 [B][COLOR lime]• [/COLOR][/B] [COLOR palegreen][B]CURRENT STATUS:[/B][/COLOR] Outstanding!
 
 [COLOR deepskyblue]*****************************************************************************************[/COLOR]
+[B][COLOR limegreen]V2.0.2.8[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Fixed library 24HR delay before import. Credits to @Bazza
+[B][COLOR deepskyblue]• [/COLOR][/B] Added Adult Resolver. Credits to @JizzPlanet
+[B][COLOR deepskyblue]• [/COLOR][/B] Moved iPunheta to Home menu. Password protected. Only accessable through System => Settings => NuMbErS settings => Navigation: iPunheta Password is [B][COLOR palegreen]PORN4ALL[/COLOR][/B]
+[B][COLOR deepskyblue]• [/COLOR][/B] Special thanks @PedroKingdom for all the directs 
+[COLOR deepskyblue]*****************************************************************************************[/COLOR]
 [B][COLOR limegreen]V2.0.2.7[/COLOR][/B]
 [B][COLOR deepskyblue]• [/COLOR][/B] Added missing dependency
 [B][COLOR deepskyblue]• [/COLOR][/B] Modules update
