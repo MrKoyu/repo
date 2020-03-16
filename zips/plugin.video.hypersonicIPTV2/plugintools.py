@@ -44,6 +44,8 @@ ALL_VIEW_CODES={
     'list': {
         'skin.confluence': 50, # List
         'skin.estuary': 50, # List
+        'skin.konfluence': 50, # List
+        'skin.konfluence.infusion': 50, # List
         'skin.xonfluence.mod': 50, # List
         'skin.aeon.nox': 50, # List
         'skin.droid': 50, # List
@@ -54,6 +56,8 @@ ALL_VIEW_CODES={
         'skin.confluence': 500, # Thumbnail
         'skin.estuary': 50, # List
         'skin.xonfluence.mod': 50, # List
+        'skin.konfluence': 500, # Thumbnail
+        'skin.konfluence.infusion': 500, # Thumbnail
         'skin.aeon.nox': 500, # Wall
         'skin.droid': 51, # Big icons
         'skin.quartz': 51, # Big icons
@@ -61,6 +65,8 @@ ALL_VIEW_CODES={
     },
     'movies': {
         'skin.confluence': 500, # Thumbnail 515, # Media Info 3
+        'skin.konfluence': 500, # Thumbnail
+        'skin.konfluence.infusion': 500, # Thumbnail
         'skin.estuary': 50, # List
         'skin.aeon.nox': 500, # Wall
         'skin.droid': 51, # Big icons

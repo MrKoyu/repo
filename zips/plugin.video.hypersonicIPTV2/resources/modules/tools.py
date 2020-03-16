@@ -79,7 +79,7 @@ def clear_cache():
 
 
 	dialog = xbmcgui.Dialog()
-	dialog.ok(ADDONTITLE, "Cache Cleared Successfully!")
+	dialog.ok(ADDONTITLE, "[COLOR lime][I]Cache Cleared Successfully![/I][/COLOR]")
 		
 def get_params():
 	param=[]

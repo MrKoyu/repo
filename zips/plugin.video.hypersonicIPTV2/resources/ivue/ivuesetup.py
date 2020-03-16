@@ -30,9 +30,9 @@ from resources.modules import tools
 username     =  control.setting('Username')
 password     =  control.setting('Password')
 USERDATA     =  xbmc.translatePath(os.path.join('special://home/userdata',''))
-ini          =  xbmc.translatePath(os.path.join('special://home/addons/plugin.video.hypersonicIPTV2/resources/ivue','addons_index.ini'))
-drxini          =  xbmc.translatePath(os.path.join('special://home/addons/plugin.video.hypersonicIPTV2/resources/ivue','addons2.ini.ini'))
-inizip       = 	xbmc.translatePath(os.path.join('special://home/addons/plugin.video.hypersonicIPTV2/resources/ivue','addons_index.zip'))
+ini          =  xbmc.translatePath(os.path.join('special://home/addons/plugin.video.tvpro/resources/ivue','addons_index.ini'))
+tvproini          =  xbmc.translatePath(os.path.join('special://home/addons/plugin.video.tvpro/resources/ivue','addons2.ini.ini'))
+inizip       = 	xbmc.translatePath(os.path.join('special://home/addons/plugin.video.tvpro/resources/ivue','addons_index.zip'))
 tmpini       =  xbmc.translatePath(os.path.join('special://home/userdata',''))
 ivuetarget   =  xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide/'))
 ivueaddons2ini   =  xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide/addons2.ini'))
@@ -41,15 +41,15 @@ ivuecreateini   =  xbmc.translatePath(os.path.join('special://home/userdata/addo
 ivuecreateini2   =  xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.IVUEcreator/custom_channels.ini'))
 iVue_SETTINGS = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','settings.xml'))
 UseriVueSets = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','oldsettings.xml'))
-iVueSet = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.hypersonicIPTV2/resources/ivue','ivuesettings.xml'))
-iVueFold = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.hypersonicIPTV2/resources/ivue'))
+iVueSet = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.tvpro/resources/ivue','ivuesettings.xml'))
+iVueFold = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.tvpro/resources/ivue'))
 iVue_DATA = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide/'))
 
-V_drxskinpath = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide/resources/skins/'))
-V_drxskin = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide/resources/skins/Hypersonic TV'))
-V_drxaddons2ini = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','addons2.ini'))
-V_drxcatini = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','categories.ini'))
-V_drxsetxml = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','settings.xml'))
+V_tvproskinpath = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide/resources/skins/'))
+V_tvproskin = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide/resources/skins/Hypersonic TV'))
+V_tvproaddons2ini = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','addons2.ini'))
+V_tvprocatini = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','categories.ini'))
+V_tvprosetxml = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/script.ivueguide','settings.xml'))
 
 
 
@@ -113,43 +113,43 @@ if shifttime == "23":
 
 def iVueInt2():
 	xbmc.executebuiltin("XBMC.ActivateWindow(Home)")
-	xbmc.executebuiltin('RunAddon(plugin.video.hypersonicIPTV2)')
+	xbmc.executebuiltin('RunAddon(plugin.video.tvpro)')
 	xbmc.executebuiltin("ActivateWindow(busydialog)")
 	dp = xbmcgui.DialogProgress()
-	dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Setting up iVue",'', 'Please Wait')
+	dp.create("[COLOR darkgrey]tvpro[/COLOR]","Setting up iVue",'', 'Please Wait')
 
 
 	if not os.path.exists(iVue_DATA):
 		os.makedirs(iVue_DATA)
 		
-	if os.path.isfile(V_drxaddons2ini):	
-		os.remove(V_drxaddons2ini)
+	if os.path.isfile(V_tvproaddons2ini):	
+		os.remove(V_tvproaddons2ini)
 
 	if os.path.isfile(iVue_SETTINGS):
 		os.remove(iVue_SETTINGS)
 		
-	if os.path.isfile(V_drxcatini):
-		os.remove(V_drxcatini)
+	if os.path.isfile(V_tvprocatini):
+		os.remove(V_tvprocatini)
 		
 	if os.path.isfile(timeshift):	
 		os.remove(timeshift)
 		
 
-	dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Locating Files",'', 'Please Wait')
+	dp.create("[COLOR darkgrey]tvpro[/COLOR]","Locating Files",'', 'Please Wait')
 	amylist_install('amylist.xml',realamylist)
-	downloader.download(drxsetxml, V_drxsetxml, dp)	
-	downloader.download(drxaddons2ini, V_drxaddons2ini, dp)
-	downloader.download(drxcatini, V_drxcatini, dp)
+	downloader.download(tvprosetxml, V_tvprosetxml, dp)	
+	downloader.download(tvproaddons2ini, V_tvproaddons2ini, dp)
+	downloader.download(tvprocatini, V_tvprocatini, dp)
 	
-	#if os.path.isfile(V_drxskin):
-		#os.remove(V_drxskin)
+	#if os.path.isfile(V_tvproskin):
+		#os.remove(V_tvproskin)
 		
-	#drxskin_install('Durex_TV',drxskins)
+	#tvproskin_install('tvpro_TV',tvproskins)
 		
-	dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Adding Information",'', 'Please Wait')
-	a = open(V_drxaddons2ini).read()
-	b = a.replace('<HypersonicIPTV2UN>',username).replace('<HypersonicIPTV2PW>',password)
-	f = open(V_drxaddons2ini, mode='w')
+	dp.create("[COLOR darkgrey]tvpro[/COLOR]","Adding Information",'', 'Please Wait')
+	a = open(V_tvproaddons2ini).read()
+	b = a.replace('<tvproUN>',username).replace('<tvproPW>',password)
+	f = open(V_tvproaddons2ini, mode='w')
 	f.write(str(b))
 	f.close()
 	
@@ -176,10 +176,10 @@ def iVueInt2():
 
 def iVueInt():
 	xbmc.executebuiltin("XBMC.ActivateWindow(Home)")
-	xbmc.executebuiltin('RunAddon(plugin.video.hypersonicIPTV2)')
+	xbmc.executebuiltin('RunAddon(plugin.video.tvpro)')
 	xbmc.executebuiltin("ActivateWindow(busydialog)")
 	dp = xbmcgui.DialogProgress()
-	dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Copying ini",'', 'Please Wait')
+	dp.create("[COLOR darkgrey]tvpro[/COLOR]","Copying ini",'', 'Please Wait')
 	
 	if not os.path.isfile(ivuecreateini):
 		if not os.path.exists(ivuecreate):
@@ -193,7 +193,7 @@ def iVueInt():
 	
 	
 	a = open(ivuecreateini).read()
-	b = a.replace('<HypersonicIPTV2UN>',username).replace('<HypersonicIPTV2PW>',password)
+	b = a.replace('<tvproUN>',username).replace('<tvproPW>',password)
 	f = open(ivuecreateini, mode='w')
 	f.write(str(b))
 	f.close()
@@ -262,7 +262,7 @@ def unzip(_in, _out, dp):
 def amylist_install(name,url):
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Installing Channel List...",'', 'Please Wait')
+    dp.create("[COLOR darkgrey]tvpro[/COLOR]","Installing Channel List...",'', 'Please Wait')
     lib=os.path.join(path, 'amylist.zip')
     try:
        os.remove(lib)
@@ -272,31 +272,31 @@ def amylist_install(name,url):
     addonfolder = iVue_DATA
     time.sleep(3)
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Installing Channel List...",'', 'Please Wait')
+    dp.create("[COLOR darkgrey]tvpro[/COLOR]","Installing Channel List...",'', 'Please Wait')
     dp.update(0,"", "Installing Channel List... Please Wait")
     unzip(lib,addonfolder,dp)
     
-def drxskin_install(name,url):
+def tvproskin_install(name,url):
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Installing Skin...",'', 'Please Wait')
-    lib=os.path.join(path, 'Hypersonic_TV.zip')
+    dp.create("[COLOR darkgrey]tvpro[/COLOR]","Installing Skin...",'', 'Please Wait')
+    lib=os.path.join(path, 'tvpro.zip')
     try:
        os.remove(lib)
     except:
        pass
     downloader.download(url, lib, dp)
-    addonfolder = V_drxskinpath
+    addonfolder = V_tvproskinpath
     time.sleep(3)
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Installing Skin...",'', 'Please Wait')
+    dp.create("[COLOR darkgrey]tvpro[/COLOR]","Installing Skin...",'', 'Please Wait')
     dp.update(0,"", "Installing Skin... Please Wait")
     unzip(lib,addonfolder,dp)
     
 def install(name,url):
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Installing iVue TV Guide...",'', 'Please Wait')
+    dp.create("[COLOR darkgrey]tvpro[/COLOR]","Installing iVue TV Guide...",'', 'Please Wait')
     lib=os.path.join(path, 'content.zip')
     try:
        os.remove(lib)
@@ -306,7 +306,7 @@ def install(name,url):
     addonfolder = xbmc.translatePath(os.path.join('special://home','addons'))
     time.sleep(3)
     dp = xbmcgui.DialogProgress()
-    dp.create("[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]","Installing iVue TV Guide...",'', 'Please Wait')
+    dp.create("[COLOR darkgrey]tvpro[/COLOR]","Installing iVue TV Guide...",'', 'Please Wait')
     dp.update(0,"", "Installing iVue TV Guide... Please Wait")
     print '======================================='
     print addonfolder

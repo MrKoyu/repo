@@ -109,7 +109,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="9.2" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="9.3" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
@@ -172,8 +172,8 @@
 </addon>
 
 <addon id="plugin.video.hypersonicIPTV2"
-       name="[COLOR steelblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
-       version="5.2"
+       name="[COLOR dodgerblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
+       version="6.0"
        provider-name="Hypersonic">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -186,7 +186,7 @@
   <extension point="xbmc.addon.metadata">
     <summary lang="en">[COLOR dodgerblue]Hypersonic [COLOR white]IPTV2[/COLOR]</summary>
     <language>en</language>
-    <description lang="en">[COLOR dodgerblue]Hypersonic[/COLOR] [COLOR white]IPTV[/COLOR] Official Addon - The Future of Great Quality and Stable Streams - for more info go to [COLOR lime]https://gethypersonic.mytvpro.org[/COLOR]. Regards, Hypersonic Team.</description>
+    <description lang="en">[COLOR dodgerblue]Hypersonic[/COLOR] [COLOR white]IPTV[/COLOR] [COLOR white]Official Addon - The Future of Great Quality and Stable Streams - for more info go to[/COLOR] [COLOR lime]https://gethypersonic.mytvpro.org[/COLOR].[CR][COLOR yellow]Please download our android APP for VOD @ http://hypersonic-tv.com/android/hypersonic.apk[/COLOR][CR][COLOR white]Hypersonic team.[/COLOR]</description>
      <platform>all</platform>
   </extension>
 </addon>
