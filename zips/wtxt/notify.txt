@@ -1,6 +1,37 @@
-97
+96
 |||
 [COLOR deepskyblue]Welcome to CellarDoorTV Wizard[/COLOR]
 
-[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]TEST
-[/COLOR]
+[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD IS BACK!
+[/COLOR] [COLOR gold]- BRAND NEW ENVISION MQ7 LEIA BUILD AVAILABLE NOW![/COLOR]
+[COLOR white] - DM @CellarDoorTV for telegram invite link[/COLOR]
+[COLOR white] - CDTV REPO URL - [COLOR lime]http://cellardoortv.com/repo[/COLOR]
+
+[COLOR gold]ONE BUILD TO RULE THEM ALL[/COLOR]
+
+[B][COLOR limegreen]•  [/COLOR][/B] INFUSION 4.1 [COLOR deepskyblue]103MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] 
+[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS 2.8 [COLOR deepskyblue]141MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] ENVISION 1.4 [COLOR deepskyblue]164MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] SONAR 2.0 [COLOR deepskyblue]198MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR] [COLOR crimson]DISCONTINUED[/COLOR]
+
+[B][COLOR limegreen]•  [/COLOR][/B] CDTV LEIA 3.4 [COLOR deepskyblue]101MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS LEIA 2.4 [COLOR deepskyblue]138MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] ENVISION LEIA 2.1 [COLOR deepskyblue]245MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+
+[COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR lime]NEW: After installation please go to SYSTEM submenu/install from repo then CellarDoor repository and install NuMb3r5 addon then go to THE CREW repository and install THE CREW addon. If you get any pop-ups asking to install a specific addon hit YES and install.[/COLOR]
+
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended on every build updates. Go to Kodi application on your device and delete Kodi data then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open wizard Krypton v4.1 or Leia v1.0 and install your favourite build.[/COLOR]
+
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]RSS FEEDS can be disabled for a cleaner look in the skin Interface settings/skin/show rss feeds[/COLOR] - [COLOR lime]ON[/COLOR]/[COLOR crimson]OFF[/COLOR]
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Authorize Real-Debrid in Seren settings to get the addon to work.[/COLOR]
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]CDTV Wizard error or can’t open the wizard - Go to program add-ons/CellarDoorTV Wizard/Settings/default then OK to fix Wizard.[/COLOR]
+
+[COLOR gold]Unlock your TV PRO[/COLOR]
+[COLOR lightskyblue]Hypersonic [COLOR white]IPTV2[/COLOR]
+[COLOR white]To purchase account go to:[/COLOR][COLOR lime] https://gethypersonic.mytvpro.org[/COLOR]
+
+[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR] [COLOR gold]are FREE! If you've bought it you have been scammed - For new updates go to CDTV Builds Facebook group or follow me on Twitter.[/COLOR]
+[COLOR white]If you love this build and want to help CellarDoorTV with server costs sign up for Hypersonic service or get a trial now! Thanks for your support.[/COLOR]
+
+If you'd like to show some appreciation you can donate to CDTV Builds following this link: [COLOR lime]http://www.paypal.me/CellarDoorTV[/COLOR]
