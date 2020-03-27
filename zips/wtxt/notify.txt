@@ -1,4 +1,4 @@
-87
+96
 |||
 [COLOR deepskyblue]Welcome to CellarDoorTV Wizard[/COLOR]
 
@@ -9,14 +9,14 @@
 
 [COLOR gold]ONE BUILD TO RULE THEM ALL[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] INFUSION 3.7 [COLOR deepskyblue]101MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] 
-[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS 2.7 [COLOR deepskyblue]142MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] SONAR 2.0 [COLOR deepskyblue]198MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] ENVISION 1.2 [COLOR deepskyblue]181MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] INFUSION 4.1 [COLOR deepskyblue]103MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] 
+[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS 2.8 [COLOR deepskyblue]141MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] ENVISION 1.4 [COLOR deepskyblue]164MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] SONAR 2.0 [COLOR deepskyblue]198MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR] [COLOR crimson]DISCONTINUED[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] CDTV LEIA 3.2 [COLOR deepskyblue]95MB[/COLOR] [COLOR deeppink]Kodi 18.4[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS LEIA 2.2 [COLOR deepskyblue]148MB[/COLOR] [COLOR deeppink]Kodi 18.4[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] ENVISION LEIA 1.1 [COLOR deepskyblue]244MB[/COLOR] [COLOR deeppink]Kodi 18.4[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] CDTV LEIA 3.4 [COLOR deepskyblue]101MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS LEIA 2.4 [COLOR deepskyblue]138MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] ENVISION LEIA 2.1 [COLOR deepskyblue]245MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR lime]NEW: After installation please go to SYSTEM submenu/install from repo then CellarDoor repository and install NuMb3r5 addon then go to THE CREW repository and install THE CREW addon. If you get any pop-ups asking to install a specific addon hit YES and install.[/COLOR]
