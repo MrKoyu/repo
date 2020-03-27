@@ -13,11 +13,13 @@
         {
             "name": "Low-RAM Device Preset",
             "url": "https://raw.githubusercontent.com/MrKoyu/repo/master/zips/wtxt/presets/low_ram_preset.xml",
+            "icon": "https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_advanced/stick.png",
             "description": "This preset can be used on devices with less than 2GB of RAM, like Amazon Fire Sticks."
         },
         {
             "name": "High-End Device Preset",
             "url": "https://raw.githubusercontent.com/MrKoyu/repo/master/zips/wtxt/presets/high_end_preset.xml",
+            "icon": "https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_advanced/NVShield.png",
             "description": "This preset can be used on devices with more than 2GB of RAM, like the Nvidia Shield."
         }
     ]

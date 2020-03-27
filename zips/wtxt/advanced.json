@@ -12,7 +12,7 @@
             "name": "Cache & Network Presets",
             "section": true,
             "url": "https://raw.githubusercontent.com/MrKoyu/repo/master/zips/wtxt/presets/cache_presets.json",
-            "icon": "https://cdn.wccftech.com/wp-content/uploads/2017/09/NVIDIA-SHIELD-TV.png",
+            "icon": "https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_advanced/NVShield.png",
             "fanart": "",
             "description": "All presets related to caching, network, and buffering."
         }
