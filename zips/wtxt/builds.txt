@@ -1,6 +1,6 @@
 id="plugin.program.cdtvwizleia"
-version="1.0"
-zip="http://cellardoortv.com/leia_wiz/plugin.program.cdtvwizleia-1.0.zip"
+version="2.0"
+zip="https://raw.githubusercontent.com/MrKoyu/repo/master/zips/plugin.program.cdtvwizleia/plugin.program.cdtvwizleia-2.0.zip"
 
 name="ENVISION MQ7 Leia - SERVER 1"
 version="2.1"
