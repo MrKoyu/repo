@@ -1,30 +1,55 @@
-96
+97
 |||
 [COLOR deepskyblue]Welcome to CellarDoorTV Wizard[/COLOR]
 
-[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD IS BACK!
-[/COLOR] [COLOR gold]- BRAND NEW ENVISION MQ7 LEIA BUILD AVAILABLE NOW![/COLOR]
+[COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR] 
+[COLOR gold] - BRAND NEW INFUSION 2 KODI18 BUILD IS AVAILABLE NOW![/COLOR]
 [COLOR white] - DM @CellarDoorTV for telegram invite link[/COLOR]
 [COLOR white] - CDTV REPO URL - [COLOR lime]http://cellardoortv.com/repo[/COLOR]
+
+
+[COLOR gold]HOW TO SET-UP INFUSION 2[/COLOR]
+
+[B][COLOR deepskyblue]1 •  [/COLOR][/B] [COLOR white]After build installation is completed scroll right to the APPS main menu then down for submenus and install the addons from the submenu shortcut such as NuMb3r5 and The Crew add-ons.[/COLOR]
+
+[B][COLOR deepskyblue]2 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on TMDB Helper add-on/Settings/Accounts/Authenticate Trakt account...[/COLOR]
+
+[B][COLOR deepskyblue]3 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in RESOLVE URL RD and authorise your Real-Debrid. If you have a different Debrid service other than RD then enter in UNIVERSAL URL which can be found on the same SYSTEM submenu.[/COLOR]
+
+[B][COLOR deepskyblue]4 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on SEREN add-on/Settings/Accounts/Enable Real-Debrid then Authorise Real-Debrid.[/COLOR]
+
+[B][COLOR deepskyblue]5 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on Shadow add-on/Settings/Debrid/Debrid Service/Re auth. RD[/COLOR]
+
+[B][COLOR deepskyblue]6 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in INSTALL - ZIP then My add-ons/VideoPlayer InputStream and enable InputStream Adaptive[/COLOR]
+
+[B][COLOR deepskyblue]7 •  [/COLOR][/B] [COLOR white]Click on InputStream Adaptive then configure. Set Max. Resolution general decoder to 1080p. Set secure decoder to 1080p as well then press OK to save changes.[/COLOR]
+
+[B][COLOR deepskyblue]8 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on YouTube add-on/Settings/General/Video Quality to 1080p then scroll to MPEG-DASH/enable Use MPEG-DASH and set Video Quality to 1080p. This step will get you 1080p YouTube videos when using some of NuMb3r5 categories.[/COLOR]
+
+[B][COLOR deepskyblue]9 •  [/COLOR][/B] [COLOR white]Enter YouTube API key in Settings/API/API Key. For more info on how to easily get yours watch this video:[/COLOR] [COLORlime]https://youtu.be/dJ1oX9-zyhM[/COLOR]
+
+[B][COLOR deepskyblue]10•  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in ADVANCED SETTINGS then choose your Device Preset or configure your own advanced settings.[/COLOR]
+
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]That's pretty much it! Enjoy your build. If you have any questions find us @CellarDoorTV Telegram group. Thank you![/COLOR]
+
 
 [COLOR gold]ONE BUILD TO RULE THEM ALL[/COLOR]
 
 [B][COLOR limegreen]•  [/COLOR][/B] INFUSION 4.1 [COLOR deepskyblue]103MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] 
 [B][COLOR limegreen]•  [/COLOR][/B] DOMINUS 2.8 [COLOR deepskyblue]141MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] ENVISION 1.4 [COLOR deepskyblue]164MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] SONAR 2.0 [COLOR deepskyblue]198MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR] [COLOR crimson]DISCONTINUED[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] CDTV LEIA 3.4 [COLOR deepskyblue]101MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS LEIA 2.4 [COLOR deepskyblue]138MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] ENVISION LEIA 2.1 [COLOR deepskyblue]245MB[/COLOR] [COLOR deeppink]Kodi 18.5[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] INFUSION 1.0 [COLOR deepskyblue]110MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] CDTV LEIA 3.4 [COLOR deepskyblue]101MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS LEIA 2.4 [COLOR deepskyblue]138MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] ENVISION LEIA 2.1 [COLOR deepskyblue]245MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR lime]NEW: After installation please go to SYSTEM submenu/install from repo then CellarDoor repository and install NuMb3r5 addon then go to THE CREW repository and install THE CREW addon. If you get any pop-ups asking to install a specific addon hit YES and install.[/COLOR]
 
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended on every build updates. Go to Kodi application on your device and delete Kodi data then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open wizard Krypton v4.1 or Leia v1.0 and install your favourite build.[/COLOR]
 
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]RSS FEEDS can be disabled for a cleaner look in the skin Interface settings/skin/show rss feeds[/COLOR] - [COLOR lime]ON[/COLOR]/[COLOR crimson]OFF[/COLOR]
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Authorize Real-Debrid in Seren settings to get the addon to work.[/COLOR]
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open wizard Krypton v4.1 or Leia v2.0 and install your favourite build.[/COLOR]
+
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]RSS FEEDS can be disabled for a cleaner look and better performance in the skin Interface settings/skin/show rss feeds[/COLOR] - [COLOR lime]ON[/COLOR]/[COLOR crimson]OFF[/COLOR]
 [B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]CDTV Wizard error or can’t open the wizard - Go to program add-ons/CellarDoorTV Wizard/Settings/default then OK to fix Wizard.[/COLOR]
 
 [COLOR gold]Unlock your TV PRO[/COLOR]
