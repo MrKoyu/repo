@@ -38,6 +38,6 @@ Currently, this version of the wizard supports:
 | WonderfulSubs                      |                |       |            |             |            |           |      |      |      |      |           |          | [x] - WonderfulSubs     |
 | Venom                              | [x]            | [x]   |            |             |            |           | [x]  |      |      | [x]  | [x]       |          |                         |
 | Yahoo! Weather                     |                |       |            |             |            |           |      |      |      |      |           | [x]      |                         |
-| YouTube                            |                |       |            |             |            |           |      |      |      |      |           |          | [x] - Youtube API       |
+| YouTube                            |                |       |            |             |            |           |      |      |      |      |           |          | [x] - YouTube API       |
 
 If you don't see these in your menus, don't be alarmed... it's just because you dont have them installed. They are supported, however ;)
