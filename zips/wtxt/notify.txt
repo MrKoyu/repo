@@ -1,4 +1,4 @@
-98
+99
 |||
 
 [COLOR deepskyblue]Welcome to CellarDoorTV Wizard[/COLOR]
@@ -36,14 +36,14 @@
 
 [COLOR gold]ONE BUILD TO RULE THEM ALL[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] INFUSION 4.1 [COLOR deepskyblue]103MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] 
-[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS 2.8 [COLOR deepskyblue]141MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] ENVISION 1.4 [COLOR deepskyblue]164MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] INFUSION v5.0 [COLOR deepskyblue]178MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] 
+[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS v2.8 [COLOR deepskyblue]141MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] ENVISION v1.4 [COLOR deepskyblue]164MB[/COLOR] [COLOR deeppink]Kodi 17.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] INFUSION 1.0 [COLOR deepskyblue]110MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] CDTV LEIA 3.4 [COLOR deepskyblue]101MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS LEIA 2.4 [COLOR deepskyblue]138MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] ENVISION LEIA 2.1 [COLOR deepskyblue]245MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] INFUSION 2 v1.0 [COLOR deepskyblue]110MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] CDTV LEIA v3.4 [COLOR deepskyblue]101MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] DOMINUS LEIA v2.4 [COLOR deepskyblue]138MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] ENVISION LEIA v2.1 [COLOR deepskyblue]245MB[/COLOR] [COLOR deeppink]Kodi 18.6[/COLOR] [COLOR lime]2 IN 1 BUILD[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
 
@@ -60,4 +60,4 @@
 [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR] [COLOR gold]are FREE! If you've bought it you have been scammed - For new updates go to CDTV Builds Facebook group or follow me on Twitter.[/COLOR]
 [COLOR white]If you love this build and want to help CellarDoorTV with server costs sign up for Hypersonic service or get a trial now! Thanks for your support.[/COLOR]
 
-If you'd like to show some appreciation you can donate to CDTV Builds following this link: [COLOR lime]http://www.paypal.me/CellarDoorTV[/COLOR]
+Enjoy!
