@@ -1,7 +1,7 @@
-100
+101
 |||
 
-[COLOR deepskyblue]Welcome to CellarDoorTV Wizard[/COLOR]
+[COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
 
 [COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR] 
 [COLOR gold] - BRAND NEW INFUSION 2 KODI18 BUILD IS AVAILABLE NOW![/COLOR]
@@ -48,10 +48,10 @@
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
 
 
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open wizard Krypton v4.1 or Leia v2.0 and install your favourite build.[/COLOR]
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open CDTV WIZARD v2.1 and install your favourite build.[/COLOR]
 
 [B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]RSS FEEDS can be disabled for a cleaner look and better performance in the skin Interface settings/skin/show rss feeds[/COLOR] - [COLOR lime]ON[/COLOR]/[COLOR crimson]OFF[/COLOR]
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]CDTV Wizard error or can’t open the wizard - Go to program add-ons/CellarDoorTV Wizard/Settings/default then OK to fix Wizard.[/COLOR]
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]CDTV WIZARD error or can’t open the wizard - Go to program add-ons/CellarDoorTV Wizard/Settings/default then OK to fix Wizard.[/COLOR]
 
 [COLOR gold]Unlock your TV PRO[/COLOR]
 [COLOR lightskyblue]Hypersonic [COLOR white]IPTV2[/COLOR]
