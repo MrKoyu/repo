@@ -1,9 +1,7 @@
 """
-    OVERALL CREDIT TO:
-        t0mm0, Eldorado, VOINAGE, BSTRDMKR, tknorris, smokdpi, TheHighway
-
     plugin for ResolveURL
     Copyright (C) 2019 gujal
+    Copyright (C) 2020 eco-plus
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,16 +18,16 @@
 """
 
 import re
-from lib import aadecode
 from resolveurl import common
 from lib import helpers
 from resolveurl.resolver import ResolveUrl, ResolverError
- 
+
 
 class MystreamResolver(ResolveUrl):
     name = "mystream"
-    domains = ['mystream.la', 'mystream.to']
-    pattern = r'(?://|\.)(mystream\.(?:la|to))/(?:external/)?([0-9a-zA-Z_]+)'
+    domains = ['mystream.la', 'mystream.to', 'mstream.xyz', 'mstream.cloud', 'mstream.fun']
+    pattern = r'(?://|\.)(my?stream\.(?:la|to|cloud|xyz|fun))/(?:external|watch/)?([0-9a-zA-Z_]+)'
+
     def __init__(self):
         self.net = common.Net()
 
@@ -37,20 +35,67 @@ class MystreamResolver(ResolveUrl):
         web_url = self.get_url(host, media_id)
         headers = {'Referer': web_url, 'User-Agent': common.FF_USER_AGENT}
         html = self.net.http_GET(web_url, headers=headers).content
-        try: html = html.encode('utf-8')
-        except: pass
+
         if "unable to find the video" in html:
             raise ResolverError('The requested video was not found or may have been removed.')
-        
-        match = re.search(r'type="file".+?script>\s*([^<]+)', html)
+
+        match = re.search(r'(\$=.+?;)\s*<', html)
         if match:
-            aa_text = aadecode.decode(match.group(1))
-            match = re.search(r"'src',\s*'([^']+)", aa_text)
-            if match:
-                stream_url = match.group(1)
-                return stream_url + helpers.append_headers(headers)
-        
+            sdata = self.decode(match.group(1))
+            s = re.search(r"src',\s*'([^']+)", sdata)
+            if s:
+                return s.group(1) + helpers.append_headers(headers)
+
         raise ResolverError('Video Link Not Found')
 
     def get_url(self, host, media_id):
         return self._default_get_url(host, media_id, 'https://embed.mystream.to/{media_id}')
+
+    def decode(self, data):
+        startpos = data.find('"\\""+') + 5
+        endpos = data.find('"\\"")())()')
+
+        first_group = data[startpos:endpos]
+
+        pos = re.search(r"(\(!\[\]\+\"\"\)\[.+?\]\+)", first_group)
+        if pos:
+            first_group = first_group.replace(pos.group(1), 'l').replace('$.__+', 't').replace('$._+', 'u').replace('$._$+', 'o')
+
+            tmplist = []
+            js = re.search(r'(\$={.+?});', data)
+            if js:
+                js_group = js.group(1)[3:][:-1]
+                second_group = js_group.split(',')
+
+                i = -1
+                for x in second_group:
+                    a, b = x.split(':')
+
+                    if b == '++$':
+                        i += 1
+                        tmplist.append(("$.{}+".format(a), i))
+
+                    elif b == '(![]+"")[$]':
+                        tmplist.append(("$.{}+".format(a), 'false'[i]))
+
+                    elif b == '({}+"")[$]':
+                        tmplist.append(("$.{}+".format(a), '[object Object]'[i]))
+
+                    elif b == '($[$]+"")[$]':
+                        tmplist.append(("$.{}+".format(a), 'undefined'[i]))
+
+                    elif b == '(!""+"")[$]':
+                        tmplist.append(("$.{}+".format(a), 'true'[i]))
+
+                tmplist = sorted(tmplist, key=lambda z: z[1])
+                for x in tmplist:
+                    first_group = first_group.replace(x[0], str(x[1]))
+
+                first_group = first_group.replace('\\"', '\\').replace("\"\\\\\\\\\"", "\\\\") \
+                                         .replace('\\"', '\\').replace('"', '').replace("+", "")
+
+            try:
+                final_data = first_group.decode('unicode-escape').decode('unicode-escape')
+                return final_data
+            except:
+                return False
