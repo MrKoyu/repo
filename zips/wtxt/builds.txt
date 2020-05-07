@@ -14,7 +14,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="no"
 info="http://"
-description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 133MB"
+description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 132MB"
 
 name="SERVER 2 - INFUSION 2 - K18"               
 version="1.1"             
@@ -28,7 +28,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="no"
 info="http://"
-description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 133MB"
+description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 132MB"
 
 name="ENVISION MQ7 Leia - SERVER 1"
 version="2.1"
@@ -170,6 +170,20 @@ adult="no"
 info="http://"
 description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 138MB"
 
+name="TEST"
+version="0.1"
+url="http://cellardoortv.com/leia/domitest.zip"
+minor="http://"
+gui="http://"
+kodi="18.6"
+theme="http://"
+icon="https://"
+fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds/server_bg.jpg"
+preview="https://"
+adult="no"
+info="http://"
+description="Test Build"
+
 
 
 
@@ -213,7 +227,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="No"
 info="http://"
-description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 181MB"
+description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 178MB"
 
 name="SERVER 2 - INFUSION - K17.6"               
 version="5.1"             
@@ -227,7 +241,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="No"
 info="http://"
-description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 181MB"
+description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 178MB"
 
 name="SERVER 1 - DOMINUS - K17.6"               
 version="2.8"             
