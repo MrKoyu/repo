@@ -1,4 +1,4 @@
-105
+106
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -21,7 +21,7 @@
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
 
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open CDTV WIZARD v2.1 and install your favourite build.[/COLOR]
+[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open CDTV WIZARD v2.2 and install your favourite build.[/COLOR]
 
 
 [COLOR gold]HOW TO SET-UP INFUSION 2[/COLOR]

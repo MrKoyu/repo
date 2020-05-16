@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
-<addon id="plugin.program.cdtvwizleia" name="[COLOR forestgreen]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/COLOR] [COLOR ghostwhite]WIZARD[/COLOR]" version="2.1" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]">
+<addon id="plugin.program.cdtvwizleia" name="[COLOR forestgreen]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/COLOR] [COLOR ghostwhite]WIZARD[/COLOR]" version="2.2" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.requests" />
         <import addon="script.module.six" />
+        <import addon="script.kodi.android.update" optional="true" version="1.1.7" />
     </requires>
     
     <extension point="xbmc.python.pluginsource" library="default.py">
@@ -15,11 +16,18 @@
     
     <extension point="xbmc.addon.metadata">
         <summary lang="en">[COLOR lime]CellarDoorTV Wizard[/COLOR]</summary>
-        <description lang="en">The official home of [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Wizard LEIA[/COLOR] with maintenance features, selective add-on data saving, and automated build installs.</description>
+        <description lang="en">The official home of [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]WIZARD[/COLOR] with maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
         <source>https://www.github.com/drinfernoo/plugin.program.openwizard/</source>
         <news>
+1.4.1
+ - Fix crash on fresh installs
+1.4.0
+ - Fix APK Installer
+ - Convert official APK downloader to use official script
+ - Add scrollbar to Save Data dialog
+ - Fix skin path in build info
 1.3.7
  - Fix import lock error
 1.3.6
@@ -190,7 +198,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="9.7">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="9.8">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
@@ -213,7 +221,7 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">CellarDoorTV Repository</summary>
-    <description lang="en">[COLOR gold]The Future Of Home Entertainment[/COLOR][CR]Kodi Repository for [COLOR steelblue]CellarDoorTV[/COLOR][CR][COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]Repo[/COLOR] allows you to install CDTV Wizard Krypton and CDTV Wizard Leia to get access to the latest CDTV Custom Builds and more.</description>
+    <description lang="en">[COLOR gold]The Future Of Home Entertainment[/COLOR][CR]Kodi Repository for [COLOR steelblue]CellarDoorTV[/COLOR][CR][COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]Repo[/COLOR] allows you to install the CDTV WIZARD where you can get access to the latest CDTV Custom Builds and more.</description>
     <platform>all</platform>
     <assets>
       <icon>icon.gif</icon>
@@ -332,7 +340,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.youtube" name="YouTube" version="6.8.0" provider-name="anxdpanic, bromix">
+<addon id="plugin.video.youtube" name="YouTube" version="6.8.2" provider-name="anxdpanic, bromix">
     <requires>
         <import addon="xbmc.python" version="2.20.0"/>
         <import addon="script.module.six" version="1.11.0"/>
@@ -346,15 +354,15 @@
     <extension point="xbmc.python.module" library="resources/lib/"/>
     <extension point="xbmc.addon.metadata">
         <news>
-[add] support for video comments, Comments in the More... dialog |contrib: doko-desuka|
-[add] simulate deprecated recommended home API |contrib: hedleyroos|
-[fix] error caused by timestamp formatting
-[fix] fix Premiere's exiting after 5 seconds |contrib: jpfox156|
-[fix] playlists over json-rpc |contrib: JasperE84|
-[lang] de_de strings |contrib: tweimer|
-[lang] el_gr strings |contrib: twilight0|
-[lang] es_es strings |contrib: roliverosc|
-[lang] pt_pt strings |contrib: daniel3x|
+[fix] playback failing
+[fix] viewing comments when logged in
+[fix] intermittent issue with Subscriptions
+[fix] encoding of video unavailable messages
+[upd] updates to recommendations
+[upd] update logging for Kodi 19
+[lang] fr_fr strings |contrib: alan7000|
+[lang] pl_pl strings |contrib: drrak|
+[lang] nl_nl strings |contrib: Markman-B|
         </news>
         <assets>
             <icon>icon.png</icon>
