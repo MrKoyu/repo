@@ -42,7 +42,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 170MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 156MB"
 
 name="SERVER 2 - DOMINUS - K18"               
 version="3.0"             
@@ -56,7 +56,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 170MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 156MB"
 
 name="ENVISION MQ7 Leia - SERVER 1"
 version="2.1"
@@ -154,7 +154,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/OjCIriXWmI0"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 170MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 156MB"
 
 name="DOMINUS Leia - SERVER 2"
 version="3.0"
@@ -168,7 +168,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/OjCIriXWmI0"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 170MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 156MB"
 
 name="DOMINUS Leia - SERVER 3"
 version="3.0"
@@ -182,7 +182,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/OjCIriXWmI0"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 170MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 156MB"
 
 name="DOMINUS Leia - SERVER 4"
 version="3.0"
@@ -196,7 +196,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/OjCIriXWmI0"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 170MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 156MB"
 
 name="SERVER 1 - ENVISION - K17.6"               
 version="1.4"             
