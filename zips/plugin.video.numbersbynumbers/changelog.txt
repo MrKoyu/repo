@@ -3,6 +3,11 @@
 [B][COLOR lime]• [/COLOR][/B] [COLOR yellow][B]CURRENT STATUS:[/B][/COLOR] Good!
 [B][COLOR crimson]• [/COLOR][/B] [COLOR yellow][B]CURRENT ISSUES:[/B][/COLOR] 24/7 - Offline
 
+
+[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[B][COLOR yellow]V2.0.3.1[/COLOR][/B]
+[B][COLOR orangered]• [/COLOR][/B] Fixed movies genres
+[B][COLOR orangered]• [/COLOR][/B] Module update
 [COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.3.0[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed missing dependency
