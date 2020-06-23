@@ -198,7 +198,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="10.0">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="10.1">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
@@ -279,7 +279,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.numbersbynumbers" version="2.0.2.9" name="[B][COLOR white]NuMb3r5[/COLOR][/B]" provider-name="[B][COLOR orangered]NuMb3r5[/COLOR][/B]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.3.0" name="[B][COLOR white]NuMb3r5[/COLOR][/B]" provider-name="[B][COLOR orangered]NuMb3r5[/COLOR][/B]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
@@ -287,7 +287,7 @@
     <import addon="script.numbersbynumbers.metadata" />
     <import addon="script.numbers.jen" />
     <import addon="script.speedtestnet" />
-    <import addon="script.module.pyqrcode" version="0.0.1"/>
+    <import addon="script.module.pyqrcode" />
     <import addon="script.module.openscrapers" />
     <import addon="script.module.unidecode" />
     <import addon="script.module.resolveurl" />

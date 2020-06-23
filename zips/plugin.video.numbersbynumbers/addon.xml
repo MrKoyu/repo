@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.numbersbynumbers" version="2.0.2.9" name="[B][COLOR white]NuMb3r5[/COLOR][/B]" provider-name="[B][COLOR orangered]NuMb3r5[/COLOR][/B]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.3.0" name="[B][COLOR white]NuMb3r5[/COLOR][/B]" provider-name="[B][COLOR orangered]NuMb3r5[/COLOR][/B]">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="script.module.numbersbynumbers" />
@@ -7,7 +7,7 @@
 		<import addon="script.numbersbynumbers.metadata" />
 		<import addon="script.numbers.jen" />
 		<import addon="script.speedtestnet" />
-		<import addon="script.module.pyqrcode" version="0.0.1"/>
+		<import addon="script.module.pyqrcode" />
 		<import addon="script.module.openscrapers" />
 		<import addon="script.module.unidecode" />
 		<import addon="script.module.resolveurl" />

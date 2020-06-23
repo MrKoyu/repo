@@ -4,6 +4,9 @@
 [B][COLOR crimson]• [/COLOR][/B] [COLOR yellow][B]CURRENT ISSUES:[/B][/COLOR] 24/7 - Offline
 
 [COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[B][COLOR yellow]V2.0.3.0[/COLOR][/B]
+[B][COLOR orangered]• [/COLOR][/B] Fixed missing dependency
+[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.9[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added themecontrol with voice notification. (Can be disabled in add-on settings) Thanks to MuadDib and Marauder for the code
 [B][COLOR orangered]• [/COLOR][/B] Added Maverick to jen lists under JEN add-ons category. Welcome @Maverick
