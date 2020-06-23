@@ -30,6 +30,8 @@
 
 import sys,urllib,urlparse
 
+import xbmcgui
+
 params = dict(urlparse.parse_qsl(sys.argv[2].replace('?','')))
 
 action = params.get('action')
@@ -75,10 +77,14 @@ docu_watch = params.get('docuPlay')
 windowedtrailer = params.get('windowedtrailer')
 windowedtrailer = int(windowedtrailer) if windowedtrailer in ("0","1") else 0
 
-if action is None:
+if action == None:
     from resources.lib.indexers import navigator
     from resources.lib.modules import cache
+    from resources.lib.modules import control
     cache.cache_version_check()
+    if control.setting('startup.sync.trakt.status') == 'true':
+        from resources.lib.modules import trakt
+        trakt.syncTraktStatus()
     navigator.navigator().root()
 
 if action == 'boxsetsNavigator':
@@ -472,7 +478,11 @@ elif action == 'mcaudio':
 
 elif action == 'screensaver':
     from resources.lib.indexers import lists
-    lists.indexer().root_screensaver()                
+    lists.indexer().root_screensaver()
+
+elif action == 'food':
+    from resources.lib.indexers import lists
+    lists.indexer().root_food()                    
 
 elif action == '247':
     from resources.lib.indexers import lists
@@ -807,7 +817,7 @@ elif action == 'tvPlaycount':
 
 elif action == 'trailer':
     from resources.lib.modules import trailer
-    trailer.trailer().play(name, url, windowedtrailer)
+    trailer.Trailer().play(type, name, year, url, imdb, windowedtrailer)
 
 elif action == 'traktManager':
     from resources.lib.modules import trakt
@@ -820,7 +830,7 @@ elif action == 'authTrakt':
 elif action == 'urlResolver':
     try:
         import resolveurl
-    except Exception:
+    except:
         pass
     resolveurl.display_settings()
 
@@ -876,6 +886,10 @@ elif action == 'clearSources':
     from resources.lib.modules import sources
     sources.sources().clearSources()
 
+elif action == 'clearCacheProviders':
+    from resources.lib.modules import sources
+    sources.sources().clearCacheProviders()    
+
 elif action == 'random':
     rtype = params.get('rtype')
     if rtype == 'movie':
@@ -898,25 +912,41 @@ elif action == 'random':
     from random import randint
     import json
     try:
-        rand = randint(1,len(rlist))-1
-        for p in ['title','year','imdb','tvdb','season','episode','tvshowtitle','premiered','select']:
+        from resources.lib.modules import control
+        from resources.lib.dialogs import notification
+        rand = randint(1, len(rlist))-1
+        for p in ['title', 'year', 'imdb', 'tvdb', 'season', 'episode', 'tvshowtitle', 'premiered', 'select']:
             if rtype == "show" and p == "tvshowtitle":
-                try: r += '&'+p+'='+urllib.quote_plus(rlist[rand]['title'])
-                except: pass
+                try:
+                    r += '&'+p+'='+urllib.quote_plus(rlist[rand]['title'])
+                except:
+                    pass
             else:
-                try: r += '&'+p+'='+urllib.quote_plus(rlist[rand][p])
-                except: pass
-        try: r += '&meta='+urllib.quote_plus(json.dumps(rlist[rand]))
-        except: r += '&meta='+urllib.quote_plus("{}")
+                try:
+                    r += '&'+p+'='+urllib.quote_plus(rlist[rand][p])
+                except:
+                    pass
+        try:
+            r += '&meta='+urllib.quote_plus(json.dumps(rlist[rand]))
+        except:
+            r += '&meta='+urllib.quote_plus("{}")
         if rtype == "movie":
-            try: control.infoDialog(rlist[rand]['title'], control.lang(32536).encode('utf-8'), time=30000)
-            except: pass
+            try:
+                notification.infoDialog(title=rlist[rand]['title'], msg=control.lang(32536).encode('utf-8'), timer=10000, style='ERROR')
+            except:
+                pass
         elif rtype == "episode":
-            try: control.infoDialog(rlist[rand]['tvshowtitle']+" - Season "+rlist[rand]['season']+" - "+rlist[rand]['title'], control.lang(32536).encode('utf-8'), time=30000)
-            except: pass
+            try:
+                notification.infoDialog(
+                    title=rlist[rand]['tvshowtitle'] + " - Season " + rlist[rand]['season'] + " - " + rlist[rand]['title'],
+                    msg=control.lang(32536).encode('utf-8'),
+                    timer=10000, style='ERROR')
+            except:
+                pass
         control.execute('RunPlugin(%s)' % r)
     except:
-        control.infoDialog(control.lang(32537).encode('utf-8'), time=8000)
+        from resources.lib.dialogs import notification
+        notification.infoDialog(msg=control.lang(32537).encode('utf-8'), timer=8000)
 
 elif action == 'movieToLibrary':
     from resources.lib.modules import libtools
@@ -942,6 +972,18 @@ elif action == 'service':
     from resources.lib.modules import libtools
     libtools.libepisodes().service()
 
+elif action == 'syncTraktStatus':
+    from resources.lib.modules import trakt
+    trakt.syncTraktStatus()    
+
 elif action == 'ShowChangelog':
     from resources.lib.modules import changelog
-    changelog.get()    
+    changelog.get()
+
+elif action == 'pairTools':
+    from resources.lib.dialogs import pairing
+    pairing.Pair_Dialog()
+
+elif action == 'logViewer':
+    from resources.lib.dialogs import logviewer
+    logviewer.LogViewer(logfile='kodi.log')        

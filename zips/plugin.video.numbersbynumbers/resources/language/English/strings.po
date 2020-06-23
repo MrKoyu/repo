@@ -1,6 +1,6 @@
 # Addon Name: NuMbErS
 # Addon id: plugin.video.numbersbynumbers
-# Addon Provider: NuMbErS
+# Addon : NuMbErS
 # Translators:
 # Translators:
 # Translators:
@@ -40,11 +40,11 @@ msgid "[B][COLOR firebrick]• [/COLOR][/B][B][COLOR ghostwhite]TV Shows[/COLOR]
 msgstr ""
 
 msgctxt "#32003"
-msgid "[B][COLOR slateblue]• [/COLOR][/B][COLOR ghostwhite]My Movies[/COLOR]"
+msgid "[B][COLOR orangered]• [/COLOR][/B][COLOR ghostwhite]My Movies[/COLOR]"
 msgstr ""
 
 msgctxt "#32004"
-msgid "[B][COLOR goldenrod]• [/COLOR][/B][COLOR ghostwhite]My TV Shows[/COLOR]"
+msgid "[B][COLOR orangered]• [/COLOR][/B][COLOR ghostwhite]My TV Shows[/COLOR]"
 msgstr ""
 
 msgctxt "#32005"
@@ -139,64 +139,56 @@ msgctxt "#32027"
 msgid "[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]TV Calendar[/COLOR][B][COLOR firebrick] •[/COLOR][/B]"
 msgstr ""
 
-msgctxt "#32028"
-msgid "[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]People Search[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#32029"
-msgid "[B][COLOR dodgerblue]• [/COLOR][/B][B][COLOR ghostwhite]People (Movies)[/COLOR][/B]"
-msgstr ""
-
 msgctxt "#32030"
 msgid "[B][COLOR firebrick]• [/COLOR][/B][B][COLOR ghostwhite]People (TV)[/COLOR][/B]"
 msgstr ""
 
 msgctxt "#32031"
-msgid "[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Discover[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Discover[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32032"
-msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR ghostwhite]Collection[/COLOR][B][COLOR crimson] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Collection[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32033"
-msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR ghostwhite]Watchlist[/COLOR][B][COLOR crimson] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Watchlist[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32034"
-msgid "[B][COLOR limegreen]• [/COLOR][/B][COLOR ghostwhite]IMDb[/COLOR][B][COLOR limegreen] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]IMDb[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32035"
-msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR ghostwhite]Featured[/COLOR][B][COLOR crimson] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Featured[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32036"
-msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR ghostwhite]History[/COLOR][B][COLOR crimson] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]History[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32037"
-msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR ghostwhite]Progress[/COLOR][B][COLOR crimson] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Progress[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32038"
-msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR ghostwhite]Episodes[/COLOR][B][COLOR crimson] •[/COLOR][/B]"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Episodes[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32039"
-msgid "[B][COLOR slateblue]• [/COLOR][/B][COLOR ghostwhite]Movie Lists[/COLOR][B][COLOR slateblue] •[/COLOR][/B]"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR ghostwhite][B]Movie Lists[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32040"
-msgid "[B][COLOR slateblue]• [/COLOR][/B][COLOR ghostwhite]TV Show Lists[/COLOR][B][COLOR slateblue] •[/COLOR][/B]"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR ghostwhite][B]TV Show Lists[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32041"
-msgid "[B][COLOR slateblue]• [/COLOR][/B][COLOR ghostwhite]Episode Lists[/COLOR][B][COLOR slateblue] •[/COLOR][/B]"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR ghostwhite][B]Episode Lists[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32042"
-msgid "No Trakt account found."
+msgid "No Trakt account found.[CR]Authorize your Trakt in add-on settings."
 msgstr ""
 
 msgctxt "#32043"
@@ -328,7 +320,7 @@ msgid "[B]HELP[/B]"
 msgstr ""
 
 msgctxt "#32089"
-msgid "{0} duplicate links removed"
+msgid "{0} duplicate links removed...[CR]Happy streaming!"
 msgstr ""
 
 msgctxt "#32090"
@@ -516,7 +508,7 @@ msgid "Resume Playback"
 msgstr ""
 
 msgctxt "#32345"
-msgid "[COLORwhite][B]PROVIDER[/B][/COLOR]"
+msgid "[COLORwhite][B]PROVIDERS[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32346"
@@ -600,7 +592,7 @@ msgid "News and Updates"
 msgstr ""
 
 msgctxt "#32401"
-msgid "No stream available"
+msgid "No stream available[CR]Please try again later"
 msgstr ""
 
 msgctxt "#32402"
@@ -620,7 +612,7 @@ msgid "%s seconds"
 msgstr ""
 
 msgctxt "#32406"
-msgid "[B][COLOR ghostwhite]• [/COLOR][/B][COLOR deepskyblue]Remaining providers[/COLOR]: %s"
+msgid "[COLOR white]Remaining providers[/COLOR]: %s"
 msgstr ""
 
 msgctxt "#32407"
@@ -629,6 +621,10 @@ msgstr ""
 
 msgctxt "#32408"
 msgid "I am ON and ready to GO!"
+msgstr ""
+
+msgctxt "#32409"
+msgid "Trakt scrobbles"
 msgstr ""
 
 msgctxt "#32501"
@@ -712,7 +708,7 @@ msgid "Play Random"
 msgstr ""
 
 msgctxt "#32536"
-msgid "Playing"
+msgid "NuMb3r5 random choice[CR]Please wait..."
 msgstr ""
 
 msgctxt "#32537"
@@ -796,35 +792,35 @@ msgid "[B][COLOR ghostwhite]NuMb3r5[/COLOR][/B] : Library"
 msgstr ""
 
 msgctxt "#32557"
-msgid "[B]LIBRARY[/B] : Settings"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]Library settings[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32558"
-msgid "[B][COLOR ghostwhite]NuMb3r5[/COLOR][/B] : Update library..."
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]Update library...[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32559"
-msgid "[B][COLOR ghostwhite]NuMb3r5[/COLOR][/B] : Movie folder..."
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]Movie folder...[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32560"
-msgid "[B][COLOR ghostwhite]NuMb3r5[/COLOR][/B] : TV folder..."
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]TV folder...[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32561"
-msgid "[B][COLOR crimson]TRAKT[/COLOR][/B] : Import Collection..."
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Import Collection...[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32562"
-msgid "[B][COLOR crimson]TRAKT[/COLOR][/B] : Import Watchlist..."
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Import Watchlist...[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32563"
-msgid "[B][COLOR crimson]TRAKT[/COLOR][/B] : Import TV Collection..."
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Import TV Collection...[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32564"
-msgid "[B][COLOR crimson]TRAKT[/COLOR][/B] : Import TV Watchlist..."
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]Import TV Watchlist...[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32565"
@@ -924,7 +920,7 @@ msgid "Getting genre information from Trakt"
 msgstr ""
 
 msgctxt "#32600"
-msgid "NuMb3r5 Will Find Your Links"
+msgid "NuMb3r5 will find your links"
 msgstr ""
 
 msgctxt "#32601"
@@ -963,6 +959,18 @@ msgctxt "#32609"
 msgid "[B][COLOR lightslategrey]ResolveURL[/COLOR][/B] : Settings"
 msgstr ""
 
+msgctxt "#32610"
+msgid "Cache cleared"
+msgstr ""
+
+msgctxt "#32611"
+msgid "Search history cleared"
+msgstr ""
+
+msgctxt "#32612"
+msgid "Metadata cleared"
+msgstr ""
+
 msgctxt "#32613"
 msgid "[B][COLOR ghostwhite]NuMb3r5[/COLOR][/B] : Clear All Cache..."
 msgstr ""
@@ -989,6 +997,10 @@ msgstr ""
 
 msgctxt "#32619"
 msgid "Addon Log"
+msgstr ""
+
+msgctxt "#32620"
+msgid "I am ON and ready to GO![CR]This will slow down things until they are re-cached!"
 msgstr ""
 
 msgctxt "#32621"
@@ -1148,7 +1160,7 @@ msgid "[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Netflix[/COLOR][B][
 msgstr ""
 
 msgctxt "#32726"
-msgid "[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Randomly Play[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]"
+msgid "[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Random Play[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]"
 msgstr ""
 
 msgctxt "#32727"
@@ -1180,7 +1192,7 @@ msgid "[B][COLOR firebrick]• [/COLOR][/B][COLOR ghostwhite]Apple TV+[/COLOR][B
 msgstr ""
 
 msgctxt "#32734"
-msgid "[B][COLOR ffe80183]• [/COLOR][/B][COLOR ghostwhite][B]JEN[/B][/COLOR]"
+msgid "[B][COLOR ff5e35e5]• [/COLOR][/B][COLOR ghostwhite][B]JEN[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#32735"
@@ -1228,7 +1240,7 @@ msgid "[COLORpalegreen]Personal List URL[/COLOR]"
 msgstr ""
 
 msgctxt "#90009"
-msgid "[B][COLOR ffe80183]• [/COLOR][/B][COLOR white][B]My Add-on[/B][/COLOR]"
+msgid "[B][COLOR cyan]• [/COLOR][/B][COLOR white][B]My Add-on[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#90010"
@@ -1240,7 +1252,7 @@ msgid "[COLORpalegreen]TV Shows[/COLOR]"
 msgstr ""
 
 msgctxt "#90012"
-msgid "[B][COLOR palegreen]• [/COLOR][/B][COLOR ghostwhite][B]iPunheta[/B][/COLOR]"
+msgid "[B][COLOR ffe80183]• [/COLOR][/B][COLOR ghostwhite][B]iPunheta[/B][/COLOR]"
 msgstr ""
 
 msgctxt "#90013"
@@ -1253,4 +1265,108 @@ msgstr ""
 
 msgctxt "#90015"
 msgid "Thanks for obtaining your own API key"
+msgstr ""
+
+msgctxt "#90016"
+msgid "[B][COLOR palegreen]• [/COLOR][/B][COLOR ghostwhite][B]Recipes[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90017"
+msgid "[B][COLOR crimson]• [/COLOR][/B][COLOR white][B]On Deck[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90018"
+msgid "[B][COLOR orangered]• [/COLOR][/B][COLOR white][B]Movies[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90019"
+msgid "[B][COLOR orangered]• [/COLOR][/B][COLOR white][B]TV Shows[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90020"
+msgid "[B][COLOR orangered]• [/COLOR][/B][COLOR white][B]People[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90021"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]Movies[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90022"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]TV Shows[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90023"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]Seasons[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90024"
+msgid "[B][COLOR white]• [/COLOR][/B][COLOR white][B]Episodes[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#90025"
+msgid "[COLORpalegreen]TMDb[/COLOR]"
+msgstr ""
+
+msgctxt "#90026"
+msgid "[COLORpalegreen]TVDb[/COLOR]"
+msgstr ""
+
+msgctxt "#90027"
+msgid "[COLORcrimson]Trakt[/COLOR]"
+msgstr ""
+
+msgctxt "#90028"
+msgid "[COLORpalegreen]Utilise your own Trakt API key (optional):[/COLOR]"
+msgstr ""
+
+msgctxt "#90029"
+msgid "Client ID"
+msgstr ""
+
+msgctxt "#90030"
+msgid "Client Secret"
+msgstr ""
+
+msgctxt "#90031"
+msgid "Sync with Trakt watched status on add-on startup"
+msgstr ""
+
+msgctxt "#90032"
+msgid "Enable scrobbling"
+msgstr ""
+
+msgctxt "#90033"
+msgid "NOTE: Do Not enable this if you scrobble through the Trakt add-on.[CR]Also note that only scrobble on Stop currently works."
+msgstr ""
+
+msgctxt "#90034"
+msgid "Show notification on scrobble"
+msgstr ""
+
+msgctxt "#90035"
+msgid "[COLORpalegreen]Auto Trakt Collections Syncing[/COLOR]"
+msgstr ""
+
+msgctxt "#90036"
+msgid "Sync on Kodi Start"
+msgstr ""
+
+msgctxt "#90037"
+msgid "Schedule Updates Every _ Hour/s"
+msgstr ""
+
+msgctxt "#90038"
+msgid "0 Value Disables Scheduling"
+msgstr ""
+
+msgctxt "#90039"
+msgid "[COLORpalegreen]IMDb[/COLOR]"
+msgstr ""
+
+msgctxt "#90040"
+msgid "[COLORorangered]||||||||||||||||||||||||||[/COLOR]"
+msgstr ""
+
+msgctxt "#90041"
+msgid "[COLORwhite]Please allow source list to load[/COLOR]"
 msgstr ""

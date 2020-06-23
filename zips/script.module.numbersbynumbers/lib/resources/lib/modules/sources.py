@@ -32,12 +32,13 @@ import datetime
 import json
 import random
 import re
+import openscrapers
 import sys
 import time
 import urllib
 import urlparse
 
-
+from resources.lib.dialogs import notification
 from resources.lib.modules import (cleantitle, client, control, debrid,
                                    log_utils, source_utils, trakt, tvmaze,
                                    workers)
@@ -359,7 +360,7 @@ class sources:
 
         sourceDict = self.sourceDict
 
-        progressDialog.update(0, control.lang(32600).encode('utf-8'))
+        progressDialog.update(0, notification.infoDialog(msg=control.lang(32600).encode('utf-8'), style='ERROR'))
 
         content = 'movie' if tvshowtitle is None else 'episode'
         if content == 'movie':
@@ -935,7 +936,7 @@ class sources:
         except Exception:
             pass
 
-    def clearSources(self):
+    def clearCacheProviders(self):
         try:
             control.idle()
 
@@ -951,7 +952,7 @@ class sources:
             dbcur.execute("VACUUM")
             dbcon.commit()
 
-            control.infoDialog(control.lang(32408).encode('utf-8'), sound=True, icon='INFO')
+            notification.infoDialog(msg=control.lang(32408).encode('utf-8'))
         except Exception:
             pass
 
@@ -1019,14 +1020,14 @@ class sources:
                 stotal = len(self.sources)
                 self.sources = list(self.uniqueSourcesGen(self.sources))
                 dupes = int(stotal - len(self.sources))
-                control.infoDialog(control.lang(32089).encode('utf-8').format(dupes), icon='INFO')
+                notification.infoDialog(msg=control.lang(32089).encode('utf-8').format(dupes))
             else:
                 self.sources
         except:
             import traceback
             failure = traceback.format_exc()
             log_utils.log('DUP - Exception: ' + str(failure))
-            control.infoDialog('Dupes filter failed', icon='INFO')
+            notification.infoDialog(msg='Dupes filter failed', style='ERROR')
             self.sources
         '''END'''
 
@@ -1436,7 +1437,7 @@ class sources:
         return u
 
     def errorForSources(self):
-        control.infoDialog(control.lang(32401).encode('utf-8'), sound=False, icon='INFO')
+        notification.infoDialog(msg=control.lang(32401).encode('utf-8'), style='ERROR')
 
     def getLanguage(self):
         langDict = {
@@ -1504,7 +1505,8 @@ class sources:
 
         self.metaProperty = 'plugin.video.numbersbynumbers.container.meta'
 
-        from resources.lib.sources import sources
+        #from resources.lib.sources import sources
+        from openscrapers import sources
 
         self.sourceDict = sources()
 

@@ -30,6 +30,8 @@ import xbmcvfs
 import os
 import inspect
 
+from resources.lib.dialogs import ok
+
 
 def download(name, image, url):
 

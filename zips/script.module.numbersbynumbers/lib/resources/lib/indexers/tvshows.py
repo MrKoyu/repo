@@ -256,7 +256,7 @@ class tvshows:
             {
                 'name': cleangenre.lang(i[0], self.lang),
                 'url': self.genre_link % i[1] if i[2] else self.keyword_link % i[1],
-                'image': 'boxsets1.png',
+                'image': 'boxsets3.png',
                 'action': 'tvshows'
             })
 
@@ -391,7 +391,7 @@ class tvshows:
             {
                 'name': cleangenre.lang(i[0], self.lang),
                 'url': self.genre_link % i[1] if i[2] else self.keyword_link % i[1],
-                'image': 'genres2.png',
+                'image': 'tv_genres.png',
                 'action': 'tvshows'
             })
 
@@ -552,7 +552,7 @@ class tvshows:
         ]
 
         for i in languages: self.list.append(
-            {'name': str(i[0]), 'url': self.language_link % i[1], 'image': 'international2.png', 'action': 'tvshows'})
+            {'name': str(i[0]), 'url': self.language_link % i[1], 'image': 'tv_international.png', 'action': 'tvshows'})
         self.addDirectory(self.list)
         return self.list
 

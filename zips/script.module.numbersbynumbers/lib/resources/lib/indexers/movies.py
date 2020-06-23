@@ -253,47 +253,63 @@ class movies:
                 url = getattr(self, url + '_link')
             except:
                 pass
-														  
-						
 
             try:
                 u = urlparse.urlparse(url).netloc.lower()
             except:
                 pass
 
-            if u in self.trakt_link and '/users/' in url:
+            if self.trakt_link in url and url == self.onDeck_link:
+                self.blist = cache.get(
+                    self.trakt_list, 720, url, self.trakt_user)
+                self.list = []
+                self.list = cache.get(self.trakt_list, 0, url, self.trakt_user)
+                self.list = self.list[::-1]
+
+            elif u in self.trakt_link and '/users/' in url:
                 try:
-                    if url == self.trakthistory_link: raise Exception()
-                    if not '/users/me/' in url: raise Exception()
-                    if trakt.getActivity() > cache.timeout(self.trakt_list, url, self.trakt_user): raise Exception()
-                    self.list = cache.get(self.trakt_list, 720, url, self.trakt_user)
+                    if url == self.trakthistory_link:
+                        raise Exception()
+                    if not '/users/me/' in url:
+                        raise Exception()
+                    if trakt.getActivity() > cache.timeout(self.trakt_list, url, self.trakt_user):
+                        raise Exception()
+                    self.list = cache.get(
+                        self.trakt_list, 720, url, self.trakt_user)
                 except:
-                    self.list = cache.get(self.trakt_list, 0, url, self.trakt_user)
+                    self.list = cache.get(
+                        self.trakt_list, 0, url, self.trakt_user)
 
                 if '/users/me/' in url and '/collection/' in url:
-                    self.list = sorted(self.list, key=lambda k: utils.title_key(k['title']))
+                    self.list = sorted(
+                        self.list, key=lambda k: utils.title_key(k['title']))
 
-                if idx == True: self.worker()
+                if idx == True:
+                    self.worker()
 
             elif u in self.trakt_link and self.search_link in url:
                 self.list = cache.get(self.trakt_list, 1, url, self.trakt_user)
-                if idx == True: self.worker(level=0)
+                if idx == True:
+                    self.worker(level=0)
 
             elif u in self.trakt_link:
-                self.list = cache.get(self.trakt_list, 24, url, self.trakt_user)
-                if idx == True: self.worker()
-
+                self.list = cache.get(
+                    self.trakt_list, 24, url, self.trakt_user)
+                if idx == True:
+                    self.worker()
 
             elif u in self.imdb_link and ('/user/' in url or '/list/' in url):
                 self.list = cache.get(self.imdb_list, 0, url)
-                if idx == True: self.worker()
+                if idx == True:
+                    self.worker()
 
             elif u in self.imdb_link:
                 self.list = cache.get(self.imdb_list, 24, url)
-                if idx == True: self.worker()
+                if idx == True:
+                    self.worker()
 
-
-            if idx == True and create_directory == True: self.movieDirectory(self.list)
+            if idx == True and create_directory == True:
+                self.movieDirectory(self.list)
             return self.list
         except:
             pass
@@ -390,35 +406,35 @@ class movies:
 
     def genres(self):
         genres = [
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Action[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'action', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Adventure[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'adventure', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Animation[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'animation', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Anime[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'anime', False),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Biography[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'biography', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Comedy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'comedy', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Crime[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'crime', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Documentary[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'documentary', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Drama[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'drama', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Family[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'family', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Fantasy[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'fantasy', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]History[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'history', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Horror[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'horror', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Music[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'music', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Musical[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'musical', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Mystery[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'mystery', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Romance[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'romance', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Science Fiction[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'sci_fi', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Sport[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'sport', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Thriller[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'thriller', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]War[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'war', True),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Western[/COLOR][B][COLOR blue] •[/COLOR][/B]', 'western', True)
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Action[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'action', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Adventure[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'adventure', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Animation[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'animation', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Anime[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'anime', False),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Biography[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'biography', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Comedy[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'comedy', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Crime[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'crime', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Documentary[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'documentary', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Drama[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'drama', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Family[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'family', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Fantasy[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'fantasy', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]History[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'history', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Horror[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'horror', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Music[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'music', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Musical[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'musical', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Mystery[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'mystery', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Romance[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'romance', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Science Fiction[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'sci_fi', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Sport[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'sport', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Thriller[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'thriller', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]War[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'war', True),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Western[/COLOR][B][COLOR dodgerblue] •[/COLOR][/B]', 'western', True)
         ]
 
         for i in genres: self.list.append(
             {
                 'name': cleangenre.lang(i[0], self.lang),
                 'url': self.genre_link % i[1] if i[2] else self.keyword_link % i[1],
-                'image': 'genres.png',
+                'image': 'movies_genres.png',
                 'action': 'movies'
             })
 
@@ -428,48 +444,48 @@ class movies:
 
     def languages(self):
         languages = [
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Arabic[/COLOR]', 'ar'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Bosnian[/COLOR]', 'bs'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Bulgarian[/COLOR]', 'bg'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Chinese[/COLOR]', 'zh'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Croatian[/COLOR]', 'hr'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Dutch[/COLOR]', 'nl'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]English[/COLOR]', 'en'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Finnish[/COLOR]', 'fi'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]French[/COLOR]', 'fr'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]German[/COLOR]', 'de'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Greek[/COLOR]', 'el'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Hebrew[/COLOR]', 'he'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Hindi[/COLOR]', 'hi'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Hungarian[/COLOR]', 'hu'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Icelandic[/COLOR]', 'is'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Italian[/COLOR]', 'it'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Japanese[/COLOR]', 'ja'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Korean[/COLOR]', 'ko'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Macedonian[/COLOR]', 'mk'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Norwegian[/COLOR]', 'no'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Persian[/COLOR]', 'fa'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Polish[/COLOR]', 'pl'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Portuguese[/COLOR]', 'pt'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Punjabi[/COLOR]', 'pa'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Romanian[/COLOR]', 'ro'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Russian[/COLOR]', 'ru'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Serbian[/COLOR]', 'sr'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Slovenian[/COLOR]', 'sl'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Spanish[/COLOR]', 'es'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Swedish[/COLOR]', 'sv'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Turkish[/COLOR]', 'tr'),
-            ('[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]Ukrainian[/COLOR]', 'uk')
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Arabic[/COLOR]', 'ar'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Bosnian[/COLOR]', 'bs'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Bulgarian[/COLOR]', 'bg'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Chinese[/COLOR]', 'zh'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Croatian[/COLOR]', 'hr'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Dutch[/COLOR]', 'nl'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]English[/COLOR]', 'en'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Finnish[/COLOR]', 'fi'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]French[/COLOR]', 'fr'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]German[/COLOR]', 'de'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Greek[/COLOR]', 'el'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Hebrew[/COLOR]', 'he'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Hindi[/COLOR]', 'hi'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Hungarian[/COLOR]', 'hu'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Icelandic[/COLOR]', 'is'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Italian[/COLOR]', 'it'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Japanese[/COLOR]', 'ja'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Korean[/COLOR]', 'ko'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Macedonian[/COLOR]', 'mk'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Norwegian[/COLOR]', 'no'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Persian[/COLOR]', 'fa'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Polish[/COLOR]', 'pl'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Portuguese[/COLOR]', 'pt'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Punjabi[/COLOR]', 'pa'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Romanian[/COLOR]', 'ro'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Russian[/COLOR]', 'ru'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Serbian[/COLOR]', 'sr'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Slovenian[/COLOR]', 'sl'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Spanish[/COLOR]', 'es'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Swedish[/COLOR]', 'sv'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Turkish[/COLOR]', 'tr'),
+            ('[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]Ukrainian[/COLOR]', 'uk')
         ]
 
         for i in languages: self.list.append(
-            {'name': str(i[0]), 'url': self.language_link % i[1], 'image': 'languages.png', 'action': 'movies'})
+            {'name': str(i[0]), 'url': self.language_link % i[1], 'image': 'movies_international.png', 'action': 'movies'})
         self.addDirectory(self.list)
         return self.list    
 
 
     def certifications(self):
-        certificates = ['[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]G[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]PG[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]PG-13[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]R[/COLOR]', '[B][COLOR blue]• [/COLOR][/B][COLOR ghostwhite]NC-17[/COLOR]']
+        certificates = ['[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]G[/COLOR]', '[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]PG[/COLOR]', '[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]PG-13[/COLOR]', '[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]R[/COLOR]', '[B][COLOR dodgerblue]• [/COLOR][/B][COLOR ghostwhite]NC-17[/COLOR]']
 
         for i in certificates: self.list.append(
             {'name': str(i), 'url': self.certification_link % str(i).replace('-', '_').lower(),
@@ -482,7 +498,7 @@ class movies:
         year = (self.datetime.strftime('%Y'))
 
         for i in range(int(year) - 0, 1900, -1): self.list.append(
-            {'name': str(i), 'url': self.year_link % (str(i), str(i)), 'image': 'years.png', 'action': 'movies'})
+            {'name': str(i), 'url': self.year_link % (str(i), str(i)), 'image': 'movies_years.png', 'action': 'movies'})
         self.addDirectory(self.list)
         return self.list
 

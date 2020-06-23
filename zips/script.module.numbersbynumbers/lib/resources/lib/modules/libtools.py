@@ -43,6 +43,8 @@ import urllib
 import urlparse
 import xbmc
 
+
+from resources.lib.dialogs import notification
 from resources.lib.modules import control
 from resources.lib.modules import cleantitle
 

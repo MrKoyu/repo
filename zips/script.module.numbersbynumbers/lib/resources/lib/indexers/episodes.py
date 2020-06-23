@@ -727,6 +727,7 @@ class episodes:
         self.progress_link = 'http://api.trakt.tv/users/me/watched/shows'
         self.hiddenprogress_link = 'http://api.trakt.tv/users/hidden/progress_watched?limit=1000&type=show'
         self.calendar_link = 'http://api.tvmaze.com/schedule?date=%s'
+        self.onDeck_link = 'https://api.trakt.tv/sync/playback/episodes?extended=full&limit=10'
 
         self.traktlists_link = 'http://api.trakt.tv/users/me/lists'
         self.traktlikedlists_link = 'http://api.trakt.tv/users/likes/lists?limit=1000000'
@@ -781,35 +782,47 @@ class episodes:
 
     def calendar(self, url):
         try:
-            try:
-                url = getattr(self, url + '_link')
-            except :
-                pass
 
-            if self.trakt_link in url and url == self.progress_link:
+            try: url = getattr(self, url + '_link')
+            except: pass
+
+            if self.trakt_link in url and url == self.onDeck_link:
+                self.blist = cache.get(self.trakt_episodes_list, 720, url, self.trakt_user, self.lang)
+                self.list = []
+                self.list = cache.get(self.trakt_episodes_list, 0, url, self.trakt_user, self.lang)
+                self.list = self.list[::-1]
+
+            elif self.trakt_link in url and url == self.progress_link:
                 self.blist = cache.get(self.trakt_progress_list, 720, url, self.trakt_user, self.lang)
                 self.list = []
                 self.list = cache.get(self.trakt_progress_list, 0, url, self.trakt_user, self.lang)
+
             elif self.trakt_link in url and url == self.mycalendar_link:
                 self.blist = cache.get(self.trakt_episodes_list, 720, url, self.trakt_user, self.lang)
                 self.list = []
                 self.list = cache.get(self.trakt_episodes_list, 0, url, self.trakt_user, self.lang)
+
             elif self.trakt_link in url and '/users/' in url:
                 self.list = cache.get(self.trakt_list, 0, url, self.trakt_user)
                 self.list = self.list[::-1]
+
             elif self.trakt_link in url:
                 self.list = cache.get(self.trakt_list, 1, url, self.trakt_user)
+
+
             elif self.tvmaze_link in url and url == self.added_link:
                 urls = [i['url'] for i in self.calendars(idx=False)][:5]
                 self.list = []
                 for url in urls:
                     self.list += cache.get(self.tvmaze_list, 720, url, True)
+
             elif self.tvmaze_link in url:
                 self.list = cache.get(self.tvmaze_list, 1, url, False)
 
+
             self.episodeDirectory(self.list)
             return self.list
-        except :
+        except:
             pass
 
     def widget(self):
@@ -855,7 +868,7 @@ class episodes:
 
                 url = self.calendar_link % (self.datetime - datetime.timedelta(days=i)).strftime('%Y-%m-%d')
 
-                self.list.append({'name': name, 'url': url, 'image': 'calendar.png', 'action': 'calendar'})
+                self.list.append({'name': name, 'url': url, 'image': 'tv_calendar.png', 'action': 'calendar'})
             except :
                 pass
         if idx is True:

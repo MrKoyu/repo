@@ -267,9 +267,12 @@ def _is_cache_valid(cached_time, cache_timeout):
 
 
 def cache_version_check():
+    from resources.lib.dialogs import notification
     if _find_cache_version():
-        cache_clear();cache_clear_meta();cache_clear_providers()
-        control.infoDialog(control.lang(32057).encode('utf-8'), sound=True, icon='INFO')
+        cache_clear()
+        cache_clear_meta()
+        cache_clear_providers()
+        notification.infoDialog(msg=control.lang(32057).encode('utf-8'), style='INFO')
 
 
 def _find_cache_version():

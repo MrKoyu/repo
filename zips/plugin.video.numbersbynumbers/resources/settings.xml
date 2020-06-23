@@ -3,12 +3,12 @@
     <category label="32310">
         <setting id="appearance.alt" type="action" label="32311" default="-" option="close" action="RunPlugin(plugin://plugin.video.numbersbynumbers/?action=artwork)" visible="!System.HasAddon(script.numbersbynumbers.artwork)" />
         <setting id="appearance.1" type="select" label="32311" values="numbers" default="numbers" visible="System.HasAddon(script.numbersbynumbers.artwork)" />
-        <setting id="scrapers.timeout.1" type="slider" label="32312" default="35" range="10,60" option="int" />
-
+        <setting id="scrapers.timeout.1" type="slider" label="32312" default="30" range="10,60" option="int" />
         <setting id="indicators.alt" type="enum" label="32313" lvalues="32314|32315" default="1" visible="!eq(-1,)" />
         <setting id="indicators" type="enum" label="32313" lvalues="32314" default="0" visible="eq(-2,)" />
         <setting id="api.language" type="select" label="32316" values="AUTO|Bulgarian|Chinese|Croatian|Czech|Danish|Dutch|English|Finnish|French|German|Greek|Hebrew|Hungarian|Italian|Japanese|Korean|Norwegian|Polish|Portuguese|Romanian|Russian|Serbian|Slovak|Slovenian|Spanish|Swedish|Thai|Turkish|Ukrainian" default="AUTO" />
         <setting id="providers.lang" type="select" label="32360" values="English" default="English" visible="false" />
+        <setting id="notifyvoice" type="bool" label="Voice Notifications" default="true" />
         <setting id="flatten.tvshows" type="bool" label="32317" default="false" />
         <setting id="show_season0" type="bool" label="32630" default="false"/>
         <setting id="fanart" type="bool" label="32318" default="true" />
@@ -42,7 +42,7 @@
         <setting id="navi.screensaver" type="bool" label="32729" default="true" />
         <setting id="navi.knowledge" type="bool" label="32730" default="true" />
         <setting id="navi.ufc" type="bool" label="32731" default="true" />
-        <setting id="navi.TwentyFourSeven" type="bool" label="32734" default="true" />
+        <setting id="navi.food" type="bool" label="90016" default="true" />
         <setting id="navi.jens" type="bool" label="32734" default="true" />
         <setting id="navi.system" type="bool" label="32008" default="true" />
         <setting type="lsep" label="90010" />
@@ -181,19 +181,32 @@
     <category label="32346">
         <setting type="lsep" label="32583" />
         <setting id="" type="bool" label="90015" default="true" />
-        <setting type="lsep" label="[COLORpalegreen]TMDb[/COLOR]" />
+        <setting type="lsep" label="90025" />
         <setting id="tm.user" type="text" option="hidden" label="32309" default="459d337fdca80b499d2f010604ced709" />
         <setting type="sep" />
-        <setting type="lsep" label="[COLORpalegreen]TVDb[/COLOR]" />
+        <setting type="lsep" label="90026" />
         <setting id="tvdb.user" type="text" label="API" default="" />
         <setting type="sep" />
-        <setting type="lsep" label="[COLORcrimson]Trakt[/COLOR]" />
-        <setting id="trakt.auth" type="action" label="32306" option="close" action="RunPlugin(plugin://plugin.video.numbersbynumbers/?action=authTrakt)" />
-        <setting id="trakt.user" type="text" label="Account" default="" visible="true" enable="false" />
+        <setting type="lsep" label="90027" />
+        <setting id="trakt.user" type="action" label="32306" option="close" action="RunPlugin(plugin://plugin.video.numbersbynumbers/?action=authTrakt)" />
         <setting id="trakt.token" type="text" visible="false" label="" default="" />
         <setting id="trakt.refresh" type="text" visible="false" label="" default="" />
+        <setting type="lsep" label="90028" />
+        <setting id="trakt.client_id" type="text" label="90029" default="" />
+        <setting id="trakt.client_secret" type="text" label="90030" default="" />
         <setting type="sep" />
-        <setting type="lsep" label="[COLORpalegreen]IMDb[/COLOR]" />
+        <setting id="startup.sync.trakt.status" type="bool" label="90031" default="false" enable="!eq(-6,)"/>
+        <setting id="trakt.scrobble" type="bool" label="90032" default="false" enable="!eq(-7,)"/>
+        <setting type="text" label="90033" enable="false" />
+        <setting id="trakt.scrobble.notify" type="bool" label="90034" default="false" enable="!eq(-9,)+eq(-2,true)"/>
+        <setting id="resume.source" type="enum" label="Resume Point source:" lvalues="32314|32409" default="0" enable="!eq(-10,)" />
+        <setting type="sep" />
+        <setting type="lsep" label="90035" />
+        <setting id="autoTraktOnStart" type="bool" label="90036" default="false" enable="!eq(-12,)"/>
+        <setting id="schedTraktTime" type="slider" label="90037" default="0" range="0,24" option="int" enable="!eq(-13,)" />
+        <setting type="text" label="90038" enable="false" />
+        <setting type="sep" />
+        <setting type="lsep" label="90039" />
         <setting id="imdb.user" type="text" label="32303" default="" />
         <setting type="sep" />
     </category>

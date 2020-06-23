@@ -115,6 +115,8 @@ deleteDir = xbmcvfs.rmdir
 
 listDir = xbmcvfs.listdir
 
+profile = addonInfo('profile').decode('utf-8')
+
 transPath = xbmc.translatePath
 
 skinPath = xbmc.translatePath('special://skin/')
@@ -139,9 +141,15 @@ libcacheFile = os.path.join(dataPath, 'library.db')
 
 cacheFile = os.path.join(dataPath, 'cache.db')
 
+dbFile = os.path.join(dataPath, 'debridcache.db')
 key = "RgUkXp2s5v8x/A?D(G+KbPeShVmYq3t6"
 
 iv = "p2s5v8y/B?E(H+Mb"
+
+def autoTraktSubscription(tvshowtitle, year, imdb, tvdb):
+    from . import libtools
+    libtools.libtvshows().add(tvshowtitle, year, imdb, tvdb)
+
 
 def addonIcon():
     theme = appearance() ; art = artPath()
@@ -318,6 +326,7 @@ def getCurrentViewId():
 
 def getKodiVersion():
     return xbmc.getInfoLabel("System.BuildVersion").split(".")[0]
+    
 def refresh():
     return execute('Container.Refresh')
 
@@ -337,3 +346,25 @@ def idle():
 
 def queueItem():
     return execute('Action(Queue)')
+
+
+def metadataClean(metadata):  # Filter out non-existing/custom keys. Otherise there are tons of errors in Kodi 18 log.
+    if metadata == None:
+        return metadata
+    allowed = [
+        'genre', 'country', 'year', 'episode', 'season', 'sortepisode', 'sortseason', 'episodeguide', 'showlink',
+        'top250', 'setid', 'tracknumber', 'rating', 'userrating', 'watched', 'playcount', 'overlay', 'cast',
+        'castandrole', 'director', 'mpaa', 'plot', 'plotoutline', 'title', 'originaltitle', 'sorttitle', 'duration',
+        'studio', 'tagline', 'writer', 'tvshowtitle', 'premiered', 'status', 'set', 'setoverview', 'tag', 'imdbnumber',
+        'code', 'aired', 'credits', 'lastplayed', 'album', 'artist', 'votes', 'path', 'trailer', 'dateadded',
+        'mediatype', 'dbid']
+    return {k: v for k, v in metadata.iteritems() if k in allowed}
+
+
+class Remap(dict):
+    def __init__(self, **kwargs):
+        super(Remap, self).__init__(**kwargs)
+        self.__dict__ = self
+
+
+xDirSort = Remap(NoSort=xbmcplugin.SORT_METHOD_NONE, Label=xbmcplugin.SORT_METHOD_LABEL, Title=xbmcplugin.SORT_METHOD_TITLE)        

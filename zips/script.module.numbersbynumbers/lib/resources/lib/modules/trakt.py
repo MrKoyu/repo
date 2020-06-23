@@ -35,17 +35,19 @@ import time
 import urllib
 import urlparse
 
-from resources.lib.modules import cache
-from resources.lib.modules import cleandate
-from resources.lib.modules import client
-from resources.lib.modules import control
-from resources.lib.modules import log_utils
-from resources.lib.modules import utils
+from resources.lib.dialogs import notification
+from resources.lib.modules import (cache, cleandate, client, control,
+                                   log_utils, utils)
 
-BASE_URL = 'http://api.trakt.tv'
-V2_API_KEY = '988f3835e5410b3f5e5e90b922a8a0016ef21ec65a2fc63f68e44a6b03041fe7'
-CLIENT_SECRET = '556510aeb941dbf23a2eaaa3aae089f928f0112b2a86d328190c280e3dcfd419'
+BASE_URL = 'https://api.trakt.tv'
+V2_API_KEY = control.setting('trakt.client_id')
+CLIENT_SECRET = control.setting('trakt.client_secret')
 REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
+
+if V2_API_KEY == "" or CLIENT_SECRET == "":
+    V2_API_KEY = "988f3835e5410b3f5e5e90b922a8a0016ef21ec65a2fc63f68e44a6b03041fe7"
+    CLIENT_SECRET = "556510aeb941dbf23a2eaaa3aae089f928f0112b2a86d328190c280e3dcfd419"
+
 
 def __getTrakt(url, post=None):
     try:
@@ -64,6 +66,7 @@ def __getTrakt(url, post=None):
 
         if resp_code in ['500', '502', '503', '504', '520', '521', '522', '524']:
             log_utils.log('Temporary Trakt Error: %s' % resp_code, log_utils.LOGWARNING)
+            notification.infoDialog(title='Temp Error', msg='Trakt Error: ' + str(resp_code), style='WARNING')
             return
         elif resp_code in ['404']:
             log_utils.log('Object Not Found : %s' % resp_code, log_utils.LOGWARNING)
@@ -76,13 +79,13 @@ def __getTrakt(url, post=None):
             return result, resp_header
 
         oauth = urlparse.urljoin(BASE_URL, '/oauth/token')
-        opost = {'client_id': V2_API_KEY, 'client_secret': CLIENT_SECRET, 'redirect_uri': REDIRECT_URI, 'grant_type': 'refresh_token', 'refresh_token': control.setting('trakt.refresh')}
+        opost = {'client_id': V2_API_KEY, 'client_secret': CLIENT_SECRET, 'redirect_uri': REDIRECT_URI,
+                 'grant_type': 'refresh_token', 'refresh_token': control.setting('trakt.refresh')}
 
         result = client.request(oauth, post=json.dumps(opost), headers=headers)
         result = utils.json_loads_as_str(result)
 
         token, refresh = result['access_token'], result['refresh_token']
-
         control.setSetting(id='trakt.token', value=token)
         control.setSetting(id='trakt.refresh', value=refresh)
 
@@ -94,6 +97,7 @@ def __getTrakt(url, post=None):
         log_utils.log('Unknown Trakt Error: %s' % e, log_utils.LOGWARNING)
         pass
 
+
 def getTraktAsJson(url, post=None):
     try:
         r, res_headers = __getTrakt(url, post)
@@ -104,11 +108,16 @@ def getTraktAsJson(url, post=None):
     except:
         pass
 
+
 def authTrakt():
     try:
         if getTraktCredentialsInfo() == True:
-            if control.yesnoDialog(control.lang(32511).encode('utf-8'), control.lang(32512).encode('utf-8'), '', 'Trakt'):
+            if control.yesnoDialog(
+                    control.lang(32511).encode('utf-8'),
+                    control.lang(32512).encode('utf-8'),
+                    '', 'Trakt'):
                 control.setSetting(id='trakt.user', value='')
+                control.setSetting(id='trakt.authed', value='')
                 control.setSetting(id='trakt.token', value='')
                 control.setSetting(id='trakt.refresh', value='')
             raise Exception()
@@ -117,77 +126,108 @@ def authTrakt():
         verification_url = (control.lang(32513) % result['verification_url']).encode('utf-8')
         user_code = (control.lang(32514) % result['user_code']).encode('utf-8')
         expires_in = int(result['expires_in'])
+        expires_in = int(str(expires_in)[:2]) * 2
         device_code = result['device_code']
         interval = result['interval']
 
         progressDialog = control.progressDialog
         progressDialog.create('Trakt', verification_url, user_code)
-
+        r = []
         for i in range(0, expires_in):
             try:
-                if progressDialog.iscanceled(): break
+                percent = int(100 * float(i) / int(expires_in))
+                progressDialog.update(max(1, percent))
+                if progressDialog.iscanceled():
+                    break
                 time.sleep(1)
-                if not float(i) % interval == 0: raise Exception()
-                r = getTraktAsJson('/oauth/device/token', {'client_id': V2_API_KEY, 'client_secret': CLIENT_SECRET, 'code': device_code})
-                if 'access_token' in r: break
+                if not float(i) % interval == 0:
+                    raise Exception()
+                r = getTraktAsJson(
+                    '/oauth/device/token',
+                    {'client_id': V2_API_KEY, 'client_secret': CLIENT_SECRET, 'code': device_code})
+                if 'access_token' in r:
+                    break
             except:
                 pass
 
-        try: progressDialog.close()
-        except: pass
+        try:
+            progressDialog.close()
+        except:
+            pass
 
         token, refresh = r['access_token'], r['refresh_token']
 
-        headers = {'Content-Type': 'application/json', 'trakt-api-key': V2_API_KEY, 'trakt-api-version': 2, 'Authorization': 'Bearer %s' % token}
-
+        headers = {'Content-Type': 'application/json', 'trakt-api-key': V2_API_KEY,
+                   'trakt-api-version': 2, 'Authorization': 'Bearer %s' % token}
 
         result = client.request(urlparse.urljoin(BASE_URL, '/users/me'), headers=headers)
         result = utils.json_loads_as_str(result)
 
         user = result['username']
+        authed = '' if user == '' else str('yes')
 
+        print('info - ' + token)
         control.setSetting(id='trakt.user', value=user)
+        control.setSetting(id='trakt.authed', value=authed)
         control.setSetting(id='trakt.token', value=token)
         control.setSetting(id='trakt.refresh', value=refresh)
         raise Exception()
     except:
-        control.openSettings('3.1')
+        control.openSettings('2.1')
 
 
 def getTraktCredentialsInfo():
     user = control.setting('trakt.user').strip()
     token = control.setting('trakt.token')
     refresh = control.setting('trakt.refresh')
-    if (user == '' or token == '' or refresh == ''): return False
+    if (user == '' or token == '' or refresh == ''):
+        return False
     return True
 
 
 def getTraktIndicatorsInfo():
-    indicators = control.setting('indicators') if getTraktCredentialsInfo() == False else control.setting('indicators.alt')
+    indicators = control.setting('indicators') if getTraktCredentialsInfo(
+    ) == False else control.setting('indicators.alt')
     indicators = True if indicators == '1' else False
     return indicators
 
 
 def getTraktAddonMovieInfo():
-    try: scrobble = control.addon('script.trakt').getSetting('scrobble_movie')
-    except: scrobble = ''
-    try: ExcludeHTTP = control.addon('script.trakt').getSetting('ExcludeHTTP')
-    except: ExcludeHTTP = ''
-    try: authorization = control.addon('script.trakt').getSetting('authorization')
-    except: authorization = ''
-    if scrobble == 'true' and ExcludeHTTP == 'false' and not authorization == '': return True
-    else: return False
+    try:
+        scrobble = control.addon('script.trakt').getSetting('scrobble_movie')
+    except:
+        scrobble = ''
+    try:
+        ExcludeHTTP = control.addon('script.trakt').getSetting('ExcludeHTTP')
+    except:
+        ExcludeHTTP = ''
+    try:
+        authorization = control.addon('script.trakt').getSetting('authorization')
+    except:
+        authorization = ''
+    if scrobble == 'true' and ExcludeHTTP == 'false' and not authorization == '':
+        return True
+    else:
+        return False
 
 
 def getTraktAddonEpisodeInfo():
-    try: scrobble = control.addon('script.trakt').getSetting('scrobble_episode')
-    except: scrobble = ''
-    try: ExcludeHTTP = control.addon('script.trakt').getSetting('ExcludeHTTP')
-    except: ExcludeHTTP = ''
-    try: authorization = control.addon('script.trakt').getSetting('authorization')
-    except: authorization = ''
-    if scrobble == 'true' and ExcludeHTTP == 'false' and not authorization == '': return True
-    else: return False
+    try:
+        scrobble = control.addon('script.trakt').getSetting('scrobble_episode')
+    except:
+        scrobble = ''
+    try:
+        ExcludeHTTP = control.addon('script.trakt').getSetting('ExcludeHTTP')
+    except:
+        ExcludeHTTP = ''
+    try:
+        authorization = control.addon('script.trakt').getSetting('authorization')
+    except:
+        authorization = ''
+    if scrobble == 'true' and ExcludeHTTP == 'false' and not authorization == '':
+        return True
+    else:
+        return False
 
 
 def manager(name, imdb, tvdb, content):
@@ -206,7 +246,8 @@ def manager(name, imdb, tvdb, content):
         for i in range(0, len(lists), 2):
             lists[i] = ((control.lang(32521) % lists[i][0]).encode('utf-8'), '/users/me/lists/%s/items' % lists[i][1])
         for i in range(1, len(lists), 2):
-            lists[i] = ((control.lang(32522) % lists[i][0]).encode('utf-8'), '/users/me/lists/%s/items/remove' % lists[i][1])
+            lists[i] = ((control.lang(32522) % lists[i][0]).encode('utf-8'),
+                        '/users/me/lists/%s/items/remove' % lists[i][1])
         items += lists
 
         select = control.selectDialog([i[0] for i in items], control.lang(32515).encode('utf-8'))
@@ -215,20 +256,27 @@ def manager(name, imdb, tvdb, content):
             return
         elif select == 4:
             t = control.lang(32520).encode('utf-8')
-            k = control.keyboard('', t) ; k.doModal()
+            k = control.keyboard('', t)
+            k.doModal()
             new = k.getText() if k.isConfirmed() else None
-            if (new == None or new == ''): return
+            if (new == None or new == ''):
+                return
             result = __getTrakt('/users/me/lists', post={"name": new, "privacy": "private"})[0]
 
-            try: slug = utils.json_loads_as_str(result)['ids']['slug']
-            except: return control.infoDialog(control.lang(32515).encode('utf-8'), heading=str(name), sound=True, icon='ERROR')
+            try:
+                slug = utils.json_loads_as_str(result)['ids']['slug']
+            except:
+                return notification.infoDialog(
+                    msg=control.lang(32515).encode('utf-8'),
+                    title=str(name),
+                    style='ERROR')
             result = __getTrakt(items[select][1] % slug, post=post)[0]
         else:
             result = __getTrakt(items[select][1], post=post)[0]
 
         icon = control.infoLabel('ListItem.Icon') if not result == None else 'ERROR'
 
-        control.infoDialog(control.lang(32515).encode('utf-8'), heading=str(name), sound=True, icon=icon)
+        notification.infoDialog(msg=control.lang(32515).encode('utf-8'), title=str(name))
     except:
         return
 
@@ -262,6 +310,7 @@ def sort_list(sort_key, sort_direction, list_data):
     else:
         return list_data
 
+
 def _released_key(item):
     if 'released' in item:
         return item['released']
@@ -269,6 +318,7 @@ def _released_key(item):
         return item['first_aired']
     else:
         return 0
+
 
 def getActivity():
     try:
@@ -318,7 +368,8 @@ def timeoutsyncMovies():
 
 def syncMovies(user):
     try:
-        if getTraktCredentialsInfo() == False: return
+        if getTraktCredentialsInfo() == False:
+            return
         indicators = getTraktAsJson('/users/me/watched/movies')
         indicators = [i['movie']['ids'] for i in indicators]
         indicators = [str(i['imdb']) for i in indicators if 'imdb' in i]
@@ -339,9 +390,11 @@ def timeoutsyncTVShows():
 
 def syncTVShows(user):
     try:
-        if getTraktCredentialsInfo() == False: return
+        if getTraktCredentialsInfo() == False:
+            return
         indicators = getTraktAsJson('/users/me/watched/shows?extended=full')
-        indicators = [(i['show']['ids']['tvdb'], i['show']['aired_episodes'], sum([[(s['number'], e['number']) for e in s['episodes']] for s in i['seasons']], [])) for i in indicators]
+        indicators = [(i['show']['ids']['tvdb'], i['show']['aired_episodes'], sum(
+            [[(s['number'], e['number']) for e in s['episodes']] for s in i['seasons']], [])) for i in indicators]
         indicators = [(str(i[0]), int(i[1]), i[2]) for i in indicators]
         return indicators
     except:
@@ -350,7 +403,8 @@ def syncTVShows(user):
 
 def syncSeason(imdb):
     try:
-        if getTraktCredentialsInfo() == False: return
+        if getTraktCredentialsInfo() == False:
+            return
         indicators = getTraktAsJson('/shows/%s/progress/watched?specials=false&hidden=false' % imdb)
         indicators = indicators['seasons']
         indicators = [(i['number'], [x['completed'] for x in i['episodes']]) for i in indicators]
@@ -360,13 +414,25 @@ def syncSeason(imdb):
         pass
 
 
+def syncTraktStatus():
+    try:
+        cachesyncMovies()
+        cachesyncTVShows()
+        notification.infoDialog(msg=control.lang(32092).encode('utf-8'))
+    except:
+        notification.infoDialog(msg='Trakt sync failed')
+        pass
+
+
 def markMovieAsWatched(imdb):
-    if not imdb.startswith('tt'): imdb = 'tt' + imdb
+    if not imdb.startswith('tt'):
+        imdb = 'tt' + imdb
     return __getTrakt('/sync/history', {"movies": [{"ids": {"imdb": imdb}}]})[0]
 
 
 def markMovieAsNotWatched(imdb):
-    if not imdb.startswith('tt'): imdb = 'tt' + imdb
+    if not imdb.startswith('tt'):
+        imdb = 'tt' + imdb
     return __getTrakt('/sync/history/remove', {"movies": [{"ids": {"imdb": imdb}}]})[0]
 
 
@@ -380,12 +446,35 @@ def markTVShowAsNotWatched(tvdb):
 
 def markEpisodeAsWatched(tvdb, season, episode):
     season, episode = int('%01d' % int(season)), int('%01d' % int(episode))
-    return __getTrakt('/sync/history', {"shows": [{"seasons": [{"episodes": [{"number": episode}], "number": season}], "ids": {"tvdb": tvdb}}]})[0]
+    return __getTrakt(
+        '/sync/history',
+        {"shows": [{"seasons": [{"episodes": [{"number": episode}],
+                                 "number": season}],
+                    "ids": {"tvdb": tvdb}}]})[0]
 
 
 def markEpisodeAsNotWatched(tvdb, season, episode):
     season, episode = int('%01d' % int(season)), int('%01d' % int(episode))
-    return __getTrakt('/sync/history/remove', {"shows": [{"seasons": [{"episodes": [{"number": episode}], "number": season}], "ids": {"tvdb": tvdb}}]})[0]
+    return __getTrakt(
+        '/sync/history/remove',
+        {"shows": [{"seasons": [{"episodes": [{"number": episode}],
+                                 "number": season}],
+                    "ids": {"tvdb": tvdb}}]})[0]
+
+
+def scrobbleMovie(imdb, watched_percent):
+    if not imdb.startswith('tt'):
+        imdb = 'tt' + imdb
+    return __getTrakt('/scrobble/pause', {"movie": {"ids": {"imdb": imdb}}, "progress": watched_percent})[0]
+
+
+def scrobbleEpisode(tvdb, season, episode, watched_percent):
+    season, episode = int('%01d' % int(season)), int('%01d' % int(episode))
+    return __getTrakt(
+        '/scrobble/pause',
+        {"show": {"ids": {"tvdb": tvdb}},
+         "episode": {"season": season, "number": episode},
+         "progress": watched_percent})[0]
 
 
 def getMovieTranslation(id, lang, full=False):
@@ -411,19 +500,24 @@ def getTVShowTranslation(id, lang, season=None, episode=None, full=False):
 
 
 def getMovieAliases(id):
-    try: return getTraktAsJson('/movies/%s/aliases' % id)
-    except: return []
+    try:
+        return getTraktAsJson('/movies/%s/aliases' % id)
+    except:
+        return []
 
 
 def getTVShowAliases(id):
-    try: return getTraktAsJson('/shows/%s/aliases' % id)
-    except: return []
+    try:
+        return getTraktAsJson('/shows/%s/aliases' % id)
+    except:
+        return []
 
 
 def getMovieSummary(id, full=True):
     try:
         url = '/movies/%s' % id
-        if full: url += '?extended=full'
+        if full:
+            url += '?extended=full'
         return getTraktAsJson(url)
     except:
         return
@@ -432,7 +526,8 @@ def getMovieSummary(id, full=True):
 def getTVShowSummary(id, full=True):
     try:
         url = '/shows/%s' % id
-        if full: url += '?extended=full'
+        if full:
+            url += '?extended=full'
         return getTraktAsJson(url)
     except:
         return
@@ -441,10 +536,12 @@ def getTVShowSummary(id, full=True):
 def getPeople(id, content_type, full=True):
     try:
         url = '/%s/%s/people' % (content_type, id)
-        if full: url += '?extended=full'
+        if full:
+            url += '?extended=full'
         return getTraktAsJson(url)
     except:
         return
+
 
 def SearchAll(title, year, full=True):
     try:
@@ -452,25 +549,32 @@ def SearchAll(title, year, full=True):
     except:
         return
 
+
 def SearchMovie(title, year, full=True):
     try:
         url = '/search/movie?query=%s' % urllib.quote_plus(title)
 
-        if year: url += '&year=%s' % year
-        if full: url += '&extended=full'
+        if year:
+            url += '&year=%s' % year
+        if full:
+            url += '&extended=full'
         return getTraktAsJson(url)
     except:
         return
+
 
 def SearchTVShow(title, year, full=True):
     try:
         url = '/search/show?query=%s' % urllib.quote_plus(title)
 
-        if year: url += '&year=%s' % year
-        if full: url += '&extended=full'
+        if year:
+            url += '&year=%s' % year
+        if full:
+            url += '&extended=full'
         return getTraktAsJson(url)
     except:
         return
+
 
 def IdLookup(content, type, type_id):
     try:
@@ -478,6 +582,7 @@ def IdLookup(content, type, type_id):
         return r[0].get(content, {}).get('ids', [])
     except:
         return {}
+
 
 def getGenre(content, type, type_id):
     try:
