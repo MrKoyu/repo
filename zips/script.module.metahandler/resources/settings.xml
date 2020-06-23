@@ -16,8 +16,8 @@
     <setting id="tmdb_poster_size" label="Poster Size" type="labelenum" default="w342" values="w92|w154|w185|w342|w500|original"/>
     <setting id="tmdb_backdrop_size" label="Backdrop Size" type="labelenum" default="original" values="w300|w780|w1280|original"/>
     <setting type="lsep" label="TMDB API Key" />
-    <setting id="tmdb_api_key" type="text" label="Enter Your API Key" default="" option="hidden"/>
-    <setting id="override_keys" type="bool" label="Override TMDB keys from all addons" default="False"/>
+    <setting id="tmdb_api_key" type="text" label="Enter Your API Key" default="0049795edb57568b95240bc9e61a9dfc" option="hidden"/>
+    <setting id="override_keys" type="bool" label="Override TMDB keys from all addons" default="true"/>
     <setting id="tmdb_api_key_ver" type="text" label="tmdb_api_key_ver" default="0" visible="false"/>
     <setting type="lsep" label="OMDB API Key" />
     <setting id="omdbapi_fallback" type="bool" label="Enable omdbapi.com Fallback" default="true"/>

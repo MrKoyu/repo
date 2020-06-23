@@ -198,7 +198,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="10.1">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="10.2">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
@@ -288,11 +288,12 @@
     <import addon="script.numbers.jen" />
     <import addon="script.speedtestnet" />
     <import addon="script.module.pyqrcode" />
-    <import addon="script.module.openscrapers" />
+    <import addon="script.module.openscrapers" optional="true" />
     <import addon="script.module.unidecode" />
     <import addon="script.module.resolveurl" />
     <import addon="script.module.requests" />
     <import addon="script.module.metahandler" />
+    <import addon="script.module.beautifulsoup4" />
     <import addon="plugin.video.youtube" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="numbersbynumbers.py">
@@ -313,7 +314,7 @@
       <screenshot>resources/media/3.png</screenshot>
       <screenshot>resources/media/4.png</screenshot>
     </assets>
-    <news>V2.0.2.9
+    <news>V2.0.3.0
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.[CR]Please remember that NuMb3r5 is not an official part of the Kodi media player you are running, and therefore is not to be mentioned within official support channels of Kodi, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</news>
     <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -1107,6 +1108,28 @@
 - Added new free hoster WATCHEPISODESERIES1
 - fixed and brought back 5MOVIES
     </news>
+  </extension>
+</addon>
+
+<addon id="script.module.beautifulsoup4"
+       name="BeautifulSoup4"
+       version="4.6.2"
+       provider-name="Leonard Richardson (leonardr@segfault.org)">
+  <requires>
+    <import addon="xbmc.python" 
+             version="2.25.0"/>
+  </requires>
+  <extension point="xbmc.python.module"
+             library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Screen-scraping library</summary>
+    <description lang="en_GB">Beautiful Soup is a library that makes it easy to scrape information from web pages. It sits atop an HTML or XML parser, providing Pythonic idioms for iterating, searching, and modifying the parse tree.</description>
+    <license>MIT</license>
+    <platform>all</platform>
+    <website>https://www.crummy.com/software/BeautifulSoup/</website>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
   </extension>
 </addon>
 
