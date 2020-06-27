@@ -1,4 +1,4 @@
-109
+110
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -16,7 +16,7 @@
 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.6[/COLOR] INFUSION 2 v1.2 [COLOR deepskyblue]206MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.6[/COLOR] CDTV LEIA v4.0 [COLOR deepskyblue]132MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.6[/COLOR] DOMINUS v3.0 [COLOR deepskyblue]156MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.6[/COLOR] DOMINUS v3.1 [COLOR deepskyblue]231MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.6[/COLOR] ENVISION v2.1 [COLOR deepskyblue]245MB[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
