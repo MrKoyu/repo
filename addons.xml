@@ -198,7 +198,7 @@
     </extension>
 </addon>
 
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="10.3">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="10.4">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
@@ -279,7 +279,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.numbersbynumbers" version="2.0.3.1" name="[B][COLOR white]NuMb3r5[/COLOR][/B]" provider-name="[B][COLOR orangered]NuMb3r5[/COLOR][/B]">
+<addon id="plugin.video.numbersbynumbers" version="2.0.3.2" name="[B][COLOR white]NuMb3r5[/COLOR][/B]" provider-name="[B][COLOR orangered]NuMb3r5[/COLOR][/B]">
   <requires>
     <import addon="xbmc.python" version="2.19.0" />
     <import addon="script.module.numbersbynumbers" />
@@ -314,7 +314,7 @@
       <screenshot>resources/media/3.png</screenshot>
       <screenshot>resources/media/4.png</screenshot>
     </assets>
-    <news>V2.0.3.1
+    <news>V2.0.3.2
 - The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.[CR]Please remember that NuMb3r5 is not an official part of the Kodi media player you are running, and therefore is not to be mentioned within official support channels of Kodi, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</news>
     <reuselanguageinvoker>false</reuselanguageinvoker>
   </extension>
@@ -978,9 +978,9 @@
   </extension>
 </addon>
 
-<addon id="script.module.numbersbynumbers" name="[COLOR white][B]NuMb3r5 Module[/B][/COLOR]" version="1.00.095" provider-name="[COLOR orangered][B]NuMb3r5[/B][/COLOR]">
+<addon id="script.module.numbersbynumbers" name="[COLOR white][B]NuMb3r5 Module[/B][/COLOR]" version="1.00.096" provider-name="[COLOR orangered][B]NuMb3r5[/B][/COLOR]">
     <requires>
-        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="xbmc.python" version="2.1.1" />
         <import addon="script.module.beautifulsoup4"/>
     </requires>
     <extension point="xbmc.python.module" library="lib" />

@@ -31,7 +31,56 @@
 import sys,urllib,urlparse
 
 import xbmcgui
-
+def play_trailer(id,tv_movie):
+    import requests,xbmcplugin
+    logging.warning('playing shadow Trailer:'+id)
+    if tv_movie=='tv':
+        url_t='https://api.themoviedb.org/3/find/%s?api_key=1248868d7003f60f2386595db98455ef&language=en-US&external_source=tvdb_id'%id
+        logging.warning(url_t)
+        html_t=requests.get(url_t).json()
+        id=html_t['tv_results'][0]['id']
+        url_t='http://api.themoviedb.org/3/tv/%s/videos?api_key=1248868d7003f60f2386595db98455ef'%id
+        logging.warning(url_t)
+        html_t=requests.get(url_t).json()
+        if len(html_t['results'])==0:
+            xbmc.executebuiltin((u'Notification(%s,%s)' % (sys.argv[0], 'No trailer')))
+            return 
+    else:
+        url_t='http://api.themoviedb.org/3/movie/%s/videos?api_key=1248868d7003f60f2386595db98455ef'%id
+        logging.warning(url_t)
+        html_t=requests.get(url_t).json()
+        if len(html_t['results'])==0:
+            xbmc.executebuiltin((u'Notification(%s,%s)' % (sys.argv[0], 'No trailer')))
+            return 
+        if 'results' not in html_t:
+            
+            xbmc.executebuiltin((u'Notification(%s,%s)' % (sys.argv[0],'No trailer')))
+            sys.exit(1)
+        
+    if len(html_t['results'])>1:
+        all_nm=[]
+        all_lk=[]
+        for items in html_t['results']:
+            all_nm.append(items['name']+","+str(items['size']))
+            all_lk.append(items['key'])
+        
+        ret = xbmcgui.Dialog().select("Choose trailer", all_nm)
+        if ret!=-1:
+            video_id=(all_lk[ret])
+        else:
+            s=stop_play()
+            if s=='forceexit':
+                sys.exit(1)
+            else:
+                return 0
+    else:
+        video_id=(html_t['results'][0]['key'])
+    
+        
+    playback_url = 'plugin://plugin.video.youtube/?action=play_video&videoid=%s' % video_id
+    item = xbmcgui.ListItem(path=playback_url)
+    xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
+      
 params = dict(urlparse.parse_qsl(sys.argv[2].replace('?','')))
 
 action = params.get('action')
@@ -817,7 +866,16 @@ elif action == 'tvPlaycount':
 
 elif action == 'trailer':
     from resources.lib.modules import trailer
-    trailer.Trailer().play(type, name, year, url, imdb, windowedtrailer)
+    import logging
+    logging.warning('season:'+str(season))
+
+    tv_movie='tv'
+    item=tvdb
+    if season==None:
+        tv_movie='movie'
+        item=tmdb
+    play_trailer(item,tv_movie)
+    #trailer.trailer().play(name, url, windowedtrailer)
 
 elif action == 'traktManager':
     from resources.lib.modules import trakt

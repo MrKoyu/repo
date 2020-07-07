@@ -42,6 +42,7 @@
         <setting id="navi.screensaver" type="bool" label="32729" default="true" />
         <setting id="navi.knowledge" type="bool" label="32730" default="true" />
         <setting id="navi.ufc" type="bool" label="32731" default="true" />
+        <setting id="navi.TwentyFourSeven" type="bool" label="32734" default="true" />
         <setting id="navi.food" type="bool" label="90016" default="true" />
         <setting id="navi.jens" type="bool" label="32734" default="true" />
         <setting id="navi.system" type="bool" label="32008" default="true" />

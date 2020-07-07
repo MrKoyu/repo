@@ -1,17 +1,21 @@
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 
 [B][COLOR lime]• [/COLOR][/B] [COLOR yellow][B]CURRENT STATUS:[/B][/COLOR] Good!
 [B][COLOR crimson]• [/COLOR][/B] [COLOR yellow][B]CURRENT ISSUES:[/B][/COLOR] 24/7 - Offline
 
 
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[B][COLOR yellow]V2.0.3.2[/COLOR][/B]
+[B][COLOR orangered]• [/COLOR][/B] Fixed trailers for Movies and TV Shows - Thanks to @aaaaa175
+[B][COLOR orangered]• [/COLOR][/B] Fixed Adult category not showing up in the main menu. To enable adult category go to System => Settings => NuMbErS settings => Navigation: iPunheta Password is [B][COLOR palegreen]PORN4ALL[/COLOR][/B]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.3.1[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed movies genres
 [B][COLOR orangered]• [/COLOR][/B] Module update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.3.0[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed missing dependency
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.9[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added themecontrol with voice notification. (Can be disabled in add-on settings) Thanks to MuadDib and Marauder for the code
 [B][COLOR orangered]• [/COLOR][/B] Added Maverick to jen lists under JEN add-ons category. Welcome @Maverick
@@ -20,17 +24,17 @@
 [B][COLOR orangered]• [/COLOR][/B] Brand New Recipes category
 [B][COLOR orangered]• [/COLOR][/B] Artwork update
 [B][COLOR orangered]• [/COLOR][/B] Modules update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.8[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed library 24HR delay before import. Credits to @Bazza
 [B][COLOR orangered]• [/COLOR][/B] Added Adult Resolver. Credits to @JizzPlanet
 [B][COLOR orangered]• [/COLOR][/B] Moved iPunheta to Home menu. Password protected. Only accessable through System => Settings => NuMbErS settings => Navigation: iPunheta Password is [B][COLOR palegreen]PORN4ALL[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Special thanks @PedroKingdom for all the directs 
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.7[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added missing dependency
 [B][COLOR orangered]• [/COLOR][/B] Modules update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.6[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed 24/7 Movies, Shows and Networks
 [B][COLOR orangered]• [/COLOR][/B] Fixed Navigation enable/disable categories
@@ -44,7 +48,7 @@
 [B][COLOR orangered]• [/COLOR][/B] Artwork update
 [B][COLOR orangered]• [/COLOR][/B] Modules update
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.5[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Brand New Eye Candy with 4K UHD to Movies Category - Debrid and fast internet needed. Many thanks to @HazMat1
 [B][COLOR orangered]• [/COLOR][/B] Brand New UFC Replays category with all the latest Fight Night available. Many thanks to @pavlarasfrank
@@ -60,7 +64,7 @@
 [B][COLOR orangered]• [/COLOR][/B] Artwork update
 [B][COLOR orangered]• [/COLOR][/B] Modules update
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.3[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added Kidzone category with everything you ever wanted for kids (Inspired by Zim addon) 
 [B][COLOR orangered]• [/COLOR][/B] Added Extended Info Portal to Movies category
@@ -73,12 +77,12 @@
 [B][COLOR orangered]• [/COLOR][/B] Fixed missing artwork in Actors Collection category
 [B][COLOR orangered]• [/COLOR][/B] Artwork update
 [B][COLOR orangered]• [/COLOR][/B] Modules update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR] 
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR] 
 [B][COLOR yellow]V2.0.2.4[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Module update 100.0.87 TVDB fixed
 [B][COLOR orangered]• [/COLOR][/B] Modules update
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.2[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added Boxset Kings Reborn to Boxsets category
 [B][COLOR orangered]• [/COLOR][/B] Added 24/7 Movies, Shows and Cable channels category
@@ -89,39 +93,39 @@
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
 [B][COLOR orangered]• [/COLOR][/B] Module update
 [B][COLOR orangered]• [/COLOR][/B] artwork update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.1[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed Trakt
 [B][COLOR orangered]• [/COLOR][/B] Fixed adding to library
 [B][COLOR orangered]• [/COLOR][/B] Module update
 [B][COLOR orangered]• [/COLOR][/B] Artwork Script update
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.2.0[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed Torrent/Premium sorting
 [B][COLOR orangered]• [/COLOR][/B] Module update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.9[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Enable/disable providers in settings fixed
 [B][COLOR orangered]• [/COLOR][/B] update providers service on startup
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
 [B][COLOR orangered]• [/COLOR][/B] Module update
 [B][COLOR orangered]• [/COLOR][/B] Fixed Documentaries category crashing issues
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.8[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Module update
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.7[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Module update
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.6[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Module update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.5[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.4[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added Debrid only
 [B][COLOR orangered]• [/COLOR][/B] Added pre emptive termantion
@@ -131,61 +135,61 @@
 [B][COLOR orangered]• [/COLOR][/B] Cleaned up scrapers
 [B][COLOR orangered]• [/COLOR][/B] Fixed cf scrape - Thanks to MrEggman
 [B][COLOR orangered]• [/COLOR][/B] New category Collections added - Thanks to MrClownman
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.3[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed resume on playback for Kodi 18
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.2[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed library integration 
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.1[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.1.0[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed Trailers crashing on Kodi 18
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.9[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed Networks category
 [B][COLOR orangered]• [/COLOR][/B] Changed URLresolver to ResolveURL
 [B][COLOR orangered]• [/COLOR][/B] Added ResolveURL settings to Tools category
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.8[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added Torrent support
 [B][COLOR orangered]• [/COLOR][/B] Fixed the scrape issue with cf scrape
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update 
 [B][COLOR orangered]• [/COLOR][/B] Fixed NuMbErS search function to add db search
 [B][COLOR orangered]• [/COLOR][/B] Made NuMbErS fully compatible with Kodi 18
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.7[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed In Theaters category
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.6[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.5[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added Boxsets category
 [B][COLOR orangered]• [/COLOR][/B] Added Networks category to home menu
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.4[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] New Trakt API
 [B][COLOR orangered]• [/COLOR][/B] Scrapers update
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.3[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Fixed import missing in addon.xml
 [B][COLOR orangered]• [/COLOR][/B] Changed icons resolution from 256x256 to 512x512
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.2[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Added new artwork
 [B][COLOR orangered]• [/COLOR][/B] Added Top Documentary Films to Documentaries section 
 [B][COLOR orangered]• [/COLOR][/B] Fixed a few bugs 
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 [B][COLOR yellow]V2.0.0.1[/COLOR][/B]
 [B][COLOR orangered]• [/COLOR][/B] Initial release
 [B][COLOR orangered]• [/COLOR][/B] Covenant Fork
-[COLOR orangered]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
+[COLOR dodgerblue]||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||[/COLOR]
 
 
 

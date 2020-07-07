@@ -1483,7 +1483,7 @@ class tvshows:
                 meta.update({'code': imdb, 'imdbnumber': imdb, 'imdb_id': imdb})
                 meta.update({'tvdb_id': tvdb})
                 meta.update({'mediatype': 'tvshow'})
-                meta.update({'trailer': '%s?action=trailer&name=%s' % (sysaddon, urllib.quote_plus(label))})
+                meta.update({'trailer': '%s?action=trailer&name=%s&tvdb=%s&season=1' % (sysaddon, urllib.quote_plus(label),tvdb)})
                 if not 'duration' in i:
                     meta.update({'duration': '60'})
                 elif i['duration'] == '0':
