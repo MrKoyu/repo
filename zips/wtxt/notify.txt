@@ -1,10 +1,13 @@
-112
+113
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
 
-[COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR] 
-[COLOR gold] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.0 TO FIX AUTOWIDGETS ERROR.[/COLOR]
+[COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR]
+
+[COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.0 TO FIX AUTOWIDGETS ERROR.[/COLOR]
+[COLOR lime] - PLEASE UPDATE DOMINUS KODI18 BUILD TO VERSION 3.2 TO FIX AUTOWIDGETS ERROR.[/COLOR]
+
 [COLOR white] - DM @CellarDoorTV for telegram invite link[/COLOR]
 [COLOR white] - CDTV REPO URL - [COLOR lime]http://cellardoortv.com/repo[/COLOR]
 
@@ -16,7 +19,7 @@
 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] INFUSION 2 v2.0 [COLOR deepskyblue]206MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] CDTV LEIA v4.1 [COLOR deepskyblue]220MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] DOMINUS v3.1 [COLOR deepskyblue]231MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] DOMINUS v3.2 [COLOR deepskyblue]231MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] ENVISION v2.1 [COLOR deepskyblue]245MB[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
@@ -26,25 +29,23 @@
 
 [COLOR gold]HOW TO SET-UP INFUSION 2[/COLOR]
 
-[B][COLOR deepskyblue]1 •  [/COLOR][/B] [COLOR white]After build installation is completed scroll right to the APPS main menu then down for submenus and install the addons from the submenu shortcut such as NuMb3r5 and The Crew add-ons.[/COLOR]
+[B][COLOR deepskyblue]1 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on TMDB Helper add-on/Settings/Accounts/Authenticate Trakt account...[/COLOR]
 
-[B][COLOR deepskyblue]2 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on TMDB Helper add-on/Settings/Accounts/Authenticate Trakt account...[/COLOR]
+[B][COLOR deepskyblue]2 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in RESOLVE URL RD and authorise your Real-Debrid. If you have a different Debrid service other than RD then enter in UNIVERSAL URL which can be found on the same SYSTEM submenu.[/COLOR]
 
-[B][COLOR deepskyblue]3 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in RESOLVE URL RD and authorise your Real-Debrid. If you have a different Debrid service other than RD then enter in UNIVERSAL URL which can be found on the same SYSTEM submenu.[/COLOR]
+[B][COLOR deepskyblue]3 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on SEREN add-on/Settings/Accounts/Enable Real-Debrid then Authorise Real-Debrid.[/COLOR]
 
-[B][COLOR deepskyblue]4 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on SEREN add-on/Settings/Accounts/Enable Real-Debrid then Authorise Real-Debrid.[/COLOR]
+[B][COLOR deepskyblue]4 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on Shadow add-on/Settings/Debrid/Debrid Service/Re auth. RD[/COLOR]
 
-[B][COLOR deepskyblue]5 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on Shadow add-on/Settings/Debrid/Debrid Service/Re auth. RD[/COLOR]
+[B][COLOR deepskyblue]5 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in INSTALL - ZIP then My add-ons/VideoPlayer InputStream and enable InputStream Adaptive[/COLOR]
 
-[B][COLOR deepskyblue]6 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in INSTALL - ZIP then My add-ons/VideoPlayer InputStream and enable InputStream Adaptive[/COLOR]
+[B][COLOR deepskyblue]6 •  [/COLOR][/B] [COLOR white]Click on InputStream Adaptive then configure. Set Max. Resolution general decoder to 1080p. Set secure decoder to 1080p as well then press OK to save changes.[/COLOR]
 
-[B][COLOR deepskyblue]7 •  [/COLOR][/B] [COLOR white]Click on InputStream Adaptive then configure. Set Max. Resolution general decoder to 1080p. Set secure decoder to 1080p as well then press OK to save changes.[/COLOR]
+[B][COLOR deepskyblue]7 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on YouTube add-on/Settings/General/Video Quality to 1080p then scroll to MPEG-DASH/enable Use MPEG-DASH and set Video Quality to 1080p. This step will get you 1080p YouTube videos when using some of NuMb3r5 categories.[/COLOR]
 
-[B][COLOR deepskyblue]8 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on YouTube add-on/Settings/General/Video Quality to 1080p then scroll to MPEG-DASH/enable Use MPEG-DASH and set Video Quality to 1080p. This step will get you 1080p YouTube videos when using some of NuMb3r5 categories.[/COLOR]
+[B][COLOR deepskyblue]8 •  [/COLOR][/B] [COLOR white]Enter YouTube API key in Settings/API/API Key. For more info on how to easily get yours watch this video:[/COLOR] [COLORlime]https://youtu.be/dJ1oX9-zyhM[/COLOR]
 
-[B][COLOR deepskyblue]9 •  [/COLOR][/B] [COLOR white]Enter YouTube API key in Settings/API/API Key. For more info on how to easily get yours watch this video:[/COLOR] [COLORlime]https://youtu.be/dJ1oX9-zyhM[/COLOR]
-
-[B][COLOR deepskyblue]10•  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in ADVANCED SETTINGS then choose your Device Preset or configure your own advanced settings.[/COLOR]
+[B][COLOR deepskyblue]9•  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in ADVANCED SETTINGS then choose your Device Preset or configure your own advanced settings.[/COLOR]
 
 [B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]That's pretty much it! Enjoy your build. If you have any questions find us @CellarDoorTV Telegram group. Thank you![/COLOR]
 
