@@ -1,4 +1,4 @@
-113
+114
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -6,7 +6,10 @@
 [COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR]
 
 [COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.0 TO FIX AUTOWIDGETS ERROR.[/COLOR]
+
 [COLOR lime] - PLEASE UPDATE DOMINUS KODI18 BUILD TO VERSION 3.2 TO FIX AUTOWIDGETS ERROR.[/COLOR]
+
+[COLOR lime] - PLEASE UPDATE CDTV LEIA KODI18 BUILD TO VERSION 4.2 TO FIX AUTOWIDGETS ERROR.[/COLOR]
 
 [COLOR white] - DM @CellarDoorTV for telegram invite link[/COLOR]
 [COLOR white] - CDTV REPO URL - [COLOR lime]http://cellardoortv.com/repo[/COLOR]
@@ -18,7 +21,7 @@
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v1.4 [COLOR deepskyblue]164MB[/COLOR]
 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] INFUSION 2 v2.0 [COLOR deepskyblue]206MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] CDTV LEIA v4.1 [COLOR deepskyblue]220MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] CDTV LEIA v4.2 [COLOR deepskyblue]220MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] DOMINUS v3.2 [COLOR deepskyblue]231MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] ENVISION v2.1 [COLOR deepskyblue]245MB[/COLOR]
 
