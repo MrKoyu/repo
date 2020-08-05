@@ -1,4 +1,4 @@
-116
+117
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -28,7 +28,6 @@
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] ENVISION v2.1 [COLOR deepskyblue]245MB[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
-
 [B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open CDTV WIZARD v2.2 and install your favourite build.[/COLOR]
 
 
