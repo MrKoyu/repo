@@ -14,7 +14,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/qCgkTTBeJqI"
 adult="no"
 info="http://"
-description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 210MB"
+description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 199MB"
 
 name="SERVER 2 - INFUSION 2 - K18"               
 version="2.1"             
@@ -28,7 +28,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/qCgkTTBeJqI"
 adult="no"
 info="http://"
-description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 210MB"
+description="CDTV INFUSION 2 for Kodi 18 - ONE BUILD TO RULE THEM ALL - Wizard setup - 199MB"
 
 name="SERVER 1 - DOMINUS - K18"               
 version="3.3"             
@@ -42,7 +42,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/FGdQtLLvNcM"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 234MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 225MB"
 
 name="SERVER 2 - DOMINUS - K18"               
 version="3.3"             
@@ -56,7 +56,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/FGdQtLLvNcM"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 234MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 225MB"
 
 name="SERVER 1 - CDTV LEIA - K18"
 version="4.3"
@@ -70,7 +70,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/ZsKoa0SN_vg"
 adult="no"
 info="http://"
-description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 220MB"
+description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 217MB"
 
 name="SERVER 2 - CDTV LEIA - K18"
 version="4.3"
@@ -84,7 +84,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/ZsKoa0SN_vg"
 adult="no"
 info="http://"
-description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 220MB"
+description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 217MB"
 
 name="ENVISION MQ7 Leia - SERVER 1"
 version="2.1"
@@ -126,7 +126,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/ZsKoa0SN_vg"
 adult="no"
 info="http://"
-description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 132MB"
+description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 217MB"
 
 name="CDTV Leia - SERVER 2"
 version="4.3"
@@ -140,7 +140,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/ZsKoa0SN_vg"
 adult="no"
 info="http://"
-description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 132MB"
+description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 217MB"
 
 name="CDTV Leia - SERVER 3"
 version="4.3"
@@ -154,7 +154,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/ZsKoa0SN_vg"
 adult="no"
 info="http://"
-description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 132MB"
+description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 217MB"
 
 name="CDTV Leia - SERVER 4"
 version="4.3"
@@ -168,7 +168,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/ZsKoa0SN_vg"
 adult="no"
 info="http://"
-description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 132MB"
+description="CDTV Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 217MB"
 
 name="DOMINUS Leia - SERVER 1"
 version="3.3"
@@ -182,7 +182,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/FGdQtLLvNcM"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 234MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 225MB"
 
 name="DOMINUS Leia - SERVER 2"
 version="3.3"
@@ -196,7 +196,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/FGdQtLLvNcM"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 234MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 225MB"
 
 name="DOMINUS Leia - SERVER 3"
 version="3.3"
@@ -210,7 +210,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/FGdQtLLvNcM"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 234MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 225MB"
 
 name="DOMINUS Leia - SERVER 4"
 version="3.3"
@@ -224,7 +224,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://youtu.be/FGdQtLLvNcM"
 adult="no"
 info="http://"
-description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 234MB"
+description="DOMINUS Leia Build - ONE BUILD TO RULE THEM ALL - Wizard setup - 225MB"
 
 name="SERVER 1 - ENVISION - K17.6"               
 version="1.4"             
@@ -255,7 +255,7 @@ info="http://"
 description="CDTV ENVISION - Based on the MQ7 Mod Krypton Skin! - Wizard setup - 164MB"
 
 name="SERVER 1 - INFUSION - K17.6"               
-version="5.1"             
+version="5.2"             
 url="http://cellardoortv.com/krypton/konfluence2019.zip"
 minor="http://"                
 gui="http://"
@@ -266,10 +266,10 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="No"
 info="http://"
-description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 178MB"
+description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 201MB"
 
 name="SERVER 2 - INFUSION - K17.6"               
-version="5.1"             
+version="5.2"             
 url="http://cellardoortv.com/krypton/konfluence2019.zip" 
 minor="http://"               
 gui="http://"
@@ -280,7 +280,7 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="http://"
 adult="No"
 info="http://"
-description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 178MB"
+description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 201MB"
 
 name="SERVER 1 - DOMINUS - K17.6"               
 version="3.0"             

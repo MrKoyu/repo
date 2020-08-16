@@ -1,4 +1,4 @@
-117
+118
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -6,6 +6,8 @@
 [COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR]
 
 [COLOR deeppink] - THE PERFECT UPDATE - NO MORE SPINNING CIRCLE OF DEATH - NO MORE AUTOWIDGET ERROR[/COLOR]
+
+[COLOR yellow] - PLEASE UPDATE INFUSION KODI17 BUILD TO VERSION 5.2[/COLOR]
 
 [COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.1[/COLOR]
 
@@ -18,13 +20,13 @@
 
 [COLOR gold]ONE BUILD TO RULE THEM ALL[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] INFUSION v5.1 [COLOR deepskyblue]181MB[/COLOR] 
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] INFUSION v5.2 [COLOR deepskyblue]201MB[/COLOR] 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] DOMINUS v3.0 [COLOR deepskyblue]213MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v1.4 [COLOR deepskyblue]164MB[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] INFUSION 2 v2.1 [COLOR deepskyblue]210MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] CDTV LEIA v4.3 [COLOR deepskyblue]220MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] DOMINUS v3.3 [COLOR deepskyblue]234MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] INFUSION 2 v2.1 [COLOR deepskyblue]199MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] CDTV LEIA v4.3 [COLOR deepskyblue]217MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] DOMINUS v3.3 [COLOR deepskyblue]225MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] ENVISION v2.1 [COLOR deepskyblue]245MB[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
