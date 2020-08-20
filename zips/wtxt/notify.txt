@@ -1,4 +1,4 @@
-118
+119
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -8,6 +8,8 @@
 [COLOR deeppink] - THE PERFECT UPDATE - NO MORE SPINNING CIRCLE OF DEATH - NO MORE AUTOWIDGET ERROR[/COLOR]
 
 [COLOR yellow] - PLEASE UPDATE INFUSION KODI17 BUILD TO VERSION 5.2[/COLOR]
+
+[COLOR yellow] - PLEASE UPDATE DOMINUS KODI17 BUILD TO VERSION 3.1[/COLOR]
 
 [COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.1[/COLOR]
 
@@ -21,7 +23,7 @@
 [COLOR gold]ONE BUILD TO RULE THEM ALL[/COLOR]
 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] INFUSION v5.2 [COLOR deepskyblue]201MB[/COLOR] 
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] DOMINUS v3.0 [COLOR deepskyblue]213MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] DOMINUS v3.1 [COLOR deepskyblue]248MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v1.4 [COLOR deepskyblue]164MB[/COLOR]
 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] INFUSION 2 v2.1 [COLOR deepskyblue]199MB[/COLOR]

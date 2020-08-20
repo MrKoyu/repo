@@ -283,7 +283,7 @@ info="http://"
 description="CDTV INFUSION for Kodi 17 - ONE BUILD TO RULE THEM ALL - Wizard setup - 201MB"
 
 name="SERVER 1 - DOMINUS - K17.6"               
-version="3.0"             
+version="3.1"             
 url="http://cellardoortv.com/krypton/xonfluence2019.zip"
 minor="http://"                
 gui="http://"
@@ -294,10 +294,10 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://www.youtube.com/watch?v=xvOBoZe-N0w"
 adult="No"
 info="http://"
-description="CDTV DOMINUS - ONE BUILD TO RULE THEM ALL - Wizard setup - 213MB"
+description="CDTV DOMINUS - ONE BUILD TO RULE THEM ALL - Wizard setup - 248MB"
 
 name="SERVER 2 - DOMINUS - K17.6"               
-version="3.0"             
+version="3.1"             
 url="http://cellardoortv.com/krypton/xonfluence2019.zip" 
 minor="http://"               
 gui="http://"
@@ -308,5 +308,5 @@ fanart="https://raw.githubusercontent.com/MrKoyu/artwork/master/icons_wiz_builds
 preview="https://www.youtube.com/watch?v=xvOBoZe-N0w"
 adult="No"
 info="http://"
-description="CDTV DOMINUS - ONE BUILD TO RULE THEM ALL - Wizard setup - 213MB"
+description="CDTV DOMINUS - ONE BUILD TO RULE THEM ALL - Wizard setup - 248MB"
 
