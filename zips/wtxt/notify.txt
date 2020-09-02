@@ -1,4 +1,4 @@
-120
+121
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -12,6 +12,8 @@
 [COLOR yellow] - PLEASE UPDATE INFUSION KODI17 BUILD TO VERSION 5.2[/COLOR]
 
 [COLOR yellow] - PLEASE UPDATE DOMINUS KODI17 BUILD TO VERSION 3.1[/COLOR]
+
+[COLOR lime] - PLEASE UPDATE ENVISION KODI18 TO VERSION 3.0[/COLOR]
 
 [COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.1[/COLOR]
 
@@ -31,7 +33,7 @@
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] INFUSION 2 v2.1 [COLOR deepskyblue]199MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] CDTV LEIA v4.3 [COLOR deepskyblue]217MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] DOMINUS v3.3 [COLOR deepskyblue]225MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] ENVISION v2.1 [COLOR deepskyblue]245MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] ENVISION v3.0 [COLOR deepskyblue]258MB[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
 [B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open CDTV WIZARD v2.2 and install your favourite build.[/COLOR]
