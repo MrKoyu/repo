@@ -37,7 +37,7 @@ def menuoptions():
 	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Request Trial[/COLOR]',
 	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Channel List[/COLOR]',
     '[COLOR deepskyblue]* [/COLOR] [COLOR white]Website[/COLOR]',
-	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Hypersonic TVPRO apk[/COLOR] [COLOR limegreen]Android Devices Only[/COLOR]',])
+	'[COLOR deepskyblue]* [/COLOR] [COLOR white]Install Hypersonic apk[/COLOR]',])
     # dialog.selectreturns
     #   0 -> escape pressed
     #   1 -> first item
@@ -89,15 +89,15 @@ def function3():
 		
 def function4():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'https://gethypersonic.mytvpro.org' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://hypersonic-tv.com' ) )
     else:
-        opensite = webbrowser . open('https://gethypersonic.mytvpro.org')		
+        opensite = webbrowser . open('http://hypersonic-tv.com')		
 		
 def function5():
     if myplatform == 'android': # Android 
-        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://hypersonic-tv.com/apk/Hypersonic.apk' ) )
+        opensite = xbmc.executebuiltin( 'StartAndroidActivity(,android.intent.action.VIEW,,%s)' % ( 'http://hypersonic-tv.com/Hypersonic.apk' ) )
     else:
-        opensite = webbrowser . open('http://hypersonic-tv.com/apk/Hypersonic.apk')
+        opensite = webbrowser . open('http://hypersonic-tv.com/Hypersonic.apk')
 		
 def function6():
     if myplatform == 'android': # Android 

@@ -1,6 +1,10 @@
+[B]Version 7.0[/B]
+- Host update
+- Advanced Settings update
+
 [B]Version 6.0[/B]
 - Made it simple 
-- Please download our android APP for VOD @ http://hypersonic-tv.com/android/hypersonic.apk 
+- Please download our android APP for VOD @ http://hypersonic-tv.com/hypersonic.apk 
 
 [B]Version 5.1[/B]
 - Removed empty categories
