@@ -1,3 +1,22 @@
+6.8.8
+[fixup] encoding of subtitle track names
+
+6.8.7
+[fixup] encoding of titles and authors during playback
+
+6.8.6
+[fix] some videos failing to play with an Invalid URL exception
+[fix] searching in some instances with encoding issues |contrib: tsaklidis|
+[fix] support python 3.9 html.unescape |contrib: asavah|
+
+6.8.5
+[fix] playback of purchased movies |contrib: MisterD81|
+[fix] notifications for some languages on Kodi 19
+[fix] searching for some languages
+[fix] loading on some versions of python 3
+[fix] some videos failing to play with an Invalid URL exception
+[upd] use xbmcvfs.translatePath if available, clean up for Kodi 19
+
 6.8.4
 [fix] next page now ignores sorting, remains at the end of the directory
 [fix] searching, no longer require remote safe search

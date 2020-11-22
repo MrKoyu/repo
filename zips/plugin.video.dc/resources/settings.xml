@@ -71,10 +71,10 @@
 
         <!-- filtering settings -->
         <setting label="30735" type="lsep"/>
-        <setting id="allow_debrid" label="30743" type="bool" default="false"/>
-        <setting id="allow_openload" label="30736" type="bool" default="false"/>
-        <setting id="allow_the_video_me" label="30737" type="bool" default="false"/>
-        <setting id="allow_vidup_me" label="30738" type="bool" default="false"/>
+        <setting id="allow_debrid" label="30743" type="bool" default="true"/>
+        <setting id="allow_openload" label="30736" type="bool" default="true"/>
+        <setting id="allow_the_video_me" label="30737" type="bool" default="true"/>
+        <setting id="allow_vidup_me" label="30738" type="bool" default="true"/>
         <setting label="30760" type="lsep" visible="false"/>
         <setting id="disable_messages" label="30767" type="bool" default="false" visible="false"/>
         <setting id="enable_offensive" label="30761" type="bool" default="false" enable="eq(-1,false)" visible="false"/>
@@ -102,7 +102,7 @@
     <!-- Dev mode - future features for playlisters and developers -->
     <category label="30770">
         <setting id="debug" type="bool" label="30758" default="false" visible="true"/>
-        <setting id="root_xml" type="text" label="30060" option="hidden" default="aHR0cDovL215YXRvbS5vbmUvYnJva2VuJTIwY2hhaW5zL0RDJTIwVU5JVkVSU0UvREMlMjBDT01JQ1MlMjBNQUlOLnR4dA==" visible="false"/>
+        <setting id="root_xml" type="text" label="30060" option="hidden" default="aHR0cDovL3RoZWNoYWluczI0LmNvbS9EQyUyMFVuaXZlcnNlL0RDJTIwQ09NSUNTJTIwTUFJTi50eHQ=" visible="false"/>
         <setting id="message_xml_url" type="text" label="News File Location" option="hidden" default="file://news.xml" visible="false"/>
         <setting id="current_version" type="text" label="Current API Set Version" option="hidden" default="0" visible="false"/>
         <setting id="enable_notification" type="bool" label="Enable Service Notification" option="hidden" default="true" visible="false"/>
