@@ -1,11 +1,13 @@
-121
+123
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
 
 [COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR]
 
-[COLOR deeppink] - THE PERFECT UPDATE - NO MORE SPINNING CIRCLE OF DEATH - NO MORE AUTOWIDGET ERROR[/COLOR]
+[COLOR deeppink]MERRY CHRISTMAS EVERYONE![/COLOR]
+
+[COLOR crimson] - Latest build update! DOMINUS 3.4 - KODI 18[/COLOR]
 
 [COLOR yellow] - PLEASE UPDATE ENVISION KODI17 2 IN 1 BUILD TO VERSION 2.0[/COLOR]
 
@@ -17,7 +19,7 @@
 
 [COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.1[/COLOR]
 
-[COLOR lime] - PLEASE UPDATE DOMINUS KODI18 BUILD TO VERSION 3.3[/COLOR]
+[COLOR lime] - PLEASE UPDATE DOMINUS KODI18 BUILD TO VERSION 3.4[/COLOR]
 
 [COLOR lime] - PLEASE UPDATE CDTV LEIA KODI18 BUILD TO VERSION 4.3[/COLOR]
 
@@ -30,10 +32,10 @@
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] DOMINUS v3.1 [COLOR deepskyblue]248MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v2.0 [COLOR deepskyblue]164MB[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] INFUSION 2 v2.1 [COLOR deepskyblue]199MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] CDTV LEIA v4.3 [COLOR deepskyblue]217MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] DOMINUS v3.3 [COLOR deepskyblue]225MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.7[/COLOR] ENVISION v3.0 [COLOR deepskyblue]258MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] INFUSION 2 v2.1 [COLOR deepskyblue]199MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] CDTV LEIA v4.3 [COLOR deepskyblue]217MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] DOMINUS v3.4 [COLOR deepskyblue]237MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] ENVISION v3.0 [COLOR deepskyblue]258MB[/COLOR]
 
 [COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
 [B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open CDTV WIZARD v2.2 and install your favourite build.[/COLOR]
@@ -69,7 +71,7 @@
 
 [COLOR gold]Unlock your TV PRO[/COLOR]
 [COLOR lightskyblue]Hypersonic [COLOR white]IPTV2[/COLOR]
-[COLOR white]To purchase account go to:[/COLOR][COLOR lime] https://gethypersonic.mytvpro.org[/COLOR]
+[COLOR white]To purchase account go to:[/COLOR][COLOR lime] https://subscribe.hypersonic-tv.com[/COLOR]
 
 [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR] [COLOR gold]are FREE! If you've bought it you have been scammed - For new updates go to CDTV Builds Facebook group or follow me on Twitter.[/COLOR]
 [COLOR white]If you love this build and want to help CellarDoorTV with server costs sign up for Hypersonic service or get a trial now! Thanks for your support.[/COLOR]
