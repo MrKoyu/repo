@@ -261,7 +261,7 @@
 
 <addon id="plugin.video.hypersonicIPTV2"
        name="[COLOR dodgerblue]Hypersonic [COLOR white]IPTV2[/COLOR]"
-       version="7.1"
+       version="7.2"
        provider-name="Hypersonic">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>

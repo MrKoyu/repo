@@ -1,3 +1,9 @@
+[B]Version 7.2[/B]
+- Telegram invite link updated
+
+[B]Version 7.1[/B]
+- Host update
+
 [B]Version 7.0[/B]
 - Host update
 - Advanced Settings update
