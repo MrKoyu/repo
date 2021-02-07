@@ -1,13 +1,12 @@
-123
+124
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
 
 [COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR]
 
-[COLOR deeppink]MERRY CHRISTMAS EVERYONE![/COLOR]
 
-[COLOR crimson] - Latest build update! DOMINUS 3.4 - KODI 18[/COLOR]
+[COLOR crimson] - Latest build update! INFUSION 2 - KODI 18[/COLOR]
 
 [COLOR yellow] - PLEASE UPDATE ENVISION KODI17 2 IN 1 BUILD TO VERSION 2.0[/COLOR]
 
@@ -17,7 +16,7 @@
 
 [COLOR lime] - PLEASE UPDATE ENVISION KODI18 TO VERSION 3.0[/COLOR]
 
-[COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 2.1[/COLOR]
+[COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 3.0[/COLOR]
 
 [COLOR lime] - PLEASE UPDATE DOMINUS KODI18 BUILD TO VERSION 3.4[/COLOR]
 
@@ -32,7 +31,7 @@
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] DOMINUS v3.1 [COLOR deepskyblue]248MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v2.0 [COLOR deepskyblue]164MB[/COLOR]
 
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] INFUSION 2 v2.1 [COLOR deepskyblue]199MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] INFUSION 2 v3.0 [COLOR deepskyblue]227MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] CDTV LEIA v4.3 [COLOR deepskyblue]217MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] DOMINUS v3.4 [COLOR deepskyblue]237MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] ENVISION v3.0 [COLOR deepskyblue]258MB[/COLOR]
