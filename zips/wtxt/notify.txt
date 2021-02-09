@@ -1,4 +1,4 @@
-124
+125
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -6,7 +6,8 @@
 [COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR]
 
 
-[COLOR crimson] - Latest build update! INFUSION 2 - KODI 18[/COLOR]
+[COLOR white]  Latest build update! INFUSION 2 - KODI 18 and CDTV LEIA - KODI 18[/COLOR]
+[COLOR white]  Get 10% off Hypersonic today with code HYPER10[/COLOR]
 
 [COLOR yellow] - PLEASE UPDATE ENVISION KODI17 2 IN 1 BUILD TO VERSION 2.0[/COLOR]
 
@@ -20,7 +21,7 @@
 
 [COLOR lime] - PLEASE UPDATE DOMINUS KODI18 BUILD TO VERSION 3.4[/COLOR]
 
-[COLOR lime] - PLEASE UPDATE CDTV LEIA KODI18 BUILD TO VERSION 4.3[/COLOR]
+[COLOR lime] - PLEASE UPDATE CDTV LEIA KODI18 BUILD TO VERSION 4.4[/COLOR]
 
 [COLOR white] - DM @CellarDoorTV for telegram invite link[/COLOR]
 [COLOR white] - CDTV REPO URL - [COLOR lime]http://cellardoortv.com/repo[/COLOR]
@@ -32,7 +33,7 @@
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v2.0 [COLOR deepskyblue]164MB[/COLOR]
 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] INFUSION 2 v3.0 [COLOR deepskyblue]227MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] CDTV LEIA v4.3 [COLOR deepskyblue]217MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] CDTV LEIA v4.4 [COLOR deepskyblue]242MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] DOMINUS v3.4 [COLOR deepskyblue]237MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] ENVISION v3.0 [COLOR deepskyblue]258MB[/COLOR]
 
