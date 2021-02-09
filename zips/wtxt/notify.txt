@@ -1,4 +1,4 @@
-125
+126
 |||
 
 [COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
@@ -33,7 +33,7 @@
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v2.0 [COLOR deepskyblue]164MB[/COLOR]
 
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] INFUSION 2 v3.0 [COLOR deepskyblue]227MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] CDTV LEIA v4.4 [COLOR deepskyblue]242MB[/COLOR]
+[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] CDTV LEIA v4.4 [COLOR deepskyblue]235MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] DOMINUS v3.4 [COLOR deepskyblue]237MB[/COLOR]
 [B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] ENVISION v3.0 [COLOR deepskyblue]258MB[/COLOR]
 
@@ -74,6 +74,6 @@
 [COLOR white]To purchase account go to:[/COLOR][COLOR lime] https://subscribe.hypersonic-tv.com[/COLOR]
 
 [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR] [COLOR gold]are FREE! If you've bought it you have been scammed - For new updates go to CDTV Builds Facebook group or follow me on Twitter.[/COLOR]
-[COLOR white]If you love this build and want to help CellarDoorTV with server costs sign up for Hypersonic service or get a trial now! Thanks for your support.[/COLOR]
+[COLOR white]If you love this build and want to help CellarDoorTV with server costs sign up for Hypersonic service. E-mail subscription@hypersonic-tv.com to request a free trial and start streaming your favourite channel today. Thanks for your support.[/COLOR]
 
 Enjoy!
