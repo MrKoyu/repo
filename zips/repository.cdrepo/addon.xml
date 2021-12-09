@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="11.0">
+<addon id="repository.cdrepo" name="[COLOR deepskyblue]CellarDoorTV [COLOR white]Repo[/COLOR]" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]" version="999.999.999.999">
 	<requires>
 		<import addon="xbmc.addon" version="12.0.0"/>
 	</requires>
@@ -27,7 +27,7 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">CellarDoorTV Repository</summary>
-		<description lang="en">[COLOR gold]The Future Of Home Entertainment[/COLOR][CR]Kodi Repository for [COLOR steelblue]CellarDoorTV[/COLOR][CR][COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]Repo[/COLOR] allows you to install the CDTV WIZARD where you can get access to the latest CDTV Custom Builds and more.</description>
+		<description lang="en">[COLOR white]THANK YOU FOR ALL THE SUPPORT AND LOVE I'VE RECEIVED FOR THE PAST FEW YEARS![CR]YOU GUYS ARE AWESOME![/COLOR][CR][COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]</description>
 		<platform>all</platform>
 		<assets>
 			<icon>icon.gif</icon>

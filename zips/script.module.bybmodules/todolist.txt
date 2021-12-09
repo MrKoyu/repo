@@ -1,3 +1,0 @@
-
-create function for setting views 
-	started database with views for skin

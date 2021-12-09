@@ -1,79 +1,17 @@
-126
+127
 |||
+ 
 
-[COLOR deepskyblue]Scroll down the page for more information:[/COLOR]
+[COLOR white]THANK YOU FOR ALL THE SUPPORT AND LOVE I'VE RECEIVED FOR THE PAST FEW YEARS![/COLOR]
+[COLOR white]YOU GUYS ARE AWESOME![/COLOR]
 
-[COLOR white]WELCOME TO[/COLOR] [COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR white]WIZARD[/COLOR]
+[COLOR white]  It's been a great journey maintaining one of many favourites Kodi builds out there. I hope you guys have enjoyed Dominus, Sonar, Envision and Infusion 2 and by now are able to maintain and update the builds on your own and customize them the way you like them.[/COLOR]
 
+[COLOR white]  I am really sorry to say goodbye but my time has come and I am leaving Kodi for good. I will be just like you right now sitting on the sofa and enjoying everything Kodi has to offer with my family.[/COLOR]
 
-[COLOR white]  Latest build update! INFUSION 2 - KODI 18 and CDTV LEIA - KODI 18[/COLOR]
-[COLOR white]  Get 10% off Hypersonic today with code HYPER10[/COLOR]
+[COLOR white]  Thank you again for all the special moments, friends and everyone who helped me in the groups. Keep this community growing and stay safe.[/COLOR]
 
-[COLOR yellow] - PLEASE UPDATE ENVISION KODI17 2 IN 1 BUILD TO VERSION 2.0[/COLOR]
-
-[COLOR yellow] - PLEASE UPDATE INFUSION KODI17 BUILD TO VERSION 5.2[/COLOR]
-
-[COLOR yellow] - PLEASE UPDATE DOMINUS KODI17 BUILD TO VERSION 3.1[/COLOR]
-
-[COLOR lime] - PLEASE UPDATE ENVISION KODI18 TO VERSION 3.0[/COLOR]
-
-[COLOR lime] - PLEASE UPDATE INFUSION 2 KODI18 BUILD TO VERSION 3.0[/COLOR]
-
-[COLOR lime] - PLEASE UPDATE DOMINUS KODI18 BUILD TO VERSION 3.4[/COLOR]
-
-[COLOR lime] - PLEASE UPDATE CDTV LEIA KODI18 BUILD TO VERSION 4.4[/COLOR]
-
-[COLOR white] - DM @CellarDoorTV for telegram invite link[/COLOR]
-[COLOR white] - CDTV REPO URL - [COLOR lime]http://cellardoortv.com/repo[/COLOR]
-
-[COLOR gold]ONE BUILD TO RULE THEM ALL[/COLOR]
-
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] INFUSION v5.2 [COLOR deepskyblue]201MB[/COLOR] 
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] DOMINUS v3.1 [COLOR deepskyblue]248MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 17.6[/COLOR] ENVISION v2.0 [COLOR deepskyblue]164MB[/COLOR]
-
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] INFUSION 2 v3.0 [COLOR deepskyblue]227MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] CDTV LEIA v4.4 [COLOR deepskyblue]235MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] DOMINUS v3.4 [COLOR deepskyblue]237MB[/COLOR]
-[B][COLOR limegreen]•  [/COLOR][/B] [COLOR deeppink]Kodi 18.9[/COLOR] ENVISION v3.0 [COLOR deepskyblue]258MB[/COLOR]
-
-[COLOR gold]ALL CDTV BUILDS ARE SMALL IN SIZE MAKING UPDATES AND DOWNLOADS FASTER = LESS IS MORE![/COLOR]
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]Fresh install is recommended. Enable unknown sources then add CDTV repo url to Kodi file manager and install the latest CDTV repository from zip. Open CDTV WIZARD v2.2 and install your favourite build.[/COLOR]
-
-
-[COLOR gold]HOW TO SET-UP INFUSION 2[/COLOR]
-
-[B][COLOR deepskyblue]1 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on TMDB Helper add-on/Settings/Accounts/Authenticate Trakt account...[/COLOR]
-
-[B][COLOR deepskyblue]2 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in RESOLVE URL RD and authorise your Real-Debrid. If you have a different Debrid service other than RD then enter in UNIVERSAL URL which can be found on the same SYSTEM submenu.[/COLOR]
-
-[B][COLOR deepskyblue]3 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on SEREN add-on/Settings/Accounts/Enable Real-Debrid then Authorise Real-Debrid.[/COLOR]
-
-[B][COLOR deepskyblue]4 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on Shadow add-on/Settings/Debrid/Debrid Service/Re auth. RD[/COLOR]
-
-[B][COLOR deepskyblue]5 •  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in INSTALL - ZIP then My add-ons/VideoPlayer InputStream and enable InputStream Adaptive[/COLOR]
-
-[B][COLOR deepskyblue]6 •  [/COLOR][/B] [COLOR white]Click on InputStream Adaptive then configure. Set Max. Resolution general decoder to 1080p. Set secure decoder to 1080p as well then press OK to save changes.[/COLOR]
-
-[B][COLOR deepskyblue]7 •  [/COLOR][/B] [COLOR white]Enter in APPS main menu then long press on YouTube add-on/Settings/General/Video Quality to 1080p then scroll to MPEG-DASH/enable Use MPEG-DASH and set Video Quality to 1080p. This step will get you 1080p YouTube videos when using some of NuMb3r5 categories.[/COLOR]
-
-[B][COLOR deepskyblue]8 •  [/COLOR][/B] [COLOR white]Enter YouTube API key in Settings/API/API Key. For more info on how to easily get yours watch this video:[/COLOR] [COLORlime]https://youtu.be/dJ1oX9-zyhM[/COLOR]
-
-[B][COLOR deepskyblue]9•  [/COLOR][/B] [COLOR white]Go to SYSTEM main menu then press down for submenu and enter in ADVANCED SETTINGS then choose your Device Preset or configure your own advanced settings.[/COLOR]
-
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]That's pretty much it! Enjoy your build. If you have any questions find us @CellarDoorTV Telegram group. Thank you![/COLOR]
-
-
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]TIPS:[/COLOR]
-
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]RSS FEEDS can be disabled for a cleaner look and better performance in the skin Interface settings/skin/show rss feeds[/COLOR] - [COLOR lime]ON[/COLOR]/[COLOR crimson]OFF[/COLOR]
-[B][COLOR deepskyblue]•  [/COLOR][/B] [COLOR white]CDTV WIZARD error or can’t open the wizard - Go to program add-ons/CellarDoorTV Wizard/Settings/default then OK to fix Wizard.[/COLOR]
-
-[COLOR gold]Unlock your TV PRO[/COLOR]
-[COLOR lightskyblue]Hypersonic [COLOR white]IPTV2[/COLOR]
-[COLOR white]To purchase account go to:[/COLOR][COLOR lime] https://subscribe.hypersonic-tv.com[/COLOR]
-
-[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR] [COLOR gold]are FREE! If you've bought it you have been scammed - For new updates go to CDTV Builds Facebook group or follow me on Twitter.[/COLOR]
-[COLOR white]If you love this build and want to help CellarDoorTV with server costs sign up for Hypersonic service. E-mail subscription@hypersonic-tv.com to request a free trial and start streaming your favourite channel today. Thanks for your support.[/COLOR]
+[COLOR white]Lots of love[/COLOR]
+[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR]
 
 Enjoy!
